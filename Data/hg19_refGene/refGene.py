@@ -24,7 +24,6 @@ for line in inFile1 :
     chr=fields[0]
     length=int(fields[1])
     dict1[chr]=length
-
 inFile1.close()
 
 ouFile=open('hg19.refGene.stat','w')

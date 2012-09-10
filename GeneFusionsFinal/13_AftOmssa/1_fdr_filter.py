@@ -1,5 +1,6 @@
 import csv
-FDR=0.001
+FDR=0.000001
+#FDR=0.001
 
 def fdr(iFile) : 
     dict1=dict()

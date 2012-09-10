@@ -1,11 +1,23 @@
+import sys
+
+
+fasta=sys.argv[1]
+refGene=sys.argv[2]
+
+#fasta='ucsc.hg19.fasta.fa'
+#refGene=hg19_refGene.txt
+
 from RefGene_class import *
 
-inFile1=open('ucsc.hg19.fasta.fa')
+inFile1=open(fasta)
 hg=inFile1.readlines()
 inFile1.close()
 
+#ouFile=open('hahaha','w')
 
-inFile=open('hg19_refGene.txt')
+
+inFile=open(refGene)
+#inFile=open('hg19_refGene.part.txt')
 for line in inFile :
     refGene=RefGene()
     refGene.read_one_gene(line)
@@ -30,9 +42,12 @@ for line in inFile :
     if len(refGene.coding_position) >0 :
         #refGene.point_position(refGene.coding_position[0])
         refGene.position_to_atcg(chrom)
-        refGene.point_change(refGene.coding_position[0],refGene.coding_atcg[0],refGene.coding_atcg[0])
+        for i in xrange(len(refGene.coding_position)-3) :
+            refGene.point_change(refGene.coding_position[i],refGene.coding_atcg[i],refGene.coding_atcg[i])
+            #ouFile.write(''.join(refGene.coding_atcg)+'\n')
 
 
 inFile.close()
+#ouFile.close()
 
 
