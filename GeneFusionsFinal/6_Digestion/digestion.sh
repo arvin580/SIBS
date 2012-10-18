@@ -1,0 +1,7 @@
+cd /netshare1/home1/people/hansun/GeneFusionsFinal/Digestion
+#perl exon_fusion_peptide_qc_digestion.pl
+#perl exon_fusion_peptide_qc_digestion_qc.pl
+#perl splicing_exon_peptide_qc_digestion.pl
+#perl splicing_exon_peptide_qc_digestion_qc.pl
+perl reverse.pl exon_fusion_peptide_qc_digestion_qc
+perl reverse.pl splicing_exon_peptide_qc_digestion_qc

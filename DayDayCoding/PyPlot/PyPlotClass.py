@@ -28,19 +28,42 @@ class PyPlot :
         #plt.show()
         plt.savefig(self.filename)
     
-    def plot(self,*arg) :
+    def plot1(self, yList, xLabel=[]) :
         fig = plt.figure()
         ax=fig.add_subplot(111)
+        ax.plot(yList)
+        if xLabel:
+            ax.set_xticklabels(xLabel)
+        self.show()
 
-        if len(arg)==1 :
-            yList=arg[0]
-            ax.plot(yList)
-            self.show()
-        if len(arg)==2 :
-            xList=arg[0]
-            yList=arg[1]
-            ax.plot(xList,yList)
-            self.show()
+    def plot1_xLabel(self, yList, xLabel=[],yTitle='') :
+        fig = plt.figure()
+        ax=fig.add_subplot(111)
+        ax.plot(range(1, len(yList) + 1), yList)
+        ax.set_xticks(range(len(yList)+2))
+        if xLabel:
+            ax.set_xticklabels(['']+xLabel+[''])
+        if yTitle:
+            ax.set_ylabel(yTitle)
+
+        self.show()
+
+    def plot2(self, aList, xLabel=[]) :
+        fig = plt.figure()
+        ax=fig.add_subplot(111)
+        xList=aList[0]
+        yList=aList[1]
+        ax.plot(xList,yList)
+        if xLabel:
+            ax.set_xticklabels(xLabel)
+        self.show()
+
+    def hist(self,xList) :
+        fig = plt.figure()
+        ax=fig.add_subplot(111)
+        ax.hist(xList)
+        self.show()
+        
             
     def single_bar(self,yList,xLabel=0,xTitle=0,yTitle=0) :
         fig = plt.figure()
@@ -106,7 +129,8 @@ class PyPlot :
 
         if xLabel==0 :
             xLabel=['bar'+str(i) for i in range(1,n+1)]
-        ax.set_xticklabels(xLabel)
+        #ax.set_xticklabels(xLabel)
+        ax.set_xticklabels(xLabel,rotation='vertical')
 
         if legTitle==0 :
             legTitle=['type'+str(i) for i in range(1,N+1)]
@@ -149,7 +173,8 @@ class PyPlot :
 
         if xLabel==0 :
             xLabel=['bar'+str(i) for i in range(1,n+1)]
-        ax.set_xticklabels(xLabel)
+        #ax.set_xticklabels(xLabel)
+        ax.set_xticklabels(xLabel,rotation='vertical')
 
         if legTitle==0 :
             legTitle=['type'+str(i) for i in range(1,N+1)]
@@ -212,8 +237,47 @@ class PyPlot :
 
         self.show()
 
+    def multi_bar_vertical_sv_number(self,yList,xLabel=0,xTitle=0,yTitle=0,legTitle=0,legX=0,legY=0) :
+        fig = plt.figure()
+        ax=fig.add_subplot(111)
 
-    def multi_bar_vertical_xlael_vertical(self,yList,xLabel=0,xTitle=0,yTitle=0,legTitle=0,legX=0,legY=0) :
+        yList=np.array(yList)
+        n=len(yList[0])
+        N=len(yList)
+
+        xList=np.arange(n)
+
+        width=0.7
+
+        bar=[]
+        bar.append(ax.bar(xList,yList[0],width,color=self.get_color(0,N)))
+        for i in range(1,N) :
+            bar.append(ax.bar(xList,yList[i],width,bottom=sum(yList[0:i]),color=self.get_color(i,N)))
+
+        ax.set_xlim(-0.3,n)
+        #ax.set_ylim(0,sum(yList[0:]).max()*1.1)
+        ax.set_xticks(xList+width/2)
+        ax.set_yticks(range(sum(yList[0:]).max()+2))
+
+        if xLabel==0 :
+            xLabel=['bar'+str(i) for i in range(1,n+1)]
+        ax.set_xticklabels(xLabel)
+
+
+        if legTitle==0 :
+            legTitle=['type'+str(i) for i in range(1,N+1)]
+        if legX==0 :
+            legX=0.97
+        if legY==0 :
+            legY=0.97
+
+        legBar=[bar[i][0] for i in range(N)]
+
+        ax.legend(legBar,legTitle,loc='upper right',bbox_to_anchor=[legX,legY])
+
+        self.show()
+
+    def multi_bar_vertical_xlabel_vertical(self,yList,xLabel=0,xTitle=0,yTitle=0,legTitle=0,legX=0,legY=0) :
         fig = plt.figure()
         ax=fig.add_subplot(111)
 
@@ -298,8 +362,6 @@ class PyPlot :
         self.show()
 
     def single_bar_multi_bar_vertical_proportion(self,yList1,yList2,xLabel=0,xTitle=0,yTitle1=0,yTitle2=0,legTitle=0,legX=0,legY=0) :
-        print('haha')
-
         bar2=[]
         fig = plt.figure()
 
@@ -375,6 +437,89 @@ class PyPlot :
         #ax.legend(legBar,legTitle,ncol=4,shadow=True,loc=[0,yList1.max()*1.1])
         plt.subplots_adjust(hspace=0.07)
 
+        self.show()
+
+    def single_bar_multi_bar_vertical_proportion_ax(self,yList1,yList2,xLabel=0,xTitle=0,yTitle1=0,yTitle2=0,legTitle=0,legX=0,legY=0) :
+        bar2=[]
+        fig = plt.figure()
+        #ax=fig.add_axes([0.05,0.45,0.9,0.4])
+        ax=fig.add_axes([0.1,0.1,0.8,0.35])
+
+        yList2=np.array(yList2)
+        n=len(yList2[0])
+        N=len(yList2)
+
+        xList=np.arange(n)
+
+        width=0.7
+
+        bar2.append(ax.bar(xList,yList2[0]/sum(yList2[0:]).astype('float'),width,color=self.get_color(1,N+1)))
+        for i in range(1,N) :
+            bar2.append(ax.bar(xList,yList2[i]/sum(yList2[0:]).astype('float'),width,bottom=sum(yList2[0:i])/sum(yList2[0:]).astype('float'),color=self.get_color(i+1,N+1)))
+
+        ax.set_xlim(-0.3,n)
+        ax.set_ylim(0,1)
+
+        ax.set_xticks(xList+width/2)
+        ax.set_yticks([0.0,0.2,0.4,0.6,0.8,1.0])
+        ax.set_yticklabels(['0%','20%','40%','60%','80%','100%'])
+
+        if xLabel==0 :
+            xLabel=['bar'+str(i) for i in range(1,n+1)]
+        ax.set_xticklabels(xLabel)
+        if yTitle2==0 :
+            yTitle2='SNV(%)'
+        ax.set_ylabel(yTitle2)
+
+
+
+        #####
+
+        #ax=fig.add_axes([0.05,0.05,0.9,0.4])
+        ax=fig.add_axes([0.1,0.45,0.8,0.35])
+        bar1=[]
+
+        yList1=np.array(yList1)
+        n=len(yList1)
+        xList=np.arange(n)
+
+        width=0.7
+        bar1.append(ax.bar(xList,yList1,width,color=self.get_color(0,N+1)))
+        #ax.bar(xList,yList,width,color=matplotlib.colors.colorConverter.to_rgb('0.3'))
+        ax.set_xlim(-0.3,n)
+        ax.set_ylim(0,yList1.max()*1.1)
+        ax.set_xticks(xList+width/2)
+        ax.set_xticklabels([])
+
+        if yTitle1==0 :
+            yTitle1='Mutations(n)'
+            ax.set_ylabel(yTitle1)
+ 
+        if legTitle==0 :
+            #legTitle=['type'+str(i) for i in range(1,len(bar1+bar2)+1)]
+            legTitle=['T>G/A>C','T>C/A>G','T>A/A>T','C>A/G>T','C>G/G>C','C>T/G>A','SNV']
+        #if legX==0 :
+        #    legX=0.5
+        #if legY==0 :
+        #    legY=1.0
+
+        legBar=[]
+        #legBar=[bar[i][0] for i in range(len(bar1+bar2))]
+        for i in range(len(bar2)) :
+            legBar.append(bar2[i][0])
+        for i in range(len(bar1)) :
+            legBar.append(bar1[i][0])
+
+        #ax.legend(legBar,legTitle,ncol=4,shadow=True,loc='upper right',bbox_to_anchor=[legX,legY],prop={'size':20})
+        #ax.legend(legBar,legTitle,ncol=4,shadow=True,loc='lower center',bbox_to_anchor=[legX,legY],prop={'size':13})
+        #ax = fig.add_axes([0.05,0.85,0.9,0.1])
+        ax=fig.add_axes([0.1,0.8,0.8,0.2])
+        #ax.legend(legBar,legTitle,ncol=4,shadow=False,loc='lower center',bbox_to_anchor=[legX,legY],prop={'size':10})
+        ax.legend(legBar,legTitle,ncol=4,shadow=False,loc='lower left')
+        ax.set_xticks([])
+        ax.set_yticks([])
+       #ax.legend(legBar,legTitle,ncol=4,shadow=True,loc=[0,yList1.max()*1.1])
+        ##plt.subplots_adjust(hspace=0.07)
         self.show()
 
 
@@ -563,8 +708,9 @@ class PyPlot :
 
         self.show()
 
-    def heatmap_matshow(self,aList,xLabel=0,yLabel=0) :
+    def matshow(self,aList,xLabel=0,yLabel=0) :
         fig = plt.figure()
+        plt.grid(True)
         ax=fig.add_subplot(111)
         aList=np.array(aList)
 
@@ -589,7 +735,20 @@ class PyPlot :
         fig.colorbar(cax,ticks=range(aList.max()+1))
         #self.show()
         plt.savefig(self.filename,bbox_inches='tight')
-        
+
+    def heatmap(self,aList,row=True,col=True,xLabel=0,yLabel=0,figsize=0,xLabelVertical=False,grid=False,labelFontSize=False) :
+        from PyHeatmapClass import PyHeatmap
+        ph = PyHeatmap(self.filename)
+        #ph.readFile('ppg2008.csv.txt')
+        #ph.readFile('test')
+        ph.readData(aList, xLabel, yLabel)
+        #ph.printData()
+        if figsize:
+            ph.heatmap(row=row,col=col,figsize=figsize,xLabelVertical=xLabelVertical,grid=grid,labelFontSize=labelFontSize)
+        else:
+            ph.heatmap(row=row,col=col,xLabelVertical=xLabelVertical,grid=grid,labelFontSize=labelFontSize)
+
+     
     def box_plot(self,aList,xLabel=0,yLabel=0) :
         fig=plt.figure()
         ax=fig.add_subplot(111)

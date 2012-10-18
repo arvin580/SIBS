@@ -1,0 +1,6 @@
+#!/bin/bash
+cd /netshare1/home1/people/hansun/GeneFusionsFinal/SpecPep
+
+python spectrum_peptide2.py fusion_point_3_2_complete_c_title_c spectrum_peptide_map spectrum_peptide_map2 fusion_peptide_mapnomap2 fusion_peptide_mapandmap2
+python spectrum_peptide2.py splicing_point_3_2_complete_c_title_c spectrum_peptide_map spectrum_peptide_map2 splicing_peptide_mapnomap2 splicing_peptide_mapandmap2
+

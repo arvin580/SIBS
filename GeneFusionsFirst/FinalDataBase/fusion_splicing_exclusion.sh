@@ -1,0 +1,5 @@
+#!/bin/bash
+
+cd /netshare1/home1/people/hansun/GeneFusions/FinalDataBase
+perl fusion_splicing_exclusion.pl /netshare1/home1/people/hansun/GeneFusions/Cross/lung_fusion_splicing_peptide fusion_splicing_uniprot_ensemble_contaminated_final2
+perl fusion_splicing_exclusion.pl /netshare1/home1/people/hansun/GeneFusionsOther/AftTandem8/Cross/aft_tandem8_fusion_splicing_peptide fusion_splicing_uniprot_ensemble_contaminated_final3

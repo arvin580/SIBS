@@ -1,0 +1,5 @@
+#!/bin/bash
+
+cd  /netshare1/home1/people/hansun/Data/VirusesGenome
+
+bwa index -a bwtsw -p viruses  /netshare1/home1/people/hansun/Data/VirusesGenome/VirusesGenome.fasta

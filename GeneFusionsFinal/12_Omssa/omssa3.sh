@@ -1,0 +1,87 @@
+db=/netshare1/home1/people/hansun/GeneFusionsFinal/FinalDataBase/formatdb/fusion_splicing_uniprot_ensembl_contaminated_final
+cd /netshare1/home1/people/hansun/GeneFusionsFinal/Tandem/omssa
+
+
+omssacl -d $db -fm /netshare1/home1/people/hansun/GeneFusionsFinal/Tandem/input/Normal/A/nw_041907n_lung_normal_A01.MGF -oc  Normal_A_nw_041907n_lung_normal_A01.out
+omssacl -d $db -fm /netshare1/home1/people/hansun/GeneFusionsFinal/Tandem/input/Normal/A/nw_041907n_lung_normal_A02.MGF -oc  Normal_A_nw_041907n_lung_normal_A02.out
+omssacl -d $db -fm /netshare1/home1/people/hansun/GeneFusionsFinal/Tandem/input/Normal/A/nw_041907n_lung_normal_A03.MGF -oc  Normal_A_nw_041907n_lung_normal_A03.out
+omssacl -d $db -fm /netshare1/home1/people/hansun/GeneFusionsFinal/Tandem/input/Normal/A/nw_041907n_lung_normal_A04.MGF -oc  Normal_A_nw_041907n_lung_normal_A04.out
+omssacl -d $db -fm /netshare1/home1/people/hansun/GeneFusionsFinal/Tandem/input/Normal/A/nw_041907n_lung_normal_A05.MGF -oc  Normal_A_nw_041907n_lung_normal_A05.out
+omssacl -d $db -fm /netshare1/home1/people/hansun/GeneFusionsFinal/Tandem/input/Normal/A/nw_041907n_lung_normal_A06.MGF -oc  Normal_A_nw_041907n_lung_normal_A06.out
+omssacl -d $db -fm /netshare1/home1/people/hansun/GeneFusionsFinal/Tandem/input/Normal/A/nw_041907n_lung_normal_A07.MGF -oc  Normal_A_nw_041907n_lung_normal_A07.out
+omssacl -d $db -fm /netshare1/home1/people/hansun/GeneFusionsFinal/Tandem/input/Normal/A/nw_041907n_lung_normal_A08.MGF -oc  Normal_A_nw_041907n_lung_normal_A08.out
+omssacl -d $db -fm /netshare1/home1/people/hansun/GeneFusionsFinal/Tandem/input/Normal/A/nw_041907n_lung_normal_A09.MGF -oc  Normal_A_nw_041907n_lung_normal_A09.out
+omssacl -d $db -fm /netshare1/home1/people/hansun/GeneFusionsFinal/Tandem/input/Normal/A/nw_041907n_lung_normal_A10.MGF -oc  Normal_A_nw_041907n_lung_normal_A10.out
+omssacl -d $db -fm /netshare1/home1/people/hansun/GeneFusionsFinal/Tandem/input/Normal/A/nw_041907n_lung_normal_A11_run2.MGF -oc  Normal_A_nw_041907n_lung_normal_A11_run2.out
+omssacl -d $db -fm /netshare1/home1/people/hansun/GeneFusionsFinal/Tandem/input/Normal/A/nw_041907n_lung_normal_A12_run2.MGF -oc  Normal_A_nw_041907n_lung_normal_A12_run2.out
+omssacl -d $db -fm /netshare1/home1/people/hansun/GeneFusionsFinal/Tandem/input/Normal/A/nw_041907n_lung_normal_A13.MGF -oc  Normal_A_nw_041907n_lung_normal_A13.out
+omssacl -d $db -fm /netshare1/home1/people/hansun/GeneFusionsFinal/Tandem/input/Normal/A/nw_041907n_lung_normal_A14.MGF -oc  Normal_A_nw_041907n_lung_normal_A14.out
+omssacl -d $db -fm /netshare1/home1/people/hansun/GeneFusionsFinal/Tandem/input/Normal/A/nw_041907n_lung_normal_A15.MGF -oc  Normal_A_nw_041907n_lung_normal_A15.out
+omssacl -d $db -fm /netshare1/home1/people/hansun/GeneFusionsFinal/Tandem/input/Normal/A/nw_041907n_lung_normal_A16.MGF -oc  Normal_A_nw_041907n_lung_normal_A16.out
+omssacl -d $db -fm /netshare1/home1/people/hansun/GeneFusionsFinal/Tandem/input/Normal/A/nw_041907n_lung_normal_A17.MGF -oc  Normal_A_nw_041907n_lung_normal_A17.out
+omssacl -d $db -fm /netshare1/home1/people/hansun/GeneFusionsFinal/Tandem/input/Normal/A/nw_041907n_lung_normal_A18.MGF -oc  Normal_A_nw_041907n_lung_normal_A18.out
+omssacl -d $db -fm /netshare1/home1/people/hansun/GeneFusionsFinal/Tandem/input/Normal/A/nw_041907n_lung_normal_A19.MGF -oc  Normal_A_nw_041907n_lung_normal_A19.out
+omssacl -d $db -fm /netshare1/home1/people/hansun/GeneFusionsFinal/Tandem/input/Normal/A/nw_041907n_lung_normal_A20.MGF -oc  Normal_A_nw_041907n_lung_normal_A20.out
+
+omssacl -d $db -fm /netshare1/home1/people/hansun/GeneFusionsFinal/Tandem/input/Normal/B/nw_041907n_lung_normal_B01.MGF -oc  Normal_B_nw_041907n_lung_normal_B01.out
+omssacl -d $db -fm /netshare1/home1/people/hansun/GeneFusionsFinal/Tandem/input/Normal/B/nw_041907n_lung_normal_B02.MGF -oc  Normal_B_nw_041907n_lung_normal_B02.out
+omssacl -d $db -fm /netshare1/home1/people/hansun/GeneFusionsFinal/Tandem/input/Normal/B/nw_041907n_lung_normal_B03.MGF -oc  Normal_B_nw_041907n_lung_normal_B03.out
+omssacl -d $db -fm /netshare1/home1/people/hansun/GeneFusionsFinal/Tandem/input/Normal/B/nw_041907n_lung_normal_B04.MGF -oc  Normal_B_nw_041907n_lung_normal_B04.out
+omssacl -d $db -fm /netshare1/home1/people/hansun/GeneFusionsFinal/Tandem/input/Normal/B/nw_041907n_lung_normal_B05.MGF -oc  Normal_B_nw_041907n_lung_normal_B05.out
+omssacl -d $db -fm /netshare1/home1/people/hansun/GeneFusionsFinal/Tandem/input/Normal/B/nw_041907n_lung_normal_B06.MGF -oc  Normal_B_nw_041907n_lung_normal_B06.out
+omssacl -d $db -fm /netshare1/home1/people/hansun/GeneFusionsFinal/Tandem/input/Normal/B/nw_041907n_lung_normal_B07.MGF -oc  Normal_B_nw_041907n_lung_normal_B07.out
+omssacl -d $db -fm /netshare1/home1/people/hansun/GeneFusionsFinal/Tandem/input/Normal/B/nw_041907n_lung_normal_B08.MGF -oc  Normal_B_nw_041907n_lung_normal_B08.out
+omssacl -d $db -fm /netshare1/home1/people/hansun/GeneFusionsFinal/Tandem/input/Normal/B/nw_041907n_lung_normal_B09.MGF -oc  Normal_B_nw_041907n_lung_normal_B09.out
+omssacl -d $db -fm /netshare1/home1/people/hansun/GeneFusionsFinal/Tandem/input/Normal/B/nw_041907n_lung_normal_B10.MGF -oc  Normal_B_nw_041907n_lung_normal_B10.out
+omssacl -d $db -fm /netshare1/home1/people/hansun/GeneFusionsFinal/Tandem/input/Normal/B/nw_041907n_lung_normal_B11.MGF -oc  Normal_B_nw_041907n_lung_normal_B11.out
+omssacl -d $db -fm /netshare1/home1/people/hansun/GeneFusionsFinal/Tandem/input/Normal/B/nw_041907n_lung_normal_B12.MGF -oc  Normal_B_nw_041907n_lung_normal_B12.out
+omssacl -d $db -fm /netshare1/home1/people/hansun/GeneFusionsFinal/Tandem/input/Normal/B/nw_041907n_lung_normal_B13.MGF -oc  Normal_B_nw_041907n_lung_normal_B13.out
+omssacl -d $db -fm /netshare1/home1/people/hansun/GeneFusionsFinal/Tandem/input/Normal/B/nw_041907n_lung_normal_B14.MGF -oc  Normal_B_nw_041907n_lung_normal_B14.out
+omssacl -d $db -fm /netshare1/home1/people/hansun/GeneFusionsFinal/Tandem/input/Normal/B/nw_041907n_lung_normal_B15.MGF -oc  Normal_B_nw_041907n_lung_normal_B15.out
+omssacl -d $db -fm /netshare1/home1/people/hansun/GeneFusionsFinal/Tandem/input/Normal/B/nw_041907n_lung_normal_B16.MGF -oc  Normal_B_nw_041907n_lung_normal_B16.out
+omssacl -d $db -fm /netshare1/home1/people/hansun/GeneFusionsFinal/Tandem/input/Normal/B/nw_041907n_lung_normal_B17.MGF -oc  Normal_B_nw_041907n_lung_normal_B17.out
+omssacl -d $db -fm /netshare1/home1/people/hansun/GeneFusionsFinal/Tandem/input/Normal/B/nw_041907n_lung_normal_B18.MGF -oc  Normal_B_nw_041907n_lung_normal_B18.out
+omssacl -d $db -fm /netshare1/home1/people/hansun/GeneFusionsFinal/Tandem/input/Normal/B/nw_041907n_lung_normal_B19.MGF -oc  Normal_B_nw_041907n_lung_normal_B19.out
+omssacl -d $db -fm /netshare1/home1/people/hansun/GeneFusionsFinal/Tandem/input/Normal/B/nw_041907n_lung_normal_B20.MGF -oc  Normal_B_nw_041907n_lung_normal_B20.out
+
+omssacl -d $db -fm /netshare1/home1/people/hansun/GeneFusionsFinal/Tandem/input/Normal/C/nw_041907n_lung_normal_C01.MGF -oc  Normal_C_nw_041907n_lung_normal_C01.out
+omssacl -d $db -fm /netshare1/home1/people/hansun/GeneFusionsFinal/Tandem/input/Normal/C/nw_041907n_lung_normal_C02.MGF -oc  Normal_C_nw_041907n_lung_normal_C02.out
+omssacl -d $db -fm /netshare1/home1/people/hansun/GeneFusionsFinal/Tandem/input/Normal/C/nw_041907n_lung_normal_C03.MGF -oc  Normal_C_nw_041907n_lung_normal_C03.out
+omssacl -d $db -fm /netshare1/home1/people/hansun/GeneFusionsFinal/Tandem/input/Normal/C/nw_041907n_lung_normal_C04.MGF -oc  Normal_C_nw_041907n_lung_normal_C04.out
+omssacl -d $db -fm /netshare1/home1/people/hansun/GeneFusionsFinal/Tandem/input/Normal/C/nw_041907n_lung_normal_C05.MGF -oc  Normal_C_nw_041907n_lung_normal_C05.out
+omssacl -d $db -fm /netshare1/home1/people/hansun/GeneFusionsFinal/Tandem/input/Normal/C/nw_041907n_lung_normal_C06.MGF -oc  Normal_C_nw_041907n_lung_normal_C06.out
+omssacl -d $db -fm /netshare1/home1/people/hansun/GeneFusionsFinal/Tandem/input/Normal/C/nw_041907n_lung_normal_C07.MGF -oc  Normal_C_nw_041907n_lung_normal_C07.out
+omssacl -d $db -fm /netshare1/home1/people/hansun/GeneFusionsFinal/Tandem/input/Normal/C/nw_041907n_lung_normal_C08.MGF -oc  Normal_C_nw_041907n_lung_normal_C08.out
+omssacl -d $db -fm /netshare1/home1/people/hansun/GeneFusionsFinal/Tandem/input/Normal/C/nw_041907n_lung_normal_C09.MGF -oc  Normal_C_nw_041907n_lung_normal_C09.out
+omssacl -d $db -fm /netshare1/home1/people/hansun/GeneFusionsFinal/Tandem/input/Normal/C/nw_041907n_lung_normal_C10.MGF -oc  Normal_C_nw_041907n_lung_normal_C10.out
+omssacl -d $db -fm /netshare1/home1/people/hansun/GeneFusionsFinal/Tandem/input/Normal/C/nw_041907n_lung_normal_C11.MGF -oc  Normal_C_nw_041907n_lung_normal_C11.out
+omssacl -d $db -fm /netshare1/home1/people/hansun/GeneFusionsFinal/Tandem/input/Normal/C/nw_041907n_lung_normal_C12.MGF -oc  Normal_C_nw_041907n_lung_normal_C12.out
+omssacl -d $db -fm /netshare1/home1/people/hansun/GeneFusionsFinal/Tandem/input/Normal/C/nw_041907n_lung_normal_C13.MGF -oc  Normal_C_nw_041907n_lung_normal_C13.out
+omssacl -d $db -fm /netshare1/home1/people/hansun/GeneFusionsFinal/Tandem/input/Normal/C/nw_041907n_lung_normal_C14.MGF -oc  Normal_C_nw_041907n_lung_normal_C14.out
+omssacl -d $db -fm /netshare1/home1/people/hansun/GeneFusionsFinal/Tandem/input/Normal/C/nw_041907n_lung_normal_C15.MGF -oc  Normal_C_nw_041907n_lung_normal_C15.out
+omssacl -d $db -fm /netshare1/home1/people/hansun/GeneFusionsFinal/Tandem/input/Normal/C/nw_041907n_lung_normal_C16.MGF -oc  Normal_C_nw_041907n_lung_normal_C16.out
+omssacl -d $db -fm /netshare1/home1/people/hansun/GeneFusionsFinal/Tandem/input/Normal/C/nw_041907n_lung_normal_C17.MGF -oc  Normal_C_nw_041907n_lung_normal_C17.out
+omssacl -d $db -fm /netshare1/home1/people/hansun/GeneFusionsFinal/Tandem/input/Normal/C/nw_041907n_lung_normal_C18.MGF -oc  Normal_C_nw_041907n_lung_normal_C18.out
+omssacl -d $db -fm /netshare1/home1/people/hansun/GeneFusionsFinal/Tandem/input/Normal/C/nw_041907n_lung_normal_C19.MGF -oc  Normal_C_nw_041907n_lung_normal_C19.out
+omssacl -d $db -fm /netshare1/home1/people/hansun/GeneFusionsFinal/Tandem/input/Normal/C/nw_041907n_lung_normal_C20.MGF -oc  Normal_C_nw_041907n_lung_normal_C20.out
+
+omssacl -d $db -fm /netshare1/home1/people/hansun/GeneFusionsFinal/Tandem/input/Normal/D/nw_041907n_lung_normal_D01.MGF -oc  Normal_D_nw_041907n_lung_normal_D01.out
+omssacl -d $db -fm /netshare1/home1/people/hansun/GeneFusionsFinal/Tandem/input/Normal/D/nw_041907n_lung_normal_D02.MGF -oc  Normal_D_nw_041907n_lung_normal_D02.out
+omssacl -d $db -fm /netshare1/home1/people/hansun/GeneFusionsFinal/Tandem/input/Normal/D/nw_041907n_lung_normal_D03.MGF -oc  Normal_D_nw_041907n_lung_normal_D03.out
+omssacl -d $db -fm /netshare1/home1/people/hansun/GeneFusionsFinal/Tandem/input/Normal/D/nw_041907n_lung_normal_D04.MGF -oc  Normal_D_nw_041907n_lung_normal_D04.out
+omssacl -d $db -fm /netshare1/home1/people/hansun/GeneFusionsFinal/Tandem/input/Normal/D/nw_041907n_lung_normal_D05.MGF -oc  Normal_D_nw_041907n_lung_normal_D05.out
+omssacl -d $db -fm /netshare1/home1/people/hansun/GeneFusionsFinal/Tandem/input/Normal/D/nw_041907n_lung_normal_D06.MGF -oc  Normal_D_nw_041907n_lung_normal_D06.out
+omssacl -d $db -fm /netshare1/home1/people/hansun/GeneFusionsFinal/Tandem/input/Normal/D/nw_041907n_lung_normal_D07.MGF -oc  Normal_D_nw_041907n_lung_normal_D07.out
+omssacl -d $db -fm /netshare1/home1/people/hansun/GeneFusionsFinal/Tandem/input/Normal/D/nw_041907n_lung_normal_D08.MGF -oc  Normal_D_nw_041907n_lung_normal_D08.out
+omssacl -d $db -fm /netshare1/home1/people/hansun/GeneFusionsFinal/Tandem/input/Normal/D/nw_041907n_lung_normal_D09.MGF -oc  Normal_D_nw_041907n_lung_normal_D09.out
+omssacl -d $db -fm /netshare1/home1/people/hansun/GeneFusionsFinal/Tandem/input/Normal/D/nw_041907n_lung_normal_D10.MGF -oc  Normal_D_nw_041907n_lung_normal_D10.out
+omssacl -d $db -fm /netshare1/home1/people/hansun/GeneFusionsFinal/Tandem/input/Normal/D/nw_041907n_lung_normal_D11.MGF -oc  Normal_D_nw_041907n_lung_normal_D11.out
+omssacl -d $db -fm /netshare1/home1/people/hansun/GeneFusionsFinal/Tandem/input/Normal/D/nw_041907n_lung_normal_D12.MGF -oc  Normal_D_nw_041907n_lung_normal_D12.out
+omssacl -d $db -fm /netshare1/home1/people/hansun/GeneFusionsFinal/Tandem/input/Normal/D/nw_041907n_lung_normal_D13.MGF -oc  Normal_D_nw_041907n_lung_normal_D13.out
+omssacl -d $db -fm /netshare1/home1/people/hansun/GeneFusionsFinal/Tandem/input/Normal/D/nw_041907n_lung_normal_D14.MGF -oc  Normal_D_nw_041907n_lung_normal_D14.out
+omssacl -d $db -fm /netshare1/home1/people/hansun/GeneFusionsFinal/Tandem/input/Normal/D/nw_041907n_lung_normal_D15.MGF -oc  Normal_D_nw_041907n_lung_normal_D15.out
+omssacl -d $db -fm /netshare1/home1/people/hansun/GeneFusionsFinal/Tandem/input/Normal/D/nw_041907n_lung_normal_D16.MGF -oc  Normal_D_nw_041907n_lung_normal_D16.out
+omssacl -d $db -fm /netshare1/home1/people/hansun/GeneFusionsFinal/Tandem/input/Normal/D/nw_041907n_lung_normal_D17.MGF -oc  Normal_D_nw_041907n_lung_normal_D17.out
+omssacl -d $db -fm /netshare1/home1/people/hansun/GeneFusionsFinal/Tandem/input/Normal/D/nw_041907n_lung_normal_D18.MGF -oc  Normal_D_nw_041907n_lung_normal_D18.out
+omssacl -d $db -fm /netshare1/home1/people/hansun/GeneFusionsFinal/Tandem/input/Normal/D/nw_041907n_lung_normal_D19.MGF -oc  Normal_D_nw_041907n_lung_normal_D19.out
+omssacl -d $db -fm /netshare1/home1/people/hansun/GeneFusionsFinal/Tandem/input/Normal/D/nw_041907n_lung_normal_D20.MGF -oc  Normal_D_nw_041907n_lung_normal_D20.out
