@@ -1,6 +1,3 @@
-### cped from genefusionsfirst, may be changed, have forgot
-###  perl fusion_gene.pl fusion_gene_unique_chimerdb
-
 open INFILEa,"exon_line";
 open OUTFILEa,">gene_exon";
 while($title=<INFILEa>)
@@ -29,11 +26,10 @@ while(($key,$val)=each %hash2)
 	}
 }
 
-#open INFILE,"fusion_gene_unique";
-open INFILE,"$ARGV[0]";
-open OUTFILEb,">$ARGV[0]_unmapped";
-open OUTFILEc,">exon_fusion_$ARGV[0]";
-open OUTFILEd,">$ARGV[0]_mapped";
+open INFILE,"fusion_gene_unique";
+open OUTFILEb,">fusion_gene_unique_unmapped";
+open OUTFILEc,">exon_fusion";
+open OUTFILEd,">fusion_gene_unique_mapped";
 #while(($key,$val)=each %hash)
 while(<INFILE>)
 {
