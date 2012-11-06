@@ -124,7 +124,7 @@ class PyHeatmap():
         plt.colorbar(axm, cax=axcolor)
         #print(self.rowname)
  
-    def showDataNameColor(self, ax, color, fig, xLabelVertical,grid,labelFontSize):
+    def showDataNameColor(self, ax, color, fig, xLabelVertical,grid,labelFontSize, colorTickets):
         #norm=matplotlib.colors.Normalize(-self.data.max()/2,self.data.max()/2)
         colors = [('white')] + [(color(i)) for i in xrange(1,256)]
         new_map = matplotlib.colors.LinearSegmentedColormap.from_list('new_map', colors, N=256)
@@ -141,7 +141,11 @@ class PyHeatmap():
             ax.set_xticklabels(self.colname)
         ax.set_yticklabels(self.rowname)
         axcolor = fig.add_axes([0.2,0.03,0.7,0.02])
-        plt.colorbar(axm, cax=axcolor, orientation='horizontal', ticks=range(self.data.max()+1))
+        if colorTickets:
+            x=plt.colorbar(axm, cax=axcolor, orientation='horizontal', ticks=range(self.data.max()+1))
+            x.set_label('log value')
+        else:
+            plt.colorbar(axm, cax=axcolor, orientation='horizontal', ticks=range(self.data.max()+1))
         #cn=['USP6','NCOR1']
         if labelFontSize:
             for t in  ax.yaxis.get_ticklabels() :
@@ -150,7 +154,7 @@ class PyHeatmap():
             #t.set_weight('bold')
 
  
-    def heatmap(self, row=True,col=True,color=plt.cm.jet,figsize=(8,6),xLabelVertical=False,grid=False,labelFontSize=False):
+    def heatmap(self, row=True,col=True,color=plt.cm.jet,figsize=(8,6),xLabelVertical=False,grid=False,labelFontSize=False, colorTickets=False):
         fig = plt.figure(figsize=figsize)
         if row == True and col == True:
             ax = fig.add_axes([0,0.1,0.2,0.7])
@@ -175,7 +179,7 @@ class PyHeatmap():
             ax = fig.add_axes([0,0.2,0.2,0.8])
             self.rowDendrogram(ax)
             ax = fig.add_axes([0.2,0.2,0.7,0.8])
-            self.showDataNameColor(ax, color, fig,xLabelVertical,grid,labelFontSize)
+            self.showDataNameColor(ax, color, fig,xLabelVertical,grid,labelFontSize, colorTickets)
             self.show()
 
     def show(self) :

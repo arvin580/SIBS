@@ -736,7 +736,7 @@ class PyPlot :
         #self.show()
         plt.savefig(self.filename,bbox_inches='tight')
 
-    def heatmap(self,aList,row=True,col=True,xLabel=0,yLabel=0,figsize=0,xLabelVertical=False,grid=False,labelFontSize=False) :
+    def heatmap(self,aList,row=True,col=True,xLabel=0,yLabel=0,figsize=0,xLabelVertical=False,grid=False,labelFontSize=False, colorTickets= False) :
         from PyHeatmapClass import PyHeatmap
         ph = PyHeatmap(self.filename)
         #ph.readFile('ppg2008.csv.txt')
@@ -744,9 +744,9 @@ class PyPlot :
         ph.readData(aList, xLabel, yLabel)
         #ph.printData()
         if figsize:
-            ph.heatmap(row=row,col=col,figsize=figsize,xLabelVertical=xLabelVertical,grid=grid,labelFontSize=labelFontSize)
+            ph.heatmap(row=row,col=col,figsize=figsize,xLabelVertical=xLabelVertical,grid=grid,labelFontSize=labelFontSize, colorTickets=colorTickets)
         else:
-            ph.heatmap(row=row,col=col,xLabelVertical=xLabelVertical,grid=grid,labelFontSize=labelFontSize)
+            ph.heatmap(row=row,col=col,xLabelVertical=xLabelVertical,grid=grid,labelFontSize=labelFontSize, colorTickets=colorTickets)
 
      
     def box_plot(self,aList,xLabel=0,yLabel=0) :
