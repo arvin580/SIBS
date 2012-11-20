@@ -124,7 +124,7 @@ class PyHeatmap():
         plt.colorbar(axm, cax=axcolor)
         #print(self.rowname)
  
-    def showDataNameColor(self, ax, color, fig, xLabelVertical,grid,labelFontSize, colorTickets):
+    def showDataNameColor(self, ax, color, fig, xLabelVertical,grid,labelFontSize, colorTickets=[]):
         #norm=matplotlib.colors.Normalize(-self.data.max()/2,self.data.max()/2)
         colors = [('white')] + [(color(i)) for i in xrange(1,256)]
         new_map = matplotlib.colors.LinearSegmentedColormap.from_list('new_map', colors, N=256)
