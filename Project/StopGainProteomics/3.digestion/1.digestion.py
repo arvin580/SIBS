@@ -1,15 +1,23 @@
 inFile = open('human_uniprot_sprot.fa')
+ouFile = open('human_uniprot_sprot.digested.fa', 'w')
 while True:
     head = inFile.readline().strip()
     seq = inFile.readline().strip()
     if head:
-        index = [0]
+        hs = head.split()
+        index = [-1]
         for i in range(len(seq)-1):
             if (seq[i] == 'K' and seq[i+1]!='P') or (seq[i] == 'R' and seq[i+1]!='P'): 
-                end = i 
-                print(seq[start:end+1])
-                start = end + 1
-        print(seq[start:len(seq)])
+                index.append(i)
+        index.append(len(seq)-1)
+        for i in range(len(index)-1):
+            hd = hs[0] +':' +str(index[i]+2) +':' +str(index[i+1]+1) +':'+':'.join(hs[1:])
+            ouFile.write(hd + '\n')
+            ouFile.write(seq[index[i]+1:index[i+1]+1] + '\n')
+        for i in range(len(index)-2):
+            hd = hs[0] +':' +str(index[i]+2) +':' +str(index[i+2]+1) +':'+':'.join(hs[1:])
+            ouFile.write(hd + '\n')
+            ouFile.write(seq[index[i]+1:index[i+2]+1] + '\n')
     else:
         break
 inFile.close()
