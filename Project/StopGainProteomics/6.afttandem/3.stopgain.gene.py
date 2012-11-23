@@ -7,7 +7,8 @@ for line in inFile:
     #D.setdefault(gene,[])
     #D[gene].append(line)
     D.setdefault(gene,{})
-    k = fields[0].split('output_')[1].split('.')[0]
+    ###k = fields[0].split('output_')[1].split('.')[0]
+    k = fields[0].split('output_')[1].split('.')[0].split('_')[1].split('-')[0]
     D[gene].setdefault(k,0)
     D[gene][k]+=1
 
