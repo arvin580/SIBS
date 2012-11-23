@@ -8,9 +8,9 @@ while(<INFILE>)
 	if(/mzXML$/)
 	{
 		@a=split(/\//,$_);
-		$a[2]=~s/mzXML$/xml/;
-		$outfile_a="input_$a[0]_$a[1]_$a[2]";
-		$outfile_b="output_$a[0]_$a[1]_$a[2]";
+		$a[1]=~s/mzXML$/xml/;
+		$outfile_a="input_$a[0]_$a[1]";
+		$outfile_b="output_$a[0]_$a[1]";
 		open OUTFILE,">$outfile_a";
 		printf OUTFILE "<?xml version=\"1.0\"?>\n";
 		printf OUTFILE "<bioml>\n";
@@ -23,7 +23,7 @@ while(<INFILE>)
 		printf OUTFILE "\n";
 		printf OUTFILE "\t<note type=\"input\" label=\"protein, taxon\">homo sapiens</note>\n";
 		printf OUTFILE "\t<note type=\"input\" label=\"spectrum, path\">input\/$_</note>\n";
-		printf OUTFILE "\t<note type=\"input\" label=\"output, path\">output2\/$outfile_b</note>\n";
+		printf OUTFILE "\t<note type=\"input\" label=\"output, path\">output\/$outfile_b</note>\n";
 		printf OUTFILE "</bioml>\n";
 		printf OUTFILE_a "tandem.exe inputxml\/$outfile_a\n";
 
