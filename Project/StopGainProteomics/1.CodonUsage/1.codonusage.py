@@ -1,4 +1,5 @@
 inFile = open('CodonUsage')
+ouFile = open('CodonUsage.acid', 'w')
 D = dict()
 for line  in inFile:
     line = line.strip()
@@ -17,17 +18,29 @@ D2['T'] = ['A', 'C', 'G']
 D2['C'] = ['A', 'T', 'G']
 D2['G'] = ['A', 'T', 'C']
 
+
+D3 = {}
+D4 = {}
 for codon in stops:
     for i,item in enumerate(codon):
         if i == 0:
             for x in D2[item]:
-                print(x+codon[1]+codon[2])
+                D3[x+codon[1]+codon[2]]=1
         if i == 1:
             for x in D2[item]:
-                print(codon[0]+x+codon[2])
+                D3[codon[0]+x+codon[2]]=1
         if i == 2:
             for x in D2[item]:
-                print(codon[0]+codon[1]+x)
+                D3[codon[0]+codon[1]+x]=1
+
+for k in D3:
+    if k in D:
+        D4[D[k]]=1
+
+for k in D4:
+    ouFile.write(k + '\n')
+
+
 
 
 
