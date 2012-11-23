@@ -8,13 +8,13 @@ while True:
     if head:
         if len(seq) >= L:
             hds = head.split(':')
-            ouFile.write(hds[0]+ ':' +hds[1]+':'+hds[2]+':'+'Uniprot'+':'+':'.join(hds[3:]) + '\n')
+            ouFile.write('>Uniprot' + ':'+hds[0].lstrip('>')+ ':' +hds[1]+':'+hds[2]+ '\n')
             ouFile.write(seq + '\n')
             for a in A:
                 if a in seq:
                     if seq.index(a)>=L:
                         hds = head.split(':')
-                        ouFile.write(hds[0]+ ':' +hds[1]+':'+str(int(hds[1])+seq.index(a)-1)+':'+'StopGain'+':'+':'.join(hds[3:]) + '\n')
+                        ouFile.write('>StopGain' +':'+ hds[0].lstrip('>')+ ':' +hds[1]+':'+str(int(hds[1])+seq.index(a)-1) + '\n')
                         ouFile.write(seq[0:seq.index(a)] + '\n')
     else:
         break
