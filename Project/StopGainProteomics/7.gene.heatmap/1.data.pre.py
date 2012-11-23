@@ -20,10 +20,9 @@ for line in inFile:
         D[fields[0]][fields[1]][CL.index(fields[c])]=int(fields[c+1])
 inFile.close()
 
-d = D.items()
 
 
-ouFile = open('tandem.peptides.stopgain.uniprot.gene.distribution', 'w')
+ouFile = open('tandem.peptides.stopgain.uniprot.gene.dist', 'w')
 for k in D:
     for k2 in D[k]:
         ouFile.write(k+'\t'+k2+'\t'+'\t'.join([str(x) for x in D[k][k2]])+'\n')
