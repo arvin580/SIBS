@@ -1,4 +1,5 @@
-inFile = open('tandem.peptides.stopgain.candidates')
+#inFile = open('tandem.peptides.stopgain.candidates')
+inFile = open('ha')
 D = {}
 for line in inFile:
     line = line.strip()
@@ -7,10 +8,12 @@ for line in inFile:
     #D.setdefault(gene,[])
     #D[gene].append(line)
     D.setdefault(gene,{})
+    pep = fields[2]+':'+fields[4].split(':')[-2]+':'+fields[4].split(':')[-1]
+    D[gene][pep]={}
     ###k = fields[0].split('output_')[1].split('.')[0]
     k = fields[0].split('output_')[1].split('.')[0].split('_')[1].split('-')[0]
-    D[gene].setdefault(k,0)
-    D[gene][k]+=1
+    D[gene][pep].setdefault(k,0)
+    D[gene][pep][k]+=1
 
 inFile.close()
 
@@ -18,7 +21,7 @@ inFile.close()
 #    if len(D[k])>1:
 #        print(k)
 #        print(D[k])
-ouFile = open('tandem.peptides.stopgain.candidates.gene', 'w')
+ouFile = open('tandem.peptides.stopgain.candidates.gene2', 'w')
 
 d = D.items()
 d.sort(cmp=lambda x,y:cmp(len(x[1]),len(y[1])),reverse=True)
@@ -26,7 +29,11 @@ d.sort(cmp=lambda x,y:cmp(len(x[1]),len(y[1])),reverse=True)
 for item in d : 
     ouFile.write(item[0]+'\t')
     for it in item[1]:
-        ouFile.write(it +'\t'+str(item[1][it])+'\t')
+        for k in item[1][it]:
+            ouFile.write(k +'\t')
+            for k2 in item[1][it][k]:
+                ouFile.write(k2 +'\t' + str(item[1][it][k][k2])+ '\t')
+
     ouFile.write('\n')
 
 
