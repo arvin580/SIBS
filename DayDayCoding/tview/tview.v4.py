@@ -7,7 +7,7 @@ import threading
 import subprocess
 import sys
 
-offset = 70
+offset =67 
 #def screenshot(cp,sample):
 #    ch = cp.split(':')[0]
 #    pos = int(cp.split(':')[1])+offset
@@ -35,18 +35,15 @@ def readSNV():
             SNV.append([ch+':'+pos,fields[6:]])
         inFile.close()
     
-    if len(sys.argv) == 3:
-        ch = sys.argv[1]
-        pos = str(int(sys.argv[2])-offset)
-        SNV.append(ch+':'+pos)
+    #if len(sys.argv) == 3:
+    #    ch = sys.argv[1]
+    #    pos = str(int(sys.argv[2])-offset)
+    #    SNV.append(ch+':'+pos)
 
 SNV=[]
 readSNV()
-print(SNV[0][0])
-print(SNV[0][1])
 #ouFile = open('tview.v2.log','a')
 
-'''
 class Tview(threading.Thread):
     def __init__(self,snv,sample):
         threading.Thread.__init__(self)
@@ -72,12 +69,29 @@ samples = [['4A','mapping5'],['4B','mapping7'],['5A','mapping5'],['5B','mapping7
         ['9A','mapping5'],['9B','mapping7'],['10A','mapping5'],['10B','mapping7'],
         ['5A','mapping6'],['5B','mapping8'],['6A','mapping6'],['6B','mapping8'],
         ['7A','mapping6'],['7B','mapping8'],['10A','mapping6'],['10B','mapping8']]
+Sa = [['4A','mapping5','ICC4A'],['5A','mapping5','ICC5A'],
+        ['9A','mapping5','ICC9A'],['10A','mapping5','ICC10A'],
+        ['5A','mapping6','CHC5A'],['6A','mapping6','CHC6A'],
+        ['7A','mapping6','CHC7A'],['10A','mapping6','CHC10A']]
+Sb = [['4B','mapping7','ICC4B'],['5B','mapping7','ICC5B'],
+        ['9B','mapping7','ICC9B'],['10B','mapping7','ICC10B'],
+        ['5B','mapping8','CHC5B'],['6B','mapping8','CHC6B'],
+        ['7B','mapping8','CHC7B'],['10B','mapping8','CHC10B']]
+
+
+
 
 for item in SNV:
-    for s in samples:
-        tv = Tview(item,s[0])
-        tv.start()
-        os.system('samtools tview /netshare1/home1/szzhongxin/proj1/hansun/%s/%s/%s.bam /netshare1/home1/people/hansun/GATK/bundle/ucsc.hg19.fasta'%(s[1],s[0],s[0]))
+    for i,ss in enumerate(item[1]):
+        if ss != '0':
+            print(Sa[i][2]+':'+item[0])
+            time.sleep(1)
+            tv = Tview(item[0],Sa[i][0])
+            tv.start()
+            os.system('samtools tview /netshare1/home1/szzhongxin/proj1/hansun/%s/%s/%s.bam /netshare1/home1/people/hansun/GATK/bundle/ucsc.hg19.fasta'%(Sa[i][1],Sa[i][0],Sa[i][0]))
+            print(Sb[i][2]+':'+item[0])
+            tv = Tview(item[0],Sb[i][0])
+            tv.start()
+            os.system('samtools tview /netshare1/home1/szzhongxin/proj1/hansun/%s/%s/%s.bam /netshare1/home1/people/hansun/GATK/bundle/ucsc.hg19.fasta'%(Sb[i][1],Sb[i][0],Sb[i][0]))
     
 #ouFile.close()
-'''
