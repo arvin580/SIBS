@@ -32,7 +32,7 @@ def readSNV():
             fields = line.split('\t')
             ch = fields[1]
             pos = str(int(fields[2])-offset)
-            SNV.append(ch+':'+pos)
+            SNV.append([ch+':'+pos,fields[6:]])
         inFile.close()
     
     if len(sys.argv) == 3:
@@ -42,8 +42,11 @@ def readSNV():
 
 SNV=[]
 readSNV()
-ouFile = open('tview.v2.log','a')
+print(SNV[0][0])
+print(SNV[0][1])
+#ouFile = open('tview.v2.log','a')
 
+'''
 class Tview(threading.Thread):
     def __init__(self,snv,sample):
         threading.Thread.__init__(self)
@@ -60,7 +63,8 @@ class Tview(threading.Thread):
             fcntl.ioctl(tty, termios.TIOCSTI,'\n')
             #screenshot(item,self.sample)
         except:
-            ouFile.write(item+':'+self.sample+'\n')
+            #ouFile.write(item+':'+self.sample+'\n')
+            pass
         #fcntl.ioctl(tty, termios.TIOCSTI,'q')
 
 
@@ -75,4 +79,5 @@ for item in SNV:
         tv.start()
         os.system('samtools tview /netshare1/home1/szzhongxin/proj1/hansun/%s/%s/%s.bam /netshare1/home1/people/hansun/GATK/bundle/ucsc.hg19.fasta'%(s[1],s[0],s[0]))
     
-ouFile.close()
+#ouFile.close()
+'''
