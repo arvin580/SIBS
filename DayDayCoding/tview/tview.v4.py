@@ -85,7 +85,6 @@ for item in SNV:
     for i,ss in enumerate(item[1]):
         if ss != '0':
             print(Sa[i][2]+':'+item[0])
-            time.sleep(1)
             tv = Tview(item[0],Sa[i][0])
             tv.start()
             os.system('samtools tview /netshare1/home1/szzhongxin/proj1/hansun/%s/%s/%s.bam /netshare1/home1/people/hansun/GATK/bundle/ucsc.hg19.fasta'%(Sa[i][1],Sa[i][0],Sa[i][0]))
