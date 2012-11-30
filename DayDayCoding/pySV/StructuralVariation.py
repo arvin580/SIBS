@@ -13,13 +13,16 @@ chrs = ['chr1', 'chr2', 'chr3', 'chr4', 'chr5', 'chr6', 'chr7', 'chr8',
 
 
 class StructuralVariation():
-    def __init__(self, bam, ref):
+    def __init__(self, bam, ref, bowtie_index):
         self.bam = bam
         self.bam_unmapped = bam + '.unmapped'
         self.ref = ref
-        self.bowite_index = os.path.split(self.ref)[1]
+        if bowtie_index:
+            self.bowtie_index = bowtie_index
+        else:
+            self.bowtie_index = os.path.split(self.ref)[1]
+            self._bowie_index()
         #self._bam_unmapped()
-        self._bowie_index()
 
 
         self.bam_mapped_wrong_insertsize = self.bam_unmapped + '.mapped_wrong_insertsize'
@@ -44,10 +47,10 @@ class StructuralVariation():
         pass
 
     def _bowie_index(self):
-        sp = subprocess.Popen(['bowtie-build', self.ref, self.bowite_index])
+        sp = subprocess.Popen(['bowtie-build', self.ref, self.bowtie_index])
 
     def _bowtie(self):
-        sp = subprocess.Popen(['bowtie', '-a', '-S', self.bowite_index, self.trans_fq, self.trans_sam])
+        sp = subprocess.Popen(['bowtie', '-a', '-S', self.bowtie_index, self.trans_fq, self.trans_sam])
 
     def _mk_fq(self):
         inFile = open(self.trans)
