@@ -17,17 +17,22 @@ class StructuralVariation():
         self.bam = bam
         self.bam_unmapped = bam + '.unmapped'
         self.ref = ref
+        self.bowite_index = os.path.split(self.ref)[1]
         #self._bam_unmapped()
+        self._bowie_index()
+
+
         self.bam_mapped_wrong_insertsize = self.bam_unmapped + '.mapped_wrong_insertsize'
         self.trans = self.bam_unmapped + '.trans'
-        self.trans_fq1 = self.trans + '.read1.fq'
-        self.trans_fq2 = self.trans + '.read2.fq'
+        self.trans_fq = self.trans + '.fq'
+        self.trans_sam = self.trans + '.sam'
         self.translocation_paired()
 
     def translocation_paired(self):
         self._bam_mapped_wrong_insertsize()
         self._bam_trans()
         self._mk_fq()
+        self._bowtie()
 
     def inversion_paired(self):
         pass
@@ -38,30 +43,23 @@ class StructuralVariation():
     def deletion_paired(self):
         pass
 
+    def _bowie_index(self):
+        sp = subprocess.Popen(['bowtie-build', self.ref, self.bowite_index])
+
+    def _bowtie(self):
+        sp = subprocess.Popen(['bowtie', '-a', '-S', self.bowite_index, self.trans_fq, self.trans_sam])
+
     def _mk_fq(self):
         inFile = open(self.trans)
-        ouFile1 = open(self.trans_fq1, 'w')
-        ouFile2 = open(self.trans_fq2, 'w')
-        while True:
-            line1 = inFile.readline()
-            line2 = inFile.readline()
-            if line1:
-                line1s = line1.split('\t')
-                line2s = line2.split('\t')
-                ouFile1.write('@' + line1s[0] + '\n')
-                ouFile1.write(line1s[9] + '\n')
-                ouFile1.write('+'+'\n')
-                ouFile1.write('H'*len(line1s[9])+'\n')
-                ouFile2.write('@' + line2s[0] + '\n')
-                ouFile2.write(line2s[9] + '\n')
-                ouFile2.write('+'+'\n')
-                ouFile2.write('H'*len(line2s[9])+'\n')
-            else:
-                break
-
+        ouFile = open(self.trans_fq, 'w')
+        for line in inFile:
+            fields = line.split('\t')
+            ouFile.write('@' + fields[0] + '\n')
+            ouFile.write(fields[9] + '\n')
+            ouFile.write('+'+'\n')
+            ouFile.write('H'*len(fields[9])+'\n')
         inFile.close()
-        ouFile1.close()
-        ouFile2.close()
+        ouFile.close()
 
     def _bam_mapped_wrong_insertsize(self):
         inFile = open(self.bam_unmapped)
