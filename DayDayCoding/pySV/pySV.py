@@ -1,3 +1,4 @@
+#!/bin/env python
 import sys
 from optparse import OptionParser
 from StructuralVariation import StructuralVariation
