@@ -1,3 +1,4 @@
+import subprocess
 mapped_flags = [83, 99, 147, 163]
 
 class StructuralVariation():
@@ -21,15 +22,21 @@ class StructuralVariation():
 
     def _bam_unmapped(self):
         if self.bam.find('.bam') != -1:
+            ouFile = open(self.bam_unmapped, 'w')
+            sp=subprocess.Popen(['samtools','view',self.bam], stdout = subprocess.PIPE)
+            for line in sp.stdout:
+                fields = line.split('\t')
+                if int(fields[1]) not in mapped_flags:
+                    ouFile.write(line)
+            ouFile.close()
 
         elif self.bam.find('.sam')!= -1:
             inFile = open(self.bam)
             ouFile = open(self.bam_unmapped, 'w')
             for line in inFile:
-                line = line.strip()
                 fields = line.split('\t')
                 if int(fields[1]) not in mapped_flags:
-                    ouFile.write(line + '\n')
+                    ouFile.write(line)
             inFile.close()
             ouFile.close()
         else:
