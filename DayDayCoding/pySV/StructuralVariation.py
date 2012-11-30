@@ -4,8 +4,11 @@ import os
 
 mapped_both_flags = [83, 99, 147, 163]
 mapped_wrong_insertsize = [81, 161, 97, 145, 65, 129, 113, 177]
-chrs = ['chr1','chr2','chr3','chr4','chr5','chr6','chr7','chr8','chr9','chr10','chr11','chr12','chr13','chr14',
-                'chr15','chr16','chr17','chr18','chr19','chr20','chr21','chr22','chrX','chrY','chrM']
+chrs = ['chr1', 'chr2', 'chr3', 'chr4', 'chr5', 'chr6', 'chr7', 'chr8',
+        'chr9', 'chr10', 'chr11', 'chr12', 'chr13', 'chr14', 'chr15', 'chr16',
+        'chr17', 'chr18', 'chr19', 'chr20', 'chr21', 'chr22',
+        'chrX', 'chrY', 'chrM']
+
 
 class StructuralVariation():
     def __init__(self, bam, ref):
@@ -13,6 +16,8 @@ class StructuralVariation():
         self.bam_unmapped = bam + '.unmapped'
         self.ref = ref
         #self._bam_unmapped()
+        self.bam_mapped_wrong_insertsize = self.bam_unmapped + '.mapped_wrong_insertsize'
+        self.trans = self.bam_unmapped + '.trans'
         self.translocation_paired()
 
     def translocation_paired(self):
@@ -28,9 +33,8 @@ class StructuralVariation():
         pass
 
     def _bam_mapped_wrong_insertsize(self):
-        bam_mapped_wrong_insertsize = self.bam_unmapped + '.mapped_wrong_insertsize'
         inFile = open(self.bam_unmapped)
-        ouFile = open(bam_mapped_wrong_insertsize, 'w')
+        ouFile = open(self.bam_mapped_wrong_insertsize, 'w')
         for line in inFile:
             fields = line.split('\t')
             if int(fields[1]) in mapped_wrong_insertsize and fields[2] in chrs:
@@ -39,6 +43,8 @@ class StructuralVariation():
         ouFile.close()
 
     def _bam_trans(self):
+        inFile = open(self.bam_mapped_wrong_insertsize)
+        inFile.close()
 
     def _bam_unmapped(self):
         if self.bam.find('.bam') != -1:
