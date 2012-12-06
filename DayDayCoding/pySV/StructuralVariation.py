@@ -6,6 +6,7 @@ import os
 
 mapped_both_flags = [83, 99, 147, 163]
 mapped_wrong_insertsize = [81, 161, 97, 145, 65, 129, 113, 177]
+bowtie_sigle_unmapped = [4]
 chrs = ['chr1', 'chr2', 'chr3', 'chr4', 'chr5', 'chr6', 'chr7', 'chr8',
         'chr9', 'chr10', 'chr11', 'chr12', 'chr13', 'chr14', 'chr15', 'chr16',
         'chr17', 'chr18', 'chr19', 'chr20', 'chr21', 'chr22',
@@ -32,10 +33,11 @@ class StructuralVariation():
         self.translocation_paired()
 
     def translocation_paired(self):
-        self._bam_mapped_wrong_insertsize()
-        self._bam_trans()
-        self._mk_fq()
-        self._bowtie()
+        #self._bam_mapped_wrong_insertsize()
+        #self._bam_trans()
+        #self._mk_fq()
+        #self._bowtie()
+        self._bowtie_unique(self.trans_sam)
 
     def inversion_paired(self):
         pass
@@ -51,7 +53,27 @@ class StructuralVariation():
 
     def _bowtie(self):
         sp = subprocess.Popen(['bowtie', '-a', '-S', self.bowtie_index, self.trans_fq, self.trans_sam])
-
+    
+    def _bowtie_unique(self, inF):
+        inFile = open(inF)
+        self.bowtie_unique = inF + '.unique'
+        ouFile = open(self.bowtie_unique, 'w')
+        D = {}
+        for line in inFile:
+            line = line.strip()
+            fields = line.split('\t')
+            if len(fields) > 10:
+                D.setdefault(fields[0], [])
+                if not D[fields[0]]:
+                    D[fields[0]].append(line)
+                else:
+                    D[fields[0]].append([])
+                
+                    
+        inFile.close()
+        for k in D:
+            if len(D[k]) == 1 and int(D[k][0].split('\t')[1]) not in bowtie_sigle_unmapped:
+                ouFile.write(D[k][0] + '\n')
     def _mk_fq(self):
         inFile = open(self.trans)
         ouFile = open(self.trans_fq, 'w')
