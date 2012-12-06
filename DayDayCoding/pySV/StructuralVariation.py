@@ -52,11 +52,10 @@ class StructuralVariation():
         pass
 
     def _bowie_index(self):
-        sp = subprocess.Popen(['bowtie-build', self.ref, self.bowtie_index])
+        sp = subprocess.call(['bowtie-build', self.ref, self.bowtie_index])
 
     def _bowtie(self):
-        sp = subprocess.Popen(['bowtie', '-k 3' , '-S', self.bowtie_index, self.trans_fq, self.trans_sam])
-        sp.wait()
+        sp = subprocess.call(['bowtie', '-k 3' , '-S', self.bowtie_index, self.trans_fq, self.trans_sam])
     
     def _bowtie_unique(self, inF):
         inFile = open(inF)
@@ -172,7 +171,7 @@ class StructuralVariation():
     def _bam_unmapped(self):
         if self.bam.find('.bam') != -1:
             ouFile = open(self.bam_unmapped, 'w')
-            sp = subprocess.Popen(['samtools', 'view', self.bam], stdout=subprocess.PIPE, bufsize=1)
+            sp = subprocess.call(['samtools', 'view', self.bam], stdout=subprocess.PIPE, bufsize=1)
             for line in sp.stdout:
                 fields = line.split('\t')
                 if int(fields[1]) not in mapped_both_flags:
