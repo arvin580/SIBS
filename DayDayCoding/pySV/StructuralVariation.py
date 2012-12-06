@@ -23,7 +23,7 @@ class StructuralVariation():
         else:
             self.bowtie_index = os.path.split(self.ref)[1]
             self._bowie_index()
-        #self._bam_unmapped()
+        self._bam_unmapped()
 
 
         self.bam_mapped_wrong_insertsize = self.bam_unmapped + '.mapped_wrong_insertsize'
@@ -172,7 +172,7 @@ class StructuralVariation():
     def _bam_unmapped(self):
         if self.bam.find('.bam') != -1:
             ouFile = open(self.bam_unmapped, 'w')
-            sp = subprocess.Popen(['samtools', 'view', self.bam], stdout=subprocess.PIPE, buffersize=1)
+            sp = subprocess.Popen(['samtools', 'view', self.bam], stdout=subprocess.PIPE, bufsize=1)
             for line in sp.stdout:
                 fields = line.split('\t')
                 if int(fields[1]) not in mapped_both_flags:
