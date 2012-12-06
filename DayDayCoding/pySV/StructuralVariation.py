@@ -23,7 +23,7 @@ class StructuralVariation():
         else:
             self.bowtie_index = os.path.split(self.ref)[1]
             self._bowie_index()
-        self._bam_unmapped()
+        #self._bam_unmapped()
 
 
         self.bam_mapped_wrong_insertsize = self.bam_unmapped + '.mapped_wrong_insertsize'
