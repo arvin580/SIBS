@@ -31,6 +31,7 @@ class StructuralVariation():
         self.trans_fq = self.trans + '.fq'
         self.trans_sam = self.trans + '.sam'
         self.trans_paired = self.trans + '.paired'
+
         self.translocation_paired()
 
     def translocation_paired(self):
@@ -39,6 +40,7 @@ class StructuralVariation():
         #self._mk_fq()
         #self._bowtie()
         self._bowtie_unique(self.trans_sam)
+        self._unique_paired()
 
     def inversion_paired(self):
         pass
@@ -83,10 +85,10 @@ class StructuralVariation():
         for line in inFile:
             line = line.strip()
             fields = line.split('\t')
-            if fields[2] in chs:
+            if fields[2] in chrs:
                 readname_key, seq = self._readname_key(fields[0])
                 D.setdefault(readname_key, [])
-                D[h].append(line)
+                D[readname_key].append(line)
         inFile.close()
         
         for k in D : 
@@ -94,6 +96,15 @@ class StructuralVariation():
                 for item in D[k]:
                     ouFile.write(item + '\n')
         ouFile.close()
+
+        self._remove_tmp_file()
+    
+    def _remove_tmp_file(self):
+        os.remove(self.bam_mapped_wrong_insertsize)
+        os.remove(self.trans)
+        os.remove(self.trans_fq)
+        os.remove(self.trans_sam)
+        os.remove(self.bowtie_unique)
 
     def _mk_fq(self):
         inFile = open(self.trans)
@@ -145,10 +156,10 @@ class StructuralVariation():
         try:
             sep = ':'
             if readname.find(sep) != -1:
-                k = sep.join(fields[0].split(sep)[0:7])
+                k = sep.join(readname.split(sep)[0:7])
             elif readname.find('_') != -1:
                 sep = '_'
-                k = sep.join(fields[0].split(sep)[0:7])
+                k = sep.join(readname.split(sep)[0:7])
             else:
                 raise 
             return [k, sep]
