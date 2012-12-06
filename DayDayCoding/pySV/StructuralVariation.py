@@ -30,6 +30,7 @@ class StructuralVariation():
         self.trans = self.bam_unmapped + '.trans'
         self.trans_fq = self.trans + '.fq'
         self.trans_sam = self.trans + '.sam'
+        self.trans_paired = self.trans + '.paired'
         self.translocation_paired()
 
     def translocation_paired(self):
@@ -69,11 +70,31 @@ class StructuralVariation():
                 else:
                     D[fields[0]].append([])
                 
-                    
         inFile.close()
         for k in D:
             if len(D[k]) == 1 and int(D[k][0].split('\t')[1]) not in bowtie_sigle_unmapped:
                 ouFile.write(D[k][0] + '\n')
+        ouFile.close()
+    
+    def _unique_paired(self):
+        inFile = open(self.bowtie_unique)
+        ouFile = open(self.trans_paired, 'w')
+        D = {}
+        for line in inFile:
+            line = line.strip()
+            fields = line.split('\t')
+            if fields[2] in chs:
+                readname_key, seq = self._readname_key(fields[0])
+                D.setdefault(readname_key, [])
+                D[h].append(line)
+        inFile.close()
+        
+        for k in D : 
+            if len(D[k]) == 2:
+                for item in D[k]:
+                    ouFile.write(item + '\n')
+        ouFile.close()
+
     def _mk_fq(self):
         inFile = open(self.trans)
         ouFile = open(self.trans_fq, 'w')
@@ -104,19 +125,9 @@ class StructuralVariation():
         for line in inFile:
             line = line.strip()
             fields = line.split('\t')
-            try:
-                if fields[0].find(':') != -1:
-                    k = ':'.join(fields[0].split(':')[0:7])
-                elif fields[0].find('_') != -1:
-                    k = '_'.join(fields[0].split('_')[0:7])
-                    sep = '_'
-                else:
-                    raise 
-                D.setdefault(k, [])
-                D[k].append('\t'.join(fields[1:]))
-            except:
-                print("Reads name related problem")
-                return
+            readname_key, sep = self._readname_key(fields[0])
+            D.setdefault(readname_key, [])
+            D[readname_key].append('\t'.join(fields[1:]))
         for k in D:
             if len(D[k]) == 2:
                 if D[k][0].split('\t')[1] != D[k][1].split('\t')[1]:
@@ -126,6 +137,25 @@ class StructuralVariation():
 
         inFile.close()
         ouFile.close()
+
+    def _readname_key(self, readname):
+        '''
+        return read_name_key and sep
+        '''
+        try:
+            sep = ':'
+            if readname.find(sep) != -1:
+                k = sep.join(fields[0].split(sep)[0:7])
+            elif readname.find('_') != -1:
+                sep = '_'
+                k = sep.join(fields[0].split(sep)[0:7])
+            else:
+                raise 
+            return [k, sep]
+        except:
+            print("Reads name related problem")
+            return
+
 
     def _bam_unmapped(self):
         if self.bam.find('.bam') != -1:
