@@ -35,9 +35,9 @@ class StructuralVariation():
         self.translocation_paired()
 
     def translocation_paired(self):
-        self._bam_mapped_wrong_insertsize()
-        self._bam_trans()
-        self._mk_fq()
+        #self._bam_mapped_wrong_insertsize()
+        #self._bam_trans()
+        #self._mk_fq()
         self._bowtie()
         self._bowtie_unique(self.trans_sam)
         self._unique_paired()
@@ -55,7 +55,7 @@ class StructuralVariation():
         sp = subprocess.Popen(['bowtie-build', self.ref, self.bowtie_index])
 
     def _bowtie(self):
-        sp = subprocess.Popen(['bowtie', '-a', '-S', self.bowtie_index, self.trans_fq, self.trans_sam])
+        sp = subprocess.Popen(['bowtie', '-k 3' , '-S', self.bowtie_index, self.trans_fq, self.trans_sam])
         sp.wait()
     
     def _bowtie_unique(self, inF):
