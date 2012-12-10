@@ -92,7 +92,7 @@ class StructuralVariation():
         inFile.close()
         
         for k in D : 
-            if len(D[k]) == 2:
+            if len(D[k]) == 2 and D[k][0].split('\t')[2] != D[k][1].split('\t')[2]:
                 for item in D[k]:
                     ouFile.write(item + '\n')
         ouFile.close()
