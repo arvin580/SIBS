@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 import sys 
 interval = 100
 inFile = open('/netshare1/home1/people/hansun/GATK/bundle/ucsc.hg19.fasta')
