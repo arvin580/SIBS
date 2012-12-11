@@ -257,7 +257,9 @@ class PyPlot :
         ax.set_xlim(-0.3,n)
         #ax.set_ylim(0,sum(yList[0:]).max()*1.1)
         ax.set_xticks(xList+width/2)
-        ax.set_yticks(range(sum(yList[0:]).max()+2))
+
+        #####ax.set_yticks(range(sum(yList[0:]).max()+2)) 
+        ##### used in /netshare1/home1/szzhongxin/proj1/hansun/16sTranslocation/2.paired.num/5.sv.number.py
 
         if xLabel==0 :
             xLabel=['bar'+str(i) for i in range(1,n+1)]

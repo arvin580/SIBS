@@ -35,12 +35,12 @@ class StructuralVariation():
         self.translocation_paired()
 
     def translocation_paired(self):
-        ###self._bam_mapped_wrong_insertsize()
-        ###self._bam_trans()
-        ###self._mk_fq()
-        ###self._bowtie()
-        ###self._bowtie_unique(self.trans_sam)
-        ###self._unique_paired()
+        self._bam_mapped_wrong_insertsize()
+        self._bam_trans()
+        self._mk_fq()
+        self._bowtie()
+        self._bowtie_unique(self.trans_sam)
+        self._unique_paired()
 
     def inversion_paired(self):
         pass
