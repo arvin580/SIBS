@@ -153,6 +153,18 @@ class PyHeatmap():
                 t.set_fontsize(labelFontSize)
             #t.set_weight('bold')
 
+        '''
+        ### changed for /netshare1/home1/szzhongxin/proj1/hansun/viruses/annotation/4.sv.gene.heatmap.py
+        viruse1 = 'NC_003977'
+        viruse2 = 'NC_001416'
+        for t in  ax.yaxis.get_ticklabels() :
+            if t.get_text().find(viruse1)==0 :
+                t.set_color('red')
+            if t.get_text().find(viruse2)==0 :
+                t.set_color('blue')
+        '''
+
+
  
     def heatmap(self, row=True,col=True,color=plt.cm.jet,figsize=(8,6),xLabelVertical=False,grid=False,labelFontSize=False, colorTickets=False):
         fig = plt.figure(figsize=figsize)
