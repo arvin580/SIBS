@@ -258,6 +258,7 @@ class PyPlot :
         #ax.set_ylim(0,sum(yList[0:]).max()*1.1)
         ax.set_xticks(xList+width/2)
 
+
         #####ax.set_yticks(range(sum(yList[0:]).max()+2)) 
         ##### used in /netshare1/home1/szzhongxin/proj1/hansun/16sTranslocation/2.paired.num/5.sv.number.py
 
@@ -278,6 +279,51 @@ class PyPlot :
         ax.legend(legBar,legTitle,loc='upper right',bbox_to_anchor=[legX,legY])
 
         self.show()
+
+    def multi_bar_vertical_sv_number2(self,yList,xLabel=0,xTitle=0,yTitle=0,legTitle=0,legX=0,legY=0) :
+        fig = plt.figure()
+        ax=fig.add_subplot(111)
+
+        yList=np.array(yList)
+        n=len(yList[0])
+        N=len(yList)
+
+        xList=np.arange(n)
+
+        width=0.7
+
+        bar=[]
+        bar.append(ax.bar(xList,yList[0],width,color=self.get_color(0,N)))
+        for i in range(1,N) :
+            bar.append(ax.bar(xList,yList[i],width,bottom=sum(yList[0:i]),color=self.get_color(i,N)))
+
+        ax.set_xlim(-0.3,n)
+        #ax.set_ylim(0,sum(yList[0:]).max()*1.1)
+        ax.set_xticks(xList+width/2)
+
+        ax.set_xticklabels(xLabel,rotation='vertical')
+
+        #####ax.set_yticks(range(sum(yList[0:]).max()+2)) 
+        ##### used in /netshare1/home1/szzhongxin/proj1/hansun/16sTranslocation/2.paired.num/5.sv.number.py
+
+        if xLabel==0 :
+            xLabel=['bar'+str(i) for i in range(1,n+1)]
+        ax.set_xticklabels(xLabel)
+
+
+        if legTitle==0 :
+            legTitle=['type'+str(i) for i in range(1,N+1)]
+        if legX==0 :
+            legX=0.97
+        if legY==0 :
+            legY=0.97
+
+        legBar=[bar[i][0] for i in range(N)]
+
+        ax.legend(legBar,legTitle,loc='upper right',bbox_to_anchor=[legX,legY])
+
+        self.show()
+
 
     def multi_bar_vertical_xlabel_vertical(self,yList,xLabel=0,xTitle=0,yTitle=0,legTitle=0,legX=0,legY=0) :
         fig = plt.figure()
