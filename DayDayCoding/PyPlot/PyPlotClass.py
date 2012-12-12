@@ -282,7 +282,8 @@ class PyPlot :
 
     def multi_bar_vertical_sv_number2(self,yList,xLabel=0,xTitle=0,yTitle=0,legTitle=0,legX=0,legY=0) :
         fig = plt.figure()
-        ax=fig.add_subplot(111)
+        #ax=fig.add_subplot(111)
+        ax=fig.add_axes([0.2,0.2,0.7,0.7])
 
         yList=np.array(yList)
         n=len(yList[0])
