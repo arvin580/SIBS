@@ -153,7 +153,7 @@ class PyHeatmap():
                 t.set_fontsize(labelFontSize)
             #t.set_weight('bold')
 
-        '''
+        '''    
         ### changed for /netshare1/home1/szzhongxin/proj1/hansun/viruses/annotation/4.sv.gene.heatmap.py
         viruse1 = 'NC_003977'
         viruse2 = 'NC_001416'
