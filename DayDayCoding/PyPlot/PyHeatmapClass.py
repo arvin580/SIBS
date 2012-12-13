@@ -126,7 +126,8 @@ class PyHeatmap():
  
     def showDataNameColor(self, ax, color, fig, xLabelVertical,grid,labelFontSize, colorTickets=[]):
         #norm=matplotlib.colors.Normalize(-self.data.max()/2,self.data.max()/2)
-        colors = [('white')] + [(color(i)) for i in xrange(1,256)]
+        ##colors = [('white')] + [(color(i)) for i in xrange(1,256)]
+        colors = [color(0)]+[('white')]
         new_map = matplotlib.colors.LinearSegmentedColormap.from_list('new_map', colors, N=256)
         axm = ax.matshow(self.data, cmap=new_map, aspect='auto', origin='lower')
         if grid:
@@ -145,7 +146,8 @@ class PyHeatmap():
             x=plt.colorbar(axm, cax=axcolor, orientation='horizontal', ticks=range(self.data.max()+1))
             x.set_label('log value')
         else:
-            plt.colorbar(axm, cax=axcolor, orientation='horizontal', ticks=range(self.data.max()+1))
+            ##plt.colorbar(axm, cax=axcolor, orientation='horizontal', ticks=range(self.data.max()+1))
+            plt.colorbar(axm, cax=axcolor, orientation='horizontal', ticks=range(self.data.min(),self.data.max()+1))
         #cn=['USP6','NCOR1']
         if labelFontSize:
             for t in  ax.yaxis.get_ticklabels() :
