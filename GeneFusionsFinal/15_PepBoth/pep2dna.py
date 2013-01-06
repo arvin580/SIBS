@@ -22,4 +22,5 @@ def pep2dna(inF,inF2) :
     ouFile.close()
 
 #pep2dna('Tandem.Omssa.FDR.pep.genefusions.final.pos.3.3.curate','/netshare1/home1/people/hansun/GeneFusionsFinal/9_FinalDataBase/fusion_splicing_uniprot_ensembl_contaminated_final')
-pep2dna('Tandem.Omssa.FDR.pep.splicing.final.pos.3.3.curate','/netshare1/home1/people/hansun/GeneFusionsFinal/9_FinalDataBase/fusion_splicing_uniprot_ensembl_contaminated_final')
+#pep2dna('Tandem.Omssa.FDR.pep.splicing.final.pos.3.3.curate','/netshare1/home1/people/hansun/GeneFusionsFinal/9_FinalDataBase/fusion_splicing_uniprot_ensembl_contaminated_final')
+pep2dna('test','/netshare1/home1/people/hansun/GeneFusionsFinal/9_FinalDataBase/fusion_splicing_uniprot_ensembl_contaminated_final')
