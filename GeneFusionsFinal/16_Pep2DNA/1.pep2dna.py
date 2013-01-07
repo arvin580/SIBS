@@ -40,4 +40,6 @@ def pep2dna(inF,inF2) :
     inFile.close()
 
 #pep2dna('Tandem.Omssa.FDR.pep.genefusions.final.pos.3.3.curate.complete.curate','/netshare1/home1/people/hansun/GeneFusionsFinal/5_Translate/exon_fusion')
-pep2dna('Tandem.Omssa.FDR.pep.splicing.final.pos.3.3.curate.complete.curate','/netshare1/home1/people/hansun/GeneFusionsFinal/5_Translate/splicing_exon')
+#pep2dna('Tandem.Omssa.FDR.pep.splicing.final.pos.3.3.curate.complete.curate','/netshare1/home1/people/hansun/GeneFusionsFinal/5_Translate/splicing_exon')
+pep2dna('Tandem.Omssa.FDR.pep.curate.added.complete.genefusions','/netshare1/home1/people/hansun/GeneFusionsFinal/5_Translate/exon_fusion')
+pep2dna('Tandem.Omssa.FDR.pep.curate.added.complete.splicing','/netshare1/home1/people/hansun/GeneFusionsFinal/5_Translate/splicing_exon')
