@@ -175,7 +175,14 @@ class PyHeatmap():
             if t.get_text().find(viruse2)==0 :
                 t.set_color('blue')
         '''
-
+        '''
+        ### changed for /netshare1/home1/people/hansun/GeneFusionsFinal/18_PepCancer/heatmap/1-heatmap.py
+        '''
+        for t in  ax.yaxis.get_ticklabels() :
+            if t.get_text().find(':')!=-1 :
+                t.set_color('red')
+            else:
+                t.set_color('blue')
 
  
     def heatmap(self, row=True,col=True,color=plt.cm.jet,figsize=(8,6),xLabelVertical=False,grid=False,labelFontSize=False, colorTickets=False):
