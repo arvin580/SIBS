@@ -9,6 +9,7 @@ def mk_omssa(Dir):
 
             print('cd /netshare1/home1/people/hansun/Project/StopGainProteomics/8.omssa')
 
-            print('omssacl -d $db -fm '+ Dir + '/' + inF + ' -oc output/'+ ouF)
+            print('omssacl -d $db -fm '+ Dir + '/' + inF + ' -oc output/'+ ouF + '\n')
+
 
 mk_omssa('input/Cell-Line-mzxml-1')
