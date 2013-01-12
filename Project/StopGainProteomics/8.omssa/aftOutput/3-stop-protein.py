@@ -34,6 +34,7 @@ def  pep2protein():
             inFile.close()
     for k in D2:
         ouFile.write(k+'\t'+'\t'.join(D2[k])+'\n')
+        print(k)
     ouFile.close()
 
 pep2protein()
