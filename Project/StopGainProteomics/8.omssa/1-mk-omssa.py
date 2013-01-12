@@ -1,11 +1,11 @@
 import os
 
 
-def mk_omssa(Dir):
+def mk_omssa(Dir,cls):
     N = 50
     n = 0
     m = 1 
-    ouFile = open('omssa.'+str(m)+'.sh', 'w')
+    ouFile = open('omssa-'+str(cls)+'.'+str(m)+'.sh', 'w')
     ouFile.write('db=/netshare1/home1/people/hansun/StopGainProteomics/4.stopgain/human_uniprot_sprot.digested.stopgain.unique.reverse.fa'+'\n')
     ouFile.write('cd /netshare1/home1/people/hansun/Project/StopGainProteomics/8.omssa'+'\n')
     files = os.listdir(Dir)
@@ -15,7 +15,7 @@ def mk_omssa(Dir):
             if n / (N+1) > 0 :
                 n = 1
                 m += 1
-                ouFile = open('omssa.'+str(m)+'.sh', 'w')
+                ouFile = open('omssa-'+str(cls)+'.'+str(m)+'.sh', 'w')
                 ouFile.write('db=/netshare1/home1/people/hansun/StopGainProteomics/4.stopgain/human_uniprot_sprot.digested.stopgain.unique.reverse.fa'+'\n')
                 ouFile.write('cd /netshare1/home1/people/hansun/Project/StopGainProteomics/8.omssa'+'\n')
 
@@ -24,4 +24,9 @@ def mk_omssa(Dir):
             ouFile.write('omssacl -d $db -fm '+ Dir + '/' + inF + ' -oc output/'+ ouF + '\n')
 
 
-mk_omssa('input/Cell-Line-mzxml-1')
+mk_omssa('input/Cell-Line-mzxml-1',1)
+mk_omssa('input/Cell-Line-mzxml-2',2)
+mk_omssa('input/Cell-Line-mzxml-3',3)
+mk_omssa('input/Cell-Line-mzxml-4',4)
+mk_omssa('input/Cell-Line-mzxml-5',5)
+mk_omssa('input/Cell-Line-mzxml-6',6)
