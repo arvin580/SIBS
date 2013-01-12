@@ -3,7 +3,6 @@ D = {}
 inFile = open(sys.argv[1])
 ouFile = open(sys.argv[1]+'.stop','w')
 ouFile2 = open(sys.argv[1]+'.stop2','w')
-ouFile3 = open(sys.argv[1]+'.stop_reverse','w')
 for line in inFile:
     fields = line.split(',')
     pep = fields[2]
@@ -35,9 +34,9 @@ D2=protein()
 
 for k in D:
     ouFile.write(k+'\t'+str(D[k])+'\n')
-
+    ouFile2.write(k+'\t')
     for x in D2:
         if x[-len(k):]==k:
             ouFile2.write('\t'.join(D2[x])+'\t')
     ouFile2.write('\n')
-
+ouFile2.close()
