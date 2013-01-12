@@ -4,8 +4,8 @@ ouFile = open(sys.argv[1]+'.stop','w')
 for line in inFile:
     fields = line.split(',')
     pep = fields[2]
-    if pep[-1]=='K' or pep[-1]=='R':
+    if pep[-1]=='K' or pep[-1]=='R' or pep==' Peptide':
         pass
     else:
-        ouFile.write(fields[2]+'w')
+        ouFile.write(fields[2]+'\n')
 inFile.close()
