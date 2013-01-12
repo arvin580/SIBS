@@ -11,5 +11,9 @@ for line in inFile:
         D.setdefault(fields[2], 0)
         D[fields[2]]+=1
 inFile.close()
+
 for k in D:
     ouFile.write(k+'\t'+str(D[k])+'\n')
+
+
+
