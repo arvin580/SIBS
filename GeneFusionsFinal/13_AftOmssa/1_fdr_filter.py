@@ -26,6 +26,8 @@ def fdr(iFile) :
             target+=1
         if 2*decoy/float(decoy+target)<=FDR :
             ouFile.write(item[0]+'\n')
+        else:
+            break
     
     ouFile.close()
 
