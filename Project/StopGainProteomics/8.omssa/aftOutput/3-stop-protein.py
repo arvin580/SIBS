@@ -28,11 +28,12 @@ def  pep2protein():
                 line = line.strip()
                 fields = line.split('\t')
                 for x in fields[2:]:
+                    #D2.setdefault(x, ['@@@'])
                     D2.setdefault(x, [])
-                    D2[x].append(inF.split('.')[0].split('-')[0]+':'+fields[0]+':'+str(D[x].index(fields[0])))
+                    D2[x].append('S:'+inF.split('.')[0].split('-')[0]+':'+fields[0]+':'+str(D[x].index(fields[0])))
             inFile.close()
-for k in D2:
-    D2[k].append('***')
+#for k in D2:
+#    D2[k].append('***')
 
 def  pep2protein2():
     files = os.listdir('.')
@@ -43,11 +44,12 @@ def  pep2protein2():
                 line = line.strip()
                 fields = line.split('\t')
                 for x in fields[2:]:
-                    D2.setdefault(x, ['***'])
-                    D2[x].append(inF.split('.')[0].split('-')[0]+':'+fields[0]+':'+str(D[x].index(fields[0])))
+                    #D2.setdefault(x, ['***'])
+                    D2.setdefault(x, [])
+                    D2[x].append('T:'+inF.split('.')[0].split('-')[0]+':'+fields[0]+':'+str(D[x].index(fields[0])))
             inFile.close()
-for k in D2:
-    D2[k].append('###')
+#for k in D2:
+#    D2[k].append('###')
 
 def  pep2protein3():
     files = os.listdir('.')
@@ -58,10 +60,9 @@ def  pep2protein3():
                 line = line.strip()
                 fields = line.split('\t')
                 for x in fields[2:]:
-                    D2.setdefault(x, ['###'])
-                    print(fields[0])
-                    print(x)
-                    D2[x].append(inF.split('.')[0].split('-')[0]+':'+fields[0]+':'+str(D[x].index(fields[0])))
+                    #D2.setdefault(x, ['###'])
+                    D2.setdefault(x, [])
+                    D2[x].append('K:'+inF.split('.')[0].split('-')[0]+':'+fields[0]+':'+str(D[x].index(fields[0])))
             inFile.close()
 
 
