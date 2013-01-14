@@ -19,9 +19,9 @@ def fdr(iFile) :
     ouFile2=open(iFile.split('/')[-1]+'.fdr_not','w')
     decoy=0
     target=0
-    n = i 
-    for i in range(len(d1)) :
-        n = i 
+    i = 0
+    flag = 0
+    for i in range(len(d1)):
         fields=d1[i][0].split('\t')
         if fields[9].find('REVERSE')!=-1 :
             decoy+=1
@@ -30,9 +30,11 @@ def fdr(iFile) :
         if 2*decoy/float(decoy+target)<=FDR :
             ouFile.write(d1[i][0]+'\n')
         else:
+            flag = 1
             break
-    for x  in range(n+1,len(d1)):
-        ouFile2.write(d1[x][0]+'\n')
+    if flag:
+        for x  in range(i,len(d1)):
+            ouFile2.write(d1[x][0]+'\n')
 
 
     
@@ -40,7 +42,7 @@ def fdr(iFile) :
     ouFile2.close()
 
 import os
-inputDir='../test'
+inputDir='../output'
 files=os.listdir(inputDir)
 for item in files :
     if item.find('.out')!=-1 :
