@@ -8,8 +8,10 @@ for line in inFile:
         x = ':'.join([item.split(':')[0],item.split(':')[2],item.split(':')[3]])
         D[x]=1
     ouFile.write(fields[0]+'\t')
-    for k in D:
-        ouFile.write(k+'\t')
+    d = D.items()
+    d.sort(cmp=lambda x,y:cmp(int(x[0].split(':')[-1]),int(y[0].split(':')[-1])))
+    for item in d:
+        ouFile.write(item[0]+'\t')
     ouFile.write('\n')
 inFile.close()
 ouFile.close()
