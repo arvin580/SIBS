@@ -31,7 +31,43 @@ def  pep2protein():
                     D2.setdefault(x, [])
                     D2[x].append(inF.split('.')[0].split('-')[0]+':'+fields[0]+':'+str(D[x].index(fields[0])))
             inFile.close()
+for k in D2:
+    D2[k].append('***')
+
+def  pep2protein2():
+    files = os.listdir('.')
+    for inF in files:
+        if inF[-6:]=='stop-1':
+            inFile = open(inF)
+            for line in inFile:
+                line = line.strip()
+                fields = line.split('\t')
+                for x in fields[2:]:
+                    D2.setdefault(x, ['***'])
+                    D2[x].append(inF.split('.')[0].split('-')[0]+':'+fields[0]+':'+str(D[x].index(fields[0])))
+            inFile.close()
+for k in D2:
+    D2[k].append('###')
+
+def  pep2protein3():
+    files = os.listdir('.')
+    for inF in files:
+        if inF[-8:]=='not.stop':
+            inFile = open(inF)
+            for line in inFile:
+                line = line.strip()
+                fields = line.split('\t')
+                for x in fields[2:]:
+                    D2.setdefault(x, ['###'])
+                    print(fields[0])
+                    print(x)
+                    D2[x].append(inF.split('.')[0].split('-')[0]+':'+fields[0]+':'+str(D[x].index(fields[0])))
+            inFile.close()
+
+
 pep2protein()
+pep2protein2()
+pep2protein3()
 
 ouFile = open('3-stopgain-protein', 'w')
 for k in D2:
