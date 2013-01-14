@@ -16,25 +16,26 @@ def uniprot():
     return D
 
 
-
+D = uniprot()
+D2 = {}
+ 
 def  pep2protein():
-    ouFile = open('3-stopgain-protein', 'w')
-    D = uniprot()
-    D2 = {}
     files = os.listdir('.')
     for inF in files:
-        if inF[-7:]=='stop2-2':
+        if inF[-6:]=='stop-2':
             inFile = open(inF)
             for line in inFile:
                 line = line.strip()
                 fields = line.split('\t')
-                for x in fields[1:]:
+                for x in fields[2:]:
                     D2.setdefault(x, [])
-                    D2[x].append(inF.split('.')[0]+':'+fields[0]+':'+str(D[x].index(fields[0])))
+                    D2[x].append(inF.split('.')[0].split('-')[0]+':'+fields[0]+':'+str(D[x].index(fields[0])))
             inFile.close()
-    for k in D2:
-        ouFile.write(k+'\t'+'\t'.join(D2[k])+'\n')
-        print(k)
-    ouFile.close()
-
 pep2protein()
+
+ouFile = open('3-stopgain-protein', 'w')
+for k in D2:
+    ouFile.write(k+'\t'+'\t'.join(D2[k])+'\n')
+ouFile.close()
+
+

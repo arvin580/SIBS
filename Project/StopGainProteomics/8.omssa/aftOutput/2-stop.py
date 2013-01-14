@@ -27,7 +27,7 @@ ouFile3 = open(sys.argv[1]+'-3','w')
 for line in inFile:
     line = line.strip()
     fields = line.split('\t')
-    if len(fields)>1:
+    if len(fields)>2:
         ouFile1.write(line+'\n')
     else:
         L = []
@@ -36,9 +36,9 @@ for line in inFile:
                 for x in D[k]:
                     L.append(x)
         if L:
-            ouFile2.write(fields[0]+'\t'+'\t'.join(L)+'\n')
+            ouFile2.write(fields[0]+'\t'+fields[1]+'\t'+'\t'.join(L)+'\n')
         else:
-            ouFile3.write(fields[0]+'\n')
+            ouFile3.write(fields[0]+'\t'+fields[1]+'\n')
 
 ouFile1.close()
 ouFile2.close()
