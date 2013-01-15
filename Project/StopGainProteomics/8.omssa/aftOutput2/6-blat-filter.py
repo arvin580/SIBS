@@ -15,7 +15,8 @@ def filter(inF):
                         ouFile.write(line+'\n')
                         D[fields[0]]=line
         else:
-            ouFile3.write(line+'\n')
+            if fields[0] not in D:
+                ouFile3.write(line+'\n')
     inFile.close()
     ouFile.close()
 
