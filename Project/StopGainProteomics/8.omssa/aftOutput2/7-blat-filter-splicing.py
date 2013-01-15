@@ -6,6 +6,13 @@ for line in inFile:
     if len(fields)>5:
         pep = fields[5]
         D.setdefault(pep,[])
+
+        D[pep].append(fields[0])
+        D[pep].append(fields[1])
+        D[pep].append(fields[2])
+        D[pep].append(fields[3])
+        D[pep].append(fields[4])
+
     else:
         D[pep].append(fields[0])
         D[pep].append(fields[1])
