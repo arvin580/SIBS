@@ -39,7 +39,7 @@ def seq(ch,pos,strand):
         df = diff(codon)
         if df:
             for item in df:
-                s.append([ch,pos+item[2]+1,item[3],item[4],'+',item[0],item[1]])
+                s.append([ch,pos+item[2],item[3],item[4],'+',item[0],item[1]])
     elif strand=='-':
         trans= string.maketrans('atcgATCG','tagcTAGC')
         codon = D[ch][pos:pos+3]
@@ -47,7 +47,7 @@ def seq(ch,pos,strand):
         df = diff(codon)
         if df:
             for item in df:
-                s.append([ch,pos+2-item[2]+1,string.translate(item[3],trans),string.translate(item[4],trans),'-',item[0],item[1]])
+                s.append([ch,pos+2-item[2],string.translate(item[3],trans),string.translate(item[4],trans),'-',item[0],item[1]])
     return s
 
 

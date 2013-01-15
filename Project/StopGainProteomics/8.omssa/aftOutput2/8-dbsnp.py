@@ -4,13 +4,15 @@ def dbsnp(inF):
     for line in inFile:
         line = line.strip()
         fields = line.split('\t')
-        D[fields[1]+':'+fields[2]]=1
+        #D[fields[1]+':'+fields[2]]=line
+        D[fields[1]+':'+fields[3]]=line
     inFile.close()
     return D
 snp = dbsnp('/netshare1/home1/people/hansun/Data/dbSNP/hg19_snp135.txt')
 
 inFile = open('3-stopgain-protein-unique2-filtered.blated.filtered.snv')
-ouFile = open('3-stopgain-protein-unique2-filtered.blated.filtered.snv.dbsnp','w')
+#ouFile = open('3-stopgain-protein-unique2-filtered.blated.filtered.snv.dbsnp','w')
+ouFile = open('3-stopgain-protein-unique2-filtered.blated.filtered.snv.dbsnp2','w')
 for line in inFile:
     line = line.strip()
     fields = line.split('\t')
