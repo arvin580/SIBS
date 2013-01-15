@@ -10,10 +10,14 @@ def dbsnp(inF):
 snp = dbsnp('/netshare1/home1/people/hansun/Data/dbSNP/hg19_snp135.txt')
 
 inFile = open('3-stopgain-protein-unique2-filtered.blated.filtered.snv')
+ouFile = open('3-stopgain-protein-unique2-filtered.blated.filtered.snv.dbsnp','w')
 for line in inFile:
     line = line.strip()
     fields = line.split('\t')
-    k = fields[12]+':'+fields[13]
-    if k in snp:
-        print(line)
+    if len(fields)>14:
+        for i in range(12,len(fields),7):
+            k = fields[i]+':'+fields[i+1]
+            if k in snp:
+                ouFile.write(line+'\n')
+                ouFile.write(snp[k]+'\n')
 inFile.close()

@@ -70,10 +70,11 @@ def snv(inF):
         elif strand == '-':
             pos = end - 4
             s = seq(ch,pos,strand)
-        ouFile.write(line+'\t')
-        for item in s:
-            ouFile.write('\t'.join([str(x) for x in item]))
-        ouFile.write('\n')
+        if s:    
+            ouFile.write(line+'\t')
+            for item in s:
+                ouFile.write('\t'.join([str(x) for x in item])+'\t')
+            ouFile.write('\n')
     inFile.close()
     ouFile.close()
 
