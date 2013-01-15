@@ -1,7 +1,17 @@
 import string
 
 def read_seq():
-    pass
+    inFile = open('/netshare1/home1/people/hansun/Data/GenomeSeq/Human/ucsc.hg19.fasta.fa')
+    D = {}
+    while True:
+        line1 = inFile.readline().strip()
+        line2 = inFile.readline().strip()
+        if line1:
+            D[line1.strip('>')]=line2
+        else:
+            break
+    inFile.close()
+    return D
 
 D = read_seq()
 
@@ -28,14 +38,14 @@ def seq(ch,pos,strand):
         codon= D[ch][pos:pos+3]
         df = diff(codon)
         if df:
-            s = [ch,pos+df[2],df[3],df[4]]
+            s = [ch,pos+df[2],df[3],df[4],df[0],df[1]]
     elif strand=='-':
         trans= string.maketrans('atcgATCG','tagcTAGC')
         codon = D[ch][pos:pos+3]
         codon = string.translate(condon[::-1],trans)
         df = diff(codon)
         if df:
-            s = [ch,pos+2-df[2],string.translate(df[3]),string.translate(df[4])]
+            s = [ch,pos+2-df[2],string.translate(df[3]),string.translate(df[4]),df[0],df[1]]
     return s
 
 
@@ -44,19 +54,21 @@ def snv(inF):
     for line in inFile:
         line = line.strip()
         fields = line.split('\t')
-        ch = fields[]
-        if int(fields[8])<=int(fields[9]):
+        ch = fields[1]
+        start = int(fields[8])
+        end = int(fields[9])
+        if start <= end:
             strand = '+'
         else:
             strand = '-'
-        start = int(fields[])
-        end = int(fields[])
         if strand == '+':
             pos = end
-            seq(ch,pos,strand)
+            s = seq(ch,pos,strand)
         elif strand == '-':
             pos = end - 4
-            seq(ch,pos,strand)
+            s = seq(ch,pos,strand)
+        print(line)
+        print(s)
     inFile.close()
 
-snv('3-stopgain-protein-unique2-filtered.blated.filtered')
+snv('3-stopgain-protein-unique2-filtered.blated.filtered.part')
