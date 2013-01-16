@@ -53,29 +53,32 @@ def seq(ch,pos,strand):
 def snv(inF):
     inFile = open(inF)
     ouFile = open(inF+'.snv','w')
+    D2 = {}
     for line in inFile:
         line = line.strip()
         fields = line.split('\t')
-        ch = fields[13]
-        pep = fields[0].split(':')[1]
-        ind = fields[12].index(pep)
-        start = int(fields[12+ind*15+2])+1
-        end = int(fields[12+(ind+len(pep))*15-3])+1
-        if start <= end:
-            strand = '+'
-        else:
-            strand = '-'
-        if strand == '+':
-            pos = end
-            s = seq(ch,pos,strand)
-        elif strand == '-':
-            pos = end - 4
-            s = seq(ch,pos,strand)
-        if s:    
-            ouFile.write('\t'.join(fields[0:13])+'\t')
-            for item in s:
-                ouFile.write('\t'.join([str(x) for x in item])+'\t')
-            ouFile.write('\n')
+        if '\t'.join(fields[0]) not in D2:
+            ch = fields[13]
+            pep = fields[0].split(':')[1]
+            ind = fields[12].index(pep)
+            start = int(fields[12+ind*15+2])+1
+            end = int(fields[12+(ind+len(pep))*15-3])+1
+            if start <= end:
+                strand = '+'
+            else:
+                strand = '-'
+            if strand == '+':
+                pos = end
+                s = seq(ch,pos,strand)
+            elif strand == '-':
+                pos = end - 4
+                s = seq(ch,pos,strand)
+            if s:    
+                ouFile.write('\t'.join(fields[0:13])+'\t')
+                for item in s:
+                    ouFile.write('\t'.join([str(x) for x in item])+'\t')
+                ouFile.write('\n')
+        D2['\t'.join(fields[0])]=1
     inFile.close()
     ouFile.close()
 
