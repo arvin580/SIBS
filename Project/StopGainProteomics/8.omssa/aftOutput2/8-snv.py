@@ -16,7 +16,6 @@ def read_seq():
 D = read_seq()
 
 def diff(codon):
-    print(codon)
     CODON=['TAA','TAG','TGA']
     SNV = []
     for c in CODON:
@@ -61,7 +60,7 @@ def snv(inF):
         pep = fields[0].split(':')[1]
         ind = fields[12].index(pep)
         start = int(fields[12+ind*15+2])
-        end = int(fields[12+(ind+len(pep))*15+2])
+        end = int(fields[12+(ind+len(pep))*15+2])-1
         if start <= end:
             strand = '+'
         else:
@@ -79,5 +78,6 @@ def snv(inF):
             ouFile.write('\n')
     inFile.close()
     ouFile.close()
+
 
 snv('3-stopgain-protein-unique2-filtered.blated.filtered3.splicing')
