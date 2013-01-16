@@ -7,7 +7,7 @@ import threading
 import subprocess
 import sys
 
-offset =67 
+offset = 70 
 #def screenshot(cp,sample):
 #    ch = cp.split(':')[0]
 #    pos = int(cp.split(':')[1])+offset
