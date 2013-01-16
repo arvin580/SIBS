@@ -59,8 +59,8 @@ def snv(inF):
         ch = fields[13]
         pep = fields[0].split(':')[1]
         ind = fields[12].index(pep)
-        start = int(fields[12+ind*15+2])
-        end = int(fields[12+(ind+len(pep))*15+2])-1
+        start = int(fields[12+ind*15+2])+1
+        end = int(fields[12+(ind+len(pep))*15-3])+1
         if start <= end:
             strand = '+'
         else:
