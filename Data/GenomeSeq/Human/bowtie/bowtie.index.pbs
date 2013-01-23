@@ -1,0 +1,4 @@
+#!/bin/bash
+
+bowtie-build -C /netshare1/home1/people/hansun/GATK/bundle/ucsc.hg19.fasta hg19.c
+bowtie-build /netshare1/home1/people/hansun/GATK/bundle/ucsc.hg19.fasta hg19

@@ -1,0 +1,3 @@
+#!/bin/bash
+
+bwa index -a bwtsw -p hg19 /netshare1/home1/people/hansun/GATK/bundle/ucsc.hg19.fasta
