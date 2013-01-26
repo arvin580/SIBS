@@ -5,12 +5,12 @@ while(<INFILE>)
 {
 	chomp($_);
 	s/\r$//g;
-	if(/mzXML$/)
+	if(/MGF$/)
 	{
-		@a=split(/\//,$_);
-		$a[1]=~s/mzXML$/xml/;
-		$outfile_a="input_$a[0]_$a[1]";
-		$outfile_b="output_$a[0]_$a[1]";
+		@a=split(/\./,$_);
+		$a[1]=~s/MGF$/xml/;
+		$outfile_a="input_$a[0].$a[1]";
+		$outfile_b="output_$a[0].$a[1]";
 		open OUTFILE,">$outfile_a";
 		printf OUTFILE "<?xml version=\"1.0\"?>\n";
 		printf OUTFILE "<bioml>\n";
