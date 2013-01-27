@@ -16,6 +16,8 @@ def dp_stat(iFile):
             DP=int(s.group(1))
             if d<=DP<=D and float(fields[31])>=Q:
                 ouFile.write(line + '\n')
+            else:
+                print(line)
     inFile.close()
     ouFile.close()
 
