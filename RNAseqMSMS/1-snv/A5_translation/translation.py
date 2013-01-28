@@ -10,13 +10,18 @@ def codon():
     inFile.close()
     return D
 
-def translate(seq,frame=''):
+def translate(seq,frame='',point=''):
     seq = seq.upper()
     trans = string.maketrans('ATCGatcg','TAGCtagc')
     seq_r = string.translate(seq[::-1],trans)
 
     D = codon()
     P = []
+    POS = ''
+    FROM = ''
+    TO = ''
+
+
     if frame == 0:
         for i in range(0,len(seq),3):
             if len(seq[i:i+3]) == 3:
@@ -25,7 +30,8 @@ def translate(seq,frame=''):
                 else:
                     print('0-frame translation error in ' + seq)
                     break
-        print(''.join(P))
+        return([''.join(P),POS,FROM,TO])
+
     if frame == 1:
         for i in range(1,len(seq),3):
             if len(seq[i:i+3]) == 3:
@@ -34,7 +40,7 @@ def translate(seq,frame=''):
                 else:
                     print('1-frame translation error in ' + seq)
                     break
-        print(''.join(P))
+        return([''.join(P),POS,FROM,TO])
 
     if frame == 2:
         for i in range(2,len(seq),3):
@@ -44,7 +50,7 @@ def translate(seq,frame=''):
                 else:
                     print('2-frame translation error in ' + seq)
                     break
-        print(''.join(P))
+        return([''.join(P),POS,FROM,TO])
 
     if frame == -1:
         for i in range(0,len(seq_r),3):
@@ -54,7 +60,7 @@ def translate(seq,frame=''):
                 else:
                     print('-1-frame translation error in ' + seq_r)
                     break
-        print(''.join(P))
+        return([''.join(P),POS,FROM,TO])
 
     if frame == -2:
         for i in range(1,len(seq_r),3):
@@ -64,7 +70,8 @@ def translate(seq,frame=''):
                 else:
                     print('-2-frame translation error in ' + seq_r)
                     break
-        print(''.join(P))
+        return([''.join(P),POS,FROM,TO])
+
 
     if frame == -3:
         for i in range(2,len(seq_r),3):
@@ -74,11 +81,17 @@ def translate(seq,frame=''):
                 else:
                     print('-3-frame translation error in ' + seq_r)
                     break
-        print(''.join(P))
+        return([''.join(P),POS,FROM,TO])
 
 P=translate('CAGCACCTCCCTGATGGGGACAAAACGCCCATGTCCGAGCGGCTGGACGACACGGAGCCCTATTTCATCGGGATCTTTTGCTTCGAGGCAGGGATCAAA',0)
+print(P)
 P=translate('CAGCACCTCCCTGATGGGGACAAAACGCCCATGTCCGAGCGGCTGGACGACACGGAGCCCTATTTCATCGGGATCTTTTGCTTCGAGGCAGGGATCAAA',1)
+print(P)
 P=translate('CAGCACCTCCCTGATGGGGACAAAACGCCCATGTCCGAGCGGCTGGACGACACGGAGCCCTATTTCATCGGGATCTTTTGCTTCGAGGCAGGGATCAAA',2)
+print(P)
 P=translate('CAGCACCTCCCTGATGGGGACAAAACGCCCATGTCCGAGCGGCTGGACGACACGGAGCCCTATTTCATCGGGATCTTTTGCTTCGAGGCAGGGATCAAA',-1)
+print(P)
 P=translate('CAGCACCTCCCTGATGGGGACAAAACGCCCATGTCCGAGCGGCTGGACGACACGGAGCCCTATTTCATCGGGATCTTTTGCTTCGAGGCAGGGATCAAA',-2)
+print(P)
 P=translate('CAGCACCTCCCTGATGGGGACAAAACGCCCATGTCCGAGCGGCTGGACGACACGGAGCCCTATTTCATCGGGATCTTTTGCTTCGAGGCAGGGATCAAA',-3)
+print(P)
