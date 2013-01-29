@@ -8,5 +8,6 @@ for f in files:
         ouFile.write('db=/netshare1/home1/people/hansun/Data/GenomeSeq/Human/ucsc.hg19.fasta\n')
         ouFile.write('query='+f+'\n')
         ouFile.write('out=${query}.blasted\n')
-        ouFile.write('blastn  -db $db  -query $query -out $out -outfmt 6\n')
+        #ouFile.write('blastn  -db $db  -query $query -out $out -outfmt 6\n')
+        ouFile.write('blat $db $query  -out=blast8 $out\n')
         ouFile.close()

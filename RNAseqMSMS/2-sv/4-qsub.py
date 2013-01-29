@@ -9,7 +9,7 @@ for f in files:
 N = 20
 for i in range(0,len(L),N):
     f = i/N
-    ouFile= open('qsub.'+str(f)+'.sh','w')
+    ouFile= open(DIR+'/'+'qsub.'+str(f)+'.sh','w')
     for j in range(N):
         if i+j < len(L):
             ouFile.write('qsub -q high '+L[i+j]+'\n')
