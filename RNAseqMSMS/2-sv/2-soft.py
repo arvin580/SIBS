@@ -1,6 +1,5 @@
 import re
 inFile = open('ERR0498-04-05.soft')
-ouFile = open('ERR0498-04-05.soft2','w')
 for line in inFile:
     line = line.strip()
     fields = line.split('\t')
@@ -10,4 +9,3 @@ for line in inFile:
             print(line)
 
 inFile.close()
-ouFile.close()
