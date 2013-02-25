@@ -656,10 +656,8 @@ class PyPlot :
 
 
 
-    '''
-    def single_bar_multi_bar_vertical_proportion(self,yList1,yList2,xLabel=0,xTitle=0,yTitle=0,legTitle=0,legX=0,legY=0) :
+    def single_bar_multi_bar_vertical_sv(self,yList1,yList2,xLabel=0,xTitle=0,yTitle=0,legTitle=0,legX=0,legY=0) :
         fig = plt.figure()
-
         ax=fig.add_subplot(211)
 
         yList1=np.array(yList1)
@@ -667,7 +665,7 @@ class PyPlot :
         xList=np.arange(n)
 
         width=0.7
-        ax.bar(xList,yList1,width,color=self.get_color(1))
+        ax.bar(xList,yList1,width,color=self.get_color(0,4))
         #ax.bar(xList,yList,width,color=matplotlib.colors.colorConverter.to_rgb('0.3'))
         ax.set_xlim(-0.3,n)
         ax.set_ylim(0,yList1.max()*1.1)
@@ -685,10 +683,9 @@ class PyPlot :
         width=0.7
 
         bar=[]
-        bar.append(ax.bar(xList,yList2[0]/sum(yList2[0:]).astype('float'),width,color=self.get_color(0)))
+        bar.append(ax.bar(xList,yList2[0],width,color=self.get_color(1,4)))
         for i in range(1,N) :
-            bar.append(ax.bar(xList,yList2[i],width,bottom=sum(yList2[0:i])/sum(yList2[0:]).astype('float'),color=self.get_color(i)))
-
+            bar.append(ax.bar(xList,yList2[i],width,bottom=sum(yList2[0:i]),color=self.get_color(i+1,N)))
         ax.set_xlim(-0.3,n)
         ax.set_ylim(0,1)
 
@@ -714,7 +711,6 @@ class PyPlot :
 
         self.show()
 
-    '''
 
 
 
