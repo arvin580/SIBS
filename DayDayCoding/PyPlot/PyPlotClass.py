@@ -658,6 +658,7 @@ class PyPlot :
 
     def single_bar_multi_bar_vertical_sv(self,yList1,yList2,xLabel=0,xTitle=0,yTitle=0,legTitle=0,legX=0,legY=0) :
         C = 5
+        bar=[]
         fig = plt.figure()
         #ax=fig.add_subplot(211)
         ax=fig.add_axes([0.1,0.57,0.7,0.38])
@@ -667,7 +668,7 @@ class PyPlot :
         xList=np.arange(n)
 
         width=0.7
-        ax.bar(xList,yList1,width,color=self.get_color(0,C))
+        bar.append(ax.bar(xList,yList1,width,color=self.get_color(0,C)))
         #ax.bar(xList,yList,width,color=matplotlib.colors.colorConverter.to_rgb('0.3'))
         ax.set_xlim(-0.3,n)
         ax.set_ylim(0,yList1.max()*1.1)
@@ -685,7 +686,6 @@ class PyPlot :
 
         width=0.7
 
-        bar=[]
         bar.append(ax.bar(xList,yList2[0],width,color=self.get_color(1,C)))
         for i in range(1,N) :
             bar.append(ax.bar(xList,yList2[i],width,bottom=sum(yList2[0:i]),color=self.get_color(i+1,C)))
