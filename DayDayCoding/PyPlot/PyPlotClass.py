@@ -657,22 +657,25 @@ class PyPlot :
 
 
     def single_bar_multi_bar_vertical_sv(self,yList1,yList2,xLabel=0,xTitle=0,yTitle=0,legTitle=0,legX=0,legY=0) :
+        C = 5
         fig = plt.figure()
-        ax=fig.add_subplot(211)
+        #ax=fig.add_subplot(211)
+        ax=fig.add_axes([0.1,0.57,0.7,0.38])
 
         yList1=np.array(yList1)
         n=len(yList1)
         xList=np.arange(n)
 
         width=0.7
-        ax.bar(xList,yList1,width,color=self.get_color(0,4))
+        ax.bar(xList,yList1,width,color=self.get_color(0,C))
         #ax.bar(xList,yList,width,color=matplotlib.colors.colorConverter.to_rgb('0.3'))
         ax.set_xlim(-0.3,n)
         ax.set_ylim(0,yList1.max()*1.1)
         ax.set_xticks(xList+width/2)
         ax.set_xticklabels([])
 
-        ax=fig.add_subplot(212)
+        #ax=fig.add_subplot(212)
+        ax=fig.add_axes([0.1,0.15,0.7,0.38])
 
         yList2=np.array(yList2)
         n=len(yList2[0])
@@ -683,20 +686,22 @@ class PyPlot :
         width=0.7
 
         bar=[]
-        bar.append(ax.bar(xList,yList2[0],width,color=self.get_color(1,4)))
+        bar.append(ax.bar(xList,yList2[0],width,color=self.get_color(1,C)))
         for i in range(1,N) :
-            bar.append(ax.bar(xList,yList2[i],width,bottom=sum(yList2[0:i]),color=self.get_color(i+1,N)))
+            bar.append(ax.bar(xList,yList2[i],width,bottom=sum(yList2[0:i]),color=self.get_color(i+1,C)))
         ax.set_xlim(-0.3,n)
-        ax.set_ylim(0,1)
+        #ax.set_ylim(0,1)
 
         ax.set_xticks(xList+width/2)
-        ax.set_yticks([0.0,0.2,0.4,0.6,0.8,1.0])
-        ax.set_yticklabels(['0%','20%','40%','60%','80%','100%'])
+        ax.set_xticklabels(xLabel,rotation='vertical')
+        #ax.set_yticks([0.0,0.2,0.4,0.6,0.8,1.0])
+        #ax.set_yticklabels(['0%','20%','40%','60%','80%','100%'])
 
         if xLabel==0 :
             xLabel=['bar'+str(i) for i in range(1,n+1)]
         ax.set_xticklabels(xLabel)
 
+        '''
 
         if legTitle==0 :
             legTitle=['type'+str(i) for i in range(1,N+1)]
@@ -708,6 +713,7 @@ class PyPlot :
         legBar=[bar[i][0] for i in range(N)]
 
         ax.legend(legBar,legTitle,loc='upper right',bbox_to_anchor=[legX,legY])
+        '''
 
         self.show()
 
