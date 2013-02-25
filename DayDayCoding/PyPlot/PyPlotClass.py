@@ -701,7 +701,6 @@ class PyPlot :
             xLabel=['bar'+str(i) for i in range(1,n+1)]
         ax.set_xticklabels(xLabel)
 
-        '''
 
         if legTitle==0 :
             legTitle=['type'+str(i) for i in range(1,N+1)]
@@ -710,10 +709,9 @@ class PyPlot :
         if legY==0 :
             legY=0.97
 
-        legBar=[bar[i][0] for i in range(N)]
+        legBar=[bar[i][0] for i in range(4)]
 
         ax.legend(legBar,legTitle,loc='upper right',bbox_to_anchor=[legX,legY])
-        '''
 
         self.show()
 
