@@ -657,11 +657,11 @@ class PyPlot :
 
 
     def single_bar_multi_bar_vertical_sv(self,yList1,yList2,xLabel=0,xTitle=0,yTitle=0,legTitle=0,legX=0,legY=0) :
-        C = 5
+        C = 6
         bar=[]
         fig = plt.figure()
         #ax=fig.add_subplot(211)
-        ax=fig.add_axes([0.1,0.57,0.7,0.38])
+        ax=fig.add_axes([0.1,0.57,0.8,0.38])
 
         yList1=np.array(yList1)
         n=len(yList1)
@@ -676,7 +676,7 @@ class PyPlot :
         ax.set_xticklabels([])
 
         #ax=fig.add_subplot(212)
-        ax2=fig.add_axes([0.1,0.15,0.7,0.38])
+        ax2=fig.add_axes([0.1,0.15,0.8,0.38])
 
         yList2=np.array(yList2)
         n=len(yList2[0])
@@ -701,17 +701,26 @@ class PyPlot :
             xLabel=['bar'+str(i) for i in range(1,n+1)]
         ax2.set_xticklabels(xLabel)
 
+        for t in  ax2.xaxis.get_ticklabels() :
+            if t.get_text().find('ICC')==0 :
+                t.set_color(self.get_color(5,C))
+            if t.get_text().find('CHC')==0 :
+                t.set_color(self.get_color(6,C))
+
+
+
 
         if legTitle==0 :
             legTitle=['type'+str(i) for i in range(1,N+1)]
         if legX==0 :
-            legX=0.76
+            legX=0.98
         if legY==0 :
-            legY=0.8
+            legY=1.1
 
-        legBar=[bar[i][0] for i in range(4)]
+        #legBar=[bar[i][0] for i in range(4)]
+        legBar=[bar[0][0],bar[3][0],bar[2][0],bar[1][0]]
 
-        ax.legend(legBar,legTitle,loc='bottom left',bbox_to_anchor=[legX,legY])
+        ax.legend(legBar,legTitle,loc='upper right',bbox_to_anchor=[legX,legY],prop={'size':10})
 
         self.show()
 
