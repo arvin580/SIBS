@@ -676,7 +676,7 @@ class PyPlot :
         ax.set_xticklabels([])
 
         #ax=fig.add_subplot(212)
-        ax=fig.add_axes([0.1,0.15,0.7,0.38])
+        ax2=fig.add_axes([0.1,0.15,0.7,0.38])
 
         yList2=np.array(yList2)
         n=len(yList2[0])
@@ -686,32 +686,32 @@ class PyPlot :
 
         width=0.7
 
-        bar.append(ax.bar(xList,yList2[0],width,color=self.get_color(1,C)))
+        bar.append(ax2.bar(xList,yList2[0],width,color=self.get_color(1,C)))
         for i in range(1,N) :
-            bar.append(ax.bar(xList,yList2[i],width,bottom=sum(yList2[0:i]),color=self.get_color(i+1,C)))
-        ax.set_xlim(-0.3,n)
+            bar.append(ax2.bar(xList,yList2[i],width,bottom=sum(yList2[0:i]),color=self.get_color(i+1,C)))
+        ax2.set_xlim(-0.3,n)
         #ax.set_ylim(0,1)
 
-        ax.set_xticks(xList+width/2)
-        ax.set_xticklabels(xLabel,rotation='vertical')
+        ax2.set_xticks(xList+width/2)
+        ax2.set_xticklabels(xLabel,rotation='vertical')
         #ax.set_yticks([0.0,0.2,0.4,0.6,0.8,1.0])
         #ax.set_yticklabels(['0%','20%','40%','60%','80%','100%'])
 
         if xLabel==0 :
             xLabel=['bar'+str(i) for i in range(1,n+1)]
-        ax.set_xticklabels(xLabel)
+        ax2.set_xticklabels(xLabel)
 
 
         if legTitle==0 :
             legTitle=['type'+str(i) for i in range(1,N+1)]
         if legX==0 :
-            legX=0.97
+            legX=0.76
         if legY==0 :
-            legY=0.97
+            legY=0.8
 
         legBar=[bar[i][0] for i in range(4)]
 
-        ax.legend(legBar,legTitle,loc='upper right',bbox_to_anchor=[legX,legY])
+        ax.legend(legBar,legTitle,loc='bottom left',bbox_to_anchor=[legX,legY])
 
         self.show()
 
