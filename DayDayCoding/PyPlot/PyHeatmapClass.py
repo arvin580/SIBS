@@ -165,6 +165,13 @@ class PyHeatmap():
                 t.set_fontsize(labelFontSize)
             #t.set_weight('bold')
 
+        for t in  ax.xaxis.get_ticklabels() :
+            if t.get_text().find('ICC')==0 :
+                t.set_color('red')
+            if t.get_text().find('CHC')==0 :
+                t.set_color('blue')
+
+
         '''    
         ### changed for /netshare1/home1/szzhongxin/proj1/hansun/viruses/annotation/4.sv.gene.heatmap.py
         viruse1 = 'NC_003977'
