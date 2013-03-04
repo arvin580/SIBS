@@ -10,32 +10,14 @@ chrs = ['chr1','chr2','chr3','chr4','chr5','chr6','chr7','chr8','chr9','chr10',
  
 def seq(inF):
     sv = {}
-    seq = []
-    L = 0
     inFile = open(inF)
-    for line in inFile:
-        line = line.rstrip()
-        fields = line.split()
-        if len(fields) > 2:
-            if fields[0].find('chr')!=0:
-                s = ''.join(fields[0:-1])
-                n = 0 
-                for item in fields[0:-1]:
-                    if len(item)>L:
-                        n += 1
-                if n >= 2:
-                    seq.append(line)
-        
-            else:
-                k = '' 
-                for item in fields:
-                    if item.find('>')==-1:
-                        k = ':'.join([k, item])
-                    else:
-                        k = ':'.join([k, item])
-                        break
-                sv[k] = seq 
-                seq = []
+    while True:
+        head = inFile.readline().strip('>\n')
+        seq = inFile.readline().strip()
+        if head:
+            sv[head]=seq
+        else:
+            break
     inFile.close()
     return sv
 
@@ -75,7 +57,7 @@ def count(inF):
     sv = seq(sys.argv[1].split('.blated')[0])
     ouFile1 = open(sys.argv[1]+'.filtered.head1','w')
     ouFile2 = open(sys.argv[1]+'.filtered.head2','w')
-    ##ouFile3 = open(sys.argv[1]+'.filtered.seq1','w')
+    ouFile3 = open(sys.argv[1]+'.filtered.seq1','w')
     ##ouFile4 = open(sys.argv[1]+'.filtered.seq2','w')
     ##ouFile5 = open(sys.argv[1]+'.filtered.grep','w')
     for item in d:
@@ -83,8 +65,7 @@ def count(inF):
             #flag = [0,0]
             flag = unique(item)
             if flag[0]<=1 and flag[1]<=1:
-                ##for x in sv[item[0]]:
-                ##    ouFile3.write(x+'\n')
+                ouFile3.write(sv[item[0]]+'\n')
                 ouFile1.write(item[0]+'\t'+str(item[1][0])+'\n')
                 ##ouFile3.write(item[0]+'\n')
                 ##grep(item[0],ouFile5)
@@ -96,7 +77,7 @@ def count(inF):
 
     ouFile1.close()
     ouFile2.close()
-    ##ouFile3.close()
+    ouFile3.close()
     ##ouFile4.close()
     ##ouFile5.close()
         
