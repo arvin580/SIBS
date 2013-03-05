@@ -55,10 +55,12 @@ def count(inF):
     d.sort(cmp=lambda x,y:cmp(x[1][0],y[1][0]))
 
     sv = seq(sys.argv[1].split('.blated')[0])
-    ouFile1 = open(sys.argv[1]+'.filtered.head1','w')
-    ouFile2 = open(sys.argv[1]+'.filtered.head2','w')
+    #####ouFile1 = open(sys.argv[1]+'.filtered.head1','w')
+    #####ouFile2 = open(sys.argv[1]+'.filtered.head2','w')
     ouFile3 = open(sys.argv[1]+'.filtered.seq1','w')
     ouFile4 = open(sys.argv[1]+'.filtered.seq2','w')
+    #####ouFile5 = open(sys.argv[1]+'.filtered.head3','w')
+    ouFile6 = open(sys.argv[1]+'.filtered.seq3','w')
     ##ouFile5 = open(sys.argv[1]+'.filtered.grep','w')
     for item in d:
         t = []
@@ -76,22 +78,32 @@ def count(inF):
 
                 ouFile3.write('>'+item[0]+'\t'+str(item[1][0])+'\t'+'\t'.join(t)+'\n')
                 ouFile3.write(sv[item[0]]+'\n')
-                ouFile1.write(item[0]+'\t'+str(item[1][0])+'\n')
+                #####ouFile1.write(item[0]+'\t'+str(item[1][0])+'\n')
                 ##ouFile3.write(item[0]+'\n')
                 ##grep(item[0],ouFile5)
+            else:
+                #####ouFile5.write(item[0]+'\t'+str(item[1][0])+'\n')
+                ouFile6.write('>'+item[0]+'\t'+str(item[1][0])+'\t'+'\t'.join(t)+'\n')
+                ouFile6.write(sv[item[0]]+'\n')
+        else:
+            #####ouFile5.write(item[0]+'\t'+str(item[1][0])+'\n')
+            ouFile6.write('>'+item[0]+'\t'+str(item[1][0])+'\t'+'\t'.join(t)+'\n')
+            ouFile6.write(sv[item[0]]+'\n')
+ 
         
-        ouFile2.write(item[0]+'\t'+str(item[1][0])+'\n')
+        #####ouFile2.write(item[0]+'\t'+str(item[1][0])+'\n')
         ##for x in sv[item[0]]:
         ##    ouFile4.write(x+'\n')
         ##ouFile4.write(item[0]+'\n')
         ouFile4.write('>'+item[0]+'\t'+str(item[1][0])+'\t'+'\t'.join(t)+'\n')
         ouFile4.write(sv[item[0]]+'\n')
          
-    ouFile1.close()
-    ouFile2.close()
+    #####ouFile1.close()
+    #####ouFile2.close()
     ouFile3.close()
-    ##ouFile4.close()
-    ##ouFile5.close()
+    ouFile4.close()
+    #####ouFile5.close()
+    ouFile6.close()
         
 count(sys.argv[1])
     
