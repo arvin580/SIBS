@@ -45,12 +45,14 @@ def translate(seq):
 
     return six 
 
-Dir = '../2-split-mapped'
-files = os.listdir(Dir)
+#Dir = '../2-split-mapped'
+#files = os.listdir(Dir)
 U = uniprot()
+files = [sys.argv[1]]
 for f in files:
     if f[-4:]=='seq1':
-        inFile = open(Dir+'/'+f)
+        #inFile = open(Dir+'/'+f)
+        inFile = open(f)
         ouFile1 = open(f+'.splicing','w')
         ouFile2 = open(f+'.not-splicing','w')
 
