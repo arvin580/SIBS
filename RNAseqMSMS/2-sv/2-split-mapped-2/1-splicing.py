@@ -45,7 +45,7 @@ def translate(seq):
 
     return six 
 
-Dir = '../2-split-mapped-test'
+Dir = '../2-split-mapped'
 files = os.listdir(Dir)
 U = uniprot()
 for f in files:
@@ -63,15 +63,16 @@ for f in files:
                 for item in six:
                     for k in U:
                         if item in U[k]:
-                            protein = [k,item]
+                            protein = [k.lstrip('>'),item]
                             break
                 if protein:
-                    ouFile1.write(line1+'\t'+protein[0]+'\t'+protein[1]+'\n')
-                    ouFile1.write(line2+'\n')
+                    ouFile1.write(line1+'\t'+protein[0]+'\t'+line2+'\n')
+                    ouFile1.write(protein[1]+'\n')
                 else:
                     for x in range(len(six)):
-                        ouFile2.write(line1 + '\t'+ line2+ '\t'+ str(x)+ '\n')
-                        ouFile2.write(six[x]+'\n')
+                        if six[x].find('*')==-1:
+                            ouFile2.write(line1 + '\t'+ line2+ '\t'+ str(x)+ '\n')
+                            ouFile2.write(six[x]+'\n')
             else:
                 break
         inFile.close()
