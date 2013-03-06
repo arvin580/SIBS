@@ -9,7 +9,7 @@ n = 0
 for k in range(0,len(L),10):
     n += 1
     ouFile = open('qsub-'+str(n)+'.sh','w')
-    ouFile.write('cd /netshare1/home1/people/hansun/RNAseqMSMS/2-sv/2-split-mapped-2\n')
+    ouFile.write('cd /netshare1/home1/people/hansun/RNAseqMSMS/2-sv/2-split-mapped\n')
     for i in range(10):
         if k+i < len(L):
             ouFile.write(L[k+i]+'\n')

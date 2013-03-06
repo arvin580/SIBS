@@ -1,4 +1,4 @@
-cd /netshare1/home1/people/hansun/RNAseqMSMS/2-sv/2-split-mapped-2
+cd /netshare1/home1/people/hansun/RNAseqMSMS/2-sv/2-split-mapped
 python 1-splicing.py ERR0498-04-05.unmapped.unique.181.fasta.blated.filtered.seq1
 python 1-splicing.py ERR0498-04-05.unmapped.unique.182.fasta.blated.filtered.seq1
 python 1-splicing.py ERR0498-04-05.unmapped.unique.183.fasta.blated.filtered.seq1
