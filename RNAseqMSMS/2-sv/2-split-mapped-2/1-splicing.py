@@ -1,5 +1,27 @@
 import sys
 import os 
+import string
+
+def uniprot():
+    uniprot = {}
+    inFile = open('/netshare1/home1/people/hansun/RNAseqMSMS/3-uniprot/human_uniprot_sprot.fa')
+    while True:
+        line1 = inFile.readline().strip()
+        line2 = inFile.readline().strip()
+        if line1:
+            uniprot[line1]=line2
+        else:
+            break
+    inFile.close()
+    return uniprot
+
+Codon = {}
+inFile = open('/netshare1/home1/people/hansun/Data/CodonUsage')
+for line in inFile:
+    line = line.strip()
+    fields = line.split()
+    Codon[fields[0]]=fields[1]
+inFile.close()
 
 def translate(seq):
     six = []
@@ -23,4 +45,35 @@ def translate(seq):
 
     return six 
 
-files = os.listdir(../)
+Dir = '../2-split-mapped-test'
+files = os.listdir(Dir)
+U = uniprot()
+for f in files:
+    if f[-4:]=='seq1':
+        inFile = open(Dir+'/'+f)
+        ouFile1 = open(f+'.splicing','w')
+        ouFile2 = open(f+'.not-splicing','w')
+
+        while True:
+            line1 = inFile.readline().strip()
+            line2 = inFile.readline().strip()
+            if line1:
+                six = translate(line2)
+                protein = ''
+                for item in six:
+                    for k in U:
+                        if item in U[k]:
+                            protein = [k,item]
+                            break
+                if protein:
+                    ouFile1.write(line1+'\t'+protein[0]+'\t'+protein[1]+'\n')
+                    ouFile1.write(line2+'\n')
+                else:
+                    for x in range(len(six)):
+                        ouFile2.write(line1 + '\t'+ line2+ '\t'+ str(x)+ '\n')
+                        ouFile2.write(six[x]+'\n')
+            else:
+                break
+        inFile.close()
+        ouFile1.close()
+        ouFile2.close()
