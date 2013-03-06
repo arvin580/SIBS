@@ -17,6 +17,7 @@ def viruse(n1,n2):
     
     ouFile.close()
 
+viruse(90,60)
 viruse(95,70)
 viruse(100,76)
 
