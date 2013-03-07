@@ -3,8 +3,8 @@ import os
 files = os.listdir('.')
 ouFile1 = open('split-mapped-translocation','w')
 ouFile2 = open('split-mapped-inversion','w')
-ouFile3 = open('split-mapped-deletion','w')
-ouFile4 = open('split-mapped-duplication','w')
+ouFile3 = open('split-mapped-duplication','w')
+ouFile4 = open('split-mapped-deletion','w')
 for f in files:
     if f[-12:] =='not-splicing':
         inFile = open(f)
@@ -23,10 +23,12 @@ for f in files:
                 if ch1 != ch2:
                     ouFile1.write(line1)
                     ouFile1.write(line2)
-                else:
-                    if (pos1 - pos2)*(pos3-pos4) < 0:
-                        ouFile2.write(line1)
-                        ouFile2.write(line2)
+                elif (pos1 - pos2)*(pos3-pos4) < 0:
+                    ouFile2.write(line1)
+                    ouFile2.write(line2)
+                elif:
+                    pass
+                    
 
 
             else:
