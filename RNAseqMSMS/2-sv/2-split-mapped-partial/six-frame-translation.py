@@ -39,10 +39,12 @@ while True:
     line1 = inFile.readline().strip()
     line2 = inFile.readline().strip()
     if line1:
+        fields = line1.split('\t')
         six = translate(line2)
         for i in range(len(six)):
-            ouFile.write(line1+'-'+str(i)+'\n')
-            ouFile.write(six[i]+'\n')
+            if six[i].find('*')==-1:
+                ouFile.write(fields[0]+'-'+str(i)+'\n')
+                ouFile.write(six[i]+'\n')
     else:
         break
 inFile.close()
