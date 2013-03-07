@@ -7,7 +7,8 @@ while True:
     seq = inFile.readline().strip()
     if head:
         hs = head.split()
-        index = [-1]
+        #index = [-1]
+        index = []
         for i in range(len(seq)-1):
             if (seq[i] == 'K' and seq[i+1]!='P') or (seq[i] == 'R' and seq[i+1]!='P'): 
                 index.append(i)
