@@ -16,18 +16,31 @@ for f in files:
                 fields = line1.split()
                 ch1 = fields[3]
                 ch2 = fields[15]
-                pos1 = int(fields[10])
-                pos2 = int(fields[11])
-                pos3 = int(fields[22])
-                pos4 = int(fields[23])
+                pos1 = float(fields[10])
+                pos2 = float(fields[11])
+                pos3 = float(fields[22])
+                pos4 = float(fields[23])
+
+                qpos1 = float(fields[8])
+                qpos2 = float(fields[9])
+                qpos3 = float(fields[20])
+                qpos4 = float(fields[21])
+
+                mid1 = (pos1+pos2)/2
+                mid2 = (pos3+pos4)/2
+                qmid1 = (qpos1+qpos2)/2
+                qmid2 = (qpos3+qpos4)/2
+
+
                 if ch1 != ch2:
                     ouFile1.write(line1)
                     ouFile1.write(line2)
                 elif (pos1 - pos2)*(pos3-pos4) < 0:
                     ouFile2.write(line1)
                     ouFile2.write(line2)
-                elif:
-                    pass
+                elif (mid1 - mid2)*(qmid1 - qmid2) < 0:
+                    ouFile3.write(line1)
+                    ouFile3.write(line2)
                     
 
 
