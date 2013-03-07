@@ -1,4 +1,4 @@
-qsub  ERR0498-04-05.unmapped.unique.106.fasta.blated.unmapped.blat.sh
+qsub -l nodes=4   ERR0498-04-05.unmapped.unique.106.fasta.blated.unmapped.blat.sh
 qsub  ERR0498-04-05.unmapped.unique.128.fasta.blated.unmapped.blat.sh
 qsub  ERR0498-04-05.unmapped.unique.12.fasta.blated.unmapped.blat.sh
 qsub  ERR0498-04-05.unmapped.unique.154.fasta.blated.unmapped.blat.sh

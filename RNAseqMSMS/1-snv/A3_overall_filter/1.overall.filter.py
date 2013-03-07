@@ -22,4 +22,5 @@ def dp_stat(iFile):
     ouFile.close()
 
 
-dp_stat('sum_snv.exome_summary')
+#dp_stat('sum_snv.exome_summary')
+dp_stat('sum_snv.exome_summary.indel')

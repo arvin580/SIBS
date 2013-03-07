@@ -12,5 +12,5 @@ for i in range(0,len(L),N):
     ouFile= open(DIR+'/'+'qsub.'+str(f)+'.sh','w')
     for j in range(N):
         if i+j < len(L):
-            ouFile.write('qsub -q high '+L[i+j]+'\n')
+            ouFile.write('qsub '+L[i+j]+'\n')
     ouFile.close()
