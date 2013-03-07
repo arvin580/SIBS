@@ -38,13 +38,29 @@ for f in files:
                 elif (pos1 - pos2)*(pos3-pos4) < 0:
                     ouFile2.write(line1)
                     ouFile2.write(line2)
-                elif (mid1 - mid2)*(qmid1 - qmid2) < 0:
-                    ouFile3.write(line1)
-                    ouFile3.write(line2)
-                    print(str(mid1)+'\t'+str(mid2)+'\t'+str(qmid1)+'\t'+str(qmid2))
+                else:
+                    if (pos1 - pos2) < 0  and (pos3 - pos4) <0 :
+                        if (mid1 - mid2)*(qmid1 - qmid2) < 0:
+                            ouFile3.write(line1)
+                            ouFile3.write(line2)
+                        else:
+                            ouFile4.write(line1)
+                            ouFile4.write(line2)
+                    elif (pos1 -pos2) >0 and (pos3 - pos4) > 0:
+                        if (mid1 - mid2)*(qmid1 - qmid2) > 0:
+                            ouFile3.write(line1)
+                            ouFile3.write(line2)
+                        else:
+                            ouFile4.write(line1)
+                            ouFile4.write(line2)
+                    else:
+                        ouFile4.write(line1)
+                        ouFile4.write(line2)
+                #elif (mid1 - mid2)*(qmid1 - qmid2) < 0:
+                #    ouFile3.write(line1)
+                #    ouFile3.write(line2)
+                #    print(str(mid1)+'\t'+str(mid2)+'\t'+str(qmid1)+'\t'+str(qmid2))
                     
-
-
             else:
                 break
         inFile.close()
