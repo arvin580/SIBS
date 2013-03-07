@@ -41,6 +41,7 @@ for f in files:
                 elif (mid1 - mid2)*(qmid1 - qmid2) < 0:
                     ouFile3.write(line1)
                     ouFile3.write(line2)
+                    print(str(mid1)+'\t'+str(mid2)+'\t'+str(qmid1)+'\t'+str(qmid2))
                     
 
 
