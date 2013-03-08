@@ -3,7 +3,7 @@ import sys
 
 files = os.listdir('.')
 def viruse(n1,n2):
-    ouFile = open('unmapped-blated-mouse-'+str(n1)+'-'+str(n2), 'w')
+    ouFile = open('unmapped-blated-chimpanzee-'+str(n1)+'-'+str(n2), 'w')
     for f in files:
         if f[-7:] == '.blated':
             inFile = open(f)
