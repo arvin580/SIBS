@@ -1,20 +1,20 @@
-qsub ERR0498-04-05.unmapped.unique.92.blat.sh
-qsub ERR0498-04-05.unmapped.unique.186.blat.sh
-qsub ERR0498-04-05.unmapped.unique.48.blat.sh
-qsub ERR0498-04-05.unmapped.unique.192.blat.sh
-qsub ERR0498-04-05.unmapped.unique.73.blat.sh
-qsub ERR0498-04-05.unmapped.unique.109.blat.sh
-qsub ERR0498-04-05.unmapped.unique.179.blat.sh
-qsub ERR0498-04-05.unmapped.unique.30.blat.sh
-qsub ERR0498-04-05.unmapped.unique.7.blat.sh
-qsub ERR0498-04-05.unmapped.unique.69.blat.sh
-qsub ERR0498-04-05.unmapped.unique.105.blat.sh
-qsub ERR0498-04-05.unmapped.unique.113.blat.sh
-qsub ERR0498-04-05.unmapped.unique.42.blat.sh
-qsub ERR0498-04-05.unmapped.unique.128.blat.sh
-qsub ERR0498-04-05.unmapped.unique.23.blat.sh
-qsub ERR0498-04-05.unmapped.unique.24.blat.sh
-qsub ERR0498-04-05.unmapped.unique.174.blat.sh
-qsub ERR0498-04-05.unmapped.unique.134.blat.sh
-qsub ERR0498-04-05.unmapped.unique.12.blat.sh
-qsub ERR0498-04-05.unmapped.unique.71.blat.sh
+qsub ERR0498-04-05.unmapped.unique.92.blat.sh -l nodes=n4 
+qsub ERR0498-04-05.unmapped.unique.186.blat.sh -l nodes=n5 
+qsub ERR0498-04-05.unmapped.unique.48.blat.sh -l nodes=n6 
+qsub ERR0498-04-05.unmapped.unique.192.blat.sh -l nodes=n7 
+qsub ERR0498-04-05.unmapped.unique.73.blat.sh -l nodes=n9 
+qsub ERR0498-04-05.unmapped.unique.109.blat.sh -l nodes=n10 
+qsub ERR0498-04-05.unmapped.unique.179.blat.sh -l nodes=n11 
+qsub ERR0498-04-05.unmapped.unique.30.blat.sh -l nodes=n12 
+qsub ERR0498-04-05.unmapped.unique.7.blat.sh -l nodes=n13 
+qsub ERR0498-04-05.unmapped.unique.69.blat.sh -l nodes=n14 
+qsub ERR0498-04-05.unmapped.unique.105.blat.sh -l nodes=n15 
+qsub ERR0498-04-05.unmapped.unique.113.blat.sh -l nodes=n16 
+qsub ERR0498-04-05.unmapped.unique.42.blat.sh -l nodes=n17 
+qsub ERR0498-04-05.unmapped.unique.128.blat.sh -l nodes=n19 
+qsub ERR0498-04-05.unmapped.unique.23.blat.sh -l nodes=n21 
+qsub ERR0498-04-05.unmapped.unique.24.blat.sh -l nodes=n22 
+qsub ERR0498-04-05.unmapped.unique.174.blat.sh -l nodes=n23 
+qsub ERR0498-04-05.unmapped.unique.134.blat.sh -l nodes=n24 
+qsub ERR0498-04-05.unmapped.unique.12.blat.sh -l nodes=n25 
+qsub ERR0498-04-05.unmapped.unique.71.blat.sh -l nodes=n26 
