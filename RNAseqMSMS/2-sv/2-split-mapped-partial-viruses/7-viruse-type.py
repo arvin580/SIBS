@@ -1,7 +1,7 @@
 import sys
-D = {}
 
 def viruse(v):
+    D = {}
     inFile = open('ERR0498-04-05.unmapped.unique.human-viruse')
     ouFile1 = open('ERR0498-04-05.unmapped.unique.human-viruse.'+v, 'w')
     while True:
@@ -28,3 +28,4 @@ def viruse(v):
     ouFile1.close()
 
 viruse('NC_001357.1')
+viruse('NC_003225.1')
