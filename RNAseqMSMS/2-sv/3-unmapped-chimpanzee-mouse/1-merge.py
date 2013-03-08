@@ -20,7 +20,7 @@ for f in files:
 
 D = {}
 
-ouFile = open('unmapped-blated-chimpanzee-90-60-mouse-90-60', 'w')
+ouFile = open('unmapped-blated-chimpanzee-90-60-mouse-90-60.seq', 'w')
 
 inFile = open('unmapped-blated-chimpanzee-90-60')
 for line in inFile:
@@ -38,5 +38,5 @@ for line in inFile:
 inFile.close()
 
 for k in D:
-    ouFile.write('\t'.join(D[k])+'\n')
-    ouFile.write('\t'.join(D2[k])+'\n')
+    ouFile.write('>'+'\t'.join(D[k])+'\n')
+    ouFile.write(D2[k]+'\n')
