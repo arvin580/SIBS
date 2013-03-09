@@ -35,7 +35,7 @@ def sv(inF):
         line1 = inFile.readline().strip()
         line2 = inFile.readline().strip()
         if line1:
-            fields=line.split('\t')
+            fields=line1.split('\t')
             ch = fields[3]
             start = fields[10]
             end = fields[11]
@@ -49,7 +49,7 @@ def sv(inF):
                 g = ch+':'+str(start)+':'+str(end)+':'+':'+'/'.join(uniqueList(gene))
             else:
                 g = ch+':'+str(start)+':'+str(end)
-        ouFile.write(g+'\n')
+            ouFile.write(g+'\n')
 
             ch = fields[15]
             start = fields[22]
@@ -64,16 +64,15 @@ def sv(inF):
                 g = ch+':'+str(start)+':'+str(end)+':'+':'+'/'.join(uniqueList(gene))
             else:
                 g = ch+':'+str(start)+':'+str(end)
-        ouFile.write(g+'\n')
+            ouFile.write(g+'\n')
 
         else:
             break
     
     
-    inFile2.close()
+    inFile.close()
     ouFile.close()
 
 
 
-#sv('split-mapped-deletion')
-sv('ha')
+sv('split-mapped-deletion')
