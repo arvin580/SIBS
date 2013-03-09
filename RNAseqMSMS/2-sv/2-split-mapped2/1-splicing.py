@@ -4,7 +4,7 @@ import string
 
 def uniprot():
     uniprot = {}
-    inFile = open('/netshare1/home1/people/hansun/RNAseqMSMS/3-uniprot/human_uniprot_sprot.fa')
+    inFile = open('Homo_sapiens.GRCh37.70.pep.all.fa.fa')
     while True:
         line1 = inFile.readline().strip()
         line2 = inFile.readline().strip()
