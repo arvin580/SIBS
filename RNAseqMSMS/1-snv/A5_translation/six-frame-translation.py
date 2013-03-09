@@ -31,16 +31,37 @@ def translate(seq,start,end,FROM,TO):
                     pep.append(Codon[c])
             s = start - i
             e = end - i 
-            print(s)
-            print(e)
-            six.append([''.join(pep),int(ceil(s/3)),int(ceil(e/3))])
+            six.append([''.join(pep),int(ceil(s/3.0)),int(ceil(e/3.0))])
         for i in range(3):
             pep = []
             for j in range(i,len(seq_rev),3):
                 c = seq_rev[j:j+3]
                 if len(c) == 3:
                     pep.append(Codon[c])
-            six.append([''.join(pep),0,0])
+            s = len(seq_rev) - end + 1 - i
+            e = len(seq_rev) - start + 1 - i
+            six.append([''.join(pep),int(ceil(s/3.0)),int(ceil(e/3.0))])
+
+        end = start + len(TO) - 1
+        for i in range(3):
+            pep = []
+            for j in range(i,len(seq_to),3):
+                c = seq_to[j:j+3]
+                if len(c) == 3:
+                    pep.append(Codon[c])
+            s = start - i
+            e = end - i 
+            six.append([''.join(pep),int(ceil(s/3.0)),int(ceil(e/3.0))])
+        for i in range(3):
+            pep = []
+            for j in range(i,len(seq_to_rev),3):
+                c = seq_to_rev[j:j+3]
+                if len(c) == 3:
+                    pep.append(Codon[c])
+            s = len(seq_to_rev) - end + 1 - i
+            e = len(seq_to_rev) - start + 1 - i
+            six.append([''.join(pep),int(ceil(s/3.0)),int(ceil(e/3.0))])
+
     
         return six
 
@@ -48,5 +69,14 @@ def translate(seq,start,end,FROM,TO):
         print('warning:'+'\t'+seq)
 
 #six = translate('CAGCACCTCCCTGATGGGGACAAAACGCCCATGTCCGAGCGGCTGGACGACACGGAGCCCTATTTCATCGGGATCTTTTGCTTCGAGGCAGGGATCAAA',)
-six = translate('CCGAGGCAGGGATCAAA',8,10,'AGG','A')
-print(six)
+#six = translate('CCGAGGCAGGGATCAAAGATCAGCCTA',11,15,'GATCA','AT')
+#six = translate('CCGAGGCAGGGATCAAAGATCAGCCTA',11,11,'G','A')
+#print(six)
+
+def snv(inF):
+    inFile = open('')
+    inFile.close()
+
+
+
+
