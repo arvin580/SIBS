@@ -61,7 +61,7 @@ def sv(inF):
                     if int(it[4])<=int(start)<=int(it[5]) or int(it[4])<=int(end)<=int(it[5]) or (int(start)<=int(it[4]) and int(end)>=int(it[5])):
                         gene.append(it[-1])
             if gene:
-                g = ch+':'+str(start)+':'+str(end)+':'+':'+'/'.join(uniqueList(gene))
+                g = ch+':'+str(start)+':'+str(end)+':'+'/'.join(uniqueList(gene))
             else:
                 g = ch+':'+str(start)+':'+str(end)
             ouFile.write(g+'\n')
@@ -75,4 +75,7 @@ def sv(inF):
 
 
 
-sv('split-mapped-deletion')
+#sv('split-mapped-deletion')
+sv('split-mapped-inversion')
+sv('split-mapped-duplication')
+#sv('split-mapped-translocation')
