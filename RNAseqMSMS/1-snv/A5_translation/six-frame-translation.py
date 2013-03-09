@@ -100,15 +100,16 @@ def snv_indel(inF):
         for TO in TOs:
             six = translate(seq, L+1, L+len(FROM), FROM, TO)
             for i in range(6):
-                ouFile.write('>'+ch+':'+str(start)+':'+str(end)+':'+'REF-'+str(i)+':'+str(six[i][1])+':'+str(six[i][2])+'\n')
+                ouFile.write('>'+ch+':'+str(start)+':'+str(end)+':'+FROM+':'+TO+':'+'REF-'+str(i)+':'+str(six[i][1])+':'+str(six[i][2])+':'+six[i][0][six[i][1]-1:six[i][2]]+'\n')
                 ouFile.write(six[i][0]+'\n')
-                ouFile.write('>'+ch+':'+str(start)+':'+str(end)+':'+'ALT-'+str(i)+':'+str(six[i+6][1])+':'+str(six[i+6][2])+'\n')
+                ouFile.write('>'+ch+':'+str(start)+':'+str(end)+':'+FROM+':'+TO+':'+'ALT-'+str(i)+':'+str(six[i+6][1])+':'+str(six[i+6][2])+':'+six[i+6][0][six[i+6][1]-1:six[i+6][2]]+'\n')
                 ouFile.write(six[i+6][0]+'\n')
     inFile.close()
 
 
-#snv('sum_snv.exome_summary.nonsynonymous-splicing')
-#snv('sum_snv.exome_summary.overall.filter.nonsynonymous-splicing')
+snv_indel('sum_snv.exome_summary.nonsynonymous-splicing')
+snv_indel('sum_snv.exome_summary.overall.filter.nonsynonymous-splicing')
 snv_indel('sum_snv.exome_summary.indel')
+snv_indel('sum_snv.exome_summary.indel.overall.filter')
 
 
