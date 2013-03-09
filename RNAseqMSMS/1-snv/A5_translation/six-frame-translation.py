@@ -83,29 +83,7 @@ while True:
 
 inFile.close()
 
-def snv(inF):
-    inFile = open(inF)
-    ouFile = open(inF+'.pep','w')
-    for line in inFile:
-        line = line.strip()
-        fields = line.split('\t')
-        ch = fields[21]
-        start = int(fields[22])
-        end = int(fields[23])
-        FROM = fields[24].upper()
-        TO = fields[25].upper()
-        s = start - L -1
-        e = end + L
-        seq = D[ch][s:e]
-        six = translate(seq, L+1, L+len(FROM), FROM, TO)
-        for i in range(6):
-            ouFile.write('>'+ch+':'+str(start)+':'+str(end)+':'+'REF-'+str(i)+':'+str(six[i][1])+':'+str(six[i][2])+'\n')
-            ouFile.write(six[i][0]+'\n')
-            ouFile.write('>'+ch+':'+str(start)+':'+str(end)+':'+'ALT-'+str(i)+':'+str(six[i+6][1])+':'+str(six[i+6][2])+'\n')
-            ouFile.write(six[i+6][0]+'\n')
-    inFile.close()
-
-def indel(inF):
+def snv_indel(inF):
     inFile = open(inF)
     ouFile = open(inF+'.pep','w')
     for line in inFile:
@@ -113,23 +91,24 @@ def indel(inF):
         fields = line.split('\t')
         ch = fields[26]
         FROM = fields[29].upper()
-        TO = fields[30].upper()
+        TOs = fields[30].upper().split(',')
         start = int(fields[27])
         end = int(fields[27])+len(FROM)-1
         s = start - L -1
         e = end + L
         seq = D[ch][s:e]
-        six = translate(seq, L+1, L+len(FROM), FROM, TO)
-        for i in range(6):
-            ouFile.write('>'+ch+':'+str(start)+':'+str(end)+':'+'REF-'+str(i)+':'+str(six[i][1])+':'+str(six[i][2])+'\n')
-            ouFile.write(six[i][0]+'\n')
-            ouFile.write('>'+ch+':'+str(start)+':'+str(end)+':'+'ALT-'+str(i)+':'+str(six[i+6][1])+':'+str(six[i+6][2])+'\n')
-            ouFile.write(six[i+6][0]+'\n')
+        for TO in TOs:
+            six = translate(seq, L+1, L+len(FROM), FROM, TO)
+            for i in range(6):
+                ouFile.write('>'+ch+':'+str(start)+':'+str(end)+':'+'REF-'+str(i)+':'+str(six[i][1])+':'+str(six[i][2])+'\n')
+                ouFile.write(six[i][0]+'\n')
+                ouFile.write('>'+ch+':'+str(start)+':'+str(end)+':'+'ALT-'+str(i)+':'+str(six[i+6][1])+':'+str(six[i+6][2])+'\n')
+                ouFile.write(six[i+6][0]+'\n')
     inFile.close()
 
 
 #snv('sum_snv.exome_summary.nonsynonymous-splicing')
 #snv('sum_snv.exome_summary.overall.filter.nonsynonymous-splicing')
-indel('ha')
+snv_indel('sum_snv.exome_summary.indel')
 
 
