@@ -14,23 +14,15 @@ def translate(seq,start,end,FROM,TO):
     # start,end:count from 1.
     six = []
     trans = string.maketrans('atcgATCG','tagcTAGC')
-    print(start)
-    print(end)
-    print(FROM)
-    print(TO)
-    if seq[start-1:end]== FROM:
+    if seq[start-1:end].upper()== FROM:
         seq_to = seq[0:start-1]+TO+seq[end:]
         seq_rev = string.translate(seq[::-1],trans)
         seq_to_rev = string.translate(seq_to[::-1],trans)
-        print(seq)
-        print(seq_rev)
-        print(seq_to)
-        print(seq_to_rev)
 
         for i in range(3):
             pep = []
             for j in range(i,len(seq),3):
-                c = seq[j:j+3]
+                c = seq[j:j+3].upper()
                 if len(c) == 3:
                     pep.append(Codon[c])
             s = start - i
@@ -39,7 +31,7 @@ def translate(seq,start,end,FROM,TO):
         for i in range(3):
             pep = []
             for j in range(i,len(seq_rev),3):
-                c = seq_rev[j:j+3]
+                c = seq_rev[j:j+3].upper()
                 if len(c) == 3:
                     pep.append(Codon[c])
             s = len(seq_rev) - end + 1 - i
@@ -50,7 +42,7 @@ def translate(seq,start,end,FROM,TO):
         for i in range(3):
             pep = []
             for j in range(i,len(seq_to),3):
-                c = seq_to[j:j+3]
+                c = seq_to[j:j+3].upper()
                 if len(c) == 3:
                     pep.append(Codon[c])
             s = start - i
@@ -59,7 +51,7 @@ def translate(seq,start,end,FROM,TO):
         for i in range(3):
             pep = []
             for j in range(i,len(seq_to_rev),3):
-                c = seq_to_rev[j:j+3]
+                c = seq_to_rev[j:j+3].upper()
                 if len(c) == 3:
                     pep.append(Codon[c])
             s = len(seq_to_rev) - end + 1 - i
@@ -70,7 +62,7 @@ def translate(seq,start,end,FROM,TO):
         return six
 
     else:
-        print('warning:'+'\t'+seq)
+        print('warning:'+'\t'+seq+'\t'+str(start)+'\t'+str(end)+'\t'+FROM+'\t'+TO)
 
 #six = translate('CAGCACCTCCCTGATGGGGACAAAACGCCCATGTCCGAGCGGCTGGACGACACGGAGCCCTATTTCATCGGGATCTTTTGCTTCGAGGCAGGGATCAAA',)
 #six = translate('CCGAGGCAGGGATCAAAGATCAGCCTA',11,15,'GATCA','AT')
@@ -93,22 +85,51 @@ inFile.close()
 
 def snv(inF):
     inFile = open(inF)
+    ouFile = open(inF+'.pep','w')
     for line in inFile:
         line = line.strip()
         fields = line.split('\t')
         ch = fields[21]
         start = int(fields[22])
         end = int(fields[23])
-        FROM = fields[24]
-        TO = fields[25]
+        FROM = fields[24].upper()
+        TO = fields[25].upper()
         s = start - L -1
         e = end + L
         seq = D[ch][s:e]
         six = translate(seq, L+1, L+len(FROM), FROM, TO)
-        print(six)
+        for i in range(6):
+            ouFile.write('>'+ch+':'+str(start)+':'+str(end)+':'+'REF-'+str(i)+':'+str(six[i][1])+':'+str(six[i][2])+'\n')
+            ouFile.write(six[i][0]+'\n')
+            ouFile.write('>'+ch+':'+str(start)+':'+str(end)+':'+'ALT-'+str(i)+':'+str(six[i+6][1])+':'+str(six[i+6][2])+'\n')
+            ouFile.write(six[i+6][0]+'\n')
     inFile.close()
 
+def indel(inF):
+    inFile = open(inF)
+    ouFile = open(inF+'.pep','w')
+    for line in inFile:
+        line = line.strip()
+        fields = line.split('\t')
+        ch = fields[26]
+        FROM = fields[29].upper()
+        TO = fields[30].upper()
+        start = int(fields[27])
+        end = int(fields[27])+len(FROM)-1
+        s = start - L -1
+        e = end + L
+        seq = D[ch][s:e]
+        six = translate(seq, L+1, L+len(FROM), FROM, TO)
+        for i in range(6):
+            ouFile.write('>'+ch+':'+str(start)+':'+str(end)+':'+'REF-'+str(i)+':'+str(six[i][1])+':'+str(six[i][2])+'\n')
+            ouFile.write(six[i][0]+'\n')
+            ouFile.write('>'+ch+':'+str(start)+':'+str(end)+':'+'ALT-'+str(i)+':'+str(six[i+6][1])+':'+str(six[i+6][2])+'\n')
+            ouFile.write(six[i+6][0]+'\n')
+    inFile.close()
+
+
 #snv('sum_snv.exome_summary.nonsynonymous-splicing')
-snv('ha')
+#snv('sum_snv.exome_summary.overall.filter.nonsynonymous-splicing')
+indel('ha')
 
 
