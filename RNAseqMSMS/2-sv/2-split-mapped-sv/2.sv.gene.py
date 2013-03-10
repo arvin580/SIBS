@@ -76,6 +76,6 @@ def sv(inF):
 
 
 #sv('split-mapped-deletion')
-sv('split-mapped-inversion')
-sv('split-mapped-duplication')
-#sv('split-mapped-translocation')
+#sv('split-mapped-inversion')
+#sv('split-mapped-duplication')
+sv('split-mapped-translocation')
