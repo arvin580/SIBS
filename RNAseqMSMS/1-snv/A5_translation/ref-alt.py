@@ -1,5 +1,5 @@
 D = {}
-inFile = open('')
+inFile = open('/netshare1/home1/people/hansun/Data/Ensembl/Homo_sapiens.GRCh37.70.pep.all.fa.fa')
 while True:
     line1 = inFile.readline().strip()
     line2 = inFile.readline().strip()
@@ -28,9 +28,9 @@ def ref_alt(inF):
                     if L[i+1] in D[k]:
                         flag += 1
                         ouFile1.write(L[i]+'\t'+k+'\n')
-                        ouFile1.write(L[i+1])
+                        ouFile1.write(L[i+1]+'\n')
                         ouFile1.write(L[i+2]+'\t'+k+'\n')
-                        ouFile1.write(L[i+3])
+                        ouFile1.write(L[i+3]+'\n')
             if not flag:
                 for item in L:
                     ouFile2.write(item+'\n')
