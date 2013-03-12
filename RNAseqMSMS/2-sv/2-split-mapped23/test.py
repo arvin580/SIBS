@@ -1,10 +1,11 @@
 import sys
 import os
-DIR='../2-split-mapped3'
+DIR='.'
 files = os.listdir(DIR)
 D = {}
 for f in files:
-    if f[-9:]=='.splicing':
+    if f[-2:]=='ha':
+        print('x')
         inFile = open(DIR+'/'+f)
         while True:
             line1 = inFile.readline()
