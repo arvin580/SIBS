@@ -4,7 +4,7 @@ DIR='.'
 files = os.listdir(DIR)
 D = {}
 for f in files:
-    if f[-8:]=='splicing':
+    if f[-9:]=='.splicing':
         inFile = open(DIR+'/'+f)
         while True:
             line1 = inFile.readline()
