@@ -1,6 +1,6 @@
 import sys
 import os
-DIR='../2-split-mapped2'
+DIR='../2-split-mapped3'
 files = os.listdir(DIR)
 D = {}
 for f in files:
