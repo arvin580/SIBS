@@ -36,7 +36,8 @@ for f in files:
             else:
                 break
         inFile.close()
+ouFile = open('ERR0498-04-05.unmapped.unique.total.fasta.blated.filtered.seq1.splicing.not_known-predict','w')
 for k in D2:
-    print('\t'.join(D2[k][0::2]))
-    print('\t'.join(D2[k][1::2]))
+    ouFile.write('\t'.join(D2[k][0::2])+'\n')
+    ouFile.write('\t'.join(D2[k][1::2])+'\n')
 

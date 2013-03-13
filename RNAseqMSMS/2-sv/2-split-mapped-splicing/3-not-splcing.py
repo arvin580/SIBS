@@ -4,7 +4,7 @@ DIR='../2-split-mapped2'
 files = os.listdir(DIR)
 D = {}
 for f in files:
-    if f[-9:]=='.splicing':
+    if f[-13:]=='.not-splicing':
         inFile = open(DIR+'/'+f)
         while True:
             line1 = inFile.readline().strip()
@@ -21,7 +21,7 @@ for f in files:
 DIR='../2-split-mapped3'
 files = os.listdir(DIR)
 for f in files:
-    if f[-9:]=='.splicing':
+    if f[-13:]=='.not-splicing':
         inFile = open(DIR+'/'+f)
         while True:
             line1 = inFile.readline().strip()
