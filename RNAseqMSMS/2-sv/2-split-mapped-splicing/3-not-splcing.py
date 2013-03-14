@@ -35,7 +35,7 @@ for f in files:
             else:
                 break
         inFile.close()
-ouFile = open('ERR0498-04-05.unmapped.unique.total.fasta.blated.filtered.seq1.sv.known-predict','w')
+ouFile = open('ERR0498-04-05.unmapped.unique.total.fasta.blated.filtered.seq1.not-splicing','w')
 
 for f in files:
     if f[-13:]=='.not-splicing':
