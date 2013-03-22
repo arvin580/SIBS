@@ -150,7 +150,7 @@ class PyHeatmap():
         axcolor = fig.add_axes([0.2,0.03,0.7,0.02])
         if colorTickets:
             x=plt.colorbar(axm, cax=axcolor, orientation='horizontal', ticks=range(self.data.max()+1))
-            x.set_label('log2 value')
+            ###x.set_label('log2 value')
         else:
             plt.colorbar(axm, cax=axcolor, orientation='horizontal', ticks=range(self.data.max()+1))
 
