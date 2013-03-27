@@ -1,12 +1,12 @@
 from xml.etree.ElementTree import *
 import os
 
-ouFile=open('tandem.peptides2','w')
+ouFile=open('tandem.peptides3','w')
 dir='.'
 for f in os.listdir(dir) :
     fe=dir+os.sep+f
     #if fi[-6:]=='.t.xml' :
-    if f == '20090815_Velos1_NaNa_SA_10k_Hela_Trypsin_SECC_SAXpH_11.2013_03_27_16_43_09.t.xml':
+    if f == '20090815_Velos1_NaNa_SA_10k_Hela_Trypsin_SECC_SAXpH_11.2013_03_27_17_35_24.t.xml':
         tree = ElementTree()
         tree.parse(fe)
         group=tree.findall('group')
