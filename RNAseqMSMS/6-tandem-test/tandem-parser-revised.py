@@ -23,29 +23,29 @@ for f in os.listdir(dir) :
         tree.parse(fe)
         group=tree.findall('group')
         for item in group :
-            Tandem = {}
             if item.get('id') :
-                #seq=[]
-                #mgf=[]
-                #label=[]
-                #info=[]
-                #pep = []
-                #pro = []
                 Spec = Spectrum()
                 s = item.findall('group/note')
                 if len(s) == 1:
-                    Spec.spec_name = s[0]
+                    Spec.spec_name = s[0].text
                 else:
                     print('spec error')
-                    return
 
-                p=item.findall('protein')
-                for x in p :
-                    Spec.protein.append(Protein())
-                    label.append(it.get('label'))
-                b = item .findall('protein/note')
-                for it in b :
-                    pro.append(it.text)
+                pro=item.findall('protein')
+                for x in pro :
+                    p = Protein()
+                    s = x.findall('protein/note')
+                    if len(s)==1:
+                        p.protein_name=s[0].text
+                    else:
+                        print('protein error')
+                    pep = x.findall('protein/peptide')
+                    for y in pep:
+                        pe = Peptide()
+                        pe.attr= 'xxx'
+                        p.peptide.append(pe)
+                    Spec.protein.append(p)
+                '''
 
                 p=item.findall('protein/peptide')
                 for it in p :
@@ -77,4 +77,5 @@ for f in os.listdir(dir) :
                     print(pep)
                     print(label)
                     print(info)
+                '''
 ouFile.close()
