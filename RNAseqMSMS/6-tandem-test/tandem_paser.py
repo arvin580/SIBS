@@ -17,10 +17,14 @@ for f in os.listdir(dir) :
                 label=[]
                 info=[]
                 pep = []
+                pro = []
 
                 b=item.findall('protein')
                 for it in b :
                     label.append(it.get('label'))
+                b = item .findall('protein/note')
+                for it in b :
+                    pro.append(it.text)
 
                 p=item.findall('protein/peptide')
                 for it in p :
@@ -39,12 +43,13 @@ for f in os.listdir(dir) :
                 #ouFile.write(f+'\t'+'\t'.join(mgf)+'\t'+'\t'.join(seq)+'\n')
                 #ouFile.write(f+'\t'+'\t'.join(label)+'\t'+'\t'.join(info)+'\t'+'\t'.join(seq)+'\n')
 
-                if len(mgf)==1 and len(seq)==len(pep)==len(label)==len(info):
+                if len(mgf)==1 and len(seq)==len(pep)==len(pro)==len(info):
                     ouFile.write(f+'\t'+'\t'.join(mgf)+'\t')
                     for i in range(len(seq)):
                         ouFile.write(seq[i]+'\t')
                         ouFile.write(pep[i]+'\t')
-                        ouFile.write(label[i]+'\t')
+                        #ouFile.write(label[i]+'\t')
+                        ouFile.write(pro[i]+'\t')
                         ouFile.write(info[i]+'\t')
                     ouFile.write('\n')
                 else:
