@@ -1,0 +1,16 @@
+#!/bin/bash
+
+cd  /netshare1/home1/people/hansun/Data/Lundberg/Illumina
+
+bwa aln  -t 8 \
+/netshare1/home1/people/hansun/GATK/bwa/hg19 \
+ERR0498-04-05.fastq \
+>ERR0498-04-05.sai
+
+
+bwa samse  \
+/netshare1/home1/people/hansun/GATK/bwa/hg19 \
+ERR0498-04-05.sai \
+ERR0498-04-05.fastq \
+-r "@RG\tID:1A\tSM:1A\tLB:1A\tPL:illumina\tPU:foo" \
+>ERR0498-04-05.sam

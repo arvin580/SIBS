@@ -1,0 +1,17 @@
+#!/bin/bash
+
+sam=ERR0498-04-05.sam
+bam=ERR0498-04-05.bam
+bamsorted=ERR0498-04-05.sorted
+bamsortedbam=ERR0498-04-05.sorted.bam
+stat=ERR0498-04-05.stat
+BAM=ERR0498-04-05.rmduped.bam
+
+cd /netshare1/home1/people/hansun/Data/Lundberg/Illumina 
+samtools view -bS -o $bam $sam
+samtools  sort $bam $bamsorted
+samtools  flagstat $bamsortedbam >$stat
+mv $bamsortedbam $bam
+samtools rmdup -S $bam $BAM
+mv $BAM $bam
+samtools index $bam
