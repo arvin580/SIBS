@@ -2,7 +2,7 @@ from xml.etree.ElementTree import *
 import os
 
 class Spectrum:
-    spec_name = ''
+    name = ''
     protein = []
 class Protein:
     name = ''
@@ -19,6 +19,7 @@ dir='.'
 for f in os.listdir(dir) :
     fe=dir+os.sep+f
     #if fi[-6:]=='.t.xml' :
+    #if f == '20090815_Velos1_NaNa_SA_10k_Hela_Trypsin_SECC_SAXpH_11.2013_03_27_14_04_16.t.xml':
     if f == 'test-xml':
         tree = ElementTree()
         tree.parse(fe)
@@ -28,7 +29,7 @@ for f in os.listdir(dir) :
                 Spec = Spectrum()
                 s = item.findall('group/note')
                 if len(s) == 1:
-                    Spec.spec_name = s[0].text
+                    Spec.name = s[0].text
                 else:
                     print('spec error')
 
@@ -48,9 +49,14 @@ for f in os.listdir(dir) :
                                 +y.get('hyperscore')+':'+y.get('pre')+':'+y.get('post')
                         p.peptide.append(pe)
                     Spec.protein.append(p)
+
+                print(Spec.name+'\t'),
+                print(len(Spec.protein))
                 for protein in Spec.protein:
                     for peptide in protein.peptide:
-                        print(Spec.spec_name+'\t'+protein.name+'\t'+peptide.seq+'\t'+peptide.attr)
+                        print(protein.name+'\t'+peptide.seq+'\t'+peptide.attr+'\t'),
+                        #print(peptide.seq+'\t'+peptide.attr+'\t'),
+                print('\n'),
                 '''
 
                 p=item.findall('protein/peptide')
