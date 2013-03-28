@@ -5,20 +5,21 @@ class Spectrum:
     spec_name = ''
     protein = []
 class Protein:
-    protein_name = ''
-    protein_attr = ''
+    name = ''
+    seq = ''
+    attr = ''
     peptide = []
 class Peptide:
-    peptide_seq = ''
-    peptide_attr = ''
+    seq = ''
+    attr = ''
 
 
-ouFile=open('tandem.peptides3','w')
+#ouFile=open('tandem.peptides3','w')
 dir='.'
 for f in os.listdir(dir) :
     fe=dir+os.sep+f
     #if fi[-6:]=='.t.xml' :
-    if f == '20090815_Velos1_NaNa_SA_10k_Hela_Trypsin_SECC_SAXpH_11.2013_03_27_17_35_24.t.xml':
+    if f == 'test-xml':
         tree = ElementTree()
         tree.parse(fe)
         group=tree.findall('group')
@@ -34,17 +35,22 @@ for f in os.listdir(dir) :
                 pro=item.findall('protein')
                 for x in pro :
                     p = Protein()
-                    s = x.findall('protein/note')
+                    s = x.findall('note')
                     if len(s)==1:
-                        p.protein_name=s[0].text
+                        p.name=s[0].text
                     else:
                         print('protein error')
-                    pep = x.findall('protein/peptide')
+                    pep = x.findall('peptide/domain')
                     for y in pep:
                         pe = Peptide()
-                        pe.attr= 'xxx'
+                        pe.seq = y.get('seq')
+                        pe.attr = y.get('start')+':'+y.get('end')+':'+y.get('expect')+':'\
+                                +y.get('hyperscore')+':'+y.get('pre')+':'+y.get('post')
                         p.peptide.append(pe)
                     Spec.protein.append(p)
+                for protein in Spec.protein:
+                    for peptide in protein.peptide:
+                        print(Spec.spec_name+'\t'+protein.name+'\t'+peptide.seq+'\t'+peptide.attr)
                 '''
 
                 p=item.findall('protein/peptide')
@@ -78,4 +84,3 @@ for f in os.listdir(dir) :
                     print(label)
                     print(info)
                 '''
-ouFile.close()
