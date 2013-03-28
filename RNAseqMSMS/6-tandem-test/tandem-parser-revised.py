@@ -43,15 +43,20 @@ for f in os.listdir(dir) :
                         print('protein error')
                     pep = x.findall('peptide/domain')
                     for y in pep:
+                        print('xx')
                         pe = Peptide()
                         pe.seq = y.get('seq')
                         pe.attr = y.get('start')+':'+y.get('end')+':'+y.get('expect')+':'\
                                 +y.get('hyperscore')+':'+y.get('pre')+':'+y.get('post')
                         p.peptide.append(pe)
                     Spec.protein.append(p)
+                print('###')
+                print(len(Spec.protein))
+                for x in Spec.protein:
+                    print(len(x.peptide))
+                print('###')
 
                 print(Spec.name+'\t'),
-                print(len(Spec.protein))
                 for protein in Spec.protein:
                     for peptide in protein.peptide:
                         print(protein.name+'\t'+peptide.seq+'\t'+peptide.attr+'\t'),
