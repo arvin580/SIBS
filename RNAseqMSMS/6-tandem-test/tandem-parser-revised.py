@@ -59,8 +59,9 @@ for f in os.listdir(dir) :
                 print(Spec.name+'\t'),
                 for protein in Spec.protein:
                     for peptide in protein.peptide:
-                        print(protein.name+'\t'+peptide.seq+'\t'+peptide.attr+'\t'),
+                        #print(protein.name+'\t'+peptide.seq+'\t'+peptide.attr+'\t'),
                         #print(peptide.seq+'\t'+peptide.attr+'\t'),
+                        print(protein.name[0:7]+'\t'+peptide.seq+'\t'),
                 print('\n'),
                 '''
 
