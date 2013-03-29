@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 from xml.etree.ElementTree import *
 import sys
 
