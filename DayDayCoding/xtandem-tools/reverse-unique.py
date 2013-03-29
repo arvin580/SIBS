@@ -11,19 +11,20 @@ def unique(inF,flag=''):
             if flag:
                 D[line2].append(flag+':'+':'.join(line1.split('\t')))
             else:
-                D[line2].append(line1)
+                D[line2].append(':'.join(line1.split('\t')))
         else:
             break
     inFile.close()
 
 unique('Homo_sapiens.GRCh37.70.pep.all.fa.fa')
-unique('sum_snv.exome_summary.overall.filter.nonsynonymous-splicing.pep.nonstop','SNV')
-unique('sum_snv.exome_summary.indel.overall.filter.pep.nonstop','INDEL')
+unique('split-mapped-deletion-translocation-inversion-duplication','SV')
 
-ouFile = open('Homo_known-protein_filltered-snv_indel','w')
+ouFile = open('Homo_sv','w')
 for k in D:
     ouFile.write('>'+'|'.join(D[k])+'\n')
     ouFile.write(k+'\n')
+    ouFile.write('>REVERSE:'+'|'.join(D[k])+'\n')
+    ouFile.write(k[::-1]+'\n')
 
 ouFile.close()
 

@@ -44,11 +44,13 @@ for item in L:
     ouFile.write('qsub -l nodes=cu11 %s\n'%item)
 ouFile.close()
 
+
 N = 20
 n = 0
 for i in range(0,len(L),N):
     n += 1
     ouFile = open('run-%d.sh'%n,'w')
+    ouFile.write('cd %s\n'%os.getcwd())
     for x in range(N):
         if x+i < len(L): 
             ouFile.write('sh %s\n'%L[i+x])

@@ -11,7 +11,7 @@ def unique(inF,flag=''):
             if flag:
                 D[line2].append(flag+':'+':'.join(line1.split('\t')))
             else:
-                D[line2].append(line1)
+                D[line2].append(':'.join(line1.split('\t')))
         else:
             break
     inFile.close()
