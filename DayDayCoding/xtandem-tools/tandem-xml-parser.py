@@ -17,7 +17,7 @@ class Peptide:
 inF = sys.argv[1]
 ouFile = open(sys.argv[1]+'.txt','w')
 tree = ElementTree()
-tree.parse(fe)
+tree.parse(inF)
 group=tree.findall('group')
 for item in group :
     if item.get('id') :
@@ -38,19 +38,13 @@ for item in group :
                 print('protein error')
             pep = x.findall('peptide/domain')
             for y in pep:
-                print('xx')
                 pe = Peptide()
                 pe.seq = y.get('seq')
                 pe.attr = y.get('start')+':'+y.get('end')+':'+y.get('expect')+':'\
                         +y.get('hyperscore')+':'+y.get('pre')+':'+y.get('post')
                 p.peptide.append(pe)
             Spec.protein.append(p)
-        print('###')
-        print(len(Spec.protein))
-        for x in Spec.protein:
-            print(len(x.peptide))
-        print('###')
-
+        '''
         print(Spec.name+'\t'),
         for protein in Spec.protein:
             for peptide in protein.peptide:
@@ -60,34 +54,38 @@ for item in group :
         print('\n'),
         '''
 
-        p=item.findall('protein/peptide')
-        for it in p :
-            pep.append(''.join(it.text.strip().split()))
+ouFile.close()
 
-        s=item.findall('protein/peptide/domain')
-        for it in s :
-            seq.append(it.get('seq'))
-            info.append(it.get('start')+':'+it.get('end')+':'+it.get('expect')+':'
-                    +it.get('hyperscore')+':'+it.get('pre')+':'+it.get('post'))
+'''
+
+p=item.findall('protein/peptide')
+for it in p :
+    pep.append(''.join(it.text.strip().split()))
+
+s=item.findall('protein/peptide/domain')
+for it in s :
+    seq.append(it.get('seq'))
+    info.append(it.get('start')+':'+it.get('end')+':'+it.get('expect')+':'
+            +it.get('hyperscore')+':'+it.get('pre')+':'+it.get('post'))
 
 
-        #ouFile.write(f+'\t'+'\t'.join(mgf)+'\t'+'\t'.join(seq)+'\n')
-        #ouFile.write(f+'\t'+'\t'.join(label)+'\t'+'\t'.join(info)+'\t'+'\t'.join(seq)+'\n')
+#ouFile.write(f+'\t'+'\t'.join(mgf)+'\t'+'\t'.join(seq)+'\n')
+#ouFile.write(f+'\t'+'\t'.join(label)+'\t'+'\t'.join(info)+'\t'+'\t'.join(seq)+'\n')
 
-        if len(mgf)==1 and len(seq)==len(pep)==len(pro)==len(info):
-            ouFile.write(f+'\t'+'\t'.join(mgf)+'\t')
-            for i in range(len(seq)):
-                ouFile.write(seq[i]+'\t')
-                ouFile.write(pep[i]+'\t')
-                #ouFile.write(label[i]+'\t')
-                ouFile.write(pro[i]+'\t')
-                ouFile.write(info[i]+'\t')
-            ouFile.write('\n')
-        else:
-            print('>'+ f )
-            print(mgf)
-            print(seq)
-            print(pep)
-            print(label)
-            print(info)
-        '''
+if len(mgf)==1 and len(seq)==len(pep)==len(pro)==len(info):
+    ouFile.write(f+'\t'+'\t'.join(mgf)+'\t')
+    for i in range(len(seq)):
+        ouFile.write(seq[i]+'\t')
+        ouFile.write(pep[i]+'\t')
+        #ouFile.write(label[i]+'\t')
+        ouFile.write(pro[i]+'\t')
+        ouFile.write(info[i]+'\t')
+    ouFile.write('\n')
+else:
+    print('>'+ f )
+    print(mgf)
+    print(seq)
+    print(pep)
+    print(label)
+    print(info)
+'''
