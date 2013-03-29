@@ -15,6 +15,7 @@ class Peptide:
     def __init__(self):
         self.seq = ''
         self.attr = ''
+        self.modification = []
 
 
 inF = sys.argv[1]
@@ -49,14 +50,19 @@ for item in group :
                 pe = Peptide()
                 pe.seq = y.get('seq')
                 pe.attr = y.get('start')+':'+y.get('end')+':'+y.get('expect')+':'\
-                        +y.get('hyperscore')+':'+y.get('pre')+':'+y.get('post')
+                        +y.get('hyperscore')+':'+y.get('nextscore')+':'+y.get('pre')+':'+y.get('post')+':'+y.get('missed_cleavages')
+                mod = y.findall('aa')
+                for m in mod:
+                    pe.modification.append(m.get('type'))
+                    pe.modification.append(m.get('at'))
+                    pe.modification.append(m.get('modified'))
                 p.peptide.append(pe)
             Spec.protein.append(p)
 
         ouFile.write(Spec.name+'\t')
         for protein in Spec.protein:
             for peptide in protein.peptide:
-                ouFile.write(protein.name+'\t'+protein.attr+'\t'+peptide.seq+'\t'+peptide.attr+'\t')
+                ouFile.write(protein.name+'\t'+protein.attr+'\t'+peptide.seq+'\t'+peptide.attr+'\t'+':'.join(peptide.modification)+'\t')
         ouFile.write('\n')
 
 ouFile.close()
