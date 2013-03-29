@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 import sys
 import os
 
@@ -42,6 +43,18 @@ ouFile = open('qsub.sh','w')
 for item in L:
     ouFile.write('qsub -l nodes=cu11 %s\n'%item)
 ouFile.close()
+
+N = 20
+n = 0
+for i in range(0,len(L),N):
+    n += 1
+    ouFile = open('run-%d.sh'%n,'w')
+    for x in range(N):
+        if x+i < len(L): 
+            ouFile.write('sh %s\n'%L[i+x])
+    ouFile.close()
+
+
 
     
 
