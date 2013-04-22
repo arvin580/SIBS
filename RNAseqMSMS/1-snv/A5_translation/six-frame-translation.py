@@ -2,6 +2,7 @@ import sys
 import string
 from math import ceil
 
+'''
 Codon = {}
 inFile = open('/netshare1/home1/people/hansun/Data/CodonUsage')
 for line in inFile:
@@ -9,6 +10,18 @@ for line in inFile:
     fields = line.split()
     Codon[fields[0]]=fields[1]
 inFile.close()
+
+HG = {}
+inFile = open('/netshare1/home1/people/hansun/Data/GenomeSeq/Human/ucsc.hg19.fasta.fa')
+while True:
+    line1 = inFile.readline().strip('>\n')
+    line2 = inFile.readline().strip()
+    if line1:
+        HG[line1]=line2
+    else:
+        break
+inFile.close()
+'''
 
 def translate(seq,start,end,FROM,TO):
     # start,end:count from 1.
@@ -71,17 +84,6 @@ def translate(seq,start,end,FROM,TO):
 
 L = 40
 
-D = {}
-inFile = open('/netshare1/home1/people/hansun/Data/GenomeSeq/Human/ucsc.hg19.fasta.fa')
-while True:
-    line1 = inFile.readline().strip('>\n')
-    line2 = inFile.readline().strip()
-    if line1:
-        D[line1]=line2
-    else:
-        break
-
-inFile.close()
 
 def snv_indel(inF):
     inFile = open(inF)
@@ -96,7 +98,7 @@ def snv_indel(inF):
         end = int(fields[27])+len(FROM)-1
         s = start - L -1
         e = end + L
-        seq = D[ch][s:e]
+        seq = HG[ch][s:e]
         for TO in TOs:
             six = translate(seq, L+1, L+len(FROM), FROM, TO)
             for i in range(6):
@@ -107,7 +109,22 @@ def snv_indel(inF):
     inFile.close()
 
 def snv_indel_splicing(inF):
-    pass
+    RefGene = {}
+    inFile = open('refGene-2013-04-22.txt')
+    for line in inFile:
+        line = line.strip()
+        RefGene.setdefault(line,[])
+        fields = line.split('\t')
+        starts = fields[9].split(',')
+        ends = fields[10].split(',')
+        for i in range(len(starts)):
+            RefGene[line].append(starts[i])
+            RefGene[line].append(ends[i])
+    inFile.close()
+
+    for k in RefGene:
+        print(k)
+        print(RefGene[k])
 
 
 
@@ -116,4 +133,5 @@ def snv_indel_splicing(inF):
 #snv_indel('sum_snv.exome_summary.indel')
 #snv_indel('sum_snv.exome_summary.indel.overall.filter')
 
+snv_indel_splicing('haah')
 
