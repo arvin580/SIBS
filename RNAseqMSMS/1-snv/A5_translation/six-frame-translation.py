@@ -122,10 +122,19 @@ def snv_indel_splicing(inF):
             RefGene[line].append(ends[i])
     inFile.close()
 
-    for k in RefGene:
-        print(k)
-        print(RefGene[k])
+    inFile = open(inF)
+    for line in inFile:
+        line = line.strip()
+        fields = line.split('\t')
+        ch = fields[26]
+        FROM = fields[29].upper()
+        TOs = fields[30].upper().split(',')
+        start = int(fields[27])
+        end = int(fields[27])+len(FROM)-1
 
+
+
+    inFile.close()
 
 
 #snv_indel('sum_snv.exome_summary.nonsynonymous-splicing')
