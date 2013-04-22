@@ -113,8 +113,8 @@ def snv_indel_splicing(inF):
     inFile = open('refGene-2013-04-22.txt')
     for line in inFile:
         line = line.strip()
-        RefGene.setdefault(line,[])
         fields = line.split('\t')
+        RefGene.setdefault(line,[fields[2],fields[3]])
         starts = fields[9].split(',')
         ends = fields[10].split(',')
         for i in range(len(starts)):
@@ -131,6 +131,11 @@ def snv_indel_splicing(inF):
         TOs = fields[30].upper().split(',')
         start = int(fields[27])
         end = int(fields[27])+len(FROM)-1
+        for k in RefGene:
+            if ch = RefGene[k][0]:
+                for pos in RefGene[k]:
+                    pass
+
 
 
 
