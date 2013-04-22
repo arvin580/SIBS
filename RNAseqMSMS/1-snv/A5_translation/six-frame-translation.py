@@ -133,8 +133,15 @@ def snv_indel_splicing(inF):
         end = int(fields[27])+len(FROM)-1
         for k in RefGene:
             if ch = RefGene[k][0]:
-                for pos in RefGene[k]:
-                    pass
+                i = 0
+                for pos in RefGene[k][2:]:
+                    i += 1
+                    if pos - L < start < pos + L or pos - L < end < pos + L:
+                        if i % 2 == 0:
+                            pass
+                        else:
+                            pass
+
 
 
 
