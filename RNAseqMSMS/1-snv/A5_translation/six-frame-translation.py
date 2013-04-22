@@ -106,10 +106,14 @@ def snv_indel(inF):
                 ouFile.write(six[i+6][0]+'\n')
     inFile.close()
 
+def snv_indel_splicing(inF):
+    pass
 
-snv_indel('sum_snv.exome_summary.nonsynonymous-splicing')
-snv_indel('sum_snv.exome_summary.overall.filter.nonsynonymous-splicing')
-snv_indel('sum_snv.exome_summary.indel')
-snv_indel('sum_snv.exome_summary.indel.overall.filter')
+
+
+#snv_indel('sum_snv.exome_summary.nonsynonymous-splicing')
+#snv_indel('sum_snv.exome_summary.overall.filter.nonsynonymous-splicing')
+#snv_indel('sum_snv.exome_summary.indel')
+#snv_indel('sum_snv.exome_summary.indel.overall.filter')
 
 
