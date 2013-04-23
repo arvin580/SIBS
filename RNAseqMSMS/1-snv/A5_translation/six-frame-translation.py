@@ -114,12 +114,11 @@ def snv_indel_splicing(inF):
     for line in inFile:
         line = line.strip()
         fields = line.split('\t')
-        RefGene.setdefault(line,[fields[2],fields[3]])
+        RefGene.setdefault(line,[[fields[2],fields[3]]])
         starts = fields[9].split(',')
         ends = fields[10].split(',')
         for i in range(len(starts)):
-            RefGene[line].append(starts[i])
-            RefGene[line].append(ends[i])
+            RefGene[line].append([starts[i],ends[i]])
     inFile.close()
 
     inFile = open(inF)
@@ -132,15 +131,19 @@ def snv_indel_splicing(inF):
         start = int(fields[27])
         end = int(fields[27])+len(FROM)-1
         for k in RefGene:
-            if ch = RefGene[k][0]:
+            if ch = RefGene[k][0][0]:
                 i = 0
-                for pos in RefGene[k][2:]:
+                for j in range(1,len(RefGene[k])):
                     i += 1
-                    if pos - L < start < pos + L or pos - L < end < pos + L:
-                        if i % 2 == 0:
-                            pass
-                        else:
-                            pass
+                    if RefGene[k][j][1] - L < end < RefGene[k][j][1]:
+                        s1 = start - L -1
+                        e1 = RefGene[k][j][1] 
+                        s2 = RefGene[k][j+1][0]  
+                        e2 = RefGene[k][j+1][0] + L-(RefGene[k][j]-end)
+                        seq = HG[ch][]
+                    elif RefGene[k][j][0] < start < RefGene[k][j][0] + L:
+                        pass
+
 
 
 
