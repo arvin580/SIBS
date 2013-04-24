@@ -69,7 +69,6 @@ def translate(seq,start,end,FROM,TO):
             e = len(seq_to_rev) - start + 1 - i
             six.append([''.join(pep),int(ceil(s/3.0)),int(ceil(e/3.0))])
 
-    
         return six
 
     else:
@@ -105,6 +104,8 @@ def snv_indel(inF):
                 ouFile.write('>'+ch+':'+str(start)+':'+str(end)+':'+FROM+':'+TO+':'+'ALT-'+str(i)+':'+str(six[i+6][1])+':'+str(six[i+6][2])+':'+six[i+6][0][six[i+6][1]-1:six[i+6][2]]+'\n')
                 ouFile.write(six[i+6][0]+'\n')
     inFile.close()
+    ouFile.close()
+
     snv_indel_splicing(inF)
 
 def snv_indel_splicing(inF):
@@ -121,7 +122,7 @@ def snv_indel_splicing(inF):
     inFile.close()
 
     inFile = open(inF)
-    ouFile = open(inF+'.pep2','a')
+    ouFile = open(inF+'.pep','a')
     for line in inFile:
         line = line.strip()
         fields = line.split('\t')
@@ -174,10 +175,9 @@ def snv_indel_splicing(inF):
     ouFile.close()
 
 
-#snv_indel('sum_snv.exome_summary.nonsynonymous-splicing')
-#snv_indel('sum_snv.exome_summary.overall.filter.nonsynonymous-splicing')
-#snv_indel('sum_snv.exome_summary.indel')
-snv_indel_splicing('sum_snv.exome_summary.indel')
-#snv_indel('sum_snv.exome_summary.indel.overall.filter')
+snv_indel('sum_snv.exome_summary.nonsynonymous-splicing')
+snv_indel('sum_snv.exome_summary.overall.filter.nonsynonymous-splicing')
+snv_indel('sum_snv.exome_summary.indel')
+snv_indel('sum_snv.exome_summary.indel.overall.filter')
 
 

@@ -11,7 +11,6 @@ for line in inFile:
     fields = line.split('\t')
     D[fields[0]] = line
 
-
 d = D.items()
 d.sort(cmp = cmp(x,y :lambda cmpfun(x,y)))
 
