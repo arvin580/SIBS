@@ -2,7 +2,6 @@ import sys
 import string
 from math import ceil
 
-'''
 Codon = {}
 inFile = open('/netshare1/home1/people/hansun/Data/CodonUsage')
 for line in inFile:
@@ -21,7 +20,6 @@ while True:
     else:
         break
 inFile.close()
-'''
 
 def translate(seq,start,end,FROM,TO):
     # start,end:count from 1.
@@ -138,11 +136,19 @@ def snv_indel_splicing(inF):
                         e1 = RefGene[k][j][1] 
                         s2 = RefGene[k][j+1][0]  
                         e2 = RefGene[k][j+1][0] + L-(RefGene[k][j][1]-end)
-                        #seq = HG[ch][s1:e1]+HG[ch][s2:e2]
-                        print(k)
+                        seq = HG[ch][s1:e1]+HG[ch][s2:e2]
+                        print(seq)
                         print(str(s1)+'\t'+str(e1)+'\t'+str(s2)+'\t'+str(e2))
                     elif RefGene[k][j][0] < start < RefGene[k][j][0] + L:
-                        pass
+                        s1 = RefGene[k][j-1][1]-(L - (start - RefGene[k][j][0]))
+                        e1 = RefGene[k][j-1][1] 
+                        s2 = RefGene[k][j][0]  
+                        e2 = end + L
+                        seq = HG[ch][s1:e1]+HG[ch][s2:e2]
+                        print(seq)
+                        print(str(s1)+'\t'+str(e1)+'\t'+str(s2)+'\t'+str(e2))
+
+     
     inFile.close()
 
 
