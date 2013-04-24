@@ -151,8 +151,6 @@ def snv_indel_splicing(inF):
                             print('Warning:\t'+line)
                             print('Warning:\t'+k)
 
-
-
                     elif RefGene[k][j][0] < start < RefGene[k][j][0] + L:
                         try:
                             s1 = RefGene[k][j-1][1]-(L - (start - RefGene[k][j][0])) -1
@@ -176,10 +174,9 @@ def snv_indel_splicing(inF):
     ouFile.close()
 
 
-#snv_indel('sum_snv.exome_summary.nonsynonymous-splicing')
-#snv_indel('sum_snv.exome_summary.overall.filter.nonsynonymous-splicing')
-#snv_indel('sum_snv.exome_summary.indel')
-#snv_indel('sum_snv.exome_summary.indel.overall.filter')
+snv_indel('sum_snv.exome_summary.nonsynonymous-splicing')
+snv_indel('sum_snv.exome_summary.overall.filter.nonsynonymous-splicing')
+snv_indel('sum_snv.exome_summary.indel')
+snv_indel('sum_snv.exome_summary.indel.overall.filter')
 
-snv_indel('he')
 
