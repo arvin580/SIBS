@@ -121,7 +121,7 @@ def snv_indel_splicing(inF):
     inFile.close()
 
     inFile = open(inF)
-    ouFile = open(inF+'.pep','a')
+    ouFile = open(inF+'.pep2','a')
     for line in inFile:
         line = line.strip()
         fields = line.split('\t')
@@ -174,9 +174,10 @@ def snv_indel_splicing(inF):
     ouFile.close()
 
 
-snv_indel('sum_snv.exome_summary.nonsynonymous-splicing')
-snv_indel('sum_snv.exome_summary.overall.filter.nonsynonymous-splicing')
-snv_indel('sum_snv.exome_summary.indel')
-snv_indel('sum_snv.exome_summary.indel.overall.filter')
+#snv_indel('sum_snv.exome_summary.nonsynonymous-splicing')
+#snv_indel('sum_snv.exome_summary.overall.filter.nonsynonymous-splicing')
+#snv_indel('sum_snv.exome_summary.indel')
+snv_indel_splicing('sum_snv.exome_summary.indel')
+#snv_indel('sum_snv.exome_summary.indel.overall.filter')
 
 
