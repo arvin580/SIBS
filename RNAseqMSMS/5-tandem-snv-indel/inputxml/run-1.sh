@@ -1,3 +1,4 @@
+cd /netshare1/home1/people/hansun/RNAseqMSMS/5-tandem-snv-indel/inputxml
 sh 20091025_Velos1_NaNa_SA_10k_run2_Trypsin_SECE_SAX_pH06.sh
 sh 20091021_Velos1_NaNa_SA_10k_run2_Trypsin_SECA_SAX_pH_05_091025033524.sh
 sh 20090812_Velos1_NaNa_SA_10k_Hela_Trypsin_SECB_SAXpH_11.sh
