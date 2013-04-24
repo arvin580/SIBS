@@ -48,7 +48,9 @@ def ref_alt(inF):
     ouFile2.close()
     ouFile3.close()
 
-ref_alt('sum_snv.exome_summary.indel.pep')
+ref_alt('sum_snv.exome_summary.overall.filter.nonsynonymous-splicing.pep')
+ref_alt('sum_snv.exome_summary.indel.overall.filter.pep')
 ref_alt('sum_snv.exome_summary.nonsynonymous-splicing.pep')
+ref_alt('sum_snv.exome_summary.indel.pep')
 
 
