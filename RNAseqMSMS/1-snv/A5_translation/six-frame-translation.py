@@ -120,6 +120,7 @@ def snv_indel_splicing(inF):
     inFile.close()
 
     inFile = open(inF)
+    ouFile = open(inF+'.pep','w')
     for line in inFile:
         line = line.strip()
         fields = line.split('\t')
@@ -137,19 +138,31 @@ def snv_indel_splicing(inF):
                         s2 = RefGene[k][j+1][0]  
                         e2 = RefGene[k][j+1][0] + L-(RefGene[k][j][1]-end)
                         seq = HG[ch][s1:e1]+HG[ch][s2:e2]
-                        print(seq)
-                        print(str(s1)+'\t'+str(e1)+'\t'+str(s2)+'\t'+str(e2))
+                        for TO in TOs:
+                            six = translate(seq, L+1, L+len(FROM), FROM, TO)
+                            for i in range(6):
+                                ouFile.write('>'+ch+':'+str(start)+':'+str(end)+':'+FROM+':'+TO+':'+'Splicing-REF-'+str(i)+':'+str(six[i][1])+':'+str(six[i][2])+':'+six[i][0][six[i][1]-1:six[i][2]]+'\n')
+                                ouFile.write(six[i][0]+'\n')
+                                ouFile.write('>'+ch+':'+str(start)+':'+str(end)+':'+FROM+':'+TO+':'+'Splicing-ALT-'+str(i)+':'+str(six[i+6][1])+':'+str(six[i+6][2])+':'+six[i+6][0][six[i+6][1]-1:six[i+6][2]]+'\n')
+                                ouFile.write(six[i+6][0]+'\n')
+
                     elif RefGene[k][j][0] < start < RefGene[k][j][0] + L:
-                        s1 = RefGene[k][j-1][1]-(L - (start - RefGene[k][j][0]))
+                        s1 = RefGene[k][j-1][1]-(L - (start - RefGene[k][j][0])) -1
                         e1 = RefGene[k][j-1][1] 
                         s2 = RefGene[k][j][0]  
                         e2 = end + L
                         seq = HG[ch][s1:e1]+HG[ch][s2:e2]
-                        print(seq)
-                        print(str(s1)+'\t'+str(e1)+'\t'+str(s2)+'\t'+str(e2))
+                        for TO in TOs:
+                            six = translate(seq, L+1, L+len(FROM), FROM, TO)
+                            for i in range(6):
+                                ouFile.write('>'+ch+':'+str(start)+':'+str(end)+':'+FROM+':'+TO+':'+'Splicing-REF-'+str(i)+':'+str(six[i][1])+':'+str(six[i][2])+':'+six[i][0][six[i][1]-1:six[i][2]]+'\n')
+                                ouFile.write(six[i][0]+'\n')
+                                ouFile.write('>'+ch+':'+str(start)+':'+str(end)+':'+FROM+':'+TO+':'+'Splicing-ALT-'+str(i)+':'+str(six[i+6][1])+':'+str(six[i+6][2])+':'+six[i+6][0][six[i+6][1]-1:six[i+6][2]]+'\n')
+                                ouFile.write(six[i+6][0]+'\n')
 
-     
+
     inFile.close()
+    ouFile.close()
 
 
 #snv_indel('sum_snv.exome_summary.nonsynonymous-splicing')
@@ -157,5 +170,5 @@ def snv_indel_splicing(inF):
 #snv_indel('sum_snv.exome_summary.indel')
 #snv_indel('sum_snv.exome_summary.indel.overall.filter')
 
-snv_indel_splicing('ha')
+snv_indel_splicing('he')
 
