@@ -117,8 +117,8 @@ def snv_indel_splicing(inF):
         RefGene.setdefault(line,[[fields[2],fields[3]]])
         starts = fields[9].split(',')
         ends = fields[10].split(',')
-        for i in range(len(starts)):
-            RefGene[line].append([starts[i],ends[i]])
+        for i in range(len(starts)-1):
+            RefGene[line].append([int(starts[i]),int(ends[i])])
     inFile.close()
 
     inFile = open(inF)
@@ -131,24 +131,18 @@ def snv_indel_splicing(inF):
         start = int(fields[27])
         end = int(fields[27])+len(FROM)-1
         for k in RefGene:
-            if ch = RefGene[k][0][0]:
-                i = 0
+            if ch == RefGene[k][0][0]:
                 for j in range(1,len(RefGene[k])):
-                    i += 1
                     if RefGene[k][j][1] - L < end < RefGene[k][j][1]:
                         s1 = start - L -1
                         e1 = RefGene[k][j][1] 
                         s2 = RefGene[k][j+1][0]  
-                        e2 = RefGene[k][j+1][0] + L-(RefGene[k][j]-end)
-                        seq = HG[ch][]
+                        e2 = RefGene[k][j+1][0] + L-(RefGene[k][j][1]-end)
+                        #seq = HG[ch][s1:e1]+HG[ch][s2:e2]
+                        print(k)
+                        print(str(s1)+'\t'+str(e1)+'\t'+str(s2)+'\t'+str(e2))
                     elif RefGene[k][j][0] < start < RefGene[k][j][0] + L:
                         pass
-
-
-
-
-
-
     inFile.close()
 
 
@@ -157,5 +151,5 @@ def snv_indel_splicing(inF):
 #snv_indel('sum_snv.exome_summary.indel')
 #snv_indel('sum_snv.exome_summary.indel.overall.filter')
 
-snv_indel_splicing('haah')
+snv_indel_splicing('ha')
 
