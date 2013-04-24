@@ -105,6 +105,7 @@ def snv_indel(inF):
                 ouFile.write('>'+ch+':'+str(start)+':'+str(end)+':'+FROM+':'+TO+':'+'ALT-'+str(i)+':'+str(six[i+6][1])+':'+str(six[i+6][2])+':'+six[i+6][0][six[i+6][1]-1:six[i+6][2]]+'\n')
                 ouFile.write(six[i+6][0]+'\n')
     inFile.close()
+    snv_indel_splicing(inF)
 
 def snv_indel_splicing(inF):
     RefGene = {}
@@ -120,7 +121,7 @@ def snv_indel_splicing(inF):
     inFile.close()
 
     inFile = open(inF)
-    ouFile = open(inF+'.pep','w')
+    ouFile = open(inF+'.pep','a')
     for line in inFile:
         line = line.strip()
         fields = line.split('\t')
@@ -133,32 +134,42 @@ def snv_indel_splicing(inF):
             if ch == RefGene[k][0][0]:
                 for j in range(1,len(RefGene[k])):
                     if RefGene[k][j][1] - L < end < RefGene[k][j][1]:
-                        s1 = start - L -1
-                        e1 = RefGene[k][j][1] 
-                        s2 = RefGene[k][j+1][0]  
-                        e2 = RefGene[k][j+1][0] + L-(RefGene[k][j][1]-end)
-                        seq = HG[ch][s1:e1]+HG[ch][s2:e2]
-                        for TO in TOs:
-                            six = translate(seq, L+1, L+len(FROM), FROM, TO)
-                            for i in range(6):
-                                ouFile.write('>'+ch+':'+str(start)+':'+str(end)+':'+FROM+':'+TO+':'+'Splicing-REF-'+str(i)+':'+str(six[i][1])+':'+str(six[i][2])+':'+six[i][0][six[i][1]-1:six[i][2]]+'\n')
-                                ouFile.write(six[i][0]+'\n')
-                                ouFile.write('>'+ch+':'+str(start)+':'+str(end)+':'+FROM+':'+TO+':'+'Splicing-ALT-'+str(i)+':'+str(six[i+6][1])+':'+str(six[i+6][2])+':'+six[i+6][0][six[i+6][1]-1:six[i+6][2]]+'\n')
-                                ouFile.write(six[i+6][0]+'\n')
+                        try:
+                            s1 = start - L -1
+                            e1 = RefGene[k][j][1] 
+                            s2 = RefGene[k][j+1][0]  
+                            e2 = RefGene[k][j+1][0] + L-(RefGene[k][j][1]-end)
+                            seq = HG[ch][s1:e1]+HG[ch][s2:e2]
+                            for TO in TOs:
+                                six = translate(seq, L+1, L+len(FROM), FROM, TO)
+                                for i in range(6):
+                                    ouFile.write('>'+ch+':'+str(start)+':'+str(end)+':'+FROM+':'+TO+':'+'Splicing-REF-'+str(i)+':'+str(six[i][1])+':'+str(six[i][2])+':'+six[i][0][six[i][1]-1:six[i][2]]+'\n')
+                                    ouFile.write(six[i][0]+'\n')
+                                    ouFile.write('>'+ch+':'+str(start)+':'+str(end)+':'+FROM+':'+TO+':'+'Splicing-ALT-'+str(i)+':'+str(six[i+6][1])+':'+str(six[i+6][2])+':'+six[i+6][0][six[i+6][1]-1:six[i+6][2]]+'\n')
+                                    ouFile.write(six[i+6][0]+'\n')
+                        except:
+                            print('Warning:\t'+line)
+                            print('Warning:\t'+k)
+
+
 
                     elif RefGene[k][j][0] < start < RefGene[k][j][0] + L:
-                        s1 = RefGene[k][j-1][1]-(L - (start - RefGene[k][j][0])) -1
-                        e1 = RefGene[k][j-1][1] 
-                        s2 = RefGene[k][j][0]  
-                        e2 = end + L
-                        seq = HG[ch][s1:e1]+HG[ch][s2:e2]
-                        for TO in TOs:
-                            six = translate(seq, L+1, L+len(FROM), FROM, TO)
-                            for i in range(6):
-                                ouFile.write('>'+ch+':'+str(start)+':'+str(end)+':'+FROM+':'+TO+':'+'Splicing-REF-'+str(i)+':'+str(six[i][1])+':'+str(six[i][2])+':'+six[i][0][six[i][1]-1:six[i][2]]+'\n')
-                                ouFile.write(six[i][0]+'\n')
-                                ouFile.write('>'+ch+':'+str(start)+':'+str(end)+':'+FROM+':'+TO+':'+'Splicing-ALT-'+str(i)+':'+str(six[i+6][1])+':'+str(six[i+6][2])+':'+six[i+6][0][six[i+6][1]-1:six[i+6][2]]+'\n')
-                                ouFile.write(six[i+6][0]+'\n')
+                        try:
+                            s1 = RefGene[k][j-1][1]-(L - (start - RefGene[k][j][0])) -1
+                            e1 = RefGene[k][j-1][1] 
+                            s2 = RefGene[k][j][0]  
+                            e2 = end + L
+                            seq = HG[ch][s1:e1]+HG[ch][s2:e2]
+                            for TO in TOs:
+                                six = translate(seq, L+1, L+len(FROM), FROM, TO)
+                                for i in range(6):
+                                    ouFile.write('>'+ch+':'+str(start)+':'+str(end)+':'+FROM+':'+TO+':'+'Splicing-REF-'+str(i)+':'+str(six[i][1])+':'+str(six[i][2])+':'+six[i][0][six[i][1]-1:six[i][2]]+'\n')
+                                    ouFile.write(six[i][0]+'\n')
+                                    ouFile.write('>'+ch+':'+str(start)+':'+str(end)+':'+FROM+':'+TO+':'+'Splicing-ALT-'+str(i)+':'+str(six[i+6][1])+':'+str(six[i+6][2])+':'+six[i+6][0][six[i+6][1]-1:six[i+6][2]]+'\n')
+                                    ouFile.write(six[i+6][0]+'\n')
+                        except:
+                            print('Warning:\t'+line)
+                            print('Warning:\t'+k)
 
 
     inFile.close()
@@ -170,5 +181,5 @@ def snv_indel_splicing(inF):
 #snv_indel('sum_snv.exome_summary.indel')
 #snv_indel('sum_snv.exome_summary.indel.overall.filter')
 
-snv_indel_splicing('he')
+snv_indel('he')
 
