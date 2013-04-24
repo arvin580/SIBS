@@ -1,7 +1,7 @@
 D = {}
 inFile = open('/netshare1/home1/people/hansun/Data/Ensembl/Homo_sapiens.GRCh37.70.pep.all.fa.fa')
 while True:
-    line1 = inFile.readline().strip()
+    line1 = inFile.readline().strip('>\n')
     line2 = inFile.readline().strip()
     if line1:
         D[line1] = line2
@@ -29,12 +29,12 @@ def ref_alt(inF):
                     if L[i+1] in D[k]:
                         flag += 1
                         if L[i].find('REF')!=-1:
-                            ouFile1.write(L[i]+'\t'+k+'\n')
+                            ouFile1.write(L[i]+'|'+k+'\n')
                             ouFile1.write(L[i+1]+'\n')
-                            ouFile1.write(L[i+2]+'\t'+k+'\n')
+                            ouFile1.write(L[i+2]+'|'+k+'\n')
                             ouFile1.write(L[i+3]+'\n')
                         else:
-                            ouFile3.write(L[i]+'\t'+k+'\n')
+                            ouFile3.write(L[i]+'|'+k+'\n')
                             ouFile3.write(L[i+1]+'\n')
             if not flag:
                 for item in L:
@@ -48,6 +48,7 @@ def ref_alt(inF):
     ouFile2.close()
     ouFile3.close()
 
-ref_alt('sum_snv.exome_summary.indel.overall.filter.pep')
+ref_alt('sum_snv.exome_summary.indel.pep')
+ref_alt('sum_snv.exome_summary.nonsynonymous-splicing.pep')
 
 
