@@ -16,8 +16,8 @@ def unique(inF,flag=''):
     inFile.close()
 
 unique('Homo_sapiens.GRCh37.70.pep.all.fa.fa')
-unique('sum_snv.exome_summary.overall.filter.nonsynonymous-splicing.pep.nonstop','SNV')
-unique('sum_snv.exome_summary.indel.overall.filter.pep.nonstop','INDEL')
+unique('sum_snv.exome_summary.nonsynonymous-splicing.pep.nonstop','SNV')
+unique('sum_snv.exome_summary.indel.pep.nonstop','INDEL')
 
 ouFile = open('Homo_known-protein_snv_indel','w')
 for k in D:
