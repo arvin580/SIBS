@@ -16,13 +16,17 @@ def unique(inF,flag=''):
     inFile.close()
 
 unique('Homo_sapiens.GRCh37.70.pep.all.fa.fa')
-unique('sum_snv.exome_summary.nonsynonymous-splicing.pep.nonstop','SNV')
-unique('sum_snv.exome_summary.indel.pep.nonstop','INDEL')
+unique('sum_snv.exome_summary.nonsynonymous-splicing.pep.ref-alt.nonstop','SNV')
+unique('sum_snv.exome_summary.nonsynonymous-splicing.pep.not-ref-alt.nonstop','SNV')
+unique('sum_snv.exome_summary.indel.pep.ref-alt.nonstop','INDEL')
+unique('sum_snv.exome_summary.indel.pep.not-ref-alt.nonstop','INDEL')
 
 ouFile = open('Homo_known-protein_snv_indel','w')
 for k in D:
     ouFile.write('>'+'|'.join(D[k])+'\n')
     ouFile.write(k+'\n')
+    ouFile.write('>REVERSE:'+'|'.join(D[k])+'\n')
+    ouFile.write(k[::-1]+'\n')
 
 ouFile.close()
 
