@@ -31,7 +31,7 @@ def ref_alt(inF):
                         if L[i].find('REF')!=-1:
                             ouFile1.write(L[i]+'|'+k+'\n')
                             ouFile1.write(L[i+1]+'\n')
-                            ouFile1.write(L[i+2]+'|'+k+'\n')
+                            ouFile1.write(L[i+2]+'\n')
                             ouFile1.write(L[i+3]+'\n')
                         else:
                             ouFile3.write(L[i]+'|'+k+'\n')
