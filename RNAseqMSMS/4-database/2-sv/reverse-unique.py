@@ -17,9 +17,11 @@ def unique(inF,flag=''):
     inFile.close()
 
 unique('Homo_sapiens.GRCh37.70.pep.all.fa.fa')
+unique('Homo_sapiens.GRCh37.70.pep.abinitio.fa.fa')
 unique('split-mapped-deletion-translocation-inversion-duplication','SV')
+unique('ERR0498-04-05.unmapped.unique.total.fasta.blated.filtered.seq1.splicing.not_known-predict','PREDICT-SPLICING')
 
-ouFile = open('Homo_sv','w')
+ouFile = open('HeLa-predict-splicing-sv','w')
 for k in D:
     ouFile.write('>'+'|'.join(D[k])+'\n')
     ouFile.write(k+'\n')
