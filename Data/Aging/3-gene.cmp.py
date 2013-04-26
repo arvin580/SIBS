@@ -5,6 +5,9 @@ for line in inFile:
     fields = line.split('\t')
     D.setdefault(fields[2],0)
     D[fields[2]]+=1
+    for item in fields[1].split():
+        D.setdefault(item,0)
+        D[item]+=1
 inFile.close()
 
 def gene(inF):
