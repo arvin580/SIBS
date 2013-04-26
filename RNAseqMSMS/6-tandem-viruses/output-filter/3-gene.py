@@ -1,16 +1,10 @@
 L = []
-inFile  = open('/netshare1/home1/people/hansun/RNAseqMSMS/1-snv/A1_csv2tsv/sum_snv.exome_summary')
+inFile = open('/netshare1/home1/people/hansun/Data/hg19_refGene/refGene-2013-04-22.txt')
 for line in inFile:
     line = line.strip()
-    L.append(line)
+    fields = line.split('\t')
+    L.append(fields)
 inFile.close()
-
-inFile  = open('/netshare1/home1/people/hansun/RNAseqMSMS/1-snv/A1_csv2tsv/sum_snv.exome_summary.indel')
-for line in inFile:
-    line = line.strip()
-    L.append(line)
-inFile.close()
-
 
 def gene_dbsnp(inF):
     inFile = open(inF)
@@ -18,21 +12,27 @@ def gene_dbsnp(inF):
     for line in inFile:
         line = line.strip()
         fields = line.split('\t')
-        tp = fields[1].split(':')[0]
-        ch = fields[1].split(':')[1]
-        pos = fields[1].split(':')[2]
+        nc= fields[1].split(':')[4]
+        ch = fields[1].split(':')[16]
+        pos1_nc = fields[1].split(':')[11]
+        pos2_nc = fields[1].split(':')[12]
+        pos3_ch = fields[1].split(':')[23]
+        pos4_ch = fields[1].split(':')[24]
+
+        pos5_nc_query = fields[1].split(':')[9]
+        pos6_nc_query = fields[1].split(':')[10]
+        pos7_ch_query = fields[1].split(':')[21]
+        pos8_ch_query = fields[1].split(':')[22]
         genes = []
-        dbsnps = []
+
         for item in L:
-            if item.find(ch) != -1 and item.find(pos) != -1:
-                gene = item.split('\t')[1].split('(')[0]
-                dbsnp = item.split('\t')[8]
+            if item[2]==ch and (int(item[4])<=int(pos3_ch)<=int(item[5]) or int(item[4])<=int(pos4_ch)<=int(item[5])):
+                gene = item[12]
                 genes.append(gene)
-                dbsnps.append(dbsnp)
-        ouFile.write(fields[0]+'\t'+'|'.join(genes)+'\t'+'|'.join(dbsnps)+'\t'+fields[1]+'\n')
+        ouFile.write(fields[0]+'\t'+'|'.join(set(genes))+'\t'+ch+'\t'+nc+'\t'+pos3_ch+'\t'+pos4_ch+'\t'+pos1_nc+'\t'+pos2_nc+'\t'+pos7_ch_query+'\t'+pos8_ch_query+'\t'+pos5_nc_query+'\t'+pos6_nc_query+'\t'+fields[1]+'\n')
 
 
     inFile.close()
     ouFile.close()
 
-gene_dbsnp('HeLa-SNV-INDEL-ALT-pep')
+gene_dbsnp('HeLa-Human-Viruses-pep')
