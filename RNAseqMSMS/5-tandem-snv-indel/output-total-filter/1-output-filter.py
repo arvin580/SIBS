@@ -1,6 +1,6 @@
 import os
 
-DIR = '../output'
+DIR = '../output-total'
 files = os.listdir(DIR)
 
 ouFile1 = open('HeLa-SNV-INDEL-REF','w')
