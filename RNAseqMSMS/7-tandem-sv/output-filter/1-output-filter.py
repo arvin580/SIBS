@@ -1,6 +1,6 @@
 import os
 
-DIR = '../output-total'
+DIR = '../output'
 files = os.listdir(DIR)
 
 ouFile1_1 = open('HeLa-SV-Duplication','w')
@@ -30,7 +30,7 @@ for f in files:
             elif line.find('Translocation')!=-1:
                 ouFile1_4.write(line)
             if line.find('PREDICT-SPLICING')!=-1:
-                ouFile1.write(line)
+                ouFile2.write(line)
         inFile.close()
 
 ouFile1_1.close()
