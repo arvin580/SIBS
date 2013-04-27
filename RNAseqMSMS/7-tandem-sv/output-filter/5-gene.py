@@ -23,21 +23,24 @@ def gene_dbsnp(inF):
         pos6_nc_query = fields[1].split(':')[10]
         pos7_ch_query = fields[1].split(':')[21]
         pos8_ch_query = fields[1].split(':')[22]
-        genes = []
+        genes1 = []
+        genes2 = []
 
         for item in L:
-            gene = []
             if (item[2]==nc and (int(item[4])<=int(pos1_nc)<=int(item[5]) or int(item[4])<=int(pos2_nc)<=int(item[5]))):
-                gene.append(item[12])
-            else:
-                gene.append('*')
+                genes1.append(item[12])
             if (item[2]==ch and (int(item[4])<=int(pos3_ch)<=int(item[5]) or int(item[4])<=int(pos4_ch)<=int(item[5]))):
-                gene.append(item[12])
-            else:
-                gene.append('*')
-            if gene[0]!='*' or gene[1]!='*':
-                genes.append(':'.join(gene))
-        ouFile.write(fields[0]+'\t'+'|'.join(set(genes))+'\t'+ch+'\t'+nc+'\t'+pos3_ch+'\t'+pos4_ch+'\t'+pos1_nc+'\t'+pos2_nc+'\t'+pos7_ch_query+'\t'+pos8_ch_query+'\t'+pos5_nc_query+'\t'+pos6_nc_query+'\t'+fields[1]+'\n')
+                genes2.append(item[12])
+        if genes1:
+            genes1 = '|'.join(set(genes1))
+        else:
+            genes1 = '*'
+        if genes2:
+            genes2 = '|'.join(set(genes2))
+        else:
+            genes2 = '*'
+        gene = genes1+':'+genes2
+        ouFile.write(fields[0]+'\t'+gene+'\t'+ch+'\t'+nc+'\t'+pos3_ch+'\t'+pos4_ch+'\t'+pos1_nc+'\t'+pos2_nc+'\t'+pos7_ch_query+'\t'+pos8_ch_query+'\t'+pos5_nc_query+'\t'+pos6_nc_query+'\t'+fields[1]+'\n')
 
 
     inFile.close()
