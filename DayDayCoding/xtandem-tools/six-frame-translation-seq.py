@@ -34,19 +34,7 @@ def translate(seq):
 
 
 
-inFile = open(sys.argv[1])
-ouFile = open(sys.argv[1]+'.pep','w')
-while True:
-    line1 = inFile.readline().strip()
-    line2 = inFile.readline().strip()
-    if line1:
-        fields = line1.split('\t')
-        six = translate(line2)
-        for i in range(len(six)):
-            if six[i].find('*')==-1:
-                ouFile.write(line1+'\t'+str(i)+'\n')
-                ouFile.write(six[i]+'\n')
-    else:
-        break
-inFile.close()
-ouFile.close()
+six = translate(sys.argv[1])
+for i in range(len(six)):
+    if six[i].find('*')==-1:
+        print(six[i])
