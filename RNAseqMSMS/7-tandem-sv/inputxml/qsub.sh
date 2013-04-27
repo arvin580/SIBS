@@ -40,6 +40,7 @@ qsub -l nodes=cu11 20091025_Velos1_NaNa_SA_10k_run2_Trypsin_SECC_SAX_pH06.sh
 qsub -l nodes=cu11 20090812_Velos1_NaNa_SA_10k_Hela_Trypsin_SECA_SAXpH_11.sh
 qsub -l nodes=cu11 20091025_Velos1_NaNa_SA_10k_run2_Trypsin_SECC_SAX_pH08.sh
 qsub -l nodes=cu11 20091025_Velos1_NaNa_SA_10k_run2_Trypsin_SECF_SAX_pH06_091116065850.sh
+qsub -l nodes=cu11 20090815_Velos1_NaNa_SA_10k_Hela_Trypsin_SECC_SAXpH_04.sh
 qsub -l nodes=cu11 20091025_Velos1_NaNa_SA_10k_run2_Trypsin_SECF_SAX_pH04_091115203910.sh
 qsub -l nodes=cu11 20091025_Velos1_NaNa_SA_10k_run2_Trypsin_SECD_SAX_pH05.sh
 qsub -l nodes=cu11 20090812_Velos1_NaNa_SA_10k_Hela_Trypsin_SECB_SAXpH_06.sh

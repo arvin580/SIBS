@@ -1,4 +1,5 @@
 cd /netshare1/home1/people/hansun/RNAseqMSMS/7-tandem-sv/inputxml
+sh 20090812_Velos1_NaNa_SA_10k_Hela_Trypsin_SECA_SAXpH_08.sh
 sh 20091021_Velos1_NaNa_SA_10k_run2_Trypsin_SECA_SAX_pH_03_091024182726.sh
 sh 20091025_Velos1_NaNa_SA_10k_run2_Trypsin_SECE_SAX_pH03.sh
 sh 20091021_Velos1_NaNa_SA_10k_run2_Trypsin_SECA_SAX_pH_11.sh
