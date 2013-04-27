@@ -26,17 +26,10 @@ def gene_dbsnp(inF):
         genes = []
 
         for item in L:
-            gene = []
-            if (item[2]==nc and (int(item[4])<=int(pos1_nc)<=int(item[5]) or int(item[4])<=int(pos2_nc)<=int(item[5]))):
-                gene.append(item[12])
-            else:
-                gene.append('*')
-            if (item[2]==ch and (int(item[4])<=int(pos3_ch)<=int(item[5]) or int(item[4])<=int(pos4_ch)<=int(item[5]))):
-                gene.append(item[12])
-            else:
-                gene.append('*')
-            if gene[0]!='*' or gene[1]!='*':
-                genes.append(':'.join(gene))
+            if (item[2]==ch and (int(item[4])<=int(pos3_ch)<=int(item[5]) or int(item[4])<=int(pos4_ch)<=int(item[5]))) or \
+                    (item[2]==nc and (int(item[4])<=int(pos1_nc)<=int(item[5]) or int(item[4])<=int(pos2_nc)<=int(item[5]))):
+                gene = item[12]
+                genes.append(gene)
         ouFile.write(fields[0]+'\t'+'|'.join(set(genes))+'\t'+ch+'\t'+nc+'\t'+pos3_ch+'\t'+pos4_ch+'\t'+pos1_nc+'\t'+pos2_nc+'\t'+pos7_ch_query+'\t'+pos8_ch_query+'\t'+pos5_nc_query+'\t'+pos6_nc_query+'\t'+fields[1]+'\n')
 
 
@@ -46,6 +39,6 @@ def gene_dbsnp(inF):
 #gene_dbsnp('HeLa-SV-Duplication-pep')
 #gene_dbsnp('HeLa-SV-Inversion-pep')
 #gene_dbsnp('HeLa-SV-Deletion-pep')
-gene_dbsnp('HeLa-SV-Translocation-pep')
-#gene_dbsnp('HeLa-Predict-Splicing-pep')
+#gene_dbsnp('HeLa-SV-Translocation-pep')
+gene_dbsnp('HeLa-Predict-Splicing-pep')
 #gene_dbsnp('HeLa-Predict')

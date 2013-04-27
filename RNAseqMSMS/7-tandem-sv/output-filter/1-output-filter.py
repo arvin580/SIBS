@@ -29,7 +29,7 @@ for f in files:
                 ouFile1_3.write(line)
             elif line.find('Translocation')!=-1:
                 ouFile1_4.write(line)
-            if line.find('PREDICT-SPLICING')!=-1:
+            if line.find('REVERSE')==-1 and line.find('ENSP')==-1 and line.find('PREDICT-SPLICING')!=-1:
                 ouFile2.write(line)
         inFile.close()
 
