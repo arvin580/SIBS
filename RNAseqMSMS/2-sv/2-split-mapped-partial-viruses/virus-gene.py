@@ -30,8 +30,8 @@ while True:
             for item in L:
                 if (item[0]==ch1 and (item[1]<=start1 <= item[2] or item[1]<=end1<=item[2])) or \
                     (item[0]==ch2 and (item[1]<=start2 <= item[2] or item[1]<=end2<=item[2])):
-                    D.setdefault(item[3], 0)
-                    D[item[3]] += 1
+                    D.setdefault(item[3], [])
+                    D[item[3]].append(line2) 
     else:
         break
 inFile.close()
@@ -39,4 +39,5 @@ inFile.close()
 for k in D:
     #print(k+'\t'+str(D[k]))
     print(k)
+    print('\t'.join(D[k]))
 
