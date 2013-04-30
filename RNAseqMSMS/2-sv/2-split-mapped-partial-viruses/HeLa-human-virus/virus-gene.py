@@ -37,11 +37,10 @@ while True:
 inFile.close()
 
 d = D.items()
-d.sort(cmp = lambda x,y:cmp(len(x[1]),len(y[1])))
+d.sort(cmp = lambda x,y:cmp(len(x[1]),len(y[1])),reverse=True)
 
 for item in d:
     #print(k+'\t'+str(D[k]))
-    print(item[0])
-    print('\t'.join(item[1]))
+    print(item[0]+'\t'+str(len(item[1])))
     #print('\t'.join(D[k]))
 
