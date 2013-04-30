@@ -31,13 +31,17 @@ while True:
                 if (item[0]==ch1 and (item[1]<=start1 <= item[2] or item[1]<=end1<=item[2])) or \
                     (item[0]==ch2 and (item[1]<=start2 <= item[2] or item[1]<=end2<=item[2])):
                     D.setdefault(item[3], [])
-                    D[item[3]].append(line2) 
+                    D[item[3]].append(line1+'\t'+line2) 
     else:
         break
 inFile.close()
 
-for k in D:
+d = D.items()
+d.sort(cmp = lambda x,y:cmp(len(x[1]),len(y[1])))
+
+for item in d:
     #print(k+'\t'+str(D[k]))
-    print(k)
+    print(item[0])
+    print('\t'.join(item[1]))
     #print('\t'.join(D[k]))
 
