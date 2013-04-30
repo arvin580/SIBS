@@ -1,6 +1,6 @@
-inFile = open('ERR0498-04-05.unmapped.unique.human-viruse')
-ouFile1 = open('ERR0498-04-05.unmapped.unique.human-viruse-site-before-3000','w')
-ouFile2 = open('ERR0498-04-05.unmapped.unique.human-viruse-site-after-3000','w')
+inFile = open('ERR0498-04-05.unmapped.unique.human-viruse-checked')
+ouFile1 = open('ERR0498-04-05.unmapped.unique.human-viruse-checked-site-before-3000','w')
+ouFile2 = open('ERR0498-04-05.unmapped.unique.human-viruse-checked-site-after-3000','w')
 
 while True:
     line1 = inFile.readline().strip()

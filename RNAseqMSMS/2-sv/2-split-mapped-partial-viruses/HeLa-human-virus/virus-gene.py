@@ -10,7 +10,7 @@ for line in inFile:
     L.append([ch,start,end,gene])
 inFile.close()
 D = {}
-inFile = open('ERR0498-04-05.unmapped.unique.human-viruse')
+inFile = open('ERR0498-04-05.unmapped.unique.human-viruse-checked')
 while True:
     line1 = inFile.readline().strip()
     line2 = inFile.readline().strip()
