@@ -57,4 +57,4 @@ def human_chr_site(inF):
     ouFile3.close()
 
 #human_chr_site('ERR0498-04-05.unmapped.unique.human-viruse-checked')
-human_chr_site('ERR0498-04-05.unmapped.unique.human-viruse-checked')
+human_chr_site('ERR0498-04-05.unmapped.unique.human-viruse-checked-chr8-128230000-128250000')
