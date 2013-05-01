@@ -11,16 +11,16 @@ chs = ['chr1','chr2','chr3','chr4','chr5','chr6','chr7','chr8','chr9','chr10','c
         'chr17','chr18','chr19','chr20','chr21','chr22','chrX','chrY','chrM']
 chs = ['NC_001357.1']
 
-def chr_site(I):
-    ouFile2 = open('ERR0498-04-05.unmapped.unique.human-viruse-checked-virus-site'+'-'+str(I),'w')
-    ouFile = open('ERR0498-04-05.unmapped.unique.human-viruse-checked-virus-site'+'-'+str(I)+'-2','w')
+def chr_site(inF,I):
+    ouFile2 = open(inF+'-'+str(I),'w')
+    ouFile = open(inF+'-'+str(I)+'-2','w')
     for ch in chs:
         #CHR = {}
         #for i in range(0,D[ch],I):
         #    CHR[str(i)+'\t'+str(i+I)]=0
         n = D[ch]/I+1
         CHR = [0]*n
-        inFile = open('ERR0498-04-05.unmapped.unique.human-viruse-checked-virus-site')
+        inFile = open(inF)
         for line in inFile:
             line = line.strip()
             fields = line.split('\t')
@@ -56,8 +56,8 @@ def chr_site(I):
     ouFile.close()
     ouFile2.close()
 
-chr_site(100)    
-chr_site(50)    
+chr_site('ERR0498-04-05.unmapped.unique.human-viruse-checked-virus-site-unique',100)    
+chr_site('ERR0498-04-05.unmapped.unique.human-viruse-checked-virus-site-unique',50)    
    
 
 
