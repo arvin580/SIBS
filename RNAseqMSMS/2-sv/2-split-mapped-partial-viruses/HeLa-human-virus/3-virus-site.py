@@ -4,7 +4,7 @@ ouFile2 = open('ERR0498-04-05.unmapped.unique.human-viruse-checked-virus-site-un
 ouFile3 = open('ERR0498-04-05.unmapped.unique.human-viruse-checked-virus-site-unique2','w')
 chs = ['chr1','chr2','chr3','chr4','chr5','chr6','chr7','chr8','chr9','chr10','chr11','chr12','chr13','chr14','chr15','chr16',
         'chr17','chr18','chr19','chr20','chr21','chr22','chrX','chrY','chrM']
-VIRUS = 'NC_001375.1'
+VIRUS = 'NC_001357.1'
 D = {}
 while True:
     line1 = inFile.readline().strip()
@@ -31,7 +31,7 @@ while True:
                 ouFile1.write(VIRUS+'\t'+str(pos1_subject)+'\n')
                 D.setdefault(VIRUS+'\t'+str(pos1_subject),0)
                 D[VIRUS+'\t'+str(pos1_subject)]+=1
-        elif ch2 in chs:
+        elif ch2 == VIRUS:
             if (pos3_query+pos4_query) < (pos1_query+pos2_query): 
                 ouFile1.write(VIRUS+'\t'+str(pos4_subject)+'\n')
                 D.setdefault(VIRUS+'\t'+str(pos4_subject),0)
