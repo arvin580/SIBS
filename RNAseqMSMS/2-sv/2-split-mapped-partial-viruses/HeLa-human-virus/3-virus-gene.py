@@ -40,10 +40,10 @@ while True:
 inFile.close()
 
 d = D.items()
-d.sort(cmp = lambda x,y:cmp(len(x[1]),len(y[1])),reverse=True)
+d.sort(cmp = lambda x,y:cmp(len(set(x[1])),len(set(y[1]))),reverse=True)
 
 for item in d:
     ouFile.write(item[0]+'\n')
-    ouFile2.write(item[0]+'\t'+str(len(item[1]))+'\n')
-    ouFile3.write(item[0]+'\t'+'\t'.join(item[1])+'\n')
+    ouFile2.write(item[0]+'\t'+str(len(set(item[1])))+'\n')
+    ouFile3.write(item[0]+'\t'+'\t'.join(set(item[1]))+'\n')
 
