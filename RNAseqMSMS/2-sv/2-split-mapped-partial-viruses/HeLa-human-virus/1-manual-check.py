@@ -16,19 +16,20 @@ while True:
         fields = line1.split('\t')
         ch1 = fields[3]
         ch2 = fields[15]
-        pos1_query = int(fields[8])
-        pos2_query = int(fields[9])
-        pos3_query = int(fields[20])
-        pos4_query = int(fields[21])
-        pos1_subject = int(fields[10])
-        pos2_subject = int(fields[11])
-        pos3_subject = int(fields[22])
-        pos4_subject = int(fields[23])
-        if (ch1 in chs and (pos1_subject in poss or pos2_subject in poss)) or \
-                (ch2 in chs and (pos3_subject in poss or pos4_subject in poss)) :
-                    pass
-        else:
-            ouFile.write(line1)
-            ouFile.write(line2)
+        if ch1 == 'NC_001357.1' or ch2 == 'NC_001357.1':
+            pos1_query = int(fields[8])
+            pos2_query = int(fields[9])
+            pos3_query = int(fields[20])
+            pos4_query = int(fields[21])
+            pos1_subject = int(fields[10])
+            pos2_subject = int(fields[11])
+            pos3_subject = int(fields[22])
+            pos4_subject = int(fields[23])
+            if (ch1 in chs and (pos1_subject in poss or pos2_subject in poss)) or \
+                    (ch2 in chs and (pos3_subject in poss or pos4_subject in poss)) :
+                pass
+            else:
+                ouFile.write(line1)
+                ouFile.write(line2)
     else:
         break
