@@ -49,3 +49,5 @@ def gene(inF):
         ouFile3.write(item[0]+'\t'+'\t'.join(set(item[1]))+'\n')
 #gene('ERR0498-04-05.unmapped.unique.human-viruse-checked')
 gene('ERR0498-04-05.unmapped.unique.human-viruse-checked-NC_001357.1-1420-1428')
+gene('ERR0498-04-05.unmapped.unique.human-viruse-checked-NC_001357.1-439-447')
+gene('ERR0498-04-05.unmapped.unique.human-viruse-checked-NC_001357.1-2236-2244')
