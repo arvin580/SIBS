@@ -22,3 +22,6 @@ def gene(inF):
     inFile.close()
 
 gene('ERR0498-04-05.unmapped.unique.human-viruse-checked-human-gene')
+gene('ERR0498-04-05.unmapped.unique.human-viruse-checked-NC_001357.1-2236-2244-human-gene')
+gene('ERR0498-04-05.unmapped.unique.human-viruse-checked-NC_001357.1-1420-1428-human-gene')
+gene('ERR0498-04-05.unmapped.unique.human-viruse-checked-NC_001357.1-439-447-human-gene')
