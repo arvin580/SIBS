@@ -31,6 +31,7 @@ def select_chr_region(inF,ch,start,end):
     ouFile.close()
 
 #select_chr_region('ERR0498-04-05.unmapped.unique.human-viruse-checked','chr8',128230000,128250000)
-select_chr_region('ERR0498-04-05.unmapped.unique.human-viruse-checked','NC_001357.1',1420,1428)
-select_chr_region('ERR0498-04-05.unmapped.unique.human-viruse-checked','NC_001357.1',2236,2244)
-select_chr_region('ERR0498-04-05.unmapped.unique.human-viruse-checked','NC_001357.1',439,447)
+#select_chr_region('ERR0498-04-05.unmapped.unique.human-viruse-checked','NC_001357.1',1420,1428)
+#select_chr_region('ERR0498-04-05.unmapped.unique.human-viruse-checked','NC_001357.1',2236,2244)
+#select_chr_region('ERR0498-04-05.unmapped.unique.human-viruse-checked','NC_001357.1',439,447)
+select_chr_region('ERR0498-04-05.unmapped.unique.human-viruse-checked','NC_001357.1',3000,8000)
