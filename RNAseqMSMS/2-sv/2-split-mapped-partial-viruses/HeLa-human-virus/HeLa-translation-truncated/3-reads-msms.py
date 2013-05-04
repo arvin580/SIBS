@@ -1,4 +1,5 @@
-inFile = open('ERR0498-04-05.unmapped.unique.human-viruse-checked-random-10000')
+#inFile = open('ERR0498-04-05.unmapped.unique.human-viruse-checked-random-10000')
+inFile = open('ha')
 ouFile = open('ERR0498-04-05.unmapped.unique.human-viruse-checked-random-10000-msms','w')
 for line in inFile:
     line = line.strip()
