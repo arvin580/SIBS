@@ -1,5 +1,4 @@
 import string
-import random
 
 Codon = {}
 inFile = open('/netshare1/home1/people/hansun/Data/CodonUsage')
@@ -28,30 +27,19 @@ def translate(seq):
             if len(c) == 3:
                 pep.append(Codon[c])
         six.append(''.join(pep))
-    return six 
+    return six
 
-D = {}
-inFile = open('/netshare1/home1/people/hansun/Data/HeLa/Illumina/ERR0498-04-05.sam')
-for line in range(95):
-    inFile.readline()
-for line in inFile:
-    fields = line.split('\t')
-    D[fields[0]] = fields[9]
+inFile = open('ERR0498-04-05.unmapped.unique.human-viruse-checked')
+ouFile = open('ERR0498-04-05.unmapped.unique.human-viruse-checked.fa','w')
+while True:
+    line1 = inFile.readline().strip()
+    line2 = inFile.readline().strip()
+    if line1:
+        fields = line1.split('\t')
+        six = translate(line2)
+        for i in range(len(six)):
+            ouFile.write(':'.join(fields)+':'+str(i)+'\n')
+            ouFile.write(six[i]+'\n')
+    else:
+        break
 inFile.close()
-
-inFile = open('ERR0498-04-05.unmapped.unique.human-viruse-checked-random-10000')
-ouFile = open('ERR0498-04-05.unmapped.unique.human-viruse-checked-random-10000-seq','w')
-for line in inFile:
-    line = line.strip()
-    fields = line.split('\t')
-    for item in fields:
-        if D[item].find('N') == -1:
-            ouFile.write(item+':'+':'.join(translate(D[item]))+'\t')
-    ouFile.write('\n')
-inFile.close()
-ouFile.close()
-
-
-
-
-
