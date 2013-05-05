@@ -40,7 +40,6 @@ while True:
     else:
         break
 inFile.close()
-print(len(Ensembl))
 
 inFile = open('ERR0498-04-05.unmapped.unique.human-viruse-checked')
 ouFile = open('ERR0498-04-05.unmapped.unique.human-viruse-checked-split','w')
@@ -69,16 +68,16 @@ while True:
         flag2 = []
         for i in range(len(seq1_six)):
             for k in Ensembl:
-                if seq1_six[i] in Ensembl[k]:
+                if seq1_six[i][1:-1] in Ensembl[k]:
                     flag1.append(str(i))
         for i in range(len(seq2_six)):
             for k in Ensembl:
-                if seq2_six[i] in Ensembl[k]:
+                if seq2_six[i][1:-1] in Ensembl[k]:
                     flag2.append(str(i))
-        flag1 = ''.join(flag1)
-        flag2 = ''.join(flag2)
+        flag1 = ''.join(set(flag1))
+        flag2 = ''.join(set(flag2))
 
-        ouFile.write(line1+'\t'+line2+'\t'+str(pos1_query)+':'+str(pos2_query)+':'+seq1+':'+':'.join(seq1_six)+':'+flag1+'\t'+str(pos3_query)+':'+str(pos4_query)+':'+seq2+':'+':'.join(seq2_six)+':'+flag2+'\n')
+        ouFile.write(line1+'\t'+line2+':'+':'.join(translate(line2))+'\t'+str(pos1_query)+':'+str(pos2_query)+':'+seq1+':'+':'.join(seq1_six)+':'+flag1+'\t'+str(pos3_query)+':'+str(pos4_query)+':'+seq2+':'+':'.join(seq2_six)+':'+flag2+'\n')
 
 
 
