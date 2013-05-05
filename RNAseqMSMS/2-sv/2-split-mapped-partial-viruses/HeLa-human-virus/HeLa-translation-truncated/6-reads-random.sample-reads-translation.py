@@ -36,11 +36,20 @@ for line in range(95):
     inFile.readline()
 for line in inFile:
     fields = line.split('\t')
-    print(fields[9])
     D[fields[0]] = fields[9]
 inFile.close()
 
-inFile = open()
+inFile = open('ERR0498-04-05.unmapped.unique.human-viruse-checked-random-10000')
+ouFile = open('ERR0498-04-05.unmapped.unique.human-viruse-checked-random-10000-seq','w')
+for line in inFile:
+    line = line.strip()
+    fields = line.split('\t')
+    for item in fields:
+        if D[item].find('N') == -1:
+            ouFile.write(item+':'+':'.join(translate(D[item]))+'\t')
+            ouFile.write('\n')
+inFile.close()
+ouFile.close()
 
 
 
