@@ -13,8 +13,8 @@ inFile.close()
 def translate(seq):
     six = []
     trans = string.maketrans('atcgATCG','tagcTAGC')
-    seq1 = seq
-    seq2 = string.translate(seq[::-1],trans)
+    seq1 = seq.upper()
+    seq2 = string.translate(seq1[::-1],trans)
     for i in range(3):
         pep = []
         for j in range(i,len(seq1),3):
