@@ -1,3 +1,4 @@
+from Rscript.RscriptClass import Rscript
 MSMS = {}
 inFile = open('HeLa-Predict-pep.transcript')
 for line in inFile:
@@ -22,15 +23,16 @@ for line in inFile:
     GENSCAN[fields[0]]=int(fields[1])
 inFile.close()
 
+R=r'''
 
-'''
+library(VennDiagram)
 venn.plot <- venn.diagram(
  	x = list(
-	R = c(1:70, 71:110, 111:120, 121:140),
- 		B = c(141:200, 71:110, 111:120, 201:230),
- 		G = c(231:280, 111:120, 121:140, 201:230)
+	MS_MS = c('%s'),
+ 	RNA_Seq = c('%s'),
+ 	Ensembl_Predict = c('%s')
  		),
- 	filename = "1C-triple_Venn.tiff",
+ 	filename = "Predict-rnaseq-msms-venn.pdf",
  	col = "transparent",
  	fill = c("red", "blue", "green"),
  	alpha = 0.5,
@@ -45,4 +47,6 @@ venn.plot <- venn.diagram(
  	cat.dist = c(0.06, 0.06, 0.03),
  	cat.pos = 0
  	);
-'''
+
+'''%("','".join(MSMS),"','".join(RNASEQ),"','".join(GENSCAN))
+Rscript(R)
