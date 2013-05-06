@@ -1,3 +1,4 @@
+import re
 MSMS = {}
 inFile = open('HeLa-Predict-pep.transcript')
 for line in inFile:
@@ -37,9 +38,10 @@ for line in inFile:
     line = line.strip()
     fields = line.split()
     for item in fields:
-        if item.find('GENSCAN')==0:
-            D.setdefault(item,[])
-            D[item].append(line)
+        s = re.search('(GENSCAN\w+)',item)
+        if s:
+            D.setdefault(s.group(1),[])
+            D[s.group(1)].append(line)
 inFile.close()
 
 ouFile = open('HeLa-predict-rnaseq-msms','w')
