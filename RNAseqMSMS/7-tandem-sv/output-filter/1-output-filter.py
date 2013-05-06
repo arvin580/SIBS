@@ -17,10 +17,10 @@ for f in files:
         for line in inFile:
             if line.find('REVERSE')!=-1:
                 ouFile5.write(line)
+            elif line.find('ENSP00')!=-1 :
+                ouFile4.write(line)
             elif line.find('genscan') != -1:
                 ouFile3.write(line)
-            elif line.find('chromosome')!=-1 :
-                ouFile4.write(line)
             elif line.find('Deletion')!=-1:
                 ouFile1_2.write(line)
             elif line.find('Duplication')!=-1:
