@@ -209,11 +209,21 @@ class PyHeatmap():
             ax = fig.add_axes([0.2,0.1,0.7,0.9])
             self.showDataNameColor(ax, color, fig,xLabelVertical,grid,labelFontSize)
             self.show()
+        '''
         if row == False and col == False:
             ax = fig.add_axes([0.2,0.1,0.7,0.7])
             #self.showDataNameColor(ax, color, fig,xLabelVertical,grid,labelFontSize)
             self.showDataColor(ax, color, fig)
             self.show()
+        '''
+        if row == False and col == False and xLabelVertical == True:
+            #ax = fig.add_axes([0,0.2,0.2,0.8])
+            ax = fig.add_axes([0.2,0.2,0.7,0.8])
+            self.showDataNameColor(ax, color, fig,xLabelVertical,grid,labelFontSize, colorTickets)
+            self.show()
+
+           
+
         if row == True and col == False and xLabelVertical == True:
             ax = fig.add_axes([0,0.2,0.2,0.8])
             self.rowDendrogram(ax)
