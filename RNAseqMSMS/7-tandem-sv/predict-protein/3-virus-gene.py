@@ -1,3 +1,4 @@
+import re
 L = []
 inFile = open('/netshare1/home1/people/hansun/Data/hg19_refGene/refGene-2013-04-22.txt')
 for line in inFile:
@@ -9,12 +10,26 @@ for line in inFile:
     gene = fields[12]
     L.append([ch,start,end,gene])
 inFile.close()
+
+GENSCAN = {}
+inFile = open('/netshare1/home1/people/hansun/Data/Ensembl/Homo_sapiens.GRCh37.70.pep.abinitio.fa.fa')
+while True:
+    line1 = inFile.readline().strip()
+    line2 = inFile.readline().strip()
+    if line1:
+        s=re.search(r'(GENSCAN\w+)',line1)
+        if s:
+            GENSCAN[s.group(1)]=line1+'\t'+line2
+    else:
+        break
+inFile.close()
 def gene(inF):
     D = {}
     inFile = open(inF)
     ouFile = open(inF+'-human-gene','w')
     ouFile2 = open(inF+'-human-gene2','w')
     ouFile3 = open(inF+'-human-gene3','w')
+    n = 0
     while True:
         line1 = inFile.readline().strip()
         if line1:
@@ -29,11 +44,19 @@ def gene(inF):
             end2 = int(fields[24])
             start2_query= int(fields[21])
             end2_query=int(fields[22])
+            flag = 0
             for item in L:
                 if (item[0]==ch1 and (item[1]<=start1 <= item[2] or item[1]<=end1<=item[2])) or \
                         (item[0]==ch2 and (item[1]<=start2 <= item[2] or item[1]<=end2<=item[2])):
                     D.setdefault(item[3], [])
                     D[item[3]].append(line1) 
+                    flag += 1
+            if flag == 0:
+                n += 1
+                k = 'Nongenetic-'+str(n)
+                D.setdefault(k,[])
+                D[k].append(line1)
+
         else:
             break
     inFile.close()
@@ -43,8 +66,8 @@ def gene(inF):
     
     for item in d:
         ouFile.write(item[0]+'\n')
-        ouFile2.write(item[0]+'\t'+str(len(set(item[1])))+'\n')
-        ouFile3.write(item[0]+'\t'+'\t'.join(set(item[1]))+'\n')
+        ouFile2.write(item[0]+'\t'+str(len(item[1]))+'\n')
+        ouFile3.write(item[0]+'\t'+GENSCAN[item[1][0].split()[0]]+'\t'+'\t'.join(item[1])+'\n')
 #gene('ERR0498-04-05.unmapped.unique.human-viruse-checked')
 #gene('ERR0498-04-05.unmapped.unique.human-viruse-checked-NC_001357.1-1420-1428')
 #gene('ERR0498-04-05.unmapped.unique.human-viruse-checked-NC_001357.1-439-447')
