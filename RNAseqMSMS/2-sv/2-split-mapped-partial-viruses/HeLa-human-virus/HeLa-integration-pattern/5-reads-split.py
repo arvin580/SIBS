@@ -24,16 +24,16 @@ while True:
             motif = pos3_query - pos2_query
             D.setdefault(motif,[])
             D[motif].append(line1+'\t'+line2)
-            if motif < 0:
-                D2.setdefault(motif,[])
-                D2[motif].append(line2[pos2_query+motif-1:pos2_query])
+            #if motif < 0:
+            D2.setdefault(motif,[])
+            D2[motif].append(line2[pos2_query+motif-1:pos2_query])
         else:
             motif = pos1_query - pos4_query
             D.setdefault(motif,[])
             D[motif].append(line1+'\t'+line2)
-            if motif < 0:
-                D2.setdefault(motif,[])
-                D2[motif].append(line2[pos4_query+motif-1:pos4_query])
+            #if motif < 0:
+            D2.setdefault(motif,[])
+            D2[motif].append(line2[pos4_query+motif-1:pos4_query])
 
     else:
         break
