@@ -13,6 +13,7 @@ def uniqueList(inlist):
 genes=[]
 inFile1=open('/netshare1/home1/people/hansun/Data/hg19_refGene/hg19_refGene.txt','r')
 
+D = {}
 for line in inFile1 :
     fields=line.split('\t')
     gene=[]
@@ -36,34 +37,24 @@ def sv(inF):
         line2 = inFile.readline().strip()
         if line1:
             fields=line1.split('\t')
-            ch = fields[3]
-            start = fields[10]
-            end = fields[11]
-            gene = []
+            ch1 = fields[3]
+            start1 = int(fields[10])
+            end1 = int(fields[11])
+            start1_query = int(fields[8])
+            end1_query = int(fields[9])
+            ch2 = fields[15]
+            start2 = int(fields[22])
+            end2 = int(fields[23])
+            start2_query= int(fields[20])
+            end2_query=int(fields[21])
+            flag = 0
             for it in genes :
-            #if head[0] == item[2]  and head[2]==item[3]:
-                if ch == it[2]  :
-                    if int(it[4])<=int(start)<=int(it[5]) or int(it[4])<=int(end)<=int(it[5]) or (int(start)<=int(it[4]) and int(end)>=int(it[5])):
-                        gene.append(it[-1])
-            if gene:
-                g = ch+':'+str(start)+':'+str(end)+':'+':'+'/'.join(uniqueList(gene))
-            else:
-                g = ch+':'+str(start)+':'+str(end)
-            ouFile.write(g+'\n')
+                    if (ch1 == it[2]) and (int(it[4])<=int(start1)<=int(it[5]) or int(it[4])<=int(end1)<=int(it[5]) or (int(start1)<=int(it[4]) and int(end1)>=int(it[5]))) or (ch2 == it[2] and (int(it[4])<=int(start2)<=int(it[5]) or int(it[4])<=int(end2)<=int(it[5]) or (int(start2)<=int(it[4]) and int(end2)>=int(it[5])))):
+                        gene = it[-1]
+                        D.setdefault(gene,[])
+                        D[gene].append(line1)
+                        flag += 1
 
-            ch = fields[15]
-            start = fields[22]
-            end = fields[23]
-            gene = []
-            for it in genes :
-            #if head[0] == item[2]  and head[2]==item[3]:
-                if ch == it[2]  :
-                    if int(it[4])<=int(start)<=int(it[5]) or int(it[4])<=int(end)<=int(it[5]) or (int(start)<=int(it[4]) and int(end)>=int(it[5])):
-                        gene.append(it[-1])
-            if gene:
-                g = ch+':'+str(start)+':'+str(end)+':'+'/'.join(uniqueList(gene))
-            else:
-                g = ch+':'+str(start)+':'+str(end)
             ouFile.write(g+'\n')
 
         else:
