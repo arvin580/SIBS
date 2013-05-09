@@ -9,11 +9,13 @@ def uniqueList(inlist):
             oulist.append(item)
     return oulist
 
+chs = ['chr1','chr2','chr3','chr4','chr5','chr6','chr7','chr8','chr9','chr10','chr11','chr12','chr13','chr14','chr15',
+        'chr16','chr17','chr18','chr19','chr20','chr21','chr22','chrX','chrY','chrM']
+
 
 genes=[]
-inFile1=open('/netshare1/home1/people/hansun/Data/hg19_refGene/hg19_refGene.txt','r')
+inFile1=open('/netshare1/home1/people/hansun/Data/hg19_refGene/refGene-2013-04-22.txt')
 
-D = {}
 for line in inFile1 :
     fields=line.split('\t')
     gene=[]
@@ -29,8 +31,10 @@ for line in inFile1 :
 inFile1.close()
 
 def sv(inF):
+    D = {}
     inFile=open(inF)
-    ouFile=open(inF+'.gene','w')
+    ouFile1=open(inF+'.gene','w')
+    ouFile2=open(inF+'.non-gene','w')
     
     while True:
         line1 = inFile.readline().strip()
@@ -47,22 +51,25 @@ def sv(inF):
             end2 = int(fields[23])
             start2_query= int(fields[20])
             end2_query=int(fields[21])
-            flag = 0
-            for it in genes :
-                    if (ch1 == it[2]) and (int(it[4])<=int(start1)<=int(it[5]) or int(it[4])<=int(end1)<=int(it[5]) or (int(start1)<=int(it[4]) and int(end1)>=int(it[5]))) or (ch2 == it[2] and (int(it[4])<=int(start2)<=int(it[5]) or int(it[4])<=int(end2)<=int(it[5]) or (int(start2)<=int(it[4]) and int(end2)>=int(it[5])))):
+            if ch1 in chs and ch2 in chs:
+                flag = 0
+                for it in genes :
+                    if ((ch1 == it[2]) and (int(it[4])<=int(start1)<=int(it[5]) or int(it[4])<=int(end1)<=int(it[5]) or (int(start1)<=int(it[4]) and int(end1)>=int(it[5])) or (int(end1)<=int(it[4]) and int(start1)>=int(it[5])) )) or (ch2 == it[2] and (int(it[4])<=int(start2)<=int(it[5]) or int(it[4])<=int(end2)<=int(it[5]) or (int(start2)<=int(it[4]) and int(end2)>=int(it[5])) or (int(end2)<=int(it[4]) and int(start2)>=int(it[5])) )):
                         gene = it[-1]
                         D.setdefault(gene,[])
-                        D[gene].append(line1)
+                        D[gene].append(line1+'\t'+line2)
                         flag += 1
-
-            ouFile.write(g+'\n')
+            if flag == 0:
+                ouFile2.write(line1+'\t'+line2+'\n')
 
         else:
             break
-    
+    for k in D: 
+        ouFile1.write(k+'\t'+'\t'.join(set(D[k]))+'\n')
     
     inFile.close()
-    ouFile.close()
+    ouFile1.close()
+    ouFile2.close()
 
 
 
