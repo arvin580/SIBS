@@ -33,8 +33,8 @@ inFile1.close()
 def sv(inF):
     D = {}
     inFile=open(inF)
-    ouFile1=open(inF+'.gene','w')
-    ouFile2=open(inF+'.non-gene','w')
+    ouFile1=open(inF+'.gene2','w')
+    ouFile2=open(inF+'.non-gene2','w')
     
     while True:
         line1 = inFile.readline().strip()
@@ -51,15 +51,32 @@ def sv(inF):
             end2 = int(fields[23])
             start2_query= int(fields[20])
             end2_query=int(fields[21])
-            flag = 0
+            gene1 = []
+            gene2 = []
             if ch1 in chs and ch2 in chs:
                 for it in genes :
-                    if ((ch1 == it[2]) and (int(it[4])<=int(start1)<=int(it[5]) or int(it[4])<=int(end1)<=int(it[5]) or (int(start1)<=int(it[4]) and int(end1)>=int(it[5])) or (int(end1)<=int(it[4]) and int(start1)>=int(it[5])) )) or (ch2 == it[2] and (int(it[4])<=int(start2)<=int(it[5]) or int(it[4])<=int(end2)<=int(it[5]) or (int(start2)<=int(it[4]) and int(end2)>=int(it[5])) or (int(end2)<=int(it[4]) and int(start2)>=int(it[5])) )):
-                        gene = it[-1]
-                        D.setdefault(gene,[])
-                        D[gene].append(line1+'\t'+line2)
-                        flag += 1
-            if flag == 0:
+                    if ((ch1 == it[2]) and (int(it[4])<=int(start1)<=int(it[5]) or int(it[4])<=int(end1)<=int(it[5]) or (int(start1)<=int(it[4]) and int(end1)>=int(it[5])) or (int(end1)<=int(it[4]) and int(start1)>=int(it[5])) )):
+                        gene1.append(it[-1])
+                        #D.setdefault(gene,[])
+                        #D[gene].append(line1+'\t'+line2)
+                    if  (ch2 == it[2] and (int(it[4])<=int(start2)<=int(it[5]) or int(it[4])<=int(end2)<=int(it[5]) or (int(start2)<=int(it[4]) and int(end2)>=int(it[5])) or (int(end2)<=int(it[4]) and int(start2)>=int(it[5])) )):
+                        gene2.append(it[-1])
+                        #D.setdefault(gene,[])
+                        #D[gene].append(line1+'\t'+line2)
+        
+            if gene1 and gene2:
+                k = '|'.join(gene1)+':'+'|'.join(gene2)
+                D.setdefault(k,[])
+                D[k].append(line1+'\t'+line2)
+            elif gene1:
+                k = '|'.join(gene1)+':'+'*'
+                D.setdefault(k,[])
+                D[k].append(line1+'\t'+line2)
+            elif gene2:
+                k = '*'+'|'.join(gene2)
+                D.setdefault(k,[])
+                D[k].append(line1+'\t'+line2)
+            else:
                 ouFile2.write(line1+'\t'+line2+'\n')
 
         else:
@@ -73,7 +90,7 @@ def sv(inF):
 
 
 
-sv('split-mapped-deletion')
+#sv('split-mapped-deletion')
 #sv('split-mapped-inversion')
 #sv('split-mapped-duplication')
-#sv('split-mapped-translocation')
+sv('split-mapped-translocation')
