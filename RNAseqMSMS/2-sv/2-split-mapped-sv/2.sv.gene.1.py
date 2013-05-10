@@ -51,8 +51,8 @@ def sv(inF):
             end2 = int(fields[23])
             start2_query= int(fields[20])
             end2_query=int(fields[21])
+            flag = 0
             if ch1 in chs and ch2 in chs:
-                flag = 0
                 for it in genes :
                     if ((ch1 == it[2]) and (int(it[4])<=int(start1)<=int(it[5]) or int(it[4])<=int(end1)<=int(it[5]) or (int(start1)<=int(it[4]) and int(end1)>=int(it[5])) or (int(end1)<=int(it[4]) and int(start1)>=int(it[5])) )) or (ch2 == it[2] and (int(it[4])<=int(start2)<=int(it[5]) or int(it[4])<=int(end2)<=int(it[5]) or (int(start2)<=int(it[4]) and int(end2)>=int(it[5])) or (int(end2)<=int(it[4]) and int(start2)>=int(it[5])) )):
                         gene = it[-1]
