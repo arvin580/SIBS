@@ -65,15 +65,15 @@ def sv(inF):
                         #D[gene].append(line1+'\t'+line2)
         
             if gene1 and gene2:
-                k = '|'.join(gene1)+':'+'|'.join(gene2)
+                k = '|'.join(set(gene1))+':'+'|'.join(set(gene2))
                 D.setdefault(k,[])
                 D[k].append(line1+'\t'+line2)
             elif gene1:
-                k = '|'.join(gene1)+':'+'*'
+                k = '|'.join(set(gene1))+':'+'*'
                 D.setdefault(k,[])
                 D[k].append(line1+'\t'+line2)
             elif gene2:
-                k = '*'+'|'.join(gene2)
+                k = '*'+'|'.join(set(gene2))
                 D.setdefault(k,[])
                 D[k].append(line1+'\t'+line2)
             else:
