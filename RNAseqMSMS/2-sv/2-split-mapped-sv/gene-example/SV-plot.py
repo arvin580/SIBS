@@ -101,6 +101,110 @@ ax.add_patch(patch)
 
 
 #### De
+D = {}
+inFile = open('split-mapped-deletion.gene')
+for line in inFile:
+    line = line.strip()
+    fields = line.split('\t')
+    if fields[0] == gene :
+        for i in range(1,len(fields),29):
+            pos1_query = int(fields[i+8])
+            pos2_query = int(fields[i+9])
+            pos3_query = int(fields[i+20])
+            pos4_query = int(fields[i+21])
+            pos1_subject = int(fields[i+10])
+            pos2_subject = int(fields[i+11])
+            pos3_subject = int(fields[i+22])
+            pos4_subject = int(fields[i+23])
+            if pos1_query + pos2_query < pos3_query +pos4_query:
+                D.setdefault(pos2_subject,0)
+                D[pos2_subject] +=  1
+                D.setdefault(pos3_subject,0)
+                D[pos3_subject] +=  1
+            else:
+                D.setdefault(pos4_subject,0)
+                D[pos4_subject] +=  1
+                D.setdefault(pos1_subject,0)
+                D[pos1_subject] +=  1
+inFile.close()
+MAX = 0
+for k in D:
+    if D[k] > MAX:
+        MAX = D[k]
+
+for k in D:
+    ax.scatter(k-G[2], D[k]/MAX+0.1,c='red',marker='o',edgecolors='')
+
+#### In
+D = {}
+inFile = open('split-mapped-inversion.gene')
+for line in inFile:
+    line = line.strip()
+    fields = line.split('\t')
+    if fields[0] == gene :
+        for i in range(1,len(fields),29):
+            pos1_query = int(fields[i+8])
+            pos2_query = int(fields[i+9])
+            pos3_query = int(fields[i+20])
+            pos4_query = int(fields[i+21])
+            pos1_subject = int(fields[i+10])
+            pos2_subject = int(fields[i+11])
+            pos3_subject = int(fields[i+22])
+            pos4_subject = int(fields[i+23])
+            if pos1_query + pos2_query < pos3_query +pos4_query:
+                D.setdefault(pos2_subject,0)
+                D[pos2_subject] +=  1
+                D.setdefault(pos3_subject,0)
+                D[pos3_subject] +=  1
+            else:
+                D.setdefault(pos4_subject,0)
+                D[pos4_subject] +=  1
+                D.setdefault(pos1_subject,0)
+                D[pos1_subject] +=  1
+inFile.close()
+MAX = 0
+for k in D:
+    if D[k] > MAX:
+        MAX = D[k]
+
+for k in D:
+    ax.scatter(k-G[2], D[k]/MAX+0.2,c='red',marker='o',edgecolors='')
+
+#### Du
+D = {}
+inFile = open('split-mapped-duplication.gene')
+for line in inFile:
+    line = line.strip()
+    fields = line.split('\t')
+    if fields[0] == gene :
+        for i in range(1,len(fields),29):
+            pos1_query = int(fields[i+8])
+            pos2_query = int(fields[i+9])
+            pos3_query = int(fields[i+20])
+            pos4_query = int(fields[i+21])
+            pos1_subject = int(fields[i+10])
+            pos2_subject = int(fields[i+11])
+            pos3_subject = int(fields[i+22])
+            pos4_subject = int(fields[i+23])
+            if pos1_query + pos2_query < pos3_query +pos4_query:
+                D.setdefault(pos2_subject,0)
+                D[pos2_subject] +=  1
+                D.setdefault(pos3_subject,0)
+                D[pos3_subject] +=  1
+            else:
+                D.setdefault(pos4_subject,0)
+                D[pos4_subject] +=  1
+                D.setdefault(pos1_subject,0)
+                D[pos1_subject] +=  1
+inFile.close()
+MAX = 0
+for k in D:
+    if D[k] > MAX:
+        MAX = D[k]
+
+for k in D:
+    ax.scatter(k-G[2], D[k]/MAX+0.3,c='red',marker='o',edgecolors='')
+
 
 
 plt.savefig('HeLa-%s-diagram.pdf'%sys.argv[1])
