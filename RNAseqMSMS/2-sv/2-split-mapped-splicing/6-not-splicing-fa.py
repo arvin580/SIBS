@@ -10,7 +10,7 @@ while True:
         break
 inFile.close()
 
-ouFile = open('ERR0498-04-05.unmapped.unique.total.fasta.blated.filtered.seq1.not-splicing.fa','w')
+ouFile = open('ERR0498-04-05.unmapped.unique.total.fasta.blated.filtered.seq1.not-splicing.fasta','w')
 for k in D:
     ouFile.write('>'+k+'\n')
     ouFile.write(D[k]+'\n')
