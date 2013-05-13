@@ -25,36 +25,90 @@ for line in inFile:
 inFile.close()
 G = GENE[gene][0]
 print(G)
-'''
-HPV_len = 7857
+
+G_len = G[3] - G[2]
 
 fig = plt.figure()
 ax=fig.add_subplot(111)
-ax.set_xlim(-100,100+HPV_len)
-ax.set_xticks([1]+range(1000,HPV_len+100,1000)+[HPV_len])
-#ax.set_ylim(-1,1)
-ax.set_ylim(-0.6,1)
-### HPV 18
-verts = [
-    (0, -0.1), # left, bottom
-    (0, 0.1), # left, top
-    (7858,0.1), # right, top
-    (7858,-0.1), # right, bottom
-    (0,0)
+ax.set_xlim(-100,100 + G_len)
+#ax.set_xticks([1, G[2]-G,G[3]])
+ax.set_ylim(-1,1)
+#ax.set_ylim(-0.6,1)
 
-    ]
+for i in range(6,len(G),2):
+    start = G[i] - G[2]
+    end = G[i+1] - G[2]
+    verts = [
+        (start, -0.1), # left, bottom
+        (start, 0.1), # left, top
+        (end,0.1), # right, top
+        (end,-0.1), # right, bottom
+        (0,0)
+        ]
 
-codes = [Path.MOVETO,
+    codes = [Path.MOVETO,
          Path.LINETO,
          Path.LINETO,
          Path.LINETO,
          Path.CLOSEPOLY,
          ]
+    path = Path(verts, codes)
+    patch = patches.PathPatch(path, facecolor='orange', lw=2)
+    ax.add_patch(patch)
+
+
+start = G[4] - G[2]
+end = G[4] - G[2] + 1
+verts = [
+    (start, -0.2), # left, bottom
+    (start, -0.1), # left, top
+    (end,-0.1), # right, top
+    (end,-0.2), # right, bottom
+    (0,0)
+    ]
+
+codes = [Path.MOVETO,
+     Path.LINETO,
+     Path.LINETO,
+     Path.LINETO,
+     Path.CLOSEPOLY,
+     ]
 path = Path(verts, codes)
-patch = patches.PathPatch(path, facecolor='orange', lw=2)
+patch = patches.PathPatch(path, facecolor='red', lw=2)
+ax.add_patch(patch)
+
+start = G[5] - G[2]
+end = G[5] - G[2] + 1
+verts = [
+    (start, -0.2), # left, bottom
+    (start, -0.1), # left, top
+    (end,-0.1), # right, top
+    (end,-0.2), # right, bottom
+    (0,0)
+    ]
+
+codes = [Path.MOVETO,
+     Path.LINETO,
+     Path.LINETO,
+     Path.LINETO,
+     Path.CLOSEPOLY,
+     ]
+path = Path(verts, codes)
+patch = patches.PathPatch(path, facecolor='red', lw=2)
 ax.add_patch(patch)
 
 
+
+
+#### De
+
+
+plt.savefig('HeLa-%s-diagram.pdf'%sys.argv[1])
+
+
+
+
+'''
 ### add integration point
 MAX = 20.0
 L = []
