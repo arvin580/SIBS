@@ -19,7 +19,7 @@ def unique(inF,flag=''):
 
 unique(sys.argv[1])
 
-ouFile = open(sys.argv[1].split('.fa')[0]+'.reversed.fa','w')
+ouFile = open(sys.argv[1][0:-3]+'.reversed.fa','w')
 for k in D:
     ouFile.write('>'+'|'.join(D[k])+'\n')
     ouFile.write(k+'\n')
