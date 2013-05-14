@@ -72,4 +72,6 @@ def gene(inF):
 #gene('ERR0498-04-05.unmapped.unique.human-viruse-checked-NC_001357.1-1420-1428')
 #gene('ERR0498-04-05.unmapped.unique.human-viruse-checked-NC_001357.1-439-447')
 #gene('ERR0498-04-05.unmapped.unique.human-viruse-checked-NC_001357.1-2236-2244')
-gene('HeLa-predict-rnaseq-msms')
+#gene('HeLa-predict-rnaseq-msms')
+gene('HeLa-predict-rnaseq-msms-uniprot')
+gene('HeLa-predict-rnaseq-msms-not-uniprot')
