@@ -3,7 +3,6 @@ splicing reads:
     497949 + 275733
 '''
 
-
 def num(inF):
     D = {}
     inFile = open(inF)
@@ -18,4 +17,6 @@ def num(inF):
     inFile.close()
     print(len(D))
 
-num('ERR0498-04-05.unmapped.unique.total.fasta.blated.filtered.seq1.splicing.known')
+#num('ERR0498-04-05.unmapped.unique.total.fasta.blated.filtered.seq1.splicing.known')
+#num('ERR0498-04-05.unmapped.unique.total.fasta.blated.filtered.seq1.not-splicing')
+num('ERR0498-04-05.unmapped.unique.total.fasta.blated.filtered.seq1.not-splicing-from-protein-mrna')
