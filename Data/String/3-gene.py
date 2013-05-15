@@ -4,19 +4,18 @@ def alias(inF):
     for line in inFile:
         line = line.strip()
         fields = line.split()
-        if line.find('Ensembl_EntrezGene')!=-1:
-            GENE[fields[1]] = fields[2]
+        GENE[fields[1]] = fields[0]
     inFile.close()
-alias('protein.aliases.v9.05.human')
+alias('Ensembl-Genes-71-2013-5-15')
 
-def gene(inF):
+def gene(inF,score):
     D = {}
     inFile = open(inF)
     ouFile = open(inF+'.gene','w')
     for line in inFile:
         line = line.strip()
         fields = line.split()
-        if int(fields[2]) >= 700:
+        if int(fields[2]) >= score:
             gene1 = fields[0].split('.')[1]
             gene2 = fields[1].split('.')[1]
             if gene1 in GENE:
@@ -32,4 +31,4 @@ def gene(inF):
     for k in D:
         ouFile.write(k+'\t'+'\t'.join(set(D[k]))+'\n')
 
-gene('protein.links.v9.0.human')
+gene('protein.links.v9.0.human',999)
