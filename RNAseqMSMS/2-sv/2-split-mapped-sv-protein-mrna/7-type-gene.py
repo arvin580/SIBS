@@ -36,6 +36,6 @@ inFile.close()
 d = D.items()
 d.sort(cmp = lambda x,y:cmp(x[1],y[1]), reverse = True)
 
-ouFile = open('split-mapped-deletion-inversion-duplication-translocation.gene','w')
+ouFile = open('split-mapped-deletion-duplication-inversion-translocation.gene','w')
 for item in d:
     ouFile.write(item[0]+'\t'+str(item[1])+'\n')
