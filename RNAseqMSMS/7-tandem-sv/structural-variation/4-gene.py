@@ -6,23 +6,23 @@ for line in inFile:
     L.append(fields)
 inFile.close()
 
-def gene_dbsnp(inF):
+def gene(inF):
     inFile = open(inF)
     ouFile = open(inF+'.gene','w')
     for line in inFile:
         line = line.strip()
         fields = line.split('\t')
-        nc= fields[1].split(':')[4]
-        ch = fields[1].split(':')[16]
-        pos1_nc = fields[1].split(':')[11]
-        pos2_nc = fields[1].split(':')[12]
-        pos3_ch = fields[1].split(':')[23]
-        pos4_ch = fields[1].split(':')[24]
+        nc= fields[1].split(':')[5]
+        ch = fields[1].split(':')[17]
+        pos1_nc = fields[1].split(':')[12]
+        pos2_nc = fields[1].split(':')[13]
+        pos3_ch = fields[1].split(':')[24]
+        pos4_ch = fields[1].split(':')[25]
 
-        pos5_nc_query = fields[1].split(':')[9]
-        pos6_nc_query = fields[1].split(':')[10]
-        pos7_ch_query = fields[1].split(':')[21]
-        pos8_ch_query = fields[1].split(':')[22]
+        pos5_nc_query = fields[1].split(':')[10]
+        pos6_nc_query = fields[1].split(':')[11]
+        pos7_ch_query = fields[1].split(':')[12]
+        pos8_ch_query = fields[1].split(':')[13]
         genes = []
 
         for item in L:
@@ -36,4 +36,7 @@ def gene_dbsnp(inF):
     inFile.close()
     ouFile.close()
 
-gene_dbsnp('HeLa-SV-Duplication-pep.full-cleavage')
+gene('HeLa-SV-Deletion-pep.full-cleavage')
+gene('HeLa-SV-Duplication-pep.full-cleavage')
+gene('HeLa-SV-Inversion-pep.full-cleavage')
+gene('HeLa-SV-Translocation-pep.full-cleavage')
