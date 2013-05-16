@@ -44,7 +44,7 @@ while True:
         six = translate(line2)
         for i in range(len(six)):
             if six[i].find('*')==-1:
-                s = re.search('[K|R](.*)',six[i])
+                s = re.search('[K|R](.*[K|R])',six[i])
                 if  s and len(s.group(1)) >=6:
                     ouFile.write(line1+'\t'+str(i)+'\n')
                     ouFile.write(s.group(1)+'\n')
