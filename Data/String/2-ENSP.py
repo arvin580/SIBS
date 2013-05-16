@@ -16,4 +16,4 @@ def gene(inF):
     for k in D:
         ouFile.write(k+'\t'+'\t'.join(set(D[k]))+'\n')
 
-gene('protein.links.v9.0.human')
+gene('protein.links.v9.05.human')
