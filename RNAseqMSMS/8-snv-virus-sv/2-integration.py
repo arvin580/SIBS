@@ -1,11 +1,11 @@
-### [SNV, Virus, Deltion, Duplication, Inversion, Translocation]
+### [SNV, Virus, SV]
 D = {}
 inFile = open('sum_snv.exome_summary.overall.filter')
 for line in inFile:
     line = line.strip()
     fields = line.split('\t')
     gene = fields[1]
-    D.setdefault(gene,[0,0,0,0,0,0])
+    D.setdefault(gene,[0,0,0])
     D[gene][0] = 1
 inFile.close()
 
@@ -15,7 +15,7 @@ for line in inFile:
     line = line.strip()
     fields = line.split('\t')
     gene = fields[0]
-    D.setdefault(gene,[0,0,0,0,0,0])
+    D.setdefault(gene,[0,0,0])
     D[gene][1] = 1
 inFile.close()
 
@@ -24,7 +24,7 @@ for line in inFile:
     line = line.strip()
     fields = line.split('\t')
     gene = fields[0]
-    D.setdefault(gene,[0,0,0,0,0,0])
+    D.setdefault(gene,[0,0,0])
     D[gene][2] = 1
 inFile.close()
 
@@ -33,8 +33,8 @@ for line in inFile:
     line = line.strip()
     fields = line.split('\t')
     gene = fields[0]
-    D.setdefault(gene,[0,0,0,0,0,0])
-    D[gene][3] = 1
+    D.setdefault(gene,[0,0,0])
+    D[gene][2] = 1
 inFile.close()
 
 inFile = open('split-mapped-inversion.gene')
@@ -42,8 +42,8 @@ for line in inFile:
     line = line.strip()
     fields = line.split('\t')
     gene = fields[0]
-    D.setdefault(gene,[0,0,0,0,0,0])
-    D[gene][4] = 1
+    D.setdefault(gene,[0,0,0])
+    D[gene][2] = 1
 inFile.close()
 
 inFile = open('split-mapped-translocation.gene')
@@ -51,13 +51,13 @@ for line in inFile:
     line = line.strip()
     fields = line.split('\t')
     gene = fields[0]
-    D.setdefault(gene,[0,0,0,0,0,0])
-    D[gene][5] = 1
+    D.setdefault(gene,[0,0,0])
+    D[gene][2] = 1
 inFile.close()
 
 d = D.items()
 d.sort(cmp= lambda x,y:cmp(sum(x[1]),sum(y[1])),reverse= True)
 
-ouFile = open('HeLa-Gene-SNV-Virus-Deletion-Duplication-Inversion-Translocation','w')
+ouFile = open('HeLa-Gene-SNV-Virus-Deletion-Duplication-Inversion-Translocation2','w')
 for item in d:
     ouFile.write(item[0]+'\t'+'\t'.join([str(x) for x in item[1]])+'\n')
