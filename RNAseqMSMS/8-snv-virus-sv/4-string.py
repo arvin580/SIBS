@@ -8,7 +8,7 @@ for line in inFile:
 inFile.close()
 
 STRING = {}
-inFile = open('/netshare1/home1/people/hansun/Data/String/protein.links.v9.0.human.gene')
+inFile = open('/netshare1/home1/people/hansun/Data/String/protein.links.v9.05.human.gene')
 for line in inFile:
     line = line.strip()
     fields = line.split('\t')
