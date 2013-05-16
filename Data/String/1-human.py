@@ -9,7 +9,7 @@ def human(inF):
     inFile.close()
     ouFile.close()
 
-#human('protein.links.v9.0.txt')
+human('protein.links.v9.05.txt')
 
 
 def human2(inF):
@@ -25,4 +25,4 @@ def human2(inF):
 
 
 
-human2('protein.aliases.v9.05.txt')
+#human2('protein.aliases.v9.05.txt')
