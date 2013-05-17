@@ -1,6 +1,6 @@
 import os
 
-DIR = '../output'
+DIR = '../output-KR'
 files = os.listdir(DIR)
 
 ouFile1 = open('HeLa-Human-Viruses','w')
