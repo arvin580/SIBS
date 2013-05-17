@@ -19,10 +19,11 @@ def peptide(inF):
         line = line.strip()
         fields = line.split('\t')
         pep = fields[0]
-        sp = fields[1].split(':')[0]
+        sp = fields[1].split('|')[0]
+        other = ':'.join(fields[1].split('|')[2:])
         mgf = spec(sp)
         ouFile1.write(''.join(mgf))
-        ouFile2.write(pep + '\t' + sp+'\n')
+        ouFile2.write(pep + '\t' + sp+'\t'+other+'\n')
     inFile.close()
     ouFile1.close()
     ouFile2.close()

@@ -24,7 +24,7 @@ def pep(inF):
         #e = int(fields[1].split(':')[-2])
         D.setdefault(fields[3], [])
         #D[fields[3]].append(fields[1]+':'+str(s-start+1)+':'+str(e-start+1)+':'+pre+':'+post)
-        D[fields[3]].append(fields[0].strip()+':'+fields[1]+':'+e+':'+hyper+':'+miss+':'+pre+':'+post+':'+modi)
+        D[fields[3]].append(fields[0].strip()+'|'+fields[1]+'|'+e+'|'+hyper+'|'+miss+'|'+pre+'|'+post+'|'+modi)
     
     inFile.close()
     
