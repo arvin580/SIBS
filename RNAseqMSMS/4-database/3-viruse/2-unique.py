@@ -17,10 +17,10 @@ def unique(inF,flag=''):
     inFile.close()
 
 unique('Homo_sapiens.GRCh37.70.pep.all.fa.fa')
-unique('ERR0498-04-05.unmapped.unique.human-viruse.pep2','HUMAN-VIRUS')
-unique('unmapped-blated-viruses-90-60.seq.pep2','VIRUS')
+unique('ERR0498-04-05.unmapped.unique.human-viruse.pep-KR','HUMAN-VIRUS')
+unique('unmapped-blated-viruses-90-60.seq.pep-KR','VIRUS')
 
-ouFile = open('Homo_known-protein_virus2','w')
+ouFile = open('Homo_known-protein_virus-KR','w')
 for k in D:
     ouFile.write('>'+'|'.join(D[k])+'\n')
     ouFile.write(k+'\n')
