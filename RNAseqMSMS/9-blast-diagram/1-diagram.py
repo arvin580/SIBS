@@ -21,7 +21,9 @@ def diagram(inF):
             end2 = int(fields[23])
             start2_query= int(fields[20])
             end2_query=int(fields[21])
-
+    
+            seq1 = seq(ch1,start1, end1)
+            seq2 = seq(ch2,start2, end2)
 
         else:
             break
