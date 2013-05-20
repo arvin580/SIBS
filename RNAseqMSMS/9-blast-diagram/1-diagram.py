@@ -37,9 +37,9 @@ def seq(ch,start,end):
 
 def diagram(inF):
     inFile = open(inF)
-    L0 = [0]*76
-    L1 = [0]*76
-    L2 = [0]*76
+    L0 = ['0']*76
+    L1 = ['0']*76
+    L2 = ['0']*76
     while True:
         line1 = inFile.readline().strip()
         line2 = inFile.readline().strip()
@@ -61,12 +61,16 @@ def diagram(inF):
     
             seq1 = seq(ch1,start1, end1)
             seq2 = seq(ch2,start2, end2)
-            print(seq1)
-            print(seq2)
+            for i in range(start1_query-1, end1_query):
+                L1[i]=seq1[i-start1_query+1]
+
+            for i in range(start2_query-1, end2_query):
+                L2[i]=seq2[i-start2_query+1]
 
         else:
             break
     inFile.close()
-    print(L0)
-
+    print(''.join(L1))
+    print(''.join(L0))
+    print(''.join(L2))
 diagram('ha')
