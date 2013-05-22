@@ -42,6 +42,15 @@ def td(L):
         else:
             LR.append('<td>%s</td>'%item)
     return '\n'.join(LR)
+
+def td2(L0,L1,L2):
+    LR = []
+    for i in range(len(L0)):
+        if L1[i] == L2[i]:
+            LR.append('<td bgcolor="gray">%s</td>'%L0[i])
+        else:
+            LR.append('<td>%s</td>'%L0[i])
+    return '\n'.join(LR)
         
 def table(inF,L0,L1,L2):
     ouFile = open(inF+'.html','w')
@@ -54,7 +63,7 @@ def table(inF,L0,L1,L2):
     ouFile.write('</tr>\n')
     ####L0
     ouFile.write('<tr>\n')
-    ouFile.write(td(L0)+'\n')
+    ouFile.write(td2(L0,L1,L2)+'\n')
     ouFile.write('</tr>\n')
     ####L2
     ouFile.write('<tr style="color:rgb(255,0,0)">\n')
