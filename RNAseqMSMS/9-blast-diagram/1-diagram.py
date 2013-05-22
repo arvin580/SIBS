@@ -34,8 +34,18 @@ def seq(ch,start,end):
         inFile.close()
 
 
+def td(L):
+    LR = []
+    for item in L:
+        if item == '0':
+            LR.append('<td></td>')
+        else:
+            LR.append('<td>%s</td>'%item)
+    return '\n'.join(LR)
+        
 
 def diagram(inF):
+    '''
     inFile = open(inF)
     L0 = ['0']*76
     L1 = ['0']*76
@@ -70,7 +80,10 @@ def diagram(inF):
         else:
             break
     inFile.close()
-    print(''.join(L1))
-    print(''.join(L0))
-    print(''.join(L2))
+    '''
+    L1 = ['A','T','C','G','0','0']
+    #print(''.join(L1))
+    #print(''.join(L0))
+    #print(''.join(L2))
+    print(td(L1))
 diagram('ha')
