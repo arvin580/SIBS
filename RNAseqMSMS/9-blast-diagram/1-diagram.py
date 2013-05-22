@@ -70,6 +70,7 @@ def table(inF,L0,L1,L2):
     ouFile.write(td(L2)+'\n')
     ouFile.write('</tr>\n')
 
+
     ouFile.write('</table>\n')
     ouFile.write('</body>\n')
     ouFile.write('</html>\n')
