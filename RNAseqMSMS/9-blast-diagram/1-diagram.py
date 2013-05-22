@@ -43,9 +43,30 @@ def td(L):
             LR.append('<td>%s</td>'%item)
     return '\n'.join(LR)
         
+def table(inF,L0,L1,L2):
+    ouFile = open(inF+'.html','w')
+    ouFile.write('<html>\n')
+    ouFile.write('<body>\n')
+    ouFile.write('<table>\n')
+    ####L1
+    ouFile.write('<tr style="color:rgb(0,0,255)">\n')
+    ouFile.write(td(L1)+'\n')
+    ouFile.write('</tr>\n')
+    ####L0
+    ouFile.write('<tr>\n')
+    ouFile.write(td(L0)+'\n')
+    ouFile.write('</tr>\n')
+    ####L2
+    ouFile.write('<tr style="color:rgb(255,0,0)">\n')
+    ouFile.write(td(L2)+'\n')
+    ouFile.write('</tr>\n')
+
+    ouFile.write('</table>\n')
+    ouFile.write('</body>\n')
+    ouFile.write('</html>\n')
+    ouFile.close()
 
 def diagram(inF):
-    '''
     inFile = open(inF)
     L0 = ['0']*76
     L1 = ['0']*76
@@ -80,10 +101,11 @@ def diagram(inF):
         else:
             break
     inFile.close()
-    '''
-    L1 = ['A','T','C','G','0','0']
+    table(inF,L0,L1,L2)
+    #L1 = ['A','T','C','G','0','0']
+    #print('<table>')
     #print(''.join(L1))
     #print(''.join(L0))
     #print(''.join(L2))
-    print(td(L1))
+    #print(td(L1))
 diagram('ha')
