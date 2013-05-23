@@ -1,6 +1,6 @@
 import string
 
-def seq(ch,start,end):
+def seq2(ch,start,end):
     trans = string.maketrans('ATCGatcg','TAGCtagc')
     if ch[0:2] == 'ch':
         inFile = open('/netshare1/home1/people/hansun/Data/GenomeSeq/Human/ucsc.hg19.fasta.fa')
@@ -33,6 +33,30 @@ def seq(ch,start,end):
                 break
         inFile.close()
 
+D = {}
+def read_genome(L):
+    for item in L:
+        inFile = open(item)
+        while True:
+            line1 = inFile.readline().strip('>\n')
+            line2 = inFile.readline().strip()
+            if line1:
+                D[line1.split()[0]]=line2
+            else:
+                break
+        inFile.close()
+
+read_genome(['/netshare1/home1/people/hansun/Data/GenomeSeq/Human/ucsc.hg19.fasta.fa',
+'/netshare1/home1/people/hansun/Data/VirusesGenome/VirusesGenome.fasta.fa'])
+
+def seq(ch,start,end):
+    trans = string.maketrans('ATCGatcg','TAGCtagc')
+    if start <= end:
+        seq = D[ch][start-1:end].upper()
+    else:
+        seq = string.translate(D[ch][end-1:start][::-1],trans).upper()
+    return seq
+
 
 def td(L):
     LR = []
@@ -48,20 +72,21 @@ def td2(L0,L1,L2):
     for i in range(len(L0)):
         if L1[i] == L2[i]:
             LR.append('<td bgcolor="gray">%s</td>'%L0[i])
+        elif L1[i]!='0' and L2[i]!='0':
+            LR.append('<td bgcolor="orange">%s</td>'%L0[i])
         else:
             LR.append('<td>%s</td>'%L0[i])
     return '\n'.join(LR)
         
 def table(ouFile,L0,L1,L2,L0_etc,L1_etc,L2_etc):
-    ouFile.write('<html>\n')
-    ouFile.write('<body>\n')
     ouFile.write('<table>\n')
-
     ####caption
     ouFile.write('<caption>\n')
-    ouFile.write('<font color="red">%s:%s-%s</font>\n'%(L1_etc[0],L1_etc[1],L1_etc[2]))
+    ouFile.write(L0_etc[0]+'\n')
     ouFile.write('<br />\n')
-    ouFile.write('<font color="blue">%s:%s-%s</font>\n'%(L2_etc[0],L2_etc[1],L2_etc[2]))
+    ouFile.write('<font color="red">%s:%s:%s-%s</font>\n'%(L1_etc[0],L1_etc[1],L1_etc[2],L1_etc[3]))
+    ouFile.write('<br />\n')
+    ouFile.write('<font color="blue">%s:%s:%s-%s</font>\n'%(L2_etc[0],L2_etc[1],L2_etc[2],L1_etc[3]))
     ouFile.write('</caption>\n')
 
     ####L1
@@ -80,12 +105,12 @@ def table(ouFile,L0,L1,L2,L0_etc,L1_etc,L2_etc):
 
     ouFile.write('</table>\n')
     ouFile.write('<hr />\n')
-    ouFile.write('</body>\n')
-    ouFile.write('</html>\n')
 
 def diagram(inF):
     inFile = open(inF)
     ouFile = open(inF+'.html','w')
+    ouFile.write('<html>\n')
+    ouFile.write('<body>\n')
     L0 = ['0']*76
     L1 = ['0']*76
     L2 = ['0']*76
@@ -110,28 +135,41 @@ def diagram(inF):
             end2 = int(fields[23])
             start2_query= int(fields[20])
             end2_query=int(fields[21])
+            if start1 <= end1:
+                strand1='+'
+            else:
+                strand1='-'
+            if start2 <= end2:
+                strand2='+'
+            else:
+                strand2='-'
     
             seq1 = seq(ch1,start1, end1)
             seq2 = seq(ch2,start2, end2)
+
+            L0_etc=[fields[0].strip('>')]
 
             if start1_query+end1_query<= start2_query+end2_query:
                 for i in range(start1_query-1, end1_query):
                     L1[i]=seq1[i-start1_query+1]
                 for i in range(start2_query-1, end2_query):
                     L2[i]=seq2[i-start2_query+1]
-                L1_etc=[ch1,start1,end1,'']
-                L2_etc=[ch2,start2,end2,'']
+                L1_etc=[ch1,strand1,start1,end1,'gene']
+                L2_etc=[ch2,strand2,start2,end2,'gene']
             else:
                 for i in range(start1_query-1, end1_query):
                     L2[i]=seq1[i-start1_query+1]
                 for i in range(start2_query-1, end2_query):
                     L1[i]=seq2[i-start2_query+1]
-                L1_etc=[ch2,start2,end2,'']
-                L2_etc=[ch1,start1,end1,'']
+                L1_etc=[ch2,strand2,start2,end2,'gene']
+                L2_etc=[ch1,strand1,start1,end1,'gene']
         else:
             break
         table(ouFile,L0,L1,L2,L0_etc,L1_etc,L2_etc)
     inFile.close()
+
+    ouFile.write('</body>\n')
+    ouFile.write('</html>\n')
     ouFile.close()
     #L1 = ['A','T','C','G','0','0']
     #print('<table>')
