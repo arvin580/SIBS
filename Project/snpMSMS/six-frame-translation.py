@@ -88,11 +88,11 @@ def snv_indel(inF):
     for line in inFile:
         line = line.strip()
         fields = line.split('\t')
-        ch = fields[26]
-        FROM = fields[29].upper()
-        TOs = fields[30].upper().split(',')
-        start = int(fields[27])
-        end = int(fields[27])+len(FROM)-1
+        ch = fields[1]
+        FROM = fields[9].upper().split(',')[0]
+        TOs = fields[9].upper().split(',')[1:-1]
+        start = int(fields[2])+1
+        end = start+len(FROM)-1
         s = start - L -1
         e = end + L
         seq = HG[ch][s:e]
@@ -110,7 +110,7 @@ def snv_indel(inF):
 
 def snv_indel_splicing(inF):
     RefGene = {}
-    inFile = open('refGene-2013-04-22.txt')
+    inFile = open('/netshare1/home1/people/hansun/Data/hg19_refGene/refGene-2013-04-22.txt')
     for line in inFile:
         line = line.strip()
         fields = line.split('\t')
@@ -126,11 +126,11 @@ def snv_indel_splicing(inF):
     for line in inFile:
         line = line.strip()
         fields = line.split('\t')
-        ch = fields[26]
-        FROM = fields[29].upper()
-        TOs = fields[30].upper().split(',')
-        start = int(fields[27])
-        end = int(fields[27])+len(FROM)-1
+        ch = fields[1]
+        FROM = fields[9].upper().split(',')[0]
+        TOs = fields[9].upper().split(',')[1:-1]
+        start = int(fields[2])+1
+        end = start+len(FROM)-1
         for k in RefGene:
             if ch == RefGene[k][0][0]:
                 for j in range(1,len(RefGene[k])):
@@ -175,9 +175,6 @@ def snv_indel_splicing(inF):
     ouFile.close()
 
 
-snv_indel('sum_snv.exome_summary.nonsynonymous-splicing')
-snv_indel('sum_snv.exome_summary.overall.filter.nonsynonymous-splicing')
-snv_indel('sum_snv.exome_summary.indel')
-snv_indel('sum_snv.exome_summary.indel.overall.filter')
+snv_indel('snp137CodingDbSnp.txt')
 
 
