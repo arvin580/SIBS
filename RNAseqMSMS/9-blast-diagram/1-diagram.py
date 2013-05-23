@@ -84,9 +84,9 @@ def table(ouFile,L0,L1,L2,L0_etc,L1_etc,L2_etc):
     ouFile.write('<caption>\n')
     ouFile.write(L0_etc[0]+'\n')
     ouFile.write('<br />\n')
-    ouFile.write('<font color="red">%s:%s:%s-%s</font>\n'%(L1_etc[0],L1_etc[1],L1_etc[2],L1_etc[3]))
+    ouFile.write('<font color="red">%s:%s-%s</font>\n'%(L1_etc[0],L1_etc[1],L1_etc[2]))
     ouFile.write('<br />\n')
-    ouFile.write('<font color="blue">%s:%s:%s-%s</font>\n'%(L2_etc[0],L2_etc[1],L2_etc[2],L1_etc[3]))
+    ouFile.write('<font color="blue">%s:%s-%s</font>\n'%(L2_etc[0],L2_etc[1],L2_etc[2]))
     ouFile.write('</caption>\n')
 
     ####L1
@@ -135,34 +135,31 @@ def diagram(inF):
             end2 = int(fields[23])
             start2_query= int(fields[20])
             end2_query=int(fields[21])
-            if start1 <= end1:
-                strand1='+'
-            else:
-                strand1='-'
-            if start2 <= end2:
-                strand2='+'
-            else:
-                strand2='-'
-    
             seq1 = seq(ch1,start1, end1)
             seq2 = seq(ch2,start2, end2)
 
             L0_etc=[fields[0].strip('>')]
-
-            if start1_query+end1_query<= start2_query+end2_query:
-                for i in range(start1_query-1, end1_query):
-                    L1[i]=seq1[i-start1_query+1]
-                for i in range(start2_query-1, end2_query):
-                    L2[i]=seq2[i-start2_query+1]
-                L1_etc=[ch1,strand1,start1,end1,'gene']
-                L2_etc=[ch2,strand2,start2,end2,'gene']
-            else:
-                for i in range(start1_query-1, end1_query):
-                    L2[i]=seq1[i-start1_query+1]
-                for i in range(start2_query-1, end2_query):
-                    L1[i]=seq2[i-start2_query+1]
-                L1_etc=[ch2,strand2,start2,end2,'gene']
-                L2_etc=[ch1,strand1,start1,end1,'gene']
+            try:
+                if start1_query+end1_query<= start2_query+end2_query:
+                    for i in range(start1_query-1, end1_query):
+                        L1[i]=seq1[i-start1_query+1]
+                    for i in range(start2_query-1, end2_query):
+                        L2[i]=seq2[i-start2_query+1]
+                    L1_etc=[ch1,start1,end1,'gene']
+                    L2_etc=[ch2,start2,end2,'gene']
+                else:
+                    for i in range(start1_query-1, end1_query):
+                        L2[i]=seq1[i-start1_query+1]
+                    for i in range(start2_query-1, end2_query):
+                        L1[i]=seq2[i-start2_query+1]
+                    L1_etc=[ch2,start2,end2,'gene']
+                    L2_etc=[ch1,start1,end1,'gene']
+            except:
+                print(seq1)
+                print(seq2)
+                print(line1)
+                print(line2)
+                return
         else:
             break
         table(ouFile,L0,L1,L2,L0_etc,L1_etc,L2_etc)
@@ -177,4 +174,4 @@ def diagram(inF):
     #print(''.join(L0))
     #print(''.join(L2))
     #print(td(L1))
-diagram('ha')
+diagram('ERR0498-04-05.unmapped.unique.human-viruse-checked')
