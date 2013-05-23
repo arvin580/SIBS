@@ -81,6 +81,9 @@ def diagram(inF):
     L0 = ['0']*76
     L1 = ['0']*76
     L2 = ['0']*76
+    L0_etc= []
+    L1_etc= []
+    L2_etc= []
     while True:
         line1 = inFile.readline().strip()
         line2 = inFile.readline().strip()
@@ -102,12 +105,17 @@ def diagram(inF):
     
             seq1 = seq(ch1,start1, end1)
             seq2 = seq(ch2,start2, end2)
-            for i in range(start1_query-1, end1_query):
-                L1[i]=seq1[i-start1_query+1]
 
-            for i in range(start2_query-1, end2_query):
-                L2[i]=seq2[i-start2_query+1]
-
+            if start1_query+end1_query<= start2_query+end2_query:
+                for i in range(start1_query-1, end1_query):
+                    L1[i]=seq1[i-start1_query+1]
+                for i in range(start2_query-1, end2_query):
+                    L2[i]=seq2[i-start2_query+1]
+            else:
+                for i in range(start1_query-1, end1_query):
+                    L2[i]=seq1[i-start1_query+1]
+                for i in range(start2_query-1, end2_query):
+                    L1[i]=seq2[i-start2_query+1]
         else:
             break
     inFile.close()
