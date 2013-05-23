@@ -52,13 +52,20 @@ def td2(L0,L1,L2):
             LR.append('<td>%s</td>'%L0[i])
     return '\n'.join(LR)
         
-def table(inF,L0,L1,L2):
-    ouFile = open(inF+'.html','w')
+def table(ouFile,L0,L1,L2,L0_etc,L1_etc,L2_etc):
     ouFile.write('<html>\n')
     ouFile.write('<body>\n')
     ouFile.write('<table>\n')
+
+    ####caption
+    ouFile.write('<caption>\n')
+    ouFile.write('<font color="red">%s:%s-%s</font>\n'%(L1_etc[0],L1_etc[1],L1_etc[2]))
+    ouFile.write('<br />\n')
+    ouFile.write('<font color="blue">%s:%s-%s</font>\n'%(L2_etc[0],L2_etc[1],L2_etc[2]))
+    ouFile.write('</caption>\n')
+
     ####L1
-    ouFile.write('<tr style="color:rgb(0,0,255)">\n')
+    ouFile.write('<tr style="color:red">\n')
     ouFile.write(td(L1)+'\n')
     ouFile.write('</tr>\n')
     ####L0
@@ -66,18 +73,19 @@ def table(inF,L0,L1,L2):
     ouFile.write(td2(L0,L1,L2)+'\n')
     ouFile.write('</tr>\n')
     ####L2
-    ouFile.write('<tr style="color:rgb(255,0,0)">\n')
+    ouFile.write('<tr style="color:blue">\n')
     ouFile.write(td(L2)+'\n')
     ouFile.write('</tr>\n')
 
 
     ouFile.write('</table>\n')
+    ouFile.write('<hr />\n')
     ouFile.write('</body>\n')
     ouFile.write('</html>\n')
-    ouFile.close()
 
 def diagram(inF):
     inFile = open(inF)
+    ouFile = open(inF+'.html','w')
     L0 = ['0']*76
     L1 = ['0']*76
     L2 = ['0']*76
@@ -111,15 +119,20 @@ def diagram(inF):
                     L1[i]=seq1[i-start1_query+1]
                 for i in range(start2_query-1, end2_query):
                     L2[i]=seq2[i-start2_query+1]
+                L1_etc=[ch1,start1,end1,'']
+                L2_etc=[ch2,start2,end2,'']
             else:
                 for i in range(start1_query-1, end1_query):
                     L2[i]=seq1[i-start1_query+1]
                 for i in range(start2_query-1, end2_query):
                     L1[i]=seq2[i-start2_query+1]
+                L1_etc=[ch2,start2,end2,'']
+                L2_etc=[ch1,start1,end1,'']
         else:
             break
+        table(ouFile,L0,L1,L2,L0_etc,L1_etc,L2_etc)
     inFile.close()
-    table(inF,L0,L1,L2)
+    ouFile.close()
     #L1 = ['A','T','C','G','0','0']
     #print('<table>')
     #print(''.join(L1))
