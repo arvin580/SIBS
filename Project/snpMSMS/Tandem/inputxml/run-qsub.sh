@@ -15,8 +15,8 @@
 #qsub run-3.sh -l nodes=cu08
 #qsub run-4.sh -l nodes=cu08
 
-qsub run-5.sh -l nodes=cu014
-qsub run-6.sh -l nodes=cu015
-qsub run-7.sh -l nodes=cu016
-qsub run-8.sh -l nodes=cu014
-qsub run-9.sh -l nodes=cu015
+qsub run-5.sh -l nodes=cu01
+qsub run-6.sh -l nodes=cu02
+qsub run-7.sh -l nodes=cu03
+qsub run-8.sh -l nodes=cu04
+qsub run-9.sh -l nodes=cu05
