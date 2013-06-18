@@ -1,0 +1,4 @@
+cd /netshare1/home1/people/hansun/RNAseqMSMS/14-tandem-snv-dbsnp-cosmic/inputxml2
+sh 20091217_Velos1_NaNa_SA_10k_run2_Hela_GluC_SecF_pH05.sh
+sh 20091010_Velos1_NaNa_SA_Hela_GluC_SECD_pH_11real.sh
+sh 20091006_Velos1_NaNa_SA_Hela_GluC_SECB_pH_3.sh
