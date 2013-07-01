@@ -21,12 +21,12 @@ unique('Homo_sapiens.GRCh37.70.pep.abinitio.fa.fa')
 unique('split-mapped-deletion-translocation-inversion-duplication-KR','SV')
 unique('ERR0498-04-05.unmapped.unique.total.fasta.blated.filtered.seq1.splicing.not_known-predict-KR','PREDICT-SPLICING')
 
-ouFile = open('HeLa-predict-splicing-sv-KR','w')
+ouFile = open('HeLa-predict-splicing-sv-KR.fasta','w')
 for k in D:
     ouFile.write('>'+'|'.join(D[k])+'\n')
     ouFile.write(k+'\n')
-    ouFile.write('>REVERSE:'+'|'.join(D[k])+'\n')
-    ouFile.write(k[::-1]+'\n')
+    #ouFile.write('>REVERSE:'+'|'.join(D[k])+'\n')
+    #ouFile.write(k[::-1]+'\n')
 
 ouFile.close()
 

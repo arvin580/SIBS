@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 import sys
 DIR = '/netshare1/home1/people/hansun/Data/HeLa/HeLa-MSMS'
 
@@ -18,9 +20,9 @@ def peptide(inF):
     for line in inFile:
         line = line.strip()
         fields = line.split('\t')
-        pep = fields[0]
-        sp = fields[1].split('|')[0]
-        other = ':'.join(fields[1].split('|')[2:])
+        pep = fields[3]
+        sp = fields[0].strip()
+        other = fields[4]
         mgf = spec(sp)
         ouFile1.write(''.join(mgf))
         ouFile2.write(pep + '\t' + sp+'\t'+other+'\n')

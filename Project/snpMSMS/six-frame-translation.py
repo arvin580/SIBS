@@ -24,55 +24,59 @@ inFile.close()
 def translate(seq,start,end,FROM,TO):
     # start,end:count from 1.
     six = []
-    trans = string.maketrans('atcgATCG','tagcTAGC')
-    if seq[start-1:end].upper()== FROM:
-        seq_to = seq[0:start-1]+TO+seq[end:]
-        seq_rev = string.translate(seq[::-1],trans)
-        seq_to_rev = string.translate(seq_to[::-1],trans)
-
-        for i in range(3):
-            pep = []
-            for j in range(i,len(seq),3):
-                c = seq[j:j+3].upper()
-                if len(c) == 3:
-                    pep.append(Codon[c])
-            s = start - i
-            e = end - i 
-            six.append([''.join(pep),int(ceil(s/3.0)),int(ceil(e/3.0))])
-        for i in range(3):
-            pep = []
-            for j in range(i,len(seq_rev),3):
-                c = seq_rev[j:j+3].upper()
-                if len(c) == 3:
-                    pep.append(Codon[c])
-            s = len(seq_rev) - end + 1 - i
-            e = len(seq_rev) - start + 1 - i
-            six.append([''.join(pep),int(ceil(s/3.0)),int(ceil(e/3.0))])
-
-        end = start + len(TO) - 1
-        for i in range(3):
-            pep = []
-            for j in range(i,len(seq_to),3):
-                c = seq_to[j:j+3].upper()
-                if len(c) == 3:
-                    pep.append(Codon[c])
-            s = start - i
-            e = end - i 
-            six.append([''.join(pep),int(ceil(s/3.0)),int(ceil(e/3.0))])
-        for i in range(3):
-            pep = []
-            for j in range(i,len(seq_to_rev),3):
-                c = seq_to_rev[j:j+3].upper()
-                if len(c) == 3:
-                    pep.append(Codon[c])
-            s = len(seq_to_rev) - end + 1 - i
-            e = len(seq_to_rev) - start + 1 - i
-            six.append([''.join(pep),int(ceil(s/3.0)),int(ceil(e/3.0))])
-
-        return six
-
-    else:
-        print('warning:'+'\t'+seq+'\t'+str(start)+'\t'+str(end)+'\t'+FROM+'\t'+TO)
+    try:
+        trans = string.maketrans('atcgATCG','tagcTAGC')
+        if seq[start-1:end].upper()== FROM:
+            seq_to = seq[0:start-1]+TO+seq[end:]
+            seq_rev = string.translate(seq[::-1],trans)
+            seq_to_rev = string.translate(seq_to[::-1],trans)
+    
+            for i in range(3):
+                pep = []
+                for j in range(i,len(seq),3):
+                    c = seq[j:j+3].upper()
+                    if len(c) == 3:
+                        pep.append(Codon[c])
+                s = start - i
+                e = end - i 
+                six.append([''.join(pep),int(ceil(s/3.0)),int(ceil(e/3.0))])
+            for i in range(3):
+                pep = []
+                for j in range(i,len(seq_rev),3):
+                    c = seq_rev[j:j+3].upper()
+                    if len(c) == 3:
+                        pep.append(Codon[c])
+                s = len(seq_rev) - end + 1 - i
+                e = len(seq_rev) - start + 1 - i
+                six.append([''.join(pep),int(ceil(s/3.0)),int(ceil(e/3.0))])
+    
+            end = start + len(TO) - 1
+            for i in range(3):
+                pep = []
+                for j in range(i,len(seq_to),3):
+                    c = seq_to[j:j+3].upper()
+                    if len(c) == 3:
+                        pep.append(Codon[c])
+                s = start - i
+                e = end - i 
+                six.append([''.join(pep),int(ceil(s/3.0)),int(ceil(e/3.0))])
+            for i in range(3):
+                pep = []
+                for j in range(i,len(seq_to_rev),3):
+                    c = seq_to_rev[j:j+3].upper()
+                    if len(c) == 3:
+                        pep.append(Codon[c])
+                s = len(seq_to_rev) - end + 1 - i
+                e = len(seq_to_rev) - start + 1 - i
+                six.append([''.join(pep),int(ceil(s/3.0)),int(ceil(e/3.0))])
+            return six
+    
+        else:
+            #print('warning:'+'\t'+seq+'\t'+str(start)+'\t'+str(end)+'\t'+FROM+'\t'+TO)
+            return six
+    except:
+            #print('warning2:'+'\t'+seq+'\t'+str(start)+'\t'+str(end)+'\t'+FROM+'\t'+TO)
+            return six
 
 #six = translate('CAGCACCTCCCTGATGGGGACAAAACGCCCATGTCCGAGCGGCTGGACGACACGGAGCCCTATTTCATCGGGATCTTTTGCTTCGAGGCAGGGATCAAA',)
 #six = translate('CCGAGGCAGGGATCAAAGATCAGCCTA',11,15,'GATCA','AT')
@@ -98,11 +102,14 @@ def snv_indel(inF):
         seq = HG[ch][s:e]
         for TO in TOs:
             six = translate(seq, L+1, L+len(FROM), FROM, TO)
-            for i in range(6):
-                ouFile.write('>'+ch+':'+str(start)+':'+str(end)+':'+FROM+':'+TO+':'+'REF-'+str(i)+':'+str(six[i][1])+':'+str(six[i][2])+':'+six[i][0][six[i][1]-1:six[i][2]]+'\n')
-                ouFile.write(six[i][0]+'\n')
-                ouFile.write('>'+ch+':'+str(start)+':'+str(end)+':'+FROM+':'+TO+':'+'ALT-'+str(i)+':'+str(six[i+6][1])+':'+str(six[i+6][2])+':'+six[i+6][0][six[i+6][1]-1:six[i+6][2]]+'\n')
-                ouFile.write(six[i+6][0]+'\n')
+            if len(six) == 12:
+                for i in range(6):
+                    ouFile.write('>'+ch+':'+str(start)+':'+str(end)+':'+FROM+':'+TO+':'+'REF-'+str(i)+':'+str(six[i][1])+':'+str(six[i][2])+':'+six[i][0][six[i][1]-1:six[i][2]]+'\n')
+                    ouFile.write(six[i][0]+'\n')
+                    ouFile.write('>'+ch+':'+str(start)+':'+str(end)+':'+FROM+':'+TO+':'+'ALT-'+str(i)+':'+str(six[i+6][1])+':'+str(six[i+6][2])+':'+six[i+6][0][six[i+6][1]-1:six[i+6][2]]+'\n')
+                    ouFile.write(six[i+6][0]+'\n')
+            else:
+                print('Warning1:\t'+line)
     inFile.close()
     ouFile.close()
 
@@ -143,14 +150,17 @@ def snv_indel_splicing(inF):
                             seq = HG[ch][s1:e1]+HG[ch][s2:e2]
                             for TO in TOs:
                                 six = translate(seq, L+1, L+len(FROM), FROM, TO)
-                                for i in range(6):
-                                    ouFile.write('>'+ch+':'+str(start)+':'+str(end)+':'+FROM+':'+TO+':'+'Splicing-REF-'+str(i)+':'+str(six[i][1])+':'+str(six[i][2])+':'+six[i][0][six[i][1]-1:six[i][2]]+'\n')
-                                    ouFile.write(six[i][0]+'\n')
-                                    ouFile.write('>'+ch+':'+str(start)+':'+str(end)+':'+FROM+':'+TO+':'+'Splicing-ALT-'+str(i)+':'+str(six[i+6][1])+':'+str(six[i+6][2])+':'+six[i+6][0][six[i+6][1]-1:six[i+6][2]]+'\n')
-                                    ouFile.write(six[i+6][0]+'\n')
+                                if len(six) == 12:
+                                    for i in range(6):
+                                        ouFile.write('>'+ch+':'+str(start)+':'+str(end)+':'+FROM+':'+TO+':'+'Splicing-REF-'+str(i)+':'+str(six[i][1])+':'+str(six[i][2])+':'+six[i][0][six[i][1]-1:six[i][2]]+'\n')
+                                        ouFile.write(six[i][0]+'\n')
+                                        ouFile.write('>'+ch+':'+str(start)+':'+str(end)+':'+FROM+':'+TO+':'+'Splicing-ALT-'+str(i)+':'+str(six[i+6][1])+':'+str(six[i+6][2])+':'+six[i+6][0][six[i+6][1]-1:six[i+6][2]]+'\n')
+                                        ouFile.write(six[i+6][0]+'\n')
+                                else:
+                                    print('Warning2:\t'+line+'\t'+k)
                         except:
-                            print('Warning:\t'+line)
-                            print('Warning:\t'+k)
+                            print('Warning3:\t'+line+'\t'+k)
+
 
                     elif RefGene[k][j][0] < start < RefGene[k][j][0] + L:
                         try:
@@ -161,20 +171,23 @@ def snv_indel_splicing(inF):
                             seq = HG[ch][s1:e1]+HG[ch][s2:e2]
                             for TO in TOs:
                                 six = translate(seq, L+1, L+len(FROM), FROM, TO)
-                                for i in range(6):
-                                    ouFile.write('>'+ch+':'+str(start)+':'+str(end)+':'+FROM+':'+TO+':'+'Splicing-REF-'+str(i)+':'+str(six[i][1])+':'+str(six[i][2])+':'+six[i][0][six[i][1]-1:six[i][2]]+'\n')
-                                    ouFile.write(six[i][0]+'\n')
-                                    ouFile.write('>'+ch+':'+str(start)+':'+str(end)+':'+FROM+':'+TO+':'+'Splicing-ALT-'+str(i)+':'+str(six[i+6][1])+':'+str(six[i+6][2])+':'+six[i+6][0][six[i+6][1]-1:six[i+6][2]]+'\n')
-                                    ouFile.write(six[i+6][0]+'\n')
+                                if len(six) == 12:
+                                    for i in range(6):
+                                        ouFile.write('>'+ch+':'+str(start)+':'+str(end)+':'+FROM+':'+TO+':'+'Splicing-REF-'+str(i)+':'+str(six[i][1])+':'+str(six[i][2])+':'+six[i][0][six[i][1]-1:six[i][2]]+'\n')
+                                        ouFile.write(six[i][0]+'\n')
+                                        ouFile.write('>'+ch+':'+str(start)+':'+str(end)+':'+FROM+':'+TO+':'+'Splicing-ALT-'+str(i)+':'+str(six[i+6][1])+':'+str(six[i+6][2])+':'+six[i+6][0][six[i+6][1]-1:six[i+6][2]]+'\n')
+                                        ouFile.write(six[i+6][0]+'\n')
+                                else:
+                                    print('Warning2:\t'+line+'\t'+k)
                         except:
-                            print('Warning:\t'+line)
-                            print('Warning:\t'+k)
+                            print('Warning3:\t'+line+'\t'+k)
 
 
     inFile.close()
     ouFile.close()
+    
 
 
-snv_indel('snp137CodingDbSnp.txt')
+snv_indel(sys.argv[1])
 
 

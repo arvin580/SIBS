@@ -43,7 +43,7 @@ while True:
         six = translate(line2)
         for i in range(len(six)):
             if six[i].find('*')==-1:
-                ouFile.write(line1+'\t'+str(i)+'\n')
+                ouFile.write(line1+'\t'+str(i)+'\t'+line2+'\n')
                 ouFile.write(six[i]+'\n')
     else:
         break

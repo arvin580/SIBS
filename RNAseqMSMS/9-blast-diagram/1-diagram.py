@@ -32,7 +32,6 @@ def seq2(ch,start,end):
             else:
                 break
         inFile.close()
-
 D = {}
 def read_genome(L):
     for item in L:
@@ -48,7 +47,6 @@ def read_genome(L):
 
 read_genome(['/netshare1/home1/people/hansun/Data/GenomeSeq/Human/ucsc.hg19.fasta.fa',
 '/netshare1/home1/people/hansun/Data/VirusesGenome/VirusesGenome.fasta.fa'])
-
 def seq(ch,start,end):
     trans = string.maketrans('ATCGatcg','TAGCtagc')
     if start <= end:
@@ -109,18 +107,20 @@ def table(ouFile,L0,L1,L2,L0_etc,L1_etc,L2_etc):
 def diagram(inF):
     inFile = open(inF)
     ouFile = open(inF+'.html','w')
+    ouFile2 = open(inF+'.indel','w')
     ouFile.write('<html>\n')
     ouFile.write('<body>\n')
-    L0 = ['0']*76
-    L1 = ['0']*76
-    L2 = ['0']*76
-    L0_etc= []
-    L1_etc= []
-    L2_etc= []
     while True:
         line1 = inFile.readline().strip()
         line2 = inFile.readline().strip()
         if line1:
+            L0 = ['0']*76
+            L1 = ['0']*76
+            L2 = ['0']*76
+            L0_etc= []
+            L1_etc= []
+            L2_etc= []
+
             fields = line1.split('\t')
             for i in range(len(line2)):
                 L0[i] = line2[i]
@@ -154,20 +154,19 @@ def diagram(inF):
                         L1[i]=seq2[i-start2_query+1]
                     L1_etc=[ch2,start2,end2,'gene']
                     L2_etc=[ch1,start1,end1,'gene']
+                table(ouFile,L0,L1,L2,L0_etc,L1_etc,L2_etc)
             except:
-                print(seq1)
-                print(seq2)
-                print(line1)
-                print(line2)
-                return
+                ouFile2.write(line1+'\n')
+                ouFile2.write(line2+'\n')
+                
         else:
             break
-        table(ouFile,L0,L1,L2,L0_etc,L1_etc,L2_etc)
     inFile.close()
 
     ouFile.write('</body>\n')
     ouFile.write('</html>\n')
     ouFile.close()
+    ouFile2.close()
     #L1 = ['A','T','C','G','0','0']
     #print('<table>')
     #print(''.join(L1))
