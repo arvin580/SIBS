@@ -13,22 +13,28 @@ inFile.close()
 
 def snv_indel(line):
     fields = line.split('\t')
-    tp = fields[1].split(':')[0]
-    ch = fields[1].split(':')[1]
-    pos = fields[1].split(':')[2]
-    genes = []
-    dbsnps = []
-    for item in L:
-        if item.find(ch) != -1 and item.find(pos) != -1: 
-            gene = item.split('\t')[1].split('(')[0]
-            dbsnp = item.split('\t')[8]
-            genes.append(gene)
-            dbsnps.append(dbsnp)
-    ouFile.write(fields[0]+'\t'+'|'.join(genes)+'\t'+'|'.join(dbsnps)+'\t'+fields[1]+'\n')
+    fds = fields[10].split(':')
+    for i in range(len(fds)):
+        if fds[i].find('SNV')!=-1 or fds[i].find('INDEL')!=-1:
+            ch = fields[10].split(':')[i+1]
+            pos = fields[10].split(':')[i+2]
+            genes = []
+            dbsnps = []
+            for item in L:
+                if item.find(ch) != -1 and item.find(pos) != -1: 
+                    gene = item.split('\t')[1].split('(')[0]
+                    dbsnp = item.split('\t')[8]
+                    genes.append(gene)
+                    dbsnps.append(dbsnp)
+            if dbsnps:        
+                ouFile.write('|'.join(genes)+'\t'+'|'.join(dbsnps)+'\t'+line+'\n')
+            else:
+                ouFile.write('|'.join(genes)+'\t'+'new'+'\t'+line+'\n')
+            break
 
 
 inFile = open('HeLa-peptide-snv-indel-predict-virus-sv')
-ouFile = open('HeLa-peptide-snv-indel-predict-virus-sv-gene')
+ouFile = open('HeLa-peptide-snv-indel-predict-virus-sv-gene','w')
 for line in inFile:
     line = line.rstrip()
     fields = line.split('\t')
