@@ -61,9 +61,9 @@ def predict(line):
             pos1 =item.split(':')[4]
             pos2 =item.split(':')[5]
             genes = []
-            for item in L:
-                if (item[2]==ch and (int(item[4])<=int(pos1)<=int(item[5]) or int(item[4])<=int(pos2)<=int(item[5]))) :
-                    gene = item[12]
+            for it in L:
+                if (it[2]==ch and (int(it[4])<=int(pos1)<=int(it[5]) or int(it[4])<=int(pos2)<=int(it[5]))) :
+                    gene = it[12]
                     genes.append(gene)
             ouFile.write('|'.join(set(genes))+'\t'+''+'\t'+line+'\n')
             break
@@ -85,7 +85,42 @@ def virus(line):
             break
 
 def human_virus(line):
-    pass
+    fields = line.split('\t')
+    for item in fields:
+        if item.find('HUMAN-VIRUS')!=-1:
+
+            nc= item.split(':')[4]
+            ch = item.split(':')[16]
+            pos1_nc = item.split(':')[11]
+            pos2_nc = item.split(':')[12]
+            pos3_ch = item.split(':')[23]
+            pos4_ch = item.split(':')[24]
+        
+            pos5_nc_query = item.split(':')[9]
+            pos6_nc_query = item.split(':')[10]
+            pos7_ch_query = item.split(':')[21]
+            pos8_ch_query = item.split(':')[22]
+            genes1 = []
+            genes2 = []
+            for it in L:
+                if (it[2]==ch and (int(it[4])<=int(pos3_ch)<=int(it[5]) or int(it[4])<=int(pos4_ch)<=int(it[5]))) or \
+                       (it[2]==nc and (int(it[4])<=int(pos1_nc)<=int(it[5]) or int(it[4])<=int(pos2_nc)<=int(it[5])))  :
+                    gene = it[12]
+                    genes1.append(gene)
+            for k in VIRUS_GENE:
+                if (ch == 'NC_001357.1' and(int(VIRUS_GENE[k][0])<=int(pos3_ch)<=int(VIRUS_GENE[k][1]) or int(VIRUS_GENE[k][0])<=int(pos4_ch)<=int(VIRUS_GENE[k][1]))) or \
+                        (nc == 'NC_001357.1' and(int(VIRUS_GENE[k][0])<=int(pos1_nc)<=int(VIRUS_GENE[k][1]) or int(VIRUS_GENE[k][0])<=int(pos2_nc)<=int(VIRUS_GENE[k][1]))) :
+                    gene = k 
+                    genes2.append(gene)
+            if genes1 and genes2:
+                genes = '|'.join(set(genes1))+':'+'|'.join(set(genes2))
+            elif genes1:
+                genes = '|'.join(set(genes1))+':'+'*'
+            else:
+                genes = '*'+':'+'|'.join(set(genes2))
+            ouFile.write('|'.join(set(genes))+'\t'+''+'\t'+line+'\n')
+        break
+
 
 def sv_not_translocation(line):
     fields = line.split('\t')
@@ -103,10 +138,10 @@ def sv_not_translocation(line):
             pos7_ch_query = item.split(':')[21]
             pos8_ch_query = item.split(':')[22]
             genes = []
-            for item in L:
-                if (item[2]==ch and (int(item[4])<=int(pos3_ch)<=int(item[5]) or int(item[4])<=int(pos4_ch)<=int(item[5]))) or \
-                        (item[2]==nc and (int(item[4])<=int(pos1_nc)<=int(item[5]) or int(item[4])<=int(pos2_nc)<=int(item[5]))):
-                    gene = item[12]
+            for it in L:
+                if (it[2]==ch and (int(it[4])<=int(pos3_ch)<=int(it[5]) or int(it[4])<=int(pos4_ch)<=int(it[5]))) or \
+                        (it[2]==nc and (int(it[4])<=int(pos1_nc)<=int(it[5]) or int(it[4])<=int(pos2_nc)<=int(it[5]))):
+                    gene = it[12]
                     genes.append(gene)
             ouFile.write('|'.join(set(genes))+'\t'+''+'\t'+line+'\n')
             break
@@ -130,11 +165,11 @@ def sv_translocation(line):
             pos8_ch_query = item.split(':')[22]
             genes1 = []
             genes2 = []
-            for item in L:
-                if (item[2]==nc and (int(item[4])<=int(pos1_nc)<=int(item[5]) or int(item[4])<=int(pos2_nc)<=int(item[5]))):
-                    genes1.append(item[12])
-                if (item[2]==ch and (int(item[4])<=int(pos3_ch)<=int(item[5]) or int(item[4])<=int(pos4_ch)<=int(item[5]))):
-                    genes2.append(item[12])
+            for it in L:
+                if (it[2]==nc and (int(it[4])<=int(pos1_nc)<=int(it[5]) or int(it[4])<=int(pos2_nc)<=int(it[5]))):
+                    genes1.append(it[12])
+                if (it[2]==ch and (int(it[4])<=int(pos3_ch)<=int(it[5]) or int(it[4])<=int(pos4_ch)<=int(it[5]))):
+                    genes2.append(it[12])
             if genes1:
                 genes1 = '|'.join(set(genes1))
             else:
