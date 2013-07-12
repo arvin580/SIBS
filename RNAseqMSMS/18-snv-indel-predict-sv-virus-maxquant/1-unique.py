@@ -15,10 +15,10 @@ def unique(inF):
         ouFile.write(k+'\t'+str(len(D[k]))+'\t'+'\t'.join(D[k])+'\n')
     ouFile.close()
 
-unique('HeLa-variant-Trypsin-evidence.txt')
-unique('HeLa-variant-LysC-evidence.txt')
-unique('HeLa-variant-GluC-evidence.txt')
+#unique('HeLa-variant-Trypsin-evidence.txt')
+#unique('HeLa-variant-LysC-evidence.txt')
+#unique('HeLa-variant-GluC-evidence.txt')
 
-unique('HeLa-known-Trypsin-evidence.txt')
+#unique('HeLa-known-Trypsin-evidence.txt')
 unique('HeLa-known-LysC-evidence.txt')
 unique('HeLa-known-GluC-evidence.txt')
