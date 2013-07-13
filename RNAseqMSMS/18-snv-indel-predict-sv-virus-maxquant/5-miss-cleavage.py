@@ -1,7 +1,7 @@
 inFile = open('HeLa-variant-Trypsin-LysC-GluC-evidence-unique-peptide-snv-indel-predict-sv-virus-gene')
 ouFile = open('HeLa-variant-Trypsin-LysC-GluC-evidence-unique-peptide-snv-indel-predict-sv-virus-gene-miss_cleavage','w')
 for line in inFile:
-    line = line.strip()
+    line = line.rstrip()
     fields = line.split('\t')
     cleavage = fields[2]
     pep = fields[3]
