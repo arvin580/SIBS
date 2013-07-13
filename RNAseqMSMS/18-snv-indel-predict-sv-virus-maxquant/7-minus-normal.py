@@ -23,24 +23,28 @@ for k in D:
 ouFile.close()
 
 inFile = open('HeLa-variant-Trypsin-LysC-GluC-evidence-unique-peptide-snv-indel-predict-sv-virus-gene-miss_cleavage-known_new')
-ouFile = open('HeLa-variant-Trypsin-LysC-GluC-evidence-unique-peptide-snv-indel-predict-sv-virus-gene-miss_cleavage-known_new-normal_matched','w')
+ouFile = open('HeLa-variant-Trypsin-LysC-GluC-evidence-unique-peptide-snv-indel-predict-sv-virus-gene-miss_cleavage-known_new-normal_check','w')
 
 for line in inFile:
     line = line.rstrip()
     fields = line.split('\t')
-    flag = 0
-    for i in range(len(fields)):
-        if fields[i].find('Velos1_NaNa')!=-1:
-            f = fields[i]
-            no = fields[i+27]
-            fno = f + ':' + no
-            if fno not in D:
-                flag = 1
-                break
-    if flag:
-        ouFile.write('Normal-Not-Matched'+'\t'+line+'\n')
+    if fields[8].find('PREDICT')==-1:
+        flag = 0
+        for i in range(len(fields)):
+            if fields[i].find('Velos1_NaNa')!=-1:
+                f = fields[i]
+                no = fields[i+27]
+                fno = f + ':' + no
+                if fno not in D:
+                    flag = 1
+                    break
+        if flag:
+            ouFile.write('Normal-Not-Matched'+'\t'+line+'\n')
+        else:
+            ouFile.write('Normal-Matched'+'\t'+line+'\n')
     else:
-        ouFile.write('Normal-Matched'+'\t'+line+'\n')
+        ouFile.write('Normal-Not-Check'+'\t'+line+'\n')
+        
 
 inFile.close()
     
