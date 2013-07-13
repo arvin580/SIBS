@@ -39,7 +39,7 @@ for line in inFile:
     flag = 0
     if fields[7].find('PREDICT')!=-1:
         for k in D2:
-            if fields[2] in D2[k]:
+            if fields[4] in D2[k]:
                 flag+=1
                 break
         if flag:
@@ -48,7 +48,7 @@ for line in inFile:
             ouFile.write('NEW'+'\t'+line)
     else:
         for k in D:
-            if fields[2] in D[k]:
+            if fields[4] in D[k]:
                 flag+=1
                 break
         if flag:
