@@ -204,7 +204,7 @@ class PyHeatmap():
         colors = [color(0)]+[('white')]
         '''
 
-        new_map = matplotlib.colors.LinearSegmentedColormap.from_list('new_map', colors, N=8)
+        new_map = matplotlib.colors.LinearSegmentedColormap.from_list('new_map', colors, N=7)
         axm = ax.matshow(self.data, cmap=new_map, aspect='auto', origin='lower')
         if grid:
             plt.grid(True)
