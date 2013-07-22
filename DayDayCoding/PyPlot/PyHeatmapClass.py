@@ -193,6 +193,76 @@ class PyHeatmap():
 
         '''
  
+    def showDataNameColor2(self, ax, color, fig, xLabelVertical,grid,labelFontSize, colorTickets=[]):
+        #norm=matplotlib.colors.Normalize(-self.data.max()/2,self.data.max()/2)
+
+        print('hello 2013-07-22')
+        colors = [('white')] + [(color(i)) for i in xrange(1,256)]
+        '''
+        ## changed for negative value
+        colors = [color(0)]+[('white')]+[color(200)]
+        colors = [color(0)]+[('white')]
+        '''
+
+        new_map = matplotlib.colors.LinearSegmentedColormap.from_list('new_map', colors, N=8)
+        axm = ax.matshow(self.data, cmap=new_map, aspect='auto', origin='lower')
+        if grid:
+            plt.grid(True)
+        ax.set_xticks(range(len(self.colname)))
+        ax.set_yticks(range(len(self.rowname)))
+        ax.yaxis.tick_right()
+        ax.xaxis.tick_bottom()
+        if xLabelVertical:
+            ax.set_xticklabels(self.colname, rotation='vertical')
+        else:
+            ax.set_xticklabels(self.colname)
+        ax.set_yticklabels(self.rowname)
+        axcolor = fig.add_axes([0.2,0.03,0.7,0.02])
+        if colorTickets:
+            x=plt.colorbar(axm, cax=axcolor, orientation='horizontal', ticks=range(self.data.max()+1))
+            ###x.set_label('log2 value')
+        else:
+            plt.colorbar(axm, cax=axcolor, orientation='horizontal', ticks=range(self.data.max()+1))
+
+            '''
+            ## changed for negative value
+            plt.colorbar(axm, cax=axcolor, orientation='horizontal', ticks=range(self.data.min(),self.data.max()+1))
+            '''
+        #cn=['USP6','NCOR1']
+        if labelFontSize:
+            for t in  ax.yaxis.get_ticklabels() :
+            #if t.get_text() in cn :
+                t.set_fontsize(labelFontSize)
+            #t.set_weight('bold')
+
+        for t in  ax.xaxis.get_ticklabels() :
+            if t.get_text().find('ICC')==0 :
+                t.set_color('red')
+            if t.get_text().find('CHC')==0 :
+                t.set_color('blue')
+
+
+        '''    
+        ### changed for /netshare1/home1/szzhongxin/proj1/hansun/viruses/annotation/4.sv.gene.heatmap.py
+        viruse1 = 'NC_003977'
+        viruse2 = 'NC_001416'
+        for t in  ax.yaxis.get_ticklabels() :
+            if t.get_text().find(viruse1)==0 :
+                t.set_color('red')
+            if t.get_text().find(viruse2)==0 :
+                t.set_color('blue')
+        '''
+
+        '''
+        ### changed for /netshare1/home1/people/hansun/GeneFusionsFinal/18_PepCancer/heatmap/1-heatmap.py
+        for t in  ax.yaxis.get_ticklabels() :
+            if t.get_text().find(':')!=-1 :
+                t.set_color('red')
+            else:
+                t.set_color('blue')
+
+        '''
+
     def heatmap(self, row=True,col=True,color=plt.cm.jet,figsize=(8,6),xLabelVertical=False,grid=False,labelFontSize=False, colorTickets=False):
         fig = plt.figure(figsize=figsize)
         if row == True and col == True:
@@ -219,7 +289,7 @@ class PyHeatmap():
         if row == False and col == False and xLabelVertical == True:
             #ax = fig.add_axes([0,0.2,0.2,0.8])
             ax = fig.add_axes([0.2,0.2,0.7,0.8])
-            self.showDataNameColor(ax, color, fig,xLabelVertical,grid,labelFontSize, colorTickets)
+            self.showDataNameColor2(ax, color, fig,xLabelVertical,grid,labelFontSize, colorTickets)
             self.show()
 
            
