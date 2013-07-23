@@ -10,6 +10,7 @@ def spec(inF):
         for item in sc:
             ouFile.write(pep+'\t'+item+'\n')
         '''
+        #ouFile.write(pep+'\t'+sc[0].split(':')[0]+'\t'+sc[0].split(':')[1]+'\n')
         ouFile.write(pep+'\t'+sc[0]+'\n')
     inFile.close()
     ouFile.close()
