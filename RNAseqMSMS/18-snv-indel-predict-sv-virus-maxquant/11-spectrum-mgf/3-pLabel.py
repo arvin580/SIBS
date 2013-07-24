@@ -114,7 +114,7 @@ def readFile(inF):
         gene = genename(fields[1])
         if not gene:
             gene = 'Intergenetic-'+str(n)
-        spec = fields[1]
+        spec = fields[2]
         spec_id = spec.split(':')[1]
         pLabel(pep,spec_id,gene,n)
     

@@ -12,10 +12,10 @@ def spec(inF):
             ouFile.write(pep+'\t'+item+'\n')
         '''
         #ouFile.write(pep+'\t'+sc[0].split(':')[0]+'\t'+sc[0].split(':')[1]+'\n')
-        ouFile.write(pep+'\t'+sc[0]+'\n')
+        ouFile.write(pep+'\t'+gene+'\t'+sc[0]+'\n')
     inFile.close()
     ouFile.close()
 
 spec('HeLa-variant-Trypsin-LysC-GluC-evidence-unique-peptide-snv-indel-predict-sv-virus-gene-miss_cleavage-known_new-normal_minus-spec-to_validation_not_predict')
-spec('HeLa-variant-Trypsin-LysC-GluC-evidence-unique-peptide-snv-indel-predict-sv-virus-gene-miss_cleavage-known_new-normal_minus-spec-to_validation_not_predict')
+spec('HeLa-variant-Trypsin-LysC-GluC-evidence-unique-peptide-snv-indel-predict-sv-virus-gene-miss_cleavage-known_new-normal_minus-spec-to_validation_predict')
 

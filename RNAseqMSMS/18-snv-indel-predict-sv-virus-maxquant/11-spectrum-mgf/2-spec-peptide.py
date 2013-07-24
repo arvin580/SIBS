@@ -24,7 +24,7 @@ def peptide(inF):
         line = line.strip()
         fields = line.split('\t')
         pep = fields[0]
-        sp = fields[1].strip()
+        sp = fields[2].strip()
         mgf = spec(sp)
         ouFile1.write(''.join(mgf))
     inFile.close()
