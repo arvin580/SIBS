@@ -1,29 +1,27 @@
 D = {}
-def normal(inF):
-    inFile = open(inF)
-    for line in inFile:
-        line = line.strip()
-        fields = line.split('\t')
-        for i in range(len(fields)):
-            if fields[i].find('Velos1_NaNa')!=-1:
-                f = fields[i]
-                no = fields[i+27]
-                fno = f + ':' + no
-                D.setdefault(fno,0)
-                D[fno] += 1
-    inFile.close()
+import os
+def normal(Dir):
+    fs = os.listdir(Dir)
+    for inF in fs:
+        if inF[-8:] == '.txt.fdr':
+            inFile = open(Dir + os.sep+ inF)
+            for line in inFile:
+                fields = line.split('\t')
+                spc = fields[0]
+                D[spc]=1
+            inFile.close()
 
-normal('HeLa-known-Trypsin-evidence-unique')
-normal('HeLa-known-LysC-evidence-unique')
-normal('HeLa-known-GluC-evidence-unique')
+normal('/netshare1/home1/people/hansun/RNAseqMSMS/15-snv-indel-sv-virus-KR/output-second')
+normal('/netshare1/home1/people/hansun/RNAseqMSMS/16-snv-indel-sv-virus-K/output-second')
+normal('/netshare1/home1/people/hansun/RNAseqMSMS/17-snv-indel-sv-virus-ED/output-second')
 
 ouFile = open('HeLa-known-Trypsin-LysC-GluC-spec','w')
 for k in D:
-    ouFile.write(k+'\t'+str(D[k])+'\n')
+    ouFile.write(k+'\n')
 ouFile.close()
 
-inFile = open('HeLa-variant-Trypsin-LysC-GluC-evidence-unique-peptide-snv-indel-predict-sv-virus-gene-miss_cleavage-known_new')
-ouFile = open('HeLa-variant-Trypsin-LysC-GluC-evidence-unique-peptide-snv-indel-predict-sv-virus-gene-miss_cleavage-known_new-normal_check','w')
+inFile = open('HeLa-variant-Trypsin-LysC-GluC-peptide-snv-indel-predict-sv-virus-gene-miss_cleavage-known_new')
+ouFile = open('HeLa-variant-Trypsin-LysC-GluC-peptide-snv-indel-predict-sv-virus-gene-miss_cleavage-known_new-normal_check','w')
 
 for line in inFile:
     line = line.rstrip()
@@ -32,10 +30,7 @@ for line in inFile:
         flag = 0
         for i in range(len(fields)):
             if fields[i].find('Velos1_NaNa')!=-1:
-                f = fields[i]
-                no = fields[i+27]
-                fno = f + ':' + no
-                if fno not in D:
+                if fields[i] not in D:
                     flag = 1
                     break
         if flag:
