@@ -30,13 +30,7 @@ def pep(inF):
     ouFile.close()
 
 
-pep('0.ED-2013_05_31_16_23_30_qry.peptides-pep')
-pep('0.K-2013_06_01_09_57_53_qry.peptides-pep')
-pep('0.ED-2013_06_01_09_57_53-K8R10_qry.peptides-pep')
-pep('0.KR-2013_05_31_15_31_15_qry.peptides-pep')
-pep('0.ED-2013_06_01_09_57_53_qry.peptides-pep')
-pep('0.KR-2013_06_01_09_57_53-K8R10_qry.peptides-pep')
-pep('0.K-2013_05_31_15_31_15_qry.peptides-pep')
-pep('0.KR-2013_06_01_09_57_53_qry.peptides-pep')
-pep('0.K-2013_06_01_09_57_53-K8R10_qry.peptides-pep')
+pep('gluc-0.2013_08_09_11_29_02_qry.peptides-pep')
+pep('lysc-0.2013_08_09_11_29_01_qry.peptides-pep')
+pep('trypsin-0.2013_08_09_11_29_00_qry.peptides-pep')
 
