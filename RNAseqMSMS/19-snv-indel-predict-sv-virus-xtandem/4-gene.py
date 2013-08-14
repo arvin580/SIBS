@@ -33,25 +33,27 @@ VIRUS_GENE['LCR']=[0,104]
 
 
 def snv_indel(line):
-    print('ha')
     fields = line.split('\t')
-    fds = fields[10].split(':')
-    for i in range(len(fds)):
-        if fds[i].find('SNV')!=-1 or fds[i].find('INDEL')!=-1:
-            ch = fields[10].split(':')[i+1]
-            pos = fields[10].split(':')[i+2]
-            genes = []
-            dbsnps = []
-            for item in SNVINDEL:
-                if item.find(ch) != -1 and item.find(pos) != -1: 
-                    gene = item.split('\t')[1].split('(')[0]
-                    dbsnp = item.split('\t')[8]
-                    genes.append(gene)
-                    dbsnps.append(dbsnp)
-            if dbsnps:        
-                ouFile.write('|'.join(genes)+'\t'+'|'.join(dbsnps)+'\t'+line+'\n')
-            else:
-                ouFile.write('|'.join(genes)+'\t'+'new'+'\t'+line+'\n')
+    for j in range(len(fields)):
+        if fields[j].find('SNV:')!=-1 or fields[j].find('INDEL:')!=-1:
+            fds = fields[j].split(':')
+            for i in range(len(fds)):
+                if fds[i].find('SNV')!=-1 or fds[i].find('INDEL')!=-1:
+                    ch = fields[j].split(':')[i+1]
+                    pos = fields[j].split(':')[i+2]
+                    genes = []
+                    dbsnps = []
+                    for item in SNVINDEL:
+                        if item.find(ch) != -1 and item.find(pos) != -1: 
+                            gene = item.split('\t')[1].split('(')[0]
+                            dbsnp = item.split('\t')[8]
+                            genes.append(gene)
+                            dbsnps.append(dbsnp)
+                    if dbsnps:        
+                        ouFile.write('|'.join(genes)+'\t'+'|'.join(dbsnps)+'\t'+line+'\n')
+                    else:
+                        ouFile.write('|'.join(genes)+'\t'+'new'+'\t'+line+'\n')
+                    break
             break
 
 def predict(line): 
@@ -190,28 +192,22 @@ def sv_translocation(line):
 
 
 inFile = open('HeLa-variant-Trypsin-LysC-GluC-peptide-snv-indel-predict-sv-virus')
-ouFile = open('HeLa-variant-Trypsin-LysC-GluC-peptide-snv-indel-predict-sv-virus-gene-2','w')
+ouFile = open('HeLa-variant-Trypsin-LysC-GluC-peptide-snv-indel-predict-sv-virus-gene','w')
 for line in inFile:
     line = line.rstrip()
     fields = line.split('\t')
     if fields[4]=='SNV' or fields[4]=='INDEL':
-        pass
         snv_indel(line)
     elif fields[4].find('PREDICT')!=-1:
-        #predict(line)
-        pass
+        predict(line)
     elif fields[4]=='VIRUS':
-        #virus(line)
-        pass
+        virus(line)
     elif fields[4]=='HUMAN-VIRUS':
-        #human_virus(line)
-        pass
+        human_virus(line)
     elif fields[4]=='SV-DELETION' or fields[4]=='SV-DUPLICATION' or fields[4]=='SV-INVERSION':
-        #sv_not_translocation(line)
-        pass
+        sv_not_translocation(line)
     elif fields[4]=='SV-TRANSLOCATION':
-        #sv_translocation(line)
-        pass
+        sv_translocation(line)
 
 
 inFile.close()
