@@ -201,6 +201,8 @@ for line in inFile:
         sv_not_translocation(line)
     elif fields[4]=='SV-TRANSLOCATION':
         sv_translocation(line)
+    else:
+        print(line)
 
 
 inFile.close()
