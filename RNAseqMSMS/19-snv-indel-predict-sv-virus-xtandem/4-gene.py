@@ -33,6 +33,7 @@ VIRUS_GENE['LCR']=[0,104]
 
 
 def snv_indel(line):
+    print('ha')
     fields = line.split('\t')
     fds = fields[10].split(':')
     for i in range(len(fds)):
@@ -189,13 +190,13 @@ def sv_translocation(line):
 
 
 inFile = open('HeLa-variant-Trypsin-LysC-GluC-peptide-snv-indel-predict-sv-virus')
-ouFile = open('HeLa-variant-Trypsin-LysC-GluC-peptide-snv-indel-predict-sv-virus-gene','w')
+ouFile = open('HeLa-variant-Trypsin-LysC-GluC-peptide-snv-indel-predict-sv-virus-gene-2','w')
 for line in inFile:
     line = line.rstrip()
     fields = line.split('\t')
     if fields[4]=='SNV' or fields[4]=='INDEL':
         pass
-        #snv_indel(line)
+        snv_indel(line)
     elif fields[4].find('PREDICT')!=-1:
         #predict(line)
         pass
@@ -211,8 +212,6 @@ for line in inFile:
     elif fields[4]=='SV-TRANSLOCATION':
         #sv_translocation(line)
         pass
-    else:
-        print(line)
 
 
 inFile.close()
