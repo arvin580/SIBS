@@ -12,7 +12,7 @@ inFile.close()
 
 D2 = {}
 D3 = {}
-inFile = open('PDB.fasta')
+inFile = open('PDB.fasta.fa')
 while True:
     line1 = inFile.readline().strip('>\n')
     line2 = inFile.readline().strip()

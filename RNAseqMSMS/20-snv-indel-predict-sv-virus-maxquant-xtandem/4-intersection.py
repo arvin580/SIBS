@@ -1,6 +1,6 @@
 L = []
 L2 = []
-inFile = open('HeLa-variant-Trypsin-LysC-GluC-evidence-unique-peptide-snv-indel-predict-sv-virus-gene-miss_cleavage-known_new-normal_minus-spec-to_validation_not_predict-sequest')
+inFile = open('HeLa-variant-Trypsin-LysC-GluC-evidence-unique-peptide-snv-indel-predict-sv-virus-gene-miss_cleavage-known_new-normal_minus-spec-to_validation_predict-sequest')
 for line in inFile:
     line = line.rstrip()
     fields = line.split('\t')
@@ -9,7 +9,7 @@ for line in inFile:
 inFile.close()
 
 
-inFile = open('HeLa-variant-Trypsin-LysC-GluC-peptide-snv-indel-predict-sv-virus-gene-miss_cleavage-known_new-normal_check-spec-to_validation_not_predict-pFind3-pFind-Trypsin')
+inFile = open('HeLa-variant-Trypsin-LysC-GluC-peptide-snv-indel-predict-sv-virus-gene-miss_cleavage-known_new-normal_check-spec-to_validation_predict-pFind3-pFind-Trypsin')
 for line in inFile:
     line = line.rstrip()
     fields = line.split('\t')
