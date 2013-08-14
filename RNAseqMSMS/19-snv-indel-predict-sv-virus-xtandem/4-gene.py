@@ -194,17 +194,25 @@ for line in inFile:
     line = line.rstrip()
     fields = line.split('\t')
     if fields[4]=='SNV' or fields[4]=='INDEL':
-        snv_indel(line)
+        pass
+        #snv_indel(line)
     elif fields[4].find('PREDICT')!=-1:
-        predict(line)
+        #predict(line)
+        pass
     elif fields[4]=='VIRUS':
-        virus(line)
+        #virus(line)
+        pass
     elif fields[4]=='HUMAN-VIRUS':
-        human_virus(line)
+        #human_virus(line)
+        pass
     elif fields[4]=='SV-DELETION' or fields[4]=='SV-DUPLICATION' or fields[4]=='SV-INVERSION':
-        sv_not_translocation(line)
+        #sv_not_translocation(line)
+        pass
     elif fields[4]=='SV-TRANSLOCATION':
-        sv_translocation(line)
+        #sv_translocation(line)
+        pass
+    else:
+        print(line)
 
 
 inFile.close()
