@@ -87,19 +87,23 @@ def virus(line):
 def human_virus(line):
     fields = line.split('\t')
     for item in fields:
-        if item.find('HUMAN-VIRUS')!=-1:
-
-            nc= item.split(':')[4]
-            ch = item.split(':')[16]
-            pos1_nc = item.split(':')[11]
-            pos2_nc = item.split(':')[12]
-            pos3_ch = item.split(':')[23]
-            pos4_ch = item.split(':')[24]
+        if item.find('HUMAN-VIRUS:')!=-1:
+            fds = item.split(':')
+            for i in range(len(fds)):
+                if fds[i].find('HUMAN-VIRUS') != -1:
+                    flag = i
+                    break
+            nc= item.split(':')[4+i]
+            ch = item.split(':')[16+i]
+            pos1_nc = item.split(':')[11+i]
+            pos2_nc = item.split(':')[12+i]
+            pos3_ch = item.split(':')[23+i]
+            pos4_ch = item.split(':')[24+i]
         
-            pos5_nc_query = item.split(':')[9]
-            pos6_nc_query = item.split(':')[10]
-            pos7_ch_query = item.split(':')[21]
-            pos8_ch_query = item.split(':')[22]
+            pos5_nc_query = item.split(':')[9+i]
+            pos6_nc_query = item.split(':')[10+i]
+            pos7_ch_query = item.split(':')[21+i]
+            pos8_ch_query = item.split(':')[22+i]
             genes1 = []
             genes2 = []
             for it in L:
@@ -118,8 +122,8 @@ def human_virus(line):
                 genes = '|'.join(set(genes1))+':'+'*'
             else:
                 genes = '*'+':'+'|'.join(set(genes2))
-            ouFile.write('|'.join(set(genes))+'\t'+''+'\t'+line+'\n')
-        break
+            ouFile.write(genes+'\t'+''+'\t'+line+'\n')
+            break
 
 
 def sv_not_translocation(line):
