@@ -11,7 +11,6 @@ while True:
 inFile.close()
 
 D2 = {}
-D3 = {}
 inFile = open('PDB.fasta.fa')
 while True:
     line1 = inFile.readline().strip('>\n')
@@ -19,13 +18,22 @@ while True:
     if line1:
         symbol = line1
         D2[symbol] = [line1, line2]
-        D3.setdefault(symbol, 0)
-        D3[symbol] += 1
     else:
         break
 inFile.close()
-for k in D3:
-    print(k)
-    print(D3[k])
+
+inFile = open('PDB-blasted')
+ouFile = open('PDB-blasted-seq.txt', 'w')
+
+for line in inFile:
+    line = line.strip()
+    fields = line.split('\t')
+    head1 = fields[1]
+    head2 = fields[0]
+    ouFile.write(line + '\t' + D2[head2][0] + '\t' + D2[head2][1] + '\t' + D[head1][0] +'\t'+D[head1][1] + '\n')
+inFile.close()
+ouFile.close()
+
+
 
 
