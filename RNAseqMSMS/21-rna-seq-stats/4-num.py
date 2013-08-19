@@ -15,3 +15,4 @@ def num(inF):
 
 num('split-mapped-inversion.normal.seq.filtered.num')
 num('split-mapped-duplication.normal.seq.filtered.num')
+num('split-mapped-deletion.normal.seq.filtered.num')
