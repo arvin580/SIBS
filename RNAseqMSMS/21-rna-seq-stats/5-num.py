@@ -45,3 +45,6 @@ def num(inF):
     ouFile.close()
 
 num('split-mapped-deletion.normal.seq.filtered')
+num('split-mapped-inversion.normal.seq.filtered')
+num('split-mapped-duplication.normal.seq.filtered')
+num('split-mapped-translocation.normal.seq.filtered')

@@ -1,4 +1,6 @@
-def num(inF):
+ouFile = open('HeLa-deletion-duplication-inversion-translocaton-num','w')
+
+def num(inF,flag):
     D = {}
     inFile = open(inF)
     for line in inFile:
@@ -10,9 +12,14 @@ def num(inF):
 
     d = D.items()
     d.sort(cmp = lambda x,y:cmp(x[0],y[0]))
+    ouFile.write(flag+'\t')
     for item in d :
-        print(str(item[0]) + '\t' + str(item[1]))
+        ouFile.write(str(item[0]) + ':' + str(item[1])+'\t')
+    ouFile.write('\n')
 
-num('split-mapped-inversion.normal.seq.filtered.num')
-num('split-mapped-duplication.normal.seq.filtered.num')
-num('split-mapped-deletion.normal.seq.filtered.num')
+num('split-mapped-inversion.normal.seq.filtered.num','Inversion')
+num('split-mapped-duplication.normal.seq.filtered.num','Duplication')
+num('split-mapped-deletion.normal.seq.filtered.num','Deletion')
+num('split-mapped-translocation.normal.seq.filtered.num','Translocation')
+
+ouFile.close()
