@@ -50,3 +50,4 @@ def num(inF):
 
 num('split-mapped-inversion.normal.seq')
 num('split-mapped-duplication.normal.seq')
+num('split-mapped-deletion.normal.seq')
