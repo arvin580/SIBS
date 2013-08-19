@@ -49,3 +49,4 @@ def num(inF):
     ouFile2.close()
 
 num('split-mapped-inversion.normal.seq')
+num('split-mapped-duplication.normal.seq')

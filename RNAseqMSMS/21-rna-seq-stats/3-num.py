@@ -1,6 +1,7 @@
 def num(inF):
     D = {}
     inFile = open(inF)
+    ouFile = open(inF+'.num','w')
     for line in inFile:
         line = line.strip()
         fields = line.split('\t')
@@ -27,6 +28,8 @@ def num(inF):
     d = D.items()
     d.sort(cmp = lambda x,y:cmp(len(x[1]), len(y[1])),reverse = True)
     for item in d:
-        print(item[0] + '\t'+ str(len(item[1])) +'\t'+ '|'.join(item[1]))
+        ouFile.write(item[0] + '\t'+ str(len(item[1])) +'\t'+ '|'.join(item[1])+'\n')
+    ouFile.close()
 
-num('split-mapped-inversion.normal.seq')
+num('split-mapped-inversion.normal.seq.filtered')
+num('split-mapped-duplication.normal.seq.filtered')
