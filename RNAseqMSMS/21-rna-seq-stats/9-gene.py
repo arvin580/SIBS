@@ -40,12 +40,22 @@ def sv(inF):
             ch2 = fields[0].split(':')[2]
             point2 = fields[0].split(':')[3]
 
-            gene = []
+            gene1 = []
+            gene2 = []
             for it in genes :
-            #if head[0] == item[2]  and head[2]==item[3]:
-                if (ch1 == it[2] and int(it[4])<=int(point1)<=int(it[5]))  or (ch2 == it[2] and int(it[4])<=int(point2)<=int(it[5])) :
-                    gene.append(it[-1])
-            ouFile.write('|'.join(uniqueList(gene))+'\t'+line1+'\n')
+                if (ch1 == it[2] and int(it[4])<=int(point1)<=int(it[5]))   :
+                    gene1.append(it[-1])
+                if (ch2 == it[2] and int(it[4])<=int(point2)<=int(it[5])) :
+                    gene2.append(it[-1])
+            if gene1:
+                gene1 = '|'.join(uniqueList(gene1))
+            else:
+                gene1 = '*'
+            if gene2:
+                gene2 = '|'.join(uniqueList(gene2))
+            else:
+                gene2 = '*'
+            ouFile.write(gene1+':'+gene2+'\t'+line1+'\n')
         else:
             break
     
@@ -55,7 +65,8 @@ def sv(inF):
 
 
 
-sv('split-mapped-deletion.normal.seq.filtered.num.mc')
+sv('split-mapped-translocation.normal.seq.filtered.num.mc')
+#sv('split-mapped-deletion.normal.seq.filtered.num.mc')
 #sv('split-mapped-inversion')
 #sv('split-mapped-duplication')
 #sv('split-mapped-translocation')

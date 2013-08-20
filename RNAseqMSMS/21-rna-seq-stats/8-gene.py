@@ -55,7 +55,7 @@ def sv(inF):
 
 
 
-sv('split-mapped-deletion.normal.seq.filtered.num.mc')
+sv('split-mapped-inversion.normal.seq.filtered.num.mc')
 #sv('split-mapped-inversion')
 #sv('split-mapped-duplication')
 #sv('split-mapped-translocation')
