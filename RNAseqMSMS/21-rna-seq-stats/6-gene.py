@@ -33,39 +33,19 @@ def sv(inF):
     
     while True:
         line1 = inFile.readline().strip()
-        line2 = inFile.readline().strip()
         if line1:
             fields=line1.split('\t')
-            ch = fields[3]
-            start = fields[10]
-            end = fields[11]
+            ch1 = fields[0].split(':')[0]
+            point1 = fields[0].split(':')[1]
+            ch2 = fields[0].split(':')[0]
+            point2 = fields[0].split(':')[1]
+
             gene = []
             for it in genes :
             #if head[0] == item[2]  and head[2]==item[3]:
-                if ch == it[2]  :
-                    if int(it[4])<=int(start)<=int(it[5]) or int(it[4])<=int(end)<=int(it[5]) or (int(start)<=int(it[4]) and int(end)>=int(it[5])):
-                        gene.append(it[-1])
-            if gene:
-                g = ch+':'+str(start)+':'+str(end)+':'+'/'.join(uniqueList(gene))
-            else:
-                g = ch+':'+str(start)+':'+str(end)
-            ouFile.write(g+'\n')
-
-            ch = fields[15]
-            start = fields[22]
-            end = fields[23]
-            gene = []
-            for it in genes :
-            #if head[0] == item[2]  and head[2]==item[3]:
-                if ch == it[2]  :
-                    if int(it[4])<=int(start)<=int(it[5]) or int(it[4])<=int(end)<=int(it[5]) or (int(start)<=int(it[4]) and int(end)>=int(it[5])):
-                        gene.append(it[-1])
-            if gene:
-                g = ch+':'+str(start)+':'+str(end)+':'+'/'.join(uniqueList(gene))
-            else:
-                g = ch+':'+str(start)+':'+str(end)
-            ouFile.write(g+'\n')
-
+                if (ch1 == it[2] and int(it[4])<=int(point1)<=int(it[5]))  or (ch2 == it[2] and int(it[4])<=int(point2)<=int(it[5])) :
+                    gene.append(it[-1])
+            ouFile.write('|'.join(uniqueList(gene))+'\t'+line1+'\n')
         else:
             break
     
@@ -75,7 +55,7 @@ def sv(inF):
 
 
 
-#sv('split-mapped-deletion')
+sv('split-mapped-deletion.normal.seq.filtered.num.mc')
 #sv('split-mapped-inversion')
 #sv('split-mapped-duplication')
-sv('split-mapped-translocation')
+#sv('split-mapped-translocation')
