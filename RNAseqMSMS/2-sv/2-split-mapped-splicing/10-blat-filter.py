@@ -17,5 +17,6 @@ def filter(n1,n2):
     for k in D:
         ouFile.write(k+'\t'+'\t'.join(D[k])+'\n')
 
-filter(95,70)
-filter(100,75)
+#filter(95,70)
+#filter(100,75)
+filter(90,60)
