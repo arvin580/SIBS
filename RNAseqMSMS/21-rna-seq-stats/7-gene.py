@@ -55,4 +55,4 @@ def sv(inF):
 
 
 
-sv('split-mapped-duplication.normal.seq.filtered.num')
+sv('split-mapped-duplication.normal.seq.filtered2.num')
