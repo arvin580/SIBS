@@ -17,9 +17,9 @@ def num(inF,flag):
         ouFile.write(str(item[0]) + '\t' + str(item[1])+'\t')
     ouFile.write('\n')
 
-num('split-mapped-inversion.normal.seq.filtered.num.mc','Inversion')
-num('split-mapped-duplication.normal.seq.filtered.num.mc','Duplication')
-num('split-mapped-deletion.normal.seq.filtered.num.mc','Deletion')
-num('split-mapped-translocation.normal.seq.filtered.num.mc','Translocation')
+num('split-mapped-inversion.normal.seq.filtered.num','Inversion')
+num('split-mapped-duplication.normal.seq.filtered.num','Duplication')
+num('split-mapped-deletion.normal.seq.filtered.num','Deletion')
+num('split-mapped-translocation.normal.seq.filtered.num','Translocation')
 
 ouFile.close()
