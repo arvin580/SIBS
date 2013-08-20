@@ -7,5 +7,4 @@ y = %s
 
 '''%(333,22)
 from Rscript.RscriptClass import Rscript
-#Rscript(R)
-print(R)
+Rscript(R)
