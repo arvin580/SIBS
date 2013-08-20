@@ -41,6 +41,7 @@ xmax = max(D1['Duplication']+D1['Inversion']+D1['Translocation'])+1
 
 fig = plt.figure()
 ax=fig.add_subplot(211)
+legBar = []
 
 ax.set_xlim(xmin,xmax)
 ax.set_ylim(ymin,ymax)
@@ -52,15 +53,21 @@ ax.plot(xList,yList,linestyle='-', marker='*')
 
 xList=D1['Duplication']
 yList=D3['Duplication']
-ax.plot(xList,yList,linestyle='-', marker='o',color='blue')
+legBar.append(ax.plot(xList,yList,linestyle='-', marker='o',color='blue'))
 
 xList=D1['Inversion']
 yList=D3['Inversion']
-ax.plot(xList,yList,linestyle='-', marker='s',color='green')
+legBar.append(ax.plot(xList,yList,linestyle='-', marker='s',color='green'))
 
 xList=D1['Translocation']
 yList=D3['Translocation']
-ax.plot(xList,yList,linestyle='-', marker='^',color='red')
+legBar.append(ax.plot(xList,yList,linestyle='-', marker='^',color='red'))
+
+Bar=[legBar[i][0] for i in range(3)]
+
+#ax.legend(legBar,['Duplication','Inversion','Translocation'],loc='upper right')
+ax.legend(Bar,['Duplication','Inversion','Translocation'],loc='upper right')
+legBar = []
 
 ymin = min(D3['Deletion']+D3['Duplication']+D3['Inversion']+D3['Translocation'])-1
 ymax = max(D3['Deletion']+D3['Duplication']+D3['Inversion']+D3['Translocation'])+1
@@ -72,8 +79,9 @@ ax.set_xlim(xmin,xmax)
 ax.set_ylim(ymin,ymax)
 xList=D1['Deletion']
 yList=D3['Deletion']
-ax.plot(xList,yList,linestyle='-', marker='D',color='magenta',markeredgecolor='magenta')
-
+legBar.append(ax.plot(xList,yList,linestyle='-', marker='d',color='magenta'))
+Bar=[legBar[i][0] for i in range(1)]
+ax.legend(Bar,['Deletion'],loc='upper right')
 
 plt.savefig('haha.pdf')
 
