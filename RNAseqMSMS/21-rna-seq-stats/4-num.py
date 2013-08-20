@@ -14,7 +14,7 @@ def num(inF,flag):
     d.sort(cmp = lambda x,y:cmp(x[0],y[0]))
     ouFile.write(flag+'\t')
     for item in d :
-        ouFile.write(str(item[0]) + ':' + str(item[1])+'\t')
+        ouFile.write(str(item[0]) + '\t' + str(item[1])+'\t')
     ouFile.write('\n')
 
 num('split-mapped-inversion.normal.seq.filtered.num.mc','Inversion')
