@@ -1,4 +1,4 @@
-inFile = open('ERR0498-04-05.unmapped.unique.total.fasta.blated.filtered.seq1.not-splicing.fa.blated-95-70')
+inFile = open('ERR0498-04-05.unmapped.unique.total.fasta.blated.filtered.seq1.not-splicing.fa.blated-90-60')
 D = {}
 for line in inFile:
     line = line.strip()
