@@ -83,6 +83,11 @@ class PyPlot :
         if xLabel==0 :
             xLabel=['bar'+str(i) for i in range(1,n+1)]
         ax.set_xticklabels(xLabel)
+        if xTitle:
+            ax.set_xlabel(xTitle)
+        if yTitle:
+            ax.set_ylabel(yTitle)
+
         self.show()
 
 
