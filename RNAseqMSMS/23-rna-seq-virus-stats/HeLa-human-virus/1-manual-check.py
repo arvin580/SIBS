@@ -7,11 +7,11 @@ chs = ['chr12','chr8']
 poss = [6879165,128241377,6879323]
 
 inFile = open('ERR0498-04-05.unmapped.unique.human-viruse')
-ouFile = open('ERR0498-04-05.unmapped.unique.human-viruse-checked','w')
+ouFile = open('ERR0498-04-05.unmapped.unique.human-viruse-check','w')
 
 while True:
-    line1 = inFile.readline()
-    line2 = inFile.readline()
+    line1 = inFile.readline().strip()
+    line2 = inFile.readline().strip()
     if line1:
         fields = line1.split('\t')
         ch1 = fields[3]
@@ -29,7 +29,6 @@ while True:
                     (ch2 in chs and (pos3_subject in poss or pos4_subject in poss)) :
                 pass
             else:
-                ouFile.write(line1)
-                ouFile.write(line2)
+                ouFile.write(line1+'\t'+line2+'\n')
     else:
         break
