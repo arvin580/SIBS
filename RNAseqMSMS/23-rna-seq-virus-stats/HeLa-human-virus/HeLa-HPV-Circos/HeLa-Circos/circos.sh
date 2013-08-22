@@ -1,4 +1,4 @@
-cd /netshare1/home1/people/hansun/RNAseqMSMS/2-sv/2-split-mapped-partial-viruses/HeLa-human-virus/HeLa-HPV-Circos/HeLa-Circos 
+cd /netshare1/home1/people/hansun/RNAseqMSMS/23-rna-seq-virus-stats/HeLa-human-virus/HeLa-HPV-Circos/HeLa-Circos
 cd Human
 #circos -svg
 circos -svg

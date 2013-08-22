@@ -56,8 +56,8 @@ def chr_site(inF,I):
 
 chr_site('ERR0498-04-05.unmapped.unique.human-viruse-checked-human-chr-site',10000)    
 chr_site('ERR0498-04-05.unmapped.unique.human-viruse-checked-human-chr-site',100000)    
-chr_site('ERR0498-04-05.unmapped.unique.human-viruse-checked-human-chr-site-unique',10000)    
-chr_site('ERR0498-04-05.unmapped.unique.human-viruse-checked-human-chr-site-unique',100000)    
+chr_site('ERR0498-04-05.unmapped.unique.human-viruse-checked-human-chr-site-unique-manual-edit',10000)    
+chr_site('ERR0498-04-05.unmapped.unique.human-viruse-checked-human-chr-site-unique-manual-edit',100000)    
    
 
 
