@@ -1,4 +1,4 @@
-ouFile = open('HeLa-deletion-duplication-inversion-translocaton-num','w')
+ouFile = open('ERR0498-04-05.unmapped.unique.human-viruse-checked.num2','w')
 
 def num(inF,flag):
     D = {}
@@ -17,6 +17,6 @@ def num(inF,flag):
         ouFile.write(str(item[0]) + '\t' + str(item[1])+'\t')
     ouFile.write('\n')
 
-num('split-mapped-deletion.normal.seq.filtered.num','Deletion')
+num('ERR0498-04-05.unmapped.unique.human-viruse-checked.num','Virus-Integration')
 
 ouFile.close()
