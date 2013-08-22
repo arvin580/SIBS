@@ -1,4 +1,4 @@
-inFile = open('ERR0498-04-05.unmapped.unique.human-viruse-checked')
+inFile = open('ERR0498-04-05.unmapped.unique.human-viruse-checked-more_than_one')
 ouFile1 = open('ERR0498-04-05.unmapped.unique.human-viruse-checked-virus-site','w')
 ouFile2 = open('ERR0498-04-05.unmapped.unique.human-viruse-checked-virus-site-unique','w')
 ouFile3 = open('ERR0498-04-05.unmapped.unique.human-viruse-checked-virus-site-unique2','w')
