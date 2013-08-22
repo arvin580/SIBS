@@ -36,9 +36,9 @@ ax.add_patch(patch)
 
 
 ### add integration point
-MAX = 20.0
+MAX = 3
 L = []
-inFile = open('ERR0498-04-05.unmapped.unique.human-viruse-checked-virus-site-region-unique2')
+inFile = open('ERR0498-04-05.unmapped.unique.human-viruse-checked-virus-site-region-unique2-manual-edit')
 for line in inFile:
     line = line.strip()
     fields = line.split()

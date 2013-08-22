@@ -54,8 +54,10 @@ def chr_site(inF,I):
     ouFile.close()
     ouFile2.close()
 
-chr_site('ERR0498-04-05.unmapped.unique.human-viruse-checked-more_than_one-human-chr-site',10000)    
-chr_site('ERR0498-04-05.unmapped.unique.human-viruse-checked-more_than_one-human-chr-site',100000)    
+chr_site('ERR0498-04-05.unmapped.unique.human-viruse-checked-human-chr-site',10000)    
+chr_site('ERR0498-04-05.unmapped.unique.human-viruse-checked-human-chr-site',100000)    
+chr_site('ERR0498-04-05.unmapped.unique.human-viruse-checked-human-chr-site-unique',10000)    
+chr_site('ERR0498-04-05.unmapped.unique.human-viruse-checked-human-chr-site-unique',100000)    
    
 
 
