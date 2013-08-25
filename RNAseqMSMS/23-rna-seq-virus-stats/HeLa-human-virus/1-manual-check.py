@@ -3,8 +3,13 @@ chr12   6879165 284
 chr8    128241377       70   
 chr12   6879323 69
 '''
-chs = ['chr12','chr8']
-poss = [6879165,128241377,6879323]
+#chs = ['chr12','chr8']
+#poss = [6879165,128241377,6879323]
+
+chs = []
+poss = []
+
+
 
 inFile = open('ERR0498-04-05.unmapped.unique.human-viruse')
 ouFile = open('ERR0498-04-05.unmapped.unique.human-viruse-check','w')
