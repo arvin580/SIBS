@@ -1,5 +1,5 @@
 D = {}
-inFile = open('ERR0498-04-05.unmapped.unique.human-viruse-checked.num')
+inFile = open('ERR0498-04-05.unmapped.unique.human-viruse-checked.num-mc')
 for line in inFile:
     line = line.strip()
     fields = line.split('\t')
