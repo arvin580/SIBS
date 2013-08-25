@@ -8,7 +8,7 @@ def human_chr_site(inF):
     D = {}
     while True:
         line1 = inFile.readline().strip()
-        line2 = inFile.readline().strip()
+        #line2 = inFile.readline().strip()
         if line1:
             fields = line1.split('\t')
             ch1 = fields[3]

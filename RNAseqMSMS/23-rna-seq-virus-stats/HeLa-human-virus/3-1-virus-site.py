@@ -6,7 +6,7 @@ chs = ['chr1','chr2','chr3','chr4','chr5','chr6','chr7','chr8','chr9','chr10','c
         'chr17','chr18','chr19','chr20','chr21','chr22','chrX','chrY','chrM']
 VIRUS = 'NC_001357.1'
 D = {}
-I = 100
+I = 0
 while True:
     line1 = inFile.readline().strip()
     line2 = inFile.readline().strip()
