@@ -11,10 +11,10 @@ def read_data(inF,name):
     inFile.close()
     Set.append(set(L))
 
-read_data('split-mapped-deletion.normal.seq.filtered.num.gene.more_than_one.gene','Deletion')
-read_data('split-mapped-duplication.normal.seq.filtered.num.gene.more_than_one.gene','Duplication')
-read_data('split-mapped-inversion.normal.seq.filtered.num.gene.more_than_one.gene','Inversion')
-read_data('split-mapped-translocation.normal.seq.filtered.num.gene.more_than_one.gene','Translocation')
+read_data('split-mapped-deletion.normal.seq.filtered.num.gene.more_than_two.gene','Deletion')
+read_data('split-mapped-duplication.normal.seq.filtered.num.gene.more_than_two.gene','Duplication')
+read_data('split-mapped-inversion.normal.seq.filtered.num.gene.more_than_two.gene','Inversion')
+read_data('split-mapped-translocation.normal.seq.filtered.num.gene.more_than_two.gene','Translocation')
 
 S = Set[0]& Set[1] & Set[2] & Set[3]
 for x in S:

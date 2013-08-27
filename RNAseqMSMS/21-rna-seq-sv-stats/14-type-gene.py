@@ -1,5 +1,5 @@
 D = {}
-inFile = open('split-mapped-deletion.normal.seq.filtered.num.gene.more_than_one.gene')
+inFile = open('split-mapped-deletion.normal.seq.filtered.num.gene.more_than_two.gene')
 for line in inFile:
     line = line.strip()
     fields = line.split('\t')
@@ -7,7 +7,7 @@ for line in inFile:
     D[fields[0]] += 1
 inFile.close()
 
-inFile = open('split-mapped-duplication.normal.seq.filtered.num.gene.more_than_one.gene')
+inFile = open('split-mapped-duplication.normal.seq.filtered.num.gene.more_than_two.gene')
 for line in inFile:
     line = line.strip()
     fields = line.split('\t')
@@ -15,7 +15,7 @@ for line in inFile:
     D[fields[0]] += 1
 inFile.close()
 
-inFile = open('split-mapped-inversion.normal.seq.filtered.num.gene.more_than_one.gene')
+inFile = open('split-mapped-inversion.normal.seq.filtered.num.gene.more_than_two.gene')
 for line in inFile:
     line = line.strip()
     fields = line.split('\t')
@@ -23,7 +23,7 @@ for line in inFile:
     D[fields[0]] += 1
 inFile.close()
 
-inFile = open('split-mapped-translocation.normal.seq.filtered.num.gene.more_than_one.gene')
+inFile = open('split-mapped-translocation.normal.seq.filtered.num.gene.more_than_two.gene')
 for line in inFile:
     line = line.strip()
     fields = line.split('\t')
