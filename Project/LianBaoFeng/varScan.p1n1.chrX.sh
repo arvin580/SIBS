@@ -9,7 +9,7 @@ J1=/netshare1/home1/people/hansun/Project/LianBaoFeng/j1.rmdup.bam
 W1=/netshare1/home1/people/hansun/Project/LianBaoFeng/w1.rmdup.bam
 
 sample=P1N1
-chr=chr1
+chr=chrX
 
 samtools mpileup -q 1 -f $hg19 -r $chr $N1 $P1 | \
 java -jar $varscan copynumber - varScan.${sample}.${chr} --mpileup 1
