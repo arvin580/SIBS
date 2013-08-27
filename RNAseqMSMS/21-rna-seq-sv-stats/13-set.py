@@ -16,7 +16,31 @@ read_data('split-mapped-duplication.normal.seq.filtered.num.gene.more_than_two.g
 read_data('split-mapped-inversion.normal.seq.filtered.num.gene.more_than_two.gene','Inversion')
 read_data('split-mapped-translocation.normal.seq.filtered.num.gene.more_than_two.gene','Translocation')
 
-S = Set[0]& Set[1] & Set[2] & Set[3]
+print('### 4 types ###')
+S1 = Set[0]& Set[1] & Set[2] & Set[3]
+for x in S1:
+    print(x)
+
+print('### 3 types ###')
+S = Set[0]& Set[1] & Set[2] - S1
 for x in S:
     print(x)
+
+S = Set[0]& Set[1]  & Set[3] -S1
+for x in S:
+    print(x)
+
+S = Set[0] & Set[2] & Set[3] -S1
+for x in S:
+    print(x)
+
+S =  Set[1] & Set[2] & Set[3] -S1
+for x in S:
+    print(x)
+
+
+
+
+
+
 
