@@ -44,7 +44,7 @@ def gene2(inF):
     ouFile.close()
 
 
-gene('split-mapped-deletion.normal.seq.filtered.num.gene.more_than_one')
-gene('split-mapped-duplication.normal.seq.filtered.num.gene.more_than_one')
-gene('split-mapped-inversion.normal.seq.filtered.num.gene.more_than_one')
-gene2('split-mapped-translocation.normal.seq.filtered.num.gene.more_than_one')
+gene('split-mapped-deletion.normal.seq.filtered.num.gene.more_than_two')
+gene('split-mapped-duplication.normal.seq.filtered.num.gene.more_than_two')
+gene('split-mapped-inversion.normal.seq.filtered.num.gene.more_than_two')
+gene2('split-mapped-translocation.normal.seq.filtered.num.gene.more_than_two')
