@@ -7,7 +7,7 @@ def gene(inF):
         fields = line.split('\t')
         g = fields[0]
         if g:
-            gs = g.split(':')
+            gs = g.split('|')
             for x in gs:
                 D.setdefault(x, 0)
                 D[x] += 1
