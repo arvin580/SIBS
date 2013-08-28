@@ -28,20 +28,20 @@ import matplotlib.pyplot as plt
 
 ymax= 900
 ymin = -10
-xmax = 70
+xmax = 65
 xmin = 0
 fig = plt.figure()
 ax=fig.add_subplot(111)
-ax.plot(L1,L2,marker='*',color='magenta',markerfacecolor='magenta')
+ax.plot(L1,L2,marker='*',color='magenta')
 
 ax.set_ylim(ymin,ymax)
 ax.set_xlim(xmin,xmax)
 ax.set_xlabel('Number of Structural Variation Events')
 ax.set_ylabel('Number of Genes')
-ax.set_yticklabels(['']+range(1,ymax,200))
-#ax.set_xticklabels(range(1,xmax,20))
+ax.set_yticklabels(['','1']+range(200,ymax,200))
+ax.set_xticklabels(['','1']+range(10,xmax,10))
 
-ax.set_yticks([-10]+range(1,ymax,200))
-#ax.set_xticks(range(0,xmax,20))
+ax.set_yticks([-10,1]+range(200,ymax,200))
+ax.set_xticks([0,1]+range(10,xmax,10))
 plt.savefig('HeLa-Deletion-Duplication-Inversion-Translocation-Gene-more_than_two-num.pdf')
 
