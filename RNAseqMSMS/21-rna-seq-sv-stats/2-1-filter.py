@@ -33,14 +33,14 @@ def num(inF):
                 ouFile2.write(line + '\n')
         '''
         if (query_start1 + query_end1) <= (query_start2 + query_end2):
-            if 1 <= query_start1 <= 5 and 35 <= query_end1  <= 45 \
-                    and 35 <= query_start2 <= 45 and 72 <= query_end2 <= 76:
+            if 1 <= query_start1 <= 2 and 30 <= query_end1  <= 45 \
+                    and 30 <= query_start2 <= 45 and 75 <= query_end2 <= 76:
                 ouFile.write(line + '\n')
             else:
                 ouFile2.write(line + '\n')
         else:
-            if 35 <= query_start1 <= 45 and 72 <= query_end1  <= 76 \
-                    and 1 <= query_start2 <= 5 and 35 <= query_end2 <= 45:
+            if 30 <= query_start1 <= 45 and 75 <= query_end1  <= 76 \
+                    and 1 <= query_start2 <= 2 and 30 <= query_end2 <= 45:
                 ouFile.write(line + '\n')
             else:
                 ouFile2.write(line + '\n')
