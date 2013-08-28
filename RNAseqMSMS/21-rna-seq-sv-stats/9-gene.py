@@ -65,4 +65,4 @@ def sv(inF):
 
 
 
-sv('split-mapped-translocation.normal.seq.filtered2.num')
+sv('split-mapped-translocation.normal.seq.filtered.num')

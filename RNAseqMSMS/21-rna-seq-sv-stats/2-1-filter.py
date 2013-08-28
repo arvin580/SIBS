@@ -1,8 +1,8 @@
 def num(inF):
     D = {}
     inFile = open(inF)
-    ouFile = open(inF + '.filtered2', 'w')
-    ouFile2 = open(inF + '.not.filtered2', 'w')
+    ouFile = open(inF + '.filtered', 'w')
+    ouFile2 = open(inF + '.not.filtered', 'w')
     for line in inFile:
         line = line.strip()
         fields = line.split('\t')
