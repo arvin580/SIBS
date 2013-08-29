@@ -34,4 +34,4 @@ track name="HeLa-SV" description="" visibility=2 itemRgb="On"
     ouFile.close()
 
 #bed('Gene-FLNA','chrX:153576900-153603006')
-bed('Gene-MYC','chr8:128,748310000,7536810000')
+bed('Gene-MYC','chr8:128740000-128760000')
