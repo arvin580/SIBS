@@ -10,9 +10,9 @@ def bed(inF,pos):
     head='''
 browser position %s
 browser hide all
-track name="HeLa-SV" description="" visibility=2
+track name="HeLa-SV" description="" visibility=2 itemRgb="On"
 '''%pos
-    ouFile.write(head+'\n')
+    ouFile.write(head.strip()+'\n')
 
     for line in inFile:
         line = line.strip()
@@ -33,4 +33,5 @@ track name="HeLa-SV" description="" visibility=2
     inFile.close()
     ouFile.close()
 
-bed('Gene-FLNA','chrX:153576900-153603006')
+#bed('Gene-FLNA','chrX:153576900-153603006')
+bed('Gene-MYC','chr8:128,748310000,7536810000')
