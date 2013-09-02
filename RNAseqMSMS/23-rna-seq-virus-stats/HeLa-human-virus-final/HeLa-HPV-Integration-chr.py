@@ -13,16 +13,17 @@ LEN = chr_MAX - chr_MIN + 1
 
 fig = plt.figure()
 ax=fig.add_subplot(111)
-ax.set_xlim(-OFFSET, OFFSET + LEN)
+#ax.set_xlim(-OFFSET, OFFSET + LEN)
+ax.set_xlim(chr_MIN-OFFSET, chr_MAX+OFFSET)
 #ax.set_xticks([1]+range(1000,HPV_len+100,1000)+[HPV_len])
 #ax.set_ylim(-1,1)
-ax.set_ylim(-0.6,1)
+ax.set_ylim(0,1)
 ### HPV 18
 verts = [
-    (0, -0.1), # left, bottom
-    (0, 0.1), # left, top
-    (LEN - 1,0.1), # right, top
-    (LEN - 1,-0.1), # right, bottom
+    (chr_MIN, 0.4), # left, bottom
+    (chr_MIN, 0.5), # left, top
+    (chr_MAX,0.5), # right, top
+    (chr_MAX,0.4), # right, bottom
     (0,0)
     ]
 codes = [Path.MOVETO,
@@ -35,22 +36,18 @@ path = Path(verts, codes)
 patch = patches.PathPatch(path, facecolor='orange', lw=2)
 ax.add_patch(patch)
 
-'''
 ### add integration point
-MAX = 4.0
-L = []
-inFile = open('ERR0498-04-05.unmapped.unique.human-viruse-checked-virus-site-region-unique2-manual-edit')
-for line in inFile:
-    line = line.strip()
-    fields = line.split()
-    L.append([fields[0],int(fields[1]),int(fields[2])])
-inFile.close()
-for item in L:
-    if item[1] < 3000:
-        ax.scatter(item[1], item[2]/MAX+0.1,c='red',marker='o',edgecolors='')
-    else:
-        ax.scatter(item[1], item[2]/MAX+0.1,edgecolors='')
 
+POS = sorted([128241377,128231055,128241548,
+            128231213,128241370,128230632,128235913
+            ])  
+
+y = 0
+for pos in POS:
+    y += 1
+    ax.scatter(pos, 0.05*y, c='red',marker='*',edgecolors='')
+
+'''
 ### add HPV annotation
 E6 = [(105,-0.3),(105,-0.2),(581,-0.2),(581,-0.3),(0,0)]
 path = Path(E6, codes)
@@ -103,7 +100,6 @@ ax.add_patch(patch)
 ax.text((5430+7136)/2.0,-0.25,'L1',horizontalalignment='center',verticalalignment='center',fontsize=6)
 
 ax.axes.get_yaxis().set_visible(False)
-
 '''
 plt.savefig('HeLa-HPV-Integration-chr-diagram.pdf')
 
