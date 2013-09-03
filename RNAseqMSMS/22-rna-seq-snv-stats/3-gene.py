@@ -19,3 +19,4 @@ def gene(inF):
 
 gene('sum_snv.exome_summary.overall.filter.nonsynonymous-splicing')
 gene('sum_snv.exome_summary.indel.overall.filter')
+gene('sum_snv.exome_summary.indel.overall.filter-dbsnp')
