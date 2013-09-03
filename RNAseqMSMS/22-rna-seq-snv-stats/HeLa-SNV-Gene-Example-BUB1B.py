@@ -9,10 +9,10 @@ import matplotlib.patches as patches
 GENE = []
 refGene = '111     NM_001211       chr15   +       40453209        40513337        40453421        40512960        23      40453209,40457253,40462262,40462737,40468677,40475914,40477365,40477751,40488745,40491815,40492444,40493131,40494605,40494789,40498384,40500837,40501835,40502310,40504699,40505532,40509696,40510656,40512764, 40453456,40457397,40462322,40462882,40468874,40476084,40477580,40477843,40488975,40491928,40492560,40493181,40494666,40494895,40498659,40500971,40501976,40502411,40504849,40505675,40509868,40510763,40513337, 0       BUB1B   cmpl    cmpl    0,2,2,2,0,2,1,0,2,1,0,2,1,2,0,2,1,1,0,0,2,0,2,'
 
-GENE.append([int(refGene.split()[4]),int(refGene.split()[5])])
-GENE.append([int(refGene.split()[6]),int(refGene.split()[7])])
+GENE.append([int(refGene.split()[4])+1,int(refGene.split()[5])])
+GENE.append([int(refGene.split()[6])+1,int(refGene.split()[7])])
 for i in range(len(refGene.split()[9].split(',')[0:-1])):
-    GENE.append([int(refGene.split()[9].split(',')[i]),int(refGene.split()[10].split(',')[i])])
+    GENE.append([int(refGene.split()[9].split(',')[i])+1,int(refGene.split()[10].split(',')[i])])
 
 OFFSET=1000
 
@@ -40,20 +40,20 @@ codes = [Path.MOVETO,
          Path.CLOSEPOLY,
          ]
 path = Path(verts, codes)
-patch = patches.PathPatch(path, facecolor='orange',edgecolor='none', lw=1)
+patch = patches.PathPatch(path, facecolor='orange',lw=1)
 ax.add_patch(patch)
 
-'''
-### add integration point
+#ax.scatter(GENE[1][0], 0.55, c='red',marker='*',edgecolors='')
+#ax.scatter(GENE[1][1], 0.55, c='red',marker='*',edgecolors='')
 
-POS = sorted([128241377,128231055,128241548,
-            128231213,128241370,128230632,128235913
-            ])  
+### add snv point
+
+POS = sorted([40457337, 40477831, 40498503, 40462780, 40504837, 40512906, 40453307, 40513071])
 
 y = 0
 for pos in POS:
     y += 1
-    ax.scatter(pos, 0.05*y, c='red',marker='^',edgecolors='')
+    ax.scatter(pos, 0.04*y, c='red',marker='*',edgecolors='')
 
 '''
 
@@ -66,7 +66,6 @@ for item in GENE[2:]:
     ax.add_patch(patch)
 #ax.text((105+581)/2.0,-0.25,'E6',horizontalalignment='center',verticalalignment='center',fontsize=6)
 
-'''
 PCAT1 = [(128025399,0.6),(128025399,0.66),(128033259,0.66),(128033259,0.6),(0,0)]
 path = Path(PCAT1, codes)
 patch = patches.PathPatch(path, facecolor='magenta', lw=1)
@@ -81,6 +80,7 @@ BC106081 = [(128240804,0.7),(128240804,0.76),(128241377,0.76),(128241377,0.7),(0
 path = Path(BC106081, codes)
 patch = patches.PathPatch(path, facecolor='magenta', lw=1)
 ax.add_patch(patch)
+'''
 
 ax.axes.get_yaxis().set_visible(False)
 ax.axes.get_xaxis().set_visible(False)
@@ -88,23 +88,23 @@ ax.axes.get_xaxis().set_visible(False)
 #################################################
 ################################################
 
-chr_MIN = 1
-chr_MAX= 7857
+MIN = 1
+MAX= 1050
 OFFSET = 100
 
 ax=fig.add_subplot(212)
 #ax.set_xlim(-OFFSET, OFFSET + LEN)
-ax.set_xlim(chr_MIN-OFFSET, chr_MAX+OFFSET)
+ax.set_xlim(MIN-OFFSET, MAX+OFFSET)
 #ax.set_xticks([1]+range(1000,HPV_len+100,1000)+[HPV_len])
 #ax.set_ylim(-1,1)
 ax.set_ylim(0,1)
 
 ### genome region
 verts = [
-    (chr_MIN, 0.5), # left, bottom
-    (chr_MIN, 0.6), # left, top
-    (chr_MAX,0.6), # right, top
-    (chr_MAX,0.5), # right, bottom
+    (MIN, 0.5), # left, bottom
+    (MIN, 0.6), # left, top
+    (MAX,0.6), # right, top
+    (MAX,0.5), # right, bottom
     (0,0)
     ]
 codes = [Path.MOVETO,
@@ -116,6 +116,7 @@ codes = [Path.MOVETO,
 path = Path(verts, codes)
 patch = patches.PathPatch(path, facecolor='orange', lw=1)
 ax.add_patch(patch)
+'''
 
 ### add integration point
 
@@ -174,10 +175,10 @@ path = Path(L1, codes)
 patch = patches.PathPatch(path, facecolor='magenta', lw=1)
 ax.add_patch(patch)
 #ax.text((5430+7136)/2.0,-0.25,'L1',horizontalalignment='center',verticalalignment='center',fontsize=6)
+'''
 
 ax.axes.get_yaxis().set_visible(False)
 ax.axes.get_xaxis().set_visible(False)
-'''
 
 
 
