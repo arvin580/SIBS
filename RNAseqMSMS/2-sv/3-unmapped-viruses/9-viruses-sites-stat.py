@@ -1,38 +1,34 @@
-D = {}
-D['LCR'] = 0
-D['E1'] = 0
-D['E2'] = 0
-D['E3'] = 0
-D['E4'] = 0
-D['E5'] = 0
-D['E6'] = 0
-D['E7'] = 0
-D['L1'] = 0
-D['L2'] = 0
-def virus(inF, v, POS):
-    ouFile = open(inF + '.stat', 'w')
-    for pos in POS:
-        inFile = open(inF)
-        before = 0
-        after = 0
-        while True:
-            line1 = inFile.readline().strip()
-            line2 = inFile.readline().strip()
-            if line1:
-                fields = line1.split('\t')
-                if fields[1] == v:
-                    if int(fields[8]) <= pos and int(fields[9]) <= pos:
-                        before += 1
-                    else:
-                        after += 1
-            else:
-                break
-        inFile.close()
-        ouFile.write('before ' + str(pos) +'\t' +str(before)+'\t' )
-        ouFile.write('after ' + str(pos) +'\t' +str(after)+'\n' )
+def virus(inF, v):
+    D = {}
+    D['LCR'] = [0,1,104]
+    D['E1'] = [0,914,2887]
+    D['E2'] = [0,2817,3914]
+    D['E4'] = [0,3418,3684]
+    D['E5'] = [0,3936,4157]
+    D['E6'] = [0,105,581]
+    D['E7'] = [0,590,907]
+    D['L1'] = [0,5430,7136]
+    D['L2'] = [0,4244,5632]
+
+    ouFile = open(inF + '.gene-stat', 'w')
+    inFile = open(inF)
+    while True:
+        line1 = inFile.readline().strip()
+        line2 = inFile.readline().strip()
+        if line1:
+            fields = line1.split('\t')
+            if fields[1] == v:
+                for g in D:
+                    if D[g][1] <= int(fields[8]) <= D[g][2] or D[g][1] <= int(fields[9]) <= D[g][2]:
+                        D[g][0] += 1
+        else:
+            break
+    inFile.close()
+    for g in D:
+        ouFile.write(g+'\t'+str(D[g][0])+'\n')
     ouFile.close()
         
         
 
-virus('unmapped-blated-viruses-90-60.seq', 'NC_001357.1', [1000,1500,2000,2500,3000,3500,4000,4500,5000,5500,6000,6500,7000,7500])
-virus('unmapped-blated-viruses-100-76.seq', 'NC_001357.1', [1000,1500,2000,2500,3000,3500,4000,4500,5000,5500,6000,6500,7000,7500])
+virus('unmapped-blated-viruses-90-60.seq', 'NC_001357.1' )
+virus('unmapped-blated-viruses-100-76.seq', 'NC_001357.1')
