@@ -1,20 +1,20 @@
-qsub -q high ERR0498-04-05.unmapped.unique.201.fasta.blated.unmapped.blat.sh
-qsub -q high ERR0498-04-05.unmapped.unique.85.fasta.blated.unmapped.blat.sh
-qsub -q high ERR0498-04-05.unmapped.unique.6.fasta.blated.unmapped.blat.sh
-qsub -q high ERR0498-04-05.unmapped.unique.126.fasta.blated.unmapped.blat.sh
-qsub -q high ERR0498-04-05.unmapped.unique.4.fasta.blated.unmapped.blat.sh
-qsub -q high ERR0498-04-05.unmapped.unique.83.fasta.blated.unmapped.blat.sh
-qsub -q high ERR0498-04-05.unmapped.unique.80.fasta.blated.unmapped.blat.sh
-qsub -q high ERR0498-04-05.unmapped.unique.68.fasta.blated.unmapped.blat.sh
-qsub -q high ERR0498-04-05.unmapped.unique.181.fasta.blated.unmapped.blat.sh
-qsub -q high ERR0498-04-05.unmapped.unique.8.fasta.blated.unmapped.blat.sh
-qsub -q high ERR0498-04-05.unmapped.unique.148.fasta.blated.unmapped.blat.sh
-qsub -q high ERR0498-04-05.unmapped.unique.71.fasta.blated.unmapped.blat.sh
-qsub -q high ERR0498-04-05.unmapped.unique.16.fasta.blated.unmapped.blat.sh
-qsub -q high ERR0498-04-05.unmapped.unique.39.fasta.blated.unmapped.blat.sh
-qsub -q high ERR0498-04-05.unmapped.unique.77.fasta.blated.unmapped.blat.sh
-qsub -q high ERR0498-04-05.unmapped.unique.66.fasta.blated.unmapped.blat.sh
-qsub -q high ERR0498-04-05.unmapped.unique.119.fasta.blated.unmapped.blat.sh
-qsub -q high ERR0498-04-05.unmapped.unique.203.fasta.blated.unmapped.blat.sh
-qsub -q high ERR0498-04-05.unmapped.unique.116.fasta.blated.unmapped.blat.sh
-qsub -q high ERR0498-04-05.unmapped.unique.45.fasta.blated.unmapped.blat.sh
+qsub ERR0498-04-05.unmapped.unique.201.fasta.blated.unmapped.blat.sh
+qsub ERR0498-04-05.unmapped.unique.85.fasta.blated.unmapped.blat.sh
+qsub ERR0498-04-05.unmapped.unique.6.fasta.blated.unmapped.blat.sh
+qsub ERR0498-04-05.unmapped.unique.126.fasta.blated.unmapped.blat.sh
+qsub ERR0498-04-05.unmapped.unique.4.fasta.blated.unmapped.blat.sh
+qsub ERR0498-04-05.unmapped.unique.83.fasta.blated.unmapped.blat.sh
+qsub ERR0498-04-05.unmapped.unique.80.fasta.blated.unmapped.blat.sh
+qsub ERR0498-04-05.unmapped.unique.68.fasta.blated.unmapped.blat.sh
+qsub ERR0498-04-05.unmapped.unique.181.fasta.blated.unmapped.blat.sh
+qsub ERR0498-04-05.unmapped.unique.8.fasta.blated.unmapped.blat.sh
+qsub ERR0498-04-05.unmapped.unique.148.fasta.blated.unmapped.blat.sh
+qsub ERR0498-04-05.unmapped.unique.71.fasta.blated.unmapped.blat.sh
+qsub ERR0498-04-05.unmapped.unique.16.fasta.blated.unmapped.blat.sh
+qsub ERR0498-04-05.unmapped.unique.39.fasta.blated.unmapped.blat.sh
+qsub ERR0498-04-05.unmapped.unique.77.fasta.blated.unmapped.blat.sh
+qsub ERR0498-04-05.unmapped.unique.66.fasta.blated.unmapped.blat.sh
+qsub ERR0498-04-05.unmapped.unique.119.fasta.blated.unmapped.blat.sh
+qsub ERR0498-04-05.unmapped.unique.203.fasta.blated.unmapped.blat.sh
+qsub ERR0498-04-05.unmapped.unique.116.fasta.blated.unmapped.blat.sh
+qsub ERR0498-04-05.unmapped.unique.45.fasta.blated.unmapped.blat.sh

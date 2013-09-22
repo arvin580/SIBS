@@ -34,7 +34,8 @@ def viruse(inF):
     ouFile.close()
 
 
-viruse('unmapped-blated-viruses-90-60')
+#viruse('unmapped-blated-viruses-90-60')
+viruse('unmapped-blated-viruses-100-76')
 
 
 
