@@ -28,7 +28,5 @@ def virus(inF, v):
         ouFile.write(g+'\t'+str(D[g][0])+'\n')
     ouFile.close()
         
-        
-
 virus('unmapped-blated-viruses-90-60.seq', 'NC_001357.1' )
 virus('unmapped-blated-viruses-100-76.seq', 'NC_001357.1')
