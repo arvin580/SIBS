@@ -55,7 +55,8 @@ for line in inFile:
                     ouFile.write('>'+info+'\t'+seq_id+'\t'+str(point)+'\t'+'\t'.join([pos1,pos2,pos3,pos4])+'\t'+str(i)+'\t'+seq+'\t'+str(point_peptide)+'\n')
                     ouFile.write(six[i]+'\n')
                 elif i in [3,4,5]:
-                    ouFile.write('>'+info+'\t'+seq_id+'\t'+str(point)+'\t'+'\t'.join([pos1,pos2,pos3,pos4])+'\t'+str(i)+'\t'+seq+'\n')
+                    point_peptide = (len(seq) - point  - i + 3 )/3 + 1
+                    ouFile.write('>'+info+'\t'+seq_id+'\t'+str(point)+'\t'+'\t'.join([pos1,pos2,pos3,pos4])+'\t'+str(i)+'\t'+seq +'\t'+str(point_peptide)+'\n')
                     ouFile.write(six[i]+'\n')
 
 inFile.close()
