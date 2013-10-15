@@ -47,11 +47,15 @@ for line in inFile:
         point = sorted([int(pos1),int(pos2),int(pos3),int(pos4)])[1]
         seq = fields[i+18].split('|')[0]
         seq_id = fields[i-6]
-        ouFile.write('>'+info+'\t'+seq_id+'\t'+str(point)+'\t'+'\t'.join([pos1,pos2,pos3,pos4])+'\n')
-        ouFile.write(seq+'\n')
         six = translate(seq)
         for i in range(len(six)):
             if six[i].find('*')==-1:
-                ouFile.write(six[i]+'\n')
+                if i in [0,1,2]:
+                    point_peptide = (point - 1 - i)/3 + 1
+                    ouFile.write('>'+info+'\t'+seq_id+'\t'+str(point)+'\t'+'\t'.join([pos1,pos2,pos3,pos4])+'\t'+str(i)+'\t'+seq+'\t'+str(point_peptide)+'\n')
+                    ouFile.write(six[i]+'\n')
+                elif i in [3,4,5]:
+                    ouFile.write('>'+info+'\t'+seq_id+'\t'+str(point)+'\t'+'\t'.join([pos1,pos2,pos3,pos4])+'\t'+str(i)+'\t'+seq+'\n')
+                    ouFile.write(six[i]+'\n')
 
 inFile.close()
