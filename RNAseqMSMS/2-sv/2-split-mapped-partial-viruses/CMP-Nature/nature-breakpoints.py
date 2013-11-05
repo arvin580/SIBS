@@ -1,8 +1,8 @@
 Nature = ['128230632', '128233367', '128234255', '128241494']
 
-ouFile = open('Nature-breakpoints','w')
+ouFile = open('nature-breakpoints','w')
 import os
-DIR = '.'
+DIR = '..'
 Fs = os.listdir(DIR)
 D = {}
 for F in Fs:
