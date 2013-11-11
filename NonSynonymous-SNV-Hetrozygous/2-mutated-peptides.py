@@ -39,7 +39,7 @@ except:
     pass
 
 inFile = open('Peptides-Identified-First')
-ouFile = open('Peptides-Identified-First-Mutated', 'w')
+ouFile = open('Peptides-Identified-First-Mutated.fa', 'w')
 while True:
     head = inFile.readline().strip()
     seq = inFile.readline().strip()
