@@ -1,5 +1,7 @@
-inFile = open('human_uniprot_sprot.fa')
-ouFile = open('human_uniprot_sprot.reverse.fa', 'w')
+## python 3.uniqe_reverse.py human_uniprot_sprot.fa
+import sys
+inFile = open(sys.argv[1])
+ouFile = open(sys.argv[1][0:-3]+'_reversed.fa', 'w')
 D = {}
 while True:
     head = inFile.readline().strip()

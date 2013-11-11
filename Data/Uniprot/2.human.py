@@ -1,5 +1,7 @@
-inFile = open('uniprot_sprot.2012.11.23.fa')
-ouFile = open('human_uniprot_sprot.fa', 'w')
+### python 2.human.py  uniprot_sprot_2013_11_11.fa
+import sys
+inFile = open(sys.argv[1])
+ouFile = open('human_' + sys.argv[1] , 'w')
 while True:
     head = inFile.readline()
     seq = inFile.readline()
