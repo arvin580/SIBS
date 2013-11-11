@@ -1,22 +1,29 @@
-## python 3.uniqe_reverse.py human_uniprot_sprot.fa
-import sys
-inFile = open(sys.argv[1])
-ouFile = open(sys.argv[1][0:-3]+'_reversed.fa', 'w')
+#!/usr/bin/env python
+
 D = {}
-while True:
-    head = inFile.readline().strip()
-    seq = inFile.readline().strip()
-    if head:
-        D.setdefault(seq,[])
-        D[seq].append(head)
-    else:
-        break
+def unique(inF,flag=''):
+    inFile = open(inF)
+    while True:
+        line1 = inFile.readline().strip('>\n')
+        line2 = inFile.readline().strip()
+        if line1:
+            D.setdefault(line2,[])
+            if flag:
+                D[line2].append(flag+':'+':'.join(line1.split('\t')))
+            else:
+                D[line2].append(':'.join(line1.split('\t')))
+        else:
+            break
+    inFile.close()
 
-inFile.close()
+unique('Peptides-Identified-First-Mutated.fa', 'VARIATION')
 
+ouFile = open('Peptides-Identified-First-Mutated-reversed.fa','w')
 for k in D:
-    ouFile.write('>'+'\t'.join([x.lstrip('>') for x in D[k]])+'\n')
-    ouFile.write(k+ '\n')
-    ouFile.write('>REVERSE:'+'\t'.join([x.lstrip('>') for x in D[k]])+'\n')
-    ouFile.write(k[::-1]+ '\n')
+    ouFile.write('>'+'|'.join(D[k])+'\n')
+    ouFile.write(k+'\n')
+    ouFile.write('>REVERSE:'+'|'.join(D[k])+'\n')
+    ouFile.write(k[::-1]+'\n')
+
+ouFile.close()
 
