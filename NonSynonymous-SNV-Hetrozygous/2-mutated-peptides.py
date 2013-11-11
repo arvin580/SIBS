@@ -61,25 +61,33 @@ while True:
                         if len(seq2) >= 6:
                             ouFile.write(head + '\t' + 'StopGain:' + str(i+1) + ':' + seq[i] + ':' + x + '\n' )
                             ouFile.write(seq2 + '\n')
-            elif x == 'K' or x == 'R' :
-                seq2 = seq[0:i] + x
-                if len(seq2) >= 6:
-                    ouFile.write(head + '\t' + 'Terminal-KR:' + str(i+1) + ':' + seq[i] + ':' + x + '\n' )
-                    ouFile.write(seq2 + '\n')
-            elif x == '*':
-                seq2 = seq[0:i]
-                if len(seq2) >= 6:
-                    ouFile.write(head + '\t' + 'Terminal-StopGain:' + str(i+1) + ':' + seq[i] + ':' + x + '\n' )
-                    ouFile.write(seq2 + '\n')
             else:
-                h = head.split('\t')[0]
-                if h in D:
-                    protein = D[h]
-                    s = re.search('%s(.*?[KR])'%seq, protein)
-                    if s:
-                        seq2 = seq[0:i] + x + s
-                        ouFile.write(head + '\t' + 'Terminal-Normal:' + str(i+1) + ':' + seq[i] + ':' + x + '\n' )
-                        ouFile.write(seq2 + '\n')
+                for x in SNV[seq[i]]:
+                    if x == 'K' or x == 'R':
+                        seq2 = seq[0:i] + x
+                        if len(seq2) >= 6:
+                            ouFile.write(head + '\t' + 'Terminal-KR:' + str(i+1) + ':' + seq[i] + ':' + x + '\n' )
+                            ouFile.write(seq2 + '\n')
+                    elif x == '*':
+                        seq2 = seq[0:i]
+                        if len(seq2) >= 6:
+                            ouFile.write(head + '\t' + 'Terminal-StopGain:' + str(i+1) + ':' + seq[i] + ':' + x + '\n' )
+                            ouFile.write(seq2 + '\n')
+                    else:
+                        h = head.split('\t')[0][1:]
+                        if h in D:
+                            protein = D[h]
+                            s = re.search('%s(.*?[KR])'%seq, protein)
+                            if s:
+                                seq2 = seq[0:i] + x + s.group(1)
+                                ouFile.write(head + '\t' + 'Terminal-Normal:' + str(i+1) + ':' + seq[i] + ':' + x + '\n' )
+                                ouFile.write(seq2 + '\n')
+                            else:
+                                s = re.search('%s(.*?$)'%seq, protein)
+                                if s:
+                                    seq2 = seq[0:i] + x + s.group(1)
+                                    ouFile.write(head + '\t' + 'Terminal-Normal-x:' + str(i+1) + ':' + seq[i] + ':' + x + '\n' )
+                                    ouFile.write(seq2 + '\n')
     else:
         break
 
