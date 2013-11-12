@@ -17,6 +17,7 @@ for inF in F:
         ouFile.write('<bioml>\n')
         ouFile.write('\t<note type="input" label="spectrum, parent monoisotopic mass error plus">10</note>\n')
         ouFile.write('\t<note type="input" label="spectrum, parent monoisotopic mass error minus">10</note>\n')
+        ouFile.write('\t<note type="input" label="scoring, maximum missed cleavage sites">0</note>\n')
         ouFile.write('\t<note type="input" label="spectrum, parent monoisotopic mass isotope error">no</note>\n')
         ouFile.write('\t<note type="input" label="list path, default parameters">default_input.xml</note>\n')
         ouFile.write('\t<note type="input" label="list path, taxonomy information">taxonomy.xml</note>\n')

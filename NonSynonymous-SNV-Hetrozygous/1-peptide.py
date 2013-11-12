@@ -1,6 +1,7 @@
 import os
 DIR = 'output-First'
 ouFile = open('Peptides-Identified-First', 'w')
+ouFile2 = open('Peptides-Identified-First-Spec', 'w')
 D = {}
 Fs = os.listdir(DIR)
 for F in Fs:
@@ -14,6 +15,7 @@ for F in Fs:
             if protein.find('REVERSE') == -1:
                 D.setdefault(peptide, [])
                 D[peptide].append(protein)
+                ouFile2.write(fields[0] + '\n')
         inFile.close()
 
 for k in D:
@@ -21,3 +23,4 @@ for k in D:
     ouFile.write(k + '\n')
 
 ouFile.close()
+ouFile2.close()
