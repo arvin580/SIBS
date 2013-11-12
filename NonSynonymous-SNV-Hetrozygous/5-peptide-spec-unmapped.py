@@ -1,4 +1,6 @@
 import os
+DIR_First = 'output-First'
+
 DIR = 'output'
 ouFile = open('Peptides-Identified-Second', 'w')
 D = {}

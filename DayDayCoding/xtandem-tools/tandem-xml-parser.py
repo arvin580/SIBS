@@ -29,7 +29,7 @@ for item in group :
         Spec = Spectrum()
         s = item.findall('group/note')
         if len(s) == 1:
-            Spec.name = s[0].text
+            Spec.name = s[0].text.strip()
         else:
             print('spec error')
 
@@ -38,7 +38,7 @@ for item in group :
             p = Protein()
             s = x.findall('note')
             if len(s) == 1:
-                p.name = s[0].text
+                p.name = s[0].text.strip()
             else:
                 print('protein error')
             s = x.findall('peptide')
