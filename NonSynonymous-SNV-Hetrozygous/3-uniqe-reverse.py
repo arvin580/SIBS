@@ -16,7 +16,7 @@ def unique(inF,flag=''):
             break
     inFile.close()
 
-unique('Peptides-Identified-First-Mutated.fa', 'VARIATION')
+unique('Peptides-Identified-First-Mutated.fa')
 
 ouFile = open('Peptides-Identified-First-Mutated-reversed.fa','w')
 for k in D:

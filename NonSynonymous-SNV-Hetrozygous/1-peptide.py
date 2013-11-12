@@ -1,5 +1,5 @@
 import os
-DIR = 'output'
+DIR = 'output-First'
 ouFile = open('Peptides-Identified-First', 'w')
 D = {}
 Fs = os.listdir(DIR)
@@ -17,7 +17,7 @@ for F in Fs:
         inFile.close()
 
 for k in D:
-    ouFile.write('>' + '\t'.join(set(D[k])) + '\n')
+    ouFile.write('>' + '+++'.join(set(D[k])) + '\n')
     ouFile.write(k + '\n')
 
 ouFile.close()

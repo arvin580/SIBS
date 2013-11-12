@@ -49,29 +49,29 @@ while True:
                 for x in SNV[seq[i]]:
                     if x != 'K' and x != 'R' and x != '*':
                         seq2 = seq[0:i] + x + seq[i + 1:] 
-                        ouFile.write(head + '\t' + 'Normal:' + str(i+1) + ':' + seq[i] + ':' + x + '\n' )
+                        ouFile.write(head + ' ' + 'VARIATION-Normal:' + str(i+1) + ':' + seq[i] + ':' + x + '\n' )
                         ouFile.write(seq2 + '\n')
                     elif x == 'K' or x == 'R' :
                         seq2 = seq[0:i] + x
                         if len(seq2) >= 6:
-                            ouFile.write(head + '\t' + 'KR:' + str(i+1) + ':' + seq[i] + ':' + x + '\n' )
+                            ouFile.write(head + ' ' + 'VARIATION-KR:' + str(i+1) + ':' + seq[i] + ':' + x + '\n' )
                             ouFile.write(seq2 + '\n')
                     elif x == '*':
                         seq2 = seq[0:i]
                         if len(seq2) >= 6:
-                            ouFile.write(head + '\t' + 'StopGain:' + str(i+1) + ':' + seq[i] + ':' + x + '\n' )
+                            ouFile.write(head + ' ' + 'VARIATION-StopGain:' + str(i+1) + ':' + seq[i] + ':' + x + '\n' )
                             ouFile.write(seq2 + '\n')
             else:
                 for x in SNV[seq[i]]:
                     if x == 'K' or x == 'R':
                         seq2 = seq[0:i] + x
                         if len(seq2) >= 6:
-                            ouFile.write(head + '\t' + 'Terminal-KR:' + str(i+1) + ':' + seq[i] + ':' + x + '\n' )
+                            ouFile.write(head + ' ' + 'VARIATION-Terminal-KR:' + str(i+1) + ':' + seq[i] + ':' + x + '\n' )
                             ouFile.write(seq2 + '\n')
                     elif x == '*':
                         seq2 = seq[0:i]
                         if len(seq2) >= 6:
-                            ouFile.write(head + '\t' + 'Terminal-StopGain:' + str(i+1) + ':' + seq[i] + ':' + x + '\n' )
+                            ouFile.write(head + ' ' + 'VARIATION-Terminal-StopGain:' + str(i+1) + ':' + seq[i] + ':' + x + '\n' )
                             ouFile.write(seq2 + '\n')
                     else:
                         h = head.split('\t')[0][1:]
@@ -80,13 +80,13 @@ while True:
                             s = re.search('%s(.*?[KR])'%seq, protein)
                             if s:
                                 seq2 = seq[0:i] + x + s.group(1)
-                                ouFile.write(head + '\t' + 'Terminal-Normal:' + str(i+1) + ':' + seq[i] + ':' + x + '\n' )
+                                ouFile.write(head + ' ' + 'VARIATION-Terminal-Normal:' + str(i+1) + ':' + seq[i] + ':' + x + '\n' )
                                 ouFile.write(seq2 + '\n')
                             else:
                                 s = re.search('%s(.*?$)'%seq, protein)
                                 if s:
                                     seq2 = seq[0:i] + x + s.group(1)
-                                    ouFile.write(head + '\t' + 'Terminal-Normal-x:' + str(i+1) + ':' + seq[i] + ':' + x + '\n' )
+                                    ouFile.write(head + ' ' + 'VARIATION-Terminal-Normal-x:' + str(i+1) + ':' + seq[i] + ':' + x + '\n' )
                                     ouFile.write(seq2 + '\n')
     else:
         break
