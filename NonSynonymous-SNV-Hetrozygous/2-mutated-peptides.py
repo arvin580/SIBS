@@ -82,13 +82,13 @@ while True:
                             s = re.search('%s(.*?[KR])'%seq, protein)
                             if s:
                                 seq2 = seq[0:i] + x + s.group(1)
-                                ouFile.write(head + ' ' + 'VARIATION-Terminal-Normal:' + str(i+1) + ':' + seq[i] + ':' + x + '\n' )
+                                ouFile.write(head + ' ' + 'VARIATION-Terminal-Normal1' + str(i+1) + ':' + seq[i] + ':' + x + '\n' )
                                 ouFile.write(seq2 + '\n')
                             else:
                                 s = re.search('%s(.*?$)'%seq, protein)
                                 if s:
                                     seq2 = seq[0:i] + x + s.group(1)
-                                    ouFile.write(head + ' ' + 'VARIATION-Terminal-Normal-x:' + str(i+1) + ':' + seq[i] + ':' + x + '\n' )
+                                    ouFile.write(head + ' ' + 'VARIATION-Terminal-Normal2' + str(i+1) + ':' + seq[i] + ':' + x + '\n' )
                                     ouFile.write(seq2 + '\n')
     else:
         break
