@@ -7,7 +7,7 @@ for line in inFile:
 inFile.close()
     
 
-DIR = 'output'
+DIR = 'output-Second'
 ouFile = open('Peptides-Identified-Second-unSpec', 'w')
 D = {}
 Fs = os.listdir(DIR)
