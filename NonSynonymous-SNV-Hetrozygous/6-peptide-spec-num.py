@@ -7,7 +7,7 @@ def num(inF):
         line2 = inFile.readline().strip()
         if line1:
             fields = line1.split('+++')
-            D[line2] = len(fields) + 1
+            D[line2] = len(fields) 
         else:
             break
     inFile.close()

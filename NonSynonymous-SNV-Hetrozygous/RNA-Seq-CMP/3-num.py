@@ -18,5 +18,5 @@ def num(inF):
         ouFile.write(item[0] + '\t' + str(item[1]) + '\n')
     ouFile.close()
 
-#num('Peptides-Identified-Second-unSpec-maxquant-sequest')
+num('Peptides-Identified-Second-unSpec-maxquant-sequest')
 num('Peptides-Identified-Second-unSpec-xtandem-pfind')
