@@ -10,12 +10,13 @@ while True:
         s = re.search(r'\s(\w+)\sVARIATION', line1)
         if s:
             pep=s.group(1)
-            D.setdefault(pep, 0)
-            D[pep] += 1
+            D.setdefault(pep, [])
+            D[pep].append(line1+'\n'+line2)
     else:
         break
 inFile.close()
+
 for k in D:
-    if D[k] == 1:
-        print(k)
+    if len(D[k]) == 1:
+        ouFile.write(D[k][0] + '\n')
 ouFile.close()

@@ -19,3 +19,4 @@ def num(inF):
     ouFile.close()
 
 num('Peptides-Identified-Second-unSpec')
+num('Peptides-Identified-Second-unSpec-single_SNV')
