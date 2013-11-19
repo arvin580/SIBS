@@ -1,5 +1,5 @@
 import os
-DIR = 'output'
+DIR = 'output-Second'
 ouFile = open('Peptides-Identified-Second', 'w')
 D = {}
 Fs = os.listdir(DIR)
