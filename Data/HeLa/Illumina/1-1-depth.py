@@ -1,9 +1,9 @@
 import sys
 inFile = open('ERR0498-04-05.mpileup')
-ouFile = open('ERR0498-04-05.mpileup.depth', 'w')
+ouFile = open('ERR0498-04-05.mpileup.depth2', 'w')
 
-MIN = 5
-MAX = 500
+MIN = 10
+MAX = 300
 D = {}
 for i in range(3):
     line = inFile.readline()
