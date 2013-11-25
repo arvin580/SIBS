@@ -13,7 +13,6 @@ for line in inFile:
     ch = fields[0]
     try:
         dp = int(fields[7].split(';')[0].split('DP=')[1])
-        print(line)
         D.setdefault(ch, [0, 0])
         if dp >= MIN:
             if dp <= MAX:
@@ -27,5 +26,6 @@ for line in inFile:
             
 inFile.close()
 for k in D:
-    ouFile.write(k + '\t' + str(float(D[k][0])/D[k][1]) + '\n')
+    #ouFile.write(k + '\t' + str(float(D[k][0])/D[k][1]) + '\n')
+    ouFile.write(k + '\t' + '%.2f'%(D[k][0]/D[k][1]) +  '\n')
 ouFile.close()
