@@ -22,7 +22,7 @@ for line in inFile:
             else:
                 D[ch][0] += MAX
                 D[ch][1] += 1
-    else:
+    except:
         pass
             
 inFile.close()
