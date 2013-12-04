@@ -1,5 +1,5 @@
 D = {}
-inFile = open('ERR0498-04-05.mpileup.depth')
+inFile = open('ERR0498-04-05.mpileup.depth2')
 for line in inFile:
     line = line.strip()
     fields = line.split('\t')
@@ -30,5 +30,5 @@ def plot(yTitle,ouFile):
     plt.grid(True)
     plt.savefig(ouFile)
 
-plot('Average Depth (covered sites)','depth.cover.genome.pdf')
+plot('Average Depth (covered sites)','depth.cover.genome2.pdf')
 
