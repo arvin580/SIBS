@@ -21,7 +21,7 @@ for inF in F:
         ouFile.write('\t<note type="input" label="list path, default parameters">default_input.xml</note>\n')
         ouFile.write('\t<note type="input" label="list path, taxonomy information">taxonomy.xml</note>\n')
         ouFile.write('\t<note type="input" label="residue, modification mass">57.022@C</note>\n')
-        ouFile.write('\t<note type="input" label="residue, modification mass 1">57.022@C,8@K,10@R</note>\n')
+        #ouFile.write('\t<note type="input" label="residue, modification mass 1">57.022@C,8@K,10@R</note>\n')
         ouFile.write('\t<note type="input" label="protein, cleavage site">[RK]|{P}</note>\n')
         ouFile.write('\t<note type="input" label="refine">no</note>\n')
         ouFile.write('\t<note type="input" label="protein, taxon">homo sapiens</note>\n')
