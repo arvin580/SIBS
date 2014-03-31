@@ -1,7 +1,3 @@
-#!/usr/bin/env python
-import sys
-import string
-
 Codon = {}
 inFile = open('/netshare1/home1/people/hansun/Data/CodonUsage')
 for line in inFile:
@@ -13,7 +9,7 @@ inFile.close()
 def translate(seq):
     six = []
     trans = string.maketrans('atcgATCG','tagcTAGC')
-    seq1 = seq
+    seq1 = seq 
     seq2 = string.translate(seq[::-1],trans)
     for i in range(3):
         pep = []
@@ -30,23 +26,42 @@ def translate(seq):
                 pep.append(Codon[c])
         six.append(''.join(pep))
 
-    return six
+    return six 
 
 
 
-inFile = open(sys.argv[1])
-ouFile = open(sys.argv[1]+'.pep','w')
+import string
+trans = string.maketrans('ATCGatcg','TAGCtagc')
+D = {}
+inFile = open('/netshare1/home1/people/hansun/Data/GenomeSeq/Human/ucsc.hg19.fasta.fa')
 while True:
     line1 = inFile.readline().strip()
     line2 = inFile.readline().strip()
     if line1:
-        fields = line1.split('\t')
-        six = translate(line2)
-        for i in range(len(six)):
-            if six[i].find('*')==-1:
-                ouFile.write(line1+'\t'+str(i)+'\n')
-                ouFile.write(six[i]+'\n')
+        D[line1[1:]] = line2
     else:
         break
+inFile.close()
+
+inFile = open('HeLa-Peptide-Validation-non_blast')
+ouFile = open('HeLa-Peptide-Validation-non_blast.fa', 'w')
+while True:
+    line1 = inFile.readline().strip()
+    line2 = inFile.readline().strip()
+    if line1:
+        fields = line1.split(':')
+        ch = fields[0][1:]
+        start = int(fields[1])
+        end = int(fields[2])
+        seq = D[ch][start-1:end]
+        ouFile.write(line1 + '\n')
+        ouFile.write(line2 + '\n')
+        ouFile.write(seq + '\n')
+        six = translate(seq)
+        ouFile.write('\n'.join(six) + '\n')
+    else:
+        break
+
+        
 inFile.close()
 ouFile.close()
