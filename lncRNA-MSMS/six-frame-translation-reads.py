@@ -46,9 +46,9 @@ while True:
         fields = line1.split('\t')
         six = translate(line2)
         for i in range(len(six)):
-            if six[i].find('*')==-1:
-                ouFile.write(line1+'\t'+str(i)+'\n')
-                ouFile.write(six[i]+'\n')
+            #if six[i].find('*')==-1:
+            ouFile.write(line1+'\t'+str(i)+'\n')
+            ouFile.write(six[i]+'\n')
     else:
         break
 inFile.close()
