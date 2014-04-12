@@ -17,7 +17,8 @@ def unique(inF,flag=''):
     inFile.close()
 
 unique('Homo_sapiens.GRCh37.75.pep.all.fa.fa')
-unique('Homo_sapiens.GRCh37.75.lncrna.fa.fa.pep','LNCRNA')
+unique('Homo_sapiens.GRCh37.75.lncrna.fa.fa.pep-1','LNCRNA-FULL')
+unique('Homo_sapiens.GRCh37.75.lncrna.fa.fa.pep-2','LNCRNA-PARTIAL')
 
 ouFile = open('Homo_sapiens.GRCh37.75.pep.all.lncrna.pep.rev.fa','w')
 for k in D:
