@@ -1,5 +1,5 @@
-inFile = open('Homo_sapiens.GRCh37.75.ncrna.fa.fa')
-ouFile = open('Homo_sapiens.GRCh37.75.lncrna.fa.fa', 'w')
+inFile = open('Homo_sapiens.GRCh37.70.ncrna.fa.fa')
+ouFile = open('Homo_sapiens.GRCh37.70.lncrna.fa.fa', 'w')
 while True:
     line1 = inFile.readline().strip()
     line2 = inFile.readline().strip()
