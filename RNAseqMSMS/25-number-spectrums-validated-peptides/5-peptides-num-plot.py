@@ -1,5 +1,5 @@
 D = {}
-inFile = open('Peptides-Identified')
+inFile = open('Peptides-Validated')
 for line in inFile:
     line = line.strip()
     D.setdefault(line, [0, 0])
