@@ -1,0 +1,23 @@
+#!/bin/bash
+
+cd  /netshare1/home1/szzhongxin/proj1/hansun/mapping/10A
+
+bwa aln -I -t 6 \
+/netshare1/home1/people/hansun/GATK/bwa/hg19 \
+/netshare1/home1/szzhongxin/proj1/fudan/10A/10A_0107_w2q20m35_N_1.fq \
+>10A.10A_0107_w2q20m35_N_1.sai
+
+bwa aln -I -t 6 \
+/netshare1/home1/people/hansun/GATK/bwa/hg19 \
+/netshare1/home1/szzhongxin/proj1/fudan/10A/10A_0107_w2q20m35_N_2.fq \
+>10A.10A_0107_w2q20m35_N_2.sai
+
+
+bwa sampe  \
+/netshare1/home1/people/hansun/GATK/bwa/hg19 \
+10A.10A_0107_w2q20m35_N_1.sai \
+10A.10A_0107_w2q20m35_N_2.sai \
+/netshare1/home1/szzhongxin/proj1/fudan/10A/10A_0107_w2q20m35_N_1.fq \
+/netshare1/home1/szzhongxin/proj1/fudan/10A/10A_0107_w2q20m35_N_2.fq \
+-r "@RG\tID:10a\tSM:10a\tLB:10a\tPL:illumina\tPU:barcode" \
+>10A.10A_0107_w2q20m35_N.sam

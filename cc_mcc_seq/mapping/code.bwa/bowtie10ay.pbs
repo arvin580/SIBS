@@ -1,0 +1,20 @@
+#!/bin/bash
+
+cd  /netshare1/home1/szzhongxin/proj1/hansun/mapping/10A
+
+
+
+bowtie -p 6 -m 1 --best --strata -S -C \
+--un 10A.solid0734_20110614_FRAG_10A_Sample_10A_F3_QV.un \
+--max 10A.solid0734_20110614_FRAG_10A_Sample_10A_F3_QV.max \
+/netshare1/home1/people/hansun/GATK/bowtie/hg19.c \
+-f /netshare1/home1/szzhongxin/proj1/fudan/10A/solid0734_20110614_FRAG_10A_Sample_10A_F3.csfasta \
+-Q /netshare1/home1/szzhongxin/proj1/fudan/10A/solid0734_20110614_FRAG_10A_Sample_10A_F3_QV.qual \
+--sam-RG  "ID:10a" \
+--sam-RG  "SM:10a" \
+--sam-RG  "LB:10a" \
+--sam-RG  "PL:solid" \
+--sam-RG  "PU:run" \
+10A.solid0734_20110614_FRAG_10A_Sample_10A_F3.sam
+
+

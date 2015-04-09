@@ -1,0 +1,35 @@
+#!/bin/bash
+
+cd  /netshare1/home1/szzhongxin/proj1/hansun/mapping5/4A
+
+#bwa aln -I -t 6 \
+#/netshare1/home1/people/hansun/GATK/bwa/hg19 \
+#/netshare1/home1/szzhongxin/proj1/fudan5/4A/read_q20w5m35.1.fq \
+#>4A.1.sai
+#
+#bwa aln -I -t 6 \
+#/netshare1/home1/people/hansun/GATK/bwa/hg19 \
+#/netshare1/home1/szzhongxin/proj1/fudan5/4A/read_q20w5m35.2.fq \
+#>4A.2.sai
+#
+#
+#bwa sampe  \
+#/netshare1/home1/people/hansun/GATK/bwa/hg19 \
+#4A.1.sai \
+#4A.2.sai \
+#/netshare1/home1/szzhongxin/proj1/fudan5/4A/read_q20w5m35.1.fq \
+#/netshare1/home1/szzhongxin/proj1/fudan5/4A/read_q20w5m35.2.fq \
+#-r "@RG\tID:4a\tSM:4a\tLB:4a\tPL:illumina\tPU:barcode" | \
+#samtools view -bS -o 4A.bam -
+#
+#samtools  sort 4A.bam 4A.sorted
+#mv 4A.sorted.bam 4A.bam
+#samtools index 4A.bam
+#samtools  flagstat 4A.bam >4A.stat
+
+samtools rmdup -S 4A.bam 4A.rmduped.bam
+mv 4A.rmduped.bam 4A.bam
+samtools index 4A.bam
+samtools  flagstat 4A.bam >4A.stat2
+
+

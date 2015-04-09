@@ -1,0 +1,16 @@
+qsub CHC10Aexome.sh -l nodes=n4 -q high
+qsub CHC10Bexome.sh -l nodes=n5 -q high
+qsub CHC5Aexome.sh -l nodes=n6 -q high
+qsub CHC5Bexome.sh -l nodes=n7 -q high
+qsub CHC6Aexome.sh -l nodes=n9 -q high
+qsub CHC6Bexome.sh -l nodes=n10 -q high
+qsub CHC7Aexome.sh -l nodes=n11 -q high
+qsub CHC7Bexome.sh -l nodes=n12 -q high
+qsub ICC10Aexome.sh -l nodes=n13 -q high
+qsub ICC10Bexome.sh -l nodes=n14 -q high
+qsub ICC4Aexome.sh -l nodes=n15 -q high
+qsub ICC4Bexome.sh -l nodes=n16 -q high
+qsub ICC5Aexome.sh -l nodes=n17 -q high
+qsub ICC5Bexome.sh -l nodes=n19 -q high
+qsub ICC9Aexome.sh -l nodes=n21 -q high
+qsub ICC9Bexome.sh -l nodes=n22 -q high

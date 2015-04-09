@@ -1,0 +1,26 @@
+#!/bin/bash
+
+cd  /netshare1/home1/szzhongxin/proj1/hansun/Viruses/mapping/8A
+
+bwa aln -I -t 6 \
+/netshare1/home1/szzhongxin/proj1/hansun/Viruses/bwa/hg19viruses \
+/netshare1/home1/szzhongxin/proj1/fudan/8A/hiseq20110714_lane8_read12_w4q10m35_N.1.fq \
+>8A.hiseq20110714_lane8_read12_w4q10m35_N.1.sai
+#
+bwa aln -I -t 6 \
+/netshare1/home1/szzhongxin/proj1/hansun/Viruses/bwa/hg19viruses \
+/netshare1/home1/szzhongxin/proj1/fudan/8A/hiseq20110714_lane8_read12_w4q10m35_N.2.fq \
+>8A.hiseq20110714_lane8_read12_w4q10m35_N.2.sai
+
+
+bwa sampe  \
+/netshare1/home1/szzhongxin/proj1/hansun/Viruses/bwa/hg19viruses \
+8A.hiseq20110714_lane8_read12_w4q10m35_N.1.sai \
+8A.hiseq20110714_lane8_read12_w4q10m35_N.2.sai \
+/netshare1/home1/szzhongxin/proj1/fudan/8A/hiseq20110714_lane8_read12_w4q10m35_N.1.fq \
+/netshare1/home1/szzhongxin/proj1/fudan/8A/hiseq20110714_lane8_read12_w4q10m35_N.2.fq \
+-r "@RG\tID:8a\tSM:8a\tLB:8a\tPL:illumina\tPU:barcode" | \
+samtools view -bS -o 8A.hiseq20110714_lane8_read12_w4q10m35_N.bam -
+
+samtools  sort 8A.hiseq20110714_lane8_read12_w4q10m35_N.bam 8A.hiseq20110714_lane8_read12_w4q10m35_N.sorted
+

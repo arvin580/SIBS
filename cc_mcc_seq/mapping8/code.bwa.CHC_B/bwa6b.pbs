@@ -1,0 +1,33 @@
+#!/bin/bash
+
+cd  /netshare1/home1/szzhongxin/proj1/hansun/mapping8/6B
+
+#bwa aln -I -t 6 \
+#/netshare1/home1/people/hansun/GATK/bwa/hg19 \
+#/netshare1/home1/szzhongxin/proj1/fudan8/6B/read_q20w5m35.1.fq \
+#>6B.1.sai
+#
+#bwa aln -I -t 6 \
+#/netshare1/home1/people/hansun/GATK/bwa/hg19 \
+#/netshare1/home1/szzhongxin/proj1/fudan8/6B/read_q20w5m35.2.fq \
+#>6B.2.sai
+#
+#
+#bwa sampe  \
+#/netshare1/home1/people/hansun/GATK/bwa/hg19 \
+#6B.1.sai \
+#6B.2.sai \
+#/netshare1/home1/szzhongxin/proj1/fudan8/6B/read_q20w5m35.1.fq \
+#/netshare1/home1/szzhongxin/proj1/fudan8/6B/read_q20w5m35.2.fq \
+#-r "@RG\tID:m6b\tSM:m6b\tLB:m6b\tPL:illumina\tPU:barcode" | \
+#samtools view -bS -o 6B.bam -
+#
+#samtools  sort 6B.bam 6B.sorted
+#mv 6B.sorted.bam 6B.bam
+#samtools index 6B.bam
+#samtools  flagstat 6B.bam >6B.stat
+
+samtools rmdup -S 6B.bam 6B.rmduped.bam
+mv 6B.rmduped.bam 6B.bam
+samtools index 6B.bam
+samtools  flagstat 6B.bam >6B.stat2

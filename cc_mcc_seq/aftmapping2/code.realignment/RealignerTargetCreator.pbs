@@ -1,0 +1,20 @@
+#!/bin/bash
+
+cd /netshare1/home1/szzhongxin/proj1/hansun/aftmapping2
+
+java -Xmx4g -jar \
+/netshare1/home1/people/hansun/GATK/GenomeAnalysisTK.jar -T RealignerTargetCreator \
+-I /netshare1/home1/szzhongxin/proj1/hansun/mapping2/1A/1A.bam \
+-I /netshare1/home1/szzhongxin/proj1/hansun/mapping2/2A/2A.bam \
+-I /netshare1/home1/szzhongxin/proj1/hansun/mapping2/3A/3A.bam \
+-I /netshare1/home1/szzhongxin/proj1/hansun/mapping2/4A/4A.bam \
+-I /netshare1/home1/szzhongxin/proj1/hansun/mapping2/5A/5A.bam \
+-I /netshare1/home1/szzhongxin/proj1/hansun/mapping2/6A/6A.bam \
+-I /netshare1/home1/szzhongxin/proj1/hansun/mapping2/7A/7A.bam \
+-I /netshare1/home1/szzhongxin/proj1/hansun/mapping2/8A/8A.bam \
+-I /netshare1/home1/szzhongxin/proj1/hansun/mapping2/9A/9A.bam \
+-I /netshare1/home1/szzhongxin/proj1/hansun/mapping2/10A/10A.bam \
+-R /netshare1/home1/people/hansun/GATK/bundle/ucsc.hg19.fasta \
+-o hg19.intervals \
+--known /netshare1/home1/people/hansun/GATK/bundle/1000G_biallelic.indels.hg19.vcf \
+--known /netshare1/home1/people/hansun/GATK/bundle/Mills_Devine_2hit.indels.hg19.vcf

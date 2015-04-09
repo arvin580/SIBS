@@ -1,0 +1,23 @@
+#!/bin/bash
+
+cd  /netshare1/home1/szzhongxin/proj1/hansun/snpIndel2/indel/indel3030
+
+
+java -Xmx4g -jar /netshare1/home1/people/hansun/GATK/GenomeAnalysisTK.jar \
+-R /netshare1/home1/people/hansun/GATK/bundle/ucsc.hg19.fasta \
+-T UnifiedGenotyper \
+-glm INDEL \
+-nt 8 \
+-I /netshare1/home1/szzhongxin/proj1/hansun/aftmapping2/1A/1A.realigned.recalibrated.bam \
+-I /netshare1/home1/szzhongxin/proj1/hansun/aftmapping2/2A/2A.realigned.recalibrated.bam \
+-I /netshare1/home1/szzhongxin/proj1/hansun/aftmapping2/3A/3A.realigned.recalibrated.bam \
+-I /netshare1/home1/szzhongxin/proj1/hansun/aftmapping2/4A/4A.realigned.recalibrated.bam \
+-I /netshare1/home1/szzhongxin/proj1/hansun/aftmapping2/5A/5A.realigned.recalibrated.bam \
+-I /netshare1/home1/szzhongxin/proj1/hansun/aftmapping2/6A/6A.realigned.recalibrated.bam \
+-I /netshare1/home1/szzhongxin/proj1/hansun/aftmapping2/7A/7A.realigned.recalibrated.bam \
+-I /netshare1/home1/szzhongxin/proj1/hansun/aftmapping2/8A/8A.realigned.recalibrated.bam \
+--dbsnp /netshare1/home1/people/hansun/GATK/bundle/dbsnp_132.hg19.vcf \
+-o raw.indel.vcf \
+-metrics raw.indel.metrics \
+-stand_call_conf 30 \
+-stand_emit_conf 30

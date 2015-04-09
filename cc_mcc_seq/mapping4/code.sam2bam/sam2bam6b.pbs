@@ -1,0 +1,16 @@
+#!/bin/bash
+
+sam=6B.AGTTCC_L006_w4q20m35_N.sam
+bam=6B.AGTTCC_L006_w4q20m35_N.bam
+bamsorted=6B.AGTTCC_L006_w4q20m35_N.sorted
+bamsortedbam=6B.AGTTCC_L006_w4q20m35_N.sorted.bam
+stat=6B.stat
+BAM=6B.bam
+
+cd /netshare1/home1/szzhongxin/proj1/hansun/mapping4/6B
+samtools view -bS -o $bam $sam
+rm $sam
+samtools  sort $bam $bamsorted
+samtools  flagstat $bamsortedbam >$stat
+mv $bamsortedbam $BAM
+samtools index $BAM

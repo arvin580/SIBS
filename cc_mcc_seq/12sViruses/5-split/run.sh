@@ -1,0 +1,13 @@
+cd  /fs01/szzhongxin/proj1/hansun/12sViruses/5-split
+sh 2.blastn.CHC1A.sh
+sh 2.blastn.CHC2A.sh
+sh 2.blastn.CHC3A.sh
+sh 2.blastn.CHC4A.sh
+sh 2.blastn.CHC8A.sh
+sh 2.blastn.CHC9A.sh
+sh 2.blastn.ICC1A.sh
+sh 2.blastn.ICC2A.sh
+sh 2.blastn.ICC3A.sh
+sh 2.blastn.ICC6A.sh
+sh 2.blastn.ICC7A.sh
+sh 2.blastn.ICC8A.sh

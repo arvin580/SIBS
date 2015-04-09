@@ -1,0 +1,17 @@
+#!/bin/bash
+
+cd /netshare1/home1/szzhongxin/proj1/hansun/aftmapping4/5B
+
+
+
+java -Xmx32g -jar \
+/netshare1/home1/people/hansun/GATK/GenomeAnalysisTK.jar \
+   -R /netshare1/home1/people/hansun/GATK/bundle/ucsc.hg19.fasta \
+   -knownSites /netshare1/home1/people/hansun/GATK/bundle/dbsnp_132.hg19.vcf \
+   -I 5B.realigned.bam \
+   -T CountCovariates \
+   -cov ReadGroupCovariate \
+   -cov QualityScoreCovariate \
+   -cov CycleCovariate \
+   -cov DinucCovariate \
+   -recalFile 5B.realigned.covariate.csv

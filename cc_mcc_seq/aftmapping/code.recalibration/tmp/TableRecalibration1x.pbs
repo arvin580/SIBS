@@ -1,0 +1,12 @@
+#!/bin/bash
+#$ -S /bin/bash
+
+cd /export/home/sunhan/Sequencing/aftmapping/1Ax
+
+/export3/home/sunhan/MySoft/java/jre1.6.0_27/bin/java -Xmx4g -jar \
+/export/home/sunhan/Sequencing/GATK/GenomeAnalysisTK.jar \
+-R /export/home/sunhan/Sequencing/GATK/bundle/human_g1k_v37.fasta \
+-I  1A.realigned.marked.readgroup.bam \
+-T TableRecalibration \
+-o 1A.realigned.marked.readgroup.recalibrated.bam \
+-recalFile 1A.realigned.marked.readgroup.covariate.csv

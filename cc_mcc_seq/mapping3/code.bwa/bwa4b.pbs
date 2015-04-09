@@ -1,0 +1,32 @@
+#!/bin/bash
+
+
+read1fq=4B_TAGCTT_L004_w4q20m35_N_1.fq
+read2fq=4B_TAGCTT_L004_w4q20m35_N_2.fq
+read1sai=4B_TAGCTT_L004_w4q20m35_N_1.sai
+read2sai=4B_TAGCTT_L004_w4q20m35_N_2.sai
+readsam=4B.TAGCTT_L004_w4q20m35_N.sam
+
+
+cd  /netshare1/home1/szzhongxin/proj1/hansun/mapping3/4B
+
+bwa aln -I -t 6 \
+/netshare1/home1/people/hansun/GATK/bwa/hg19 \
+/netshare1/home1/szzhongxin/proj1/fudan3/4B/$read1fq \
+>$read1sai
+
+bwa aln -I  -t 6 \
+/netshare1/home1/people/hansun/GATK/bwa/hg19 \
+/netshare1/home1/szzhongxin/proj1/fudan3/4B/$read2fq \
+>$read2sai
+
+
+bwa sampe  \
+/netshare1/home1/people/hansun/GATK/bwa/hg19 \
+$read1sai \
+$read2sai \
+/netshare1/home1/szzhongxin/proj1/fudan3/4B/$read1fq \
+/netshare1/home1/szzhongxin/proj1/fudan3/4B/$read2fq \
+-r "@RG\tID:4b\tSM:4b\tLB:4b\tPL:illumina\tPU:barcode" \
+>$readsam
+

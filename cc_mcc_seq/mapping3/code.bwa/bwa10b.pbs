@@ -1,0 +1,31 @@
+#!/bin/bash
+
+read1fq=10B_CTTGTA_L002_w4q20m35_N_1.fq
+read2fq=10B_CTTGTA_L002_w4q20m35_N_2.fq
+read1sai=10B_CTTGTA_L002_w4q20m35_N_1.sai
+read2sai=10B_CTTGTA_L002_w4q20m35_N_2.sai
+readsam=10B.CTTGTA_L002_w4q20m35_N.sam
+
+
+cd  /netshare1/home1/szzhongxin/proj1/hansun/mapping3/10B
+
+bwa aln -I -t 8 \
+/netshare1/home1/people/hansun/GATK/bwa/hg19 \
+/netshare1/home1/szzhongxin/proj1/fudan3/10B/$read1fq \
+>$read1sai
+
+bwa aln -I -t 8 \
+/netshare1/home1/people/hansun/GATK/bwa/hg19 \
+/netshare1/home1/szzhongxin/proj1/fudan3/10B/$read2fq \
+>$read2sai
+
+
+bwa sampe  \
+/netshare1/home1/people/hansun/GATK/bwa/hg19 \
+$read1sai \
+$read2sai \
+/netshare1/home1/szzhongxin/proj1/fudan3/10B/$read1fq \
+/netshare1/home1/szzhongxin/proj1/fudan3/10B/$read2fq \
+-r "@RG\tID:10b\tSM:10b\tLB:10b\tPL:illumina\tPU:barcode" \
+>$readsam
+

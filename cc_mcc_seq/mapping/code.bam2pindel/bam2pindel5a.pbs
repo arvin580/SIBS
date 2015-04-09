@@ -1,0 +1,6 @@
+#!/bin/bash
+
+cd /netshare1/home1/szzhongxin/proj1/hansun/mapping/5A
+
+samtools view 5A.bam | sam2pindel - 5A.pindel 500 5a 0
+

@@ -1,0 +1,15 @@
+#!/bin/bash
+
+cd /netshare1/home1/szzhongxin/proj1/hansun/mapping/7A
+samtools view -bS -o 7A.hiseq20110714_lane7_read12_w4q10m35_N.bam 7A.hiseq20110714_lane7_read12_w4q10m35_N.sam
+samtools  sort  7A.hiseq20110714_lane7_read12_w4q10m35_N.bam  7A.hiseq20110714_lane7_read12_w4q10m35_N.sorted
+samtools  flagstat  7A.hiseq20110714_lane7_read12_w4q10m35_N.sorted.bam >7A.stat
+
+samtools view -bS -o 7A.hiseq_20110908_lane3_w4q20m35_N.bam 7A.hiseq_20110908_lane3_w4q20m35_N.sam
+samtools sort 7A.hiseq_20110908_lane3_w4q20m35_N.bam 7A.hiseq_20110908_lane3_w4q20m35_N.sorted
+samtools flagstat 7A.hiseq_20110908_lane3_w4q20m35_N.sorted.bam >>7A.stat
+
+
+samtools merge 7A.bam 7A.hiseq20110714_lane7_read12_w4q10m35_N.sorted.bam 7A.hiseq_20110908_lane3_w4q20m35_N.sorted.bam
+
+samtools index 7A.bam

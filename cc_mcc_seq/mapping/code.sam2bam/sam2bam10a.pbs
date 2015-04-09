@@ -1,0 +1,8 @@
+#!/bin/bash
+
+cd /netshare1/home1/szzhongxin/proj1/hansun/mapping/10A
+samtools view -bS -o 10A.10A_0107_w2q20m35_N.bam 10A.10A_0107_w2q20m35_N.sam
+samtools  sort 10A.10A_0107_w2q20m35_N.bam 10A.10A_0107_w2q20m35_N.sorted
+samtools  flagstat 10A.10A_0107_w2q20m35_N.sorted.bam >10A.stat
+mv 10A.10A_0107_w2q20m35_N.sorted.bam 10A.bam
+samtools index 10A.bam

@@ -1,0 +1,5 @@
+#!/bin/bash
+
+cd /netshare1/home1/szzhongxin/proj1/hansun/Viruses/bwa
+
+bwa index -a bwtsw -p hg19viruses  hg19.viruses.fasta

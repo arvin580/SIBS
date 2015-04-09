@@ -1,0 +1,26 @@
+#!/bin/bash
+
+cd  /netshare1/home1/szzhongxin/proj1/hansun/Viruses/mapping2/2A
+
+bwa aln -I -t 6 \
+/netshare1/home1/szzhongxin/proj1/hansun/Viruses/bwa/hg19viruses \
+/netshare1/home1/szzhongxin/proj1/fudan2/2A/hiseq_20110926_lane6_w4q20m35_N.1.fq \
+>2A.hiseq_20110926_lane6_w4q20m35_N.1.sai
+#
+bwa aln -I -t 6 \
+/netshare1/home1/szzhongxin/proj1/hansun/Viruses/bwa/hg19viruses \
+/netshare1/home1/szzhongxin/proj1/fudan2/2A/hiseq_20110926_lane6_w4q20m35_N.2.fq \
+>2A.hiseq_20110926_lane6_w4q20m35_N.2.sai
+
+
+bwa sampe  \
+/netshare1/home1/szzhongxin/proj1/hansun/Viruses/bwa/hg19viruses \
+2A.hiseq_20110926_lane6_w4q20m35_N.1.sai \
+2A.hiseq_20110926_lane6_w4q20m35_N.2.sai \
+/netshare1/home1/szzhongxin/proj1/fudan2/2A/hiseq_20110926_lane6_w4q20m35_N.1.fq \
+/netshare1/home1/szzhongxin/proj1/fudan2/2A/hiseq_20110926_lane6_w4q20m35_N.2.fq \
+-r "@RG\tID:m2a\tSM:m2a\tLB:m2a\tPL:illumina\tPU:barcode" | \
+samtools view -bS -o 2A.hiseq_20110926_lane6_w4q20m35_N.bam -
+
+samtools  sort 2A.hiseq_20110926_lane6_w4q20m35_N.bam 2A.hiseq_20110926_lane6_w4q20m35_N.sorted
+

@@ -1,0 +1,7 @@
+#!/bin/bash
+
+cd /netshare1/home1/szzhongxin/proj1/hansun/Viruses/mapping/4A
+
+samtools merge 4A.bam  4A.hiseq_20110602_lane8_w4q20m35_N.sorted.bam 4A.hiseq_20110824_lane7_w4q20m35_N.sorted.bam 4A.hiseq_20110824_lane8_w4q20m35_N.sorted.bam
+
+samtools index 4A.bam

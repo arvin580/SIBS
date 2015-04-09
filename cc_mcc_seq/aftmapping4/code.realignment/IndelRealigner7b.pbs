@@ -1,0 +1,13 @@
+#!/bin/bash
+
+cd /netshare1/home1/szzhongxin/proj1/hansun/aftmapping4
+
+java -Xmx32g -jar \
+/netshare1/home1/people/hansun/GATK/GenomeAnalysisTK.jar \
+-I /netshare1/home1/szzhongxin/proj1/hansun/mapping4/7B/7B.bam \
+-R /netshare1/home1/people/hansun/GATK/bundle/ucsc.hg19.fasta \
+-T IndelRealigner \
+-targetIntervals hg19.intervals \
+-o 7B/7B.realigned.bam \
+--known /netshare1/home1/people/hansun/GATK/bundle/1000G_biallelic.indels.hg19.vcf \
+--known /netshare1/home1/people/hansun/GATK/bundle/Mills_Devine_2hit.indels.hg19.vcf

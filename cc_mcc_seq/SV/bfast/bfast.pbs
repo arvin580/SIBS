@@ -1,0 +1,16 @@
+#!/bin/bash
+
+#cd  /netshare1/home1/people/hansun/GATK/bundle
+#bfast fasta2brg -A 0 -f ucsc.hg19.fasta
+
+cd /netshare1/home1/szzhongxin/proj1/hansun/SV/bfast
+
+#bfast index -f /netshare1/home1/people/hansun/GATK/bundle/ucsc.hg19.fasta -w 14 -n 8  -i ? -m ???
+
+bfast match  -f /netshare1/home1/people/hansun/GATK/bundle/ucsc.hg19.fasta -r /netshare1/home1/szzhongxin/proj1/fudan2/1A/hiseq_20110926_lane5_w4q20m35_N.fq -n 8  >hiseq_20110926_lane5_w4q20m35_N.matched.bmf
+
+bfast localalign -f /netshare1/home1/people/hansun/GATK/bundle/ucsc.hg19.fasta -m hiseq_20110926_lane5_w4q20m35_N.matched.bmf >hiseq_20110926_lane5_w4q20m35_N.aligned.baf
+
+bfast postprocess -f /netshare1/home1/people/hansun/GATK/bundle/ucsc.hg19.fasta  -i hiseq_20110926_lane5_w4q20m35_N.aligned.baf  >hiseq_20110926_lane5_w4q20m35_N.reported.sam 
+
+

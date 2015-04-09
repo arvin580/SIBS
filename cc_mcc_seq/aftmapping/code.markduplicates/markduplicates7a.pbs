@@ -1,0 +1,14 @@
+#!/bin/bash
+
+cd /netshare1/home1/szzhongxin/proj1/hansun/aftmapping/7A
+
+java -Xmx8g -jar /netshare1/home1/people/hansun/MySoft/picard/picard-tools-1.54/MarkDuplicates.jar \
+TMP_DIR=. \
+INPUT=7A.realigned.bam \
+REMOVE_DUPLICATES=true \
+VALIDATION_STRINGENCY=LENIENT \
+AS=true \
+OUTPUT=7A.realigned.marked.bam \
+METRICS_FILE=7A.realigned.marked.metrics
+
+samtools index 7A.realigned.marked.bam

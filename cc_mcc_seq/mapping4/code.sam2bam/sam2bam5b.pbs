@@ -1,0 +1,16 @@
+#!/bin/bash
+
+sam=5B.AGTCAA_L003_w4q20m35_N.sam
+bam=5B.AGTCAA_L003_w4q20m35_N.bam
+bamsorted=5B.AGTCAA_L003_w4q20m35_N.sorted
+bamsortedbam=5B.AGTCAA_L003_w4q20m35_N.sorted.bam
+stat=5B.stat
+BAM=5B.bam
+
+cd /netshare1/home1/szzhongxin/proj1/hansun/mapping4/5B
+samtools view -bS -o $bam $sam
+rm $sam
+samtools  sort $bam $bamsorted
+samtools  flagstat $bamsortedbam >$stat
+mv $bamsortedbam $BAM
+samtools index $BAM

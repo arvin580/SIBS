@@ -1,0 +1,31 @@
+#!/bin/bash
+
+read1fq=9B_GGCTAC_L001_w4q20m35_N_1.fq
+read2fq=9B_GGCTAC_L001_w4q20m35_N_2.fq
+read1sai=9B_GGCTAC_L001_w4q20m35_N_1.sai
+read2sai=9B_GGCTAC_L001_w4q20m35_N_2.sai
+readsam=9B.GGCTAC_L001_w4q20m35_N.sam
+
+
+cd  /netshare1/home1/szzhongxin/proj1/hansun/mapping3/9B
+
+bwa aln -I -t 6 \
+/netshare1/home1/people/hansun/GATK/bwa/hg19 \
+/netshare1/home1/szzhongxin/proj1/fudan3/9B/$read1fq \
+>$read1sai
+
+bwa aln -I -t 6 \
+/netshare1/home1/people/hansun/GATK/bwa/hg19 \
+/netshare1/home1/szzhongxin/proj1/fudan3/9B/$read2fq \
+>$read2sai
+
+
+bwa sampe  \
+/netshare1/home1/people/hansun/GATK/bwa/hg19 \
+$read1sai \
+$read2sai \
+/netshare1/home1/szzhongxin/proj1/fudan3/9B/$read1fq \
+/netshare1/home1/szzhongxin/proj1/fudan3/9B/$read2fq \
+-r "@RG\tID:9b\tSM:9b\tLB:9b\tPL:illumina\tPU:barcode" \
+>$readsam
+

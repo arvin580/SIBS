@@ -1,0 +1,32 @@
+#!/bin/bash
+
+
+read1fq=M6B_AGTTCC_L006_w4q20m35_N_1.fq
+read2fq=M6B_AGTTCC_L006_w4q20m35_N_2.fq
+read1sai=M6B_AGTTCC_L006_w4q20m35_N_1.sai
+read2sai=M6B_AGTTCC_L006_w4q20m35_N_2.sai
+readsam=6B.AGTTCC_L006_w4q20m35_N.sam
+
+
+cd  /netshare1/home1/szzhongxin/proj1/hansun/mapping4/6B
+
+bwa aln -I -t 8 \
+/netshare1/home1/people/hansun/GATK/bwa/hg19 \
+/netshare1/home1/szzhongxin/proj1/fudan4/6B/$read1fq \
+>$read1sai
+
+bwa aln -I  -t 8 \
+/netshare1/home1/people/hansun/GATK/bwa/hg19 \
+/netshare1/home1/szzhongxin/proj1/fudan4/6B/$read2fq \
+>$read2sai
+
+
+bwa sampe  \
+/netshare1/home1/people/hansun/GATK/bwa/hg19 \
+$read1sai \
+$read2sai \
+/netshare1/home1/szzhongxin/proj1/fudan4/6B/$read1fq \
+/netshare1/home1/szzhongxin/proj1/fudan4/6B/$read2fq \
+-r "@RG\tID:m6b\tSM:m6b\tLB:m6b\tPL:illumina\tPU:barcode" \
+>$readsam
+

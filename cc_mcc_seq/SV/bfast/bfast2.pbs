@@ -1,0 +1,8 @@
+#!/bin/bash
+
+#cd  /netshare1/home1/people/hansun/GATK/bundle
+#bfast fasta2brg -A 0 -f ucsc.hg19.fasta
+
+cd /netshare1/home1/szzhongxin/proj1/hansun/SV/bfast
+
+bfast index -f /netshare1/home1/people/hansun/GATK/bundle/ucsc.hg19.fasta -w 14  -i 2 -m 1111101110111010100101011011111

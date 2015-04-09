@@ -1,0 +1,31 @@
+#!/bin/bash
+
+cd /netshare1/home1/szzhongxin/proj1/hansun/snpIndel2/indel/indel3030
+
+java -Xmx4g -jar /netshare1/home1/people/hansun/GATK/GenomeAnalysisTK.jar \
+   -T VariantRecalibrator \
+   -R /netshare1/home1/people/hansun/GATK/bundle/ucsc.hg19.fasta \
+   -input  raw.indel.vcf \
+   -resource:mills,VCF,known=true,training=true,truth=true,prior=12.0 /netshare1/home1/people/hansun/GATK/bundle/Mills_Devine_2hit.indels.hg19.sites.vcf  \
+   -an QD -an HaplotypeScore -an ReadPosRankSum -an FS \
+   -mode INDEL \
+   -recalFile  raw.indel.recal \
+   -tranchesFile raw.indel.tranche \
+   -rscriptFile raw.indel.plots.R 
+###   --maxGaussians 6
+   
+
+#cd /netshare1/home1/szzhongxin/proj1/hansun/snpIndel2/indel/indel5050
+#
+#java -Xmx4g -jar /netshare1/home1/people/hansun/GATK/GenomeAnalysisTK.jar \
+#   -T VariantRecalibrator \
+#   -R /netshare1/home1/people/hansun/GATK/bundle/ucsc.hg19.fasta \
+#   -input  raw.indel.vcf \
+#   -resource:mills,VCF,known=true,training=true,truth=true,prior=12.0 /netshare1/home1/people/hansun/GATK/bundle/Mills_Devine_2hit.indels.hg19.sites.vcf  \
+#   -an QD -an HaplotypeScore -an ReadPosRankSum -an FS \
+#   -mode INDEL \
+#   -recalFile  raw.indel.recal \
+#   -tranchesFile raw.indel.tranche \
+#   -rscriptFile raw.indel.plots.R 
+####   --maxGaussians 6
+ 

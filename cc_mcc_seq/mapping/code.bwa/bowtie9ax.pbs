@@ -1,0 +1,18 @@
+#!/bin/bash
+
+cd  /netshare1/home1/szzhongxin/proj1/hansun/mapping/9A
+
+bowtie -p 6 -m 1 --best --strata -S -C \
+--un 9A.solid0734_20110529_PE_9A_Sample_9A_F3.un \
+--max 9A.solid0734_20110529_PE_9A_Sample_9A_F3.max \
+/netshare1/home1/people/hansun/GATK/bowtie/hg19.c \
+-f /netshare1/home1/szzhongxin/proj1/fudan/9A/solid0734_20110529_PE_9A_Sample_9A_F3.csfasta \
+-Q /netshare1/home1/szzhongxin/proj1/fudan/9A/solid0734_20110529_PE_9A_Sample_9A_F3_QV.qual \
+--sam-RG  "ID:9a" \
+--sam-RG  "SM:9a" \
+--sam-RG  "LB:9a" \
+--sam-RG  "PL:solid" \
+--sam-RG  "PU:slide" \
+9A.solid0734_20110529_PE_9A_Sample_9A_F3.sam
+
+

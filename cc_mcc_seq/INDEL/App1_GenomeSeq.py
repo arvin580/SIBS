@@ -1,0 +1,1 @@
+/netshare1/home1/people/hansun/DayDayCoding/GenomeSeq/App1_GenomeSeq.py

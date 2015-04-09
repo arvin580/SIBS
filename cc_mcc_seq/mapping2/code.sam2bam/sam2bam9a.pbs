@@ -1,0 +1,9 @@
+#!/bin/bash
+
+cd /netshare1/home1/szzhongxin/proj1/hansun/mapping2/9A
+samtools view -bS -o 9A.D-M9A_w4q20m35_N.bam 9A.D-M9A_w4q20m35_N.sam
+rm 9A.D-M9A_w4q20m35_N.sam
+samtools  sort 9A.D-M9A_w4q20m35_N.bam 9A.D-M9A_w4q20m35_N.sorted
+samtools  flagstat 9A.D-M9A_w4q20m35_N.sorted.bam >9A.stat
+mv 9A.D-M9A_w4q20m35_N.sorted.bam 9A.bam
+samtools index 9A.bam

@@ -1,0 +1,2 @@
+cd /netshare1/home1/szzhongxin/proj1/hansun/SV/Pindel/fudan
+pindel -f /netshare1/home1/people/hansun/GATK/bundle/ucsc.hg19.fasta -p /netshare1/home1/szzhongxin/proj1/hansun/mapping2/6A/6A.pindel -o 6A.pindel -c ALL  

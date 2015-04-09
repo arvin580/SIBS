@@ -1,0 +1,6 @@
+#!/bin/bash
+
+cd /netshare1/home1/szzhongxin/proj1/hansun/aftmapping
+
+samtools mpileup -f $hg19 1A/1A.realigned.recalibrated.bam 2A/2A.realigned.recalibrated.bam >haha.pileup
+

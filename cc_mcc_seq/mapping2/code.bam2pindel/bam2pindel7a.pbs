@@ -1,0 +1,6 @@
+#!/bin/bash
+
+cd /netshare1/home1/szzhongxin/proj1/hansun/mapping2/7A
+
+samtools view 7A.bam | sam2pindel - 7A.pindel 500 7a 0
+

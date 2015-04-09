@@ -1,0 +1,13 @@
+#!/bin/bash
+
+cd /netshare1/home1/szzhongxin/proj1/hansun/aftmapping4/6B
+
+java -Xmx32g -jar \
+/netshare1/home1/people/hansun/GATK/GenomeAnalysisTK.jar \
+-R /netshare1/home1/people/hansun/GATK/bundle/ucsc.hg19.fasta \
+-I  6B.realigned.bam \
+-T TableRecalibration \
+-o 6B.realigned.recalibrated.bam \
+-recalFile 6B.realigned.covariate.csv
+
+#samtools index 6B.realigned.recalibrated.bam

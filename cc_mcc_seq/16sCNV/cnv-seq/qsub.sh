@@ -1,0 +1,16 @@
+qsub 1_cnv-seq.CHC10A.sh -l nodes=n4 -q high
+qsub 1_cnv-seq.CHC10B.sh -l nodes=n5 -q high
+qsub 1_cnv-seq.CHC5A.sh -l nodes=n6 -q high
+qsub 1_cnv-seq.CHC5B.sh -l nodes=n7 -q high
+qsub 1_cnv-seq.CHC6A.sh -l nodes=n9 -q high
+qsub 1_cnv-seq.CHC6B.sh -l nodes=n10 -q high
+qsub 1_cnv-seq.CHC7A.sh -l nodes=n11 -q high
+qsub 1_cnv-seq.CHC7B.sh -l nodes=n12 -q high
+qsub 1_cnv-seq.ICC10A.sh -l nodes=n13 -q high
+qsub 1_cnv-seq.ICC10B.sh -l nodes=n14 -q high
+qsub 1_cnv-seq.ICC4A.sh -l nodes=n15 -q high
+qsub 1_cnv-seq.ICC4B.sh -l nodes=n16 -q high
+qsub 1_cnv-seq.ICC5A.sh -l nodes=n17 -q high
+qsub 1_cnv-seq.ICC5B.sh -l nodes=n19 -q high
+qsub 1_cnv-seq.ICC9A.sh -l nodes=n20 -q high
+qsub 1_cnv-seq.ICC9B.sh -l nodes=n21 -q high

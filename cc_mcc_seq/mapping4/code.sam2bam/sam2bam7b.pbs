@@ -1,0 +1,16 @@
+#!/bin/bash
+
+sam=7B.ATGTCA_L007_w4q20m35_N.sam
+bam=7B.ATGTCA_L007_w4q20m35_N.bam
+bamsorted=7B.ATGTCA_L007_w4q20m35_N.sorted
+bamsortedbam=7B.ATGTCA_L007_w4q20m35_N.sorted.bam
+stat=7B.stat
+BAM=7B.bam
+
+cd /netshare1/home1/szzhongxin/proj1/hansun/mapping4/7B
+samtools view -bS -o $bam $sam
+rm $sam
+samtools  sort $bam $bamsorted
+samtools  flagstat $bamsortedbam >$stat
+mv $bamsortedbam $BAM
+samtools index $BAM

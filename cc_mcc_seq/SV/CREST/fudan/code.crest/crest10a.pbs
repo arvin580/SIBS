@@ -1,0 +1,5 @@
+cd /netshare1/home1/szzhongxin/proj1/hansun/SV/CREST/fudan/10A
+##gfServer  start 127.0.0.1 77777 ucsc.hg19.2bit 
+perl /netshare1/home1/people/hansun/MySoft/CREST/extractSClip.pl -i /netshare1/home1/szzhongxin/proj1/hansun/mapping/10A/10A.bam --ref_genome /netshare1/home1/people/hansun/GATK/bundle/ucsc.hg19.fasta
+
+#perl /netshare1/home1/people/hansun/MySoft/CREST/CREST.pl -f 10A.bam.cover -d /netshare1/home1/szzhongxin/proj1/hansun/mapping/10A/10A.bam --ref_genome  /netshare1/home1/people/hansun/GATK/bundle/ucsc.hg19.fasta -t /netshare1/home1/szzhongxin/proj1/hansun/SV/CREST/ucsc.hg19.2bit --blatserver 127.0.0.1 --blatport 77777 

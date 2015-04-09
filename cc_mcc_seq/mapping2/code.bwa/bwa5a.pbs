@@ -1,0 +1,24 @@
+#!/bin/bash
+
+cd  /netshare1/home1/szzhongxin/proj1/hansun/mapping2/5A
+
+#bwa aln -I -t 6 \
+#/netshare1/home1/people/hansun/GATK/bwa/hg19 \
+#/netshare1/home1/szzhongxin/proj1/fudan2/5A/hiseq_20111018_lane4_w4q20m35_N.1.fq \
+#>5A.hiseq_20111018_lane4_w4q20m35_N.1.sai
+#
+#bwa aln -I -t 6 \
+#/netshare1/home1/people/hansun/GATK/bwa/hg19 \
+#/netshare1/home1/szzhongxin/proj1/fudan2/5A/hiseq_20111018_lane4_w4q20m35_N.2.fq \
+#>5A.hiseq_20111018_lane4_w4q20m35_N.2.sai
+
+
+bwa sampe  \
+/netshare1/home1/people/hansun/GATK/bwa/hg19 \
+5A.hiseq_20111018_lane4_w4q20m35_N.1.sai \
+5A.hiseq_20111018_lane4_w4q20m35_N.2.sai \
+/netshare1/home1/szzhongxin/proj1/fudan2/5A/hiseq_20111018_lane4_w4q20m35_N.1.fq \
+/netshare1/home1/szzhongxin/proj1/fudan2/5A/hiseq_20111018_lane4_w4q20m35_N.2.fq \
+-r "@RG\tID:m5a\tSM:m5a\tLB:m5a\tPL:illumina\tPU:barcode" \
+>5A.hiseq_20111018_lane4_w4q20m35_N.sam
+

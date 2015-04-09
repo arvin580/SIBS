@@ -1,0 +1,26 @@
+#!/bin/bash
+
+cd /netshare1/home1/szzhongxin/proj1/hansun/snpIndel/indel/indel3030
+
+java -Xmx7g -jar /netshare1/home1/people/hansun/GATK/GenomeAnalysisTK.jar \
+   -T ApplyRecalibration \
+   -R /netshare1/home1/people/hansun/GATK/bundle/ucsc.hg19.fasta \
+   -input  raw.indel.vcf \
+   --ts_filter_level 99.0 \
+   -tranchesFile raw.indel.tranche \
+   -recalFile raw.indel.recal \
+   -o raw.indel.recalibrated.vcf \
+   -mode INDEL
+
+
+#cd /netshare1/home1/szzhongxin/proj1/hansun/snpIndel/indel/indel5050
+
+#java -Xmx7g -jar /netshare1/home1/people/hansun/GATK/GenomeAnalysisTK.jar \
+#   -T ApplyRecalibration \
+#   -R /netshare1/home1/people/hansun/GATK/bundle/ucsc.hg19.fasta \
+#   -input  raw.indel.vcf \
+#   --ts_filter_level 99.0 \
+#   -tranchesFile raw.indel.tranche \
+#   -recalFile raw.indel.recal \
+#   -o raw.indel.recalibrated.vcf \
+#   -mode INDEL

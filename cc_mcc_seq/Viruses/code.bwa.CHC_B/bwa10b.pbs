@@ -1,0 +1,40 @@
+#!/bin/bash
+
+read1fq=M10B_CCGTCC_L008_w4q20m35_N_1.fq
+read2fq=M10B_CCGTCC_L008_w4q20m35_N_2.fq
+read1sai=M10B_CCGTCC_L008_w4q20m35_N_1.sai
+read2sai=M10B_CCGTCC_L008_w4q20m35_N_2.sai
+readsam=10B.CCGTCC_L008_w4q20m35_N.sam
+bam=10B.CCGTCC_L008_w4q20m35_N.bam
+bamsorted=10B.CCGTCC_L008_w4q20m35_N.sorted
+bamsortedbam=10B.CCGTCC_L008_w4q20m35_N.sorted.bam
+BAM=10B.bam
+
+
+
+cd  /netshare1/home1/szzhongxin/proj1/hansun/Viruses/mapping4/10B
+
+#bwa aln -I -t 6 \
+#/netshare1/home1/szzhongxin/proj1/hansun/Viruses/bwa/hg19viruses \
+#/netshare1/home1/szzhongxin/proj1/fudan4/10B/$read1fq \
+#>$read1sai
+#
+#bwa aln -I -t 6 \
+#/netshare1/home1/szzhongxin/proj1/hansun/Viruses/bwa/hg19viruses \
+#/netshare1/home1/szzhongxin/proj1/fudan4/10B/$read2fq \
+#>$read2sai
+#
+#
+#bwa sampe  \
+#/netshare1/home1/szzhongxin/proj1/hansun/Viruses/bwa/hg19viruses \
+#$read1sai \
+#$read2sai \
+#/netshare1/home1/szzhongxin/proj1/fudan4/10B/$read1fq \
+#/netshare1/home1/szzhongxin/proj1/fudan4/10B/$read2fq \
+#-r "@RG\tID:m10b\tSM:m10b\tLB:m10b\tPL:illumina\tPU:barcode" | \
+#samtools view -bS -o $bam -
+#
+#samtools  sort $bam $bamsorted
+
+mv $bamsortedbam $BAM
+samtools index $BAM

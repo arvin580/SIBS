@@ -1,0 +1,102 @@
+#!/bin/bash
+### Job name
+#LJRS -N sam2bam
+### Queue name 
+#LJRS -q mpool
+### Number of nodes 
+#LJRS -l nodes=1:ppn=6
+
+
+#cd /export/home/sunhan/Sequencing/mapping/1A
+#samtools view -bS -o 1A.hiseq_20110602_lane5_w4q20m35_N.bam 1A.hiseq_20110602_lane5_w4q20m35_N.sam
+#samtools sort 1A.hiseq_20110602_lane5_w4q20m35_N.bam 1A.hiseq_20110602_lane5_w4q20m35_N.sorted
+#
+#samtools view -bS -o 1A.hiseq20110714_lane4_read12_w4q10m35_N.bam 1A.hiseq20110714_lane4_read12_w4q10m35_N.sam
+#samtools sort 1A.hiseq20110714_lane4_read12_w4q10m35_N.bam 1A.hiseq20110714_lane4_read12_w4q10m35_N.sorted
+#
+#samtools view -bS -o 1A.hiseq_20110824_lane1_w4q20m35_N.bam 1A.hiseq_20110824_lane1_w4q20m35_N.sam
+#samtools sort 1A.hiseq_20110824_lane1_w4q20m35_N.bam 1A.hiseq_20110824_lane1_w4q20m35_N.sorted
+#
+#samtools merge 1A.bam 1A.hiseq_20110602_lane5_w4q20m35_N.sorted.bam 1A.hiseq20110714_lane4_read12_w4q10m35_N.sorted.bam 1A.hiseq_20110824_lane1_w4q20m35_N.sorted.bam
+#
+#cd /export/home/sunhan/Sequencing/mapping/2A
+#samtools view -bS -o 2A.hiseq20110602_lane6_w4q20m35_N.bam 2A.hiseq20110602_lane6_w4q20m35_N.sam
+#samtools  sort 2A.hiseq20110602_lane6_w4q20m35_N.bam 2A.hiseq20110602_lane6_w4q20m35_N.sorted
+
+#samtools view -bS -o 2A.hiseq_20110824_lane3_w4q20m35_N.bam 2A.hiseq_20110824_lane3_w4q20m35_N.sam
+#samtools sort 2A.hiseq_20110824_lane3_w4q20m35_N.bam 2A.hiseq_20110824_lane3_w4q20m35_N.sorted
+
+#samtools view -bS -o 2A.hiseq_20110824_lane4_w4q20m35_N.bam 2A.hiseq_20110824_lane4_w4q20m35_N.sam
+#samtools sort 2A.hiseq_20110824_lane4_w4q20m35_N.bam 2A.hiseq_20110824_lane4_w4q20m35_N.sorted
+
+#samtools merge 2A.bam 2A.hiseq20110602_lane6_w4q20m35_N.sorted.bam 2A.hiseq_20110824_lane3_w4q20m35_N.sorted.bam 2A.hiseq_20110824_lane4_w4q20m35_N.sorted.bam
+
+
+
+cd /export/home/sunhan/Sequencing/mapping/3A
+#samtools view -bS -o 3A.hiseq_20110602_lane7_w4q20m35_N.bam 3A.hiseq_20110602_lane7_w4q20m35_N.sam
+#samtools  sort 3A.hiseq_20110602_lane7_w4q20m35_N.bam 3A.hiseq_20110602_lane7_w4q20m35_N.sorted
+
+#samtools view -bS -o 3A.hiseq_20110824_lane5_w4q20m35_N.bam 3A.hiseq_20110824_lane5_w4q20m35_N.sam
+#samtools sort 3A.hiseq_20110824_lane5_w4q20m35_N.bam 3A.hiseq_20110824_lane5_w4q20m35_N.sorted
+
+samtools view -bS -o hiseq_20110824_lane6_w4q20m35_N.bam hiseq_20110824_lane6_w4q20m35_N.sam
+samtools sort hiseq_20110824_lane6_w4q20m35_N.bam hiseq_20110824_lane6_w4q20m35_N.sorted
+
+samtools merge 3A.bam hiseq_20110602_lane7_w4q20m35_N.sorted.bam hiseq_20110824_lane5_w4q20m35_N.sorted.bam hiseq_20110824_lane6_w4q20m35_N.sorted.bam
+
+
+#cd /export/home/sunhan/Sequencing/mapping/4A
+#samtools view -bS -o 4A.hiseq_20110602_lane8_w4q20m35_N.bam 4A.hiseq_20110602_lane8_w4q20m35_N.sam
+#samtools  sort 4A.hiseq_20110602_lane8_w4q20m35_N.bam 4A.hiseq_20110602_lane8_w4q20m35_N.sorted
+
+#samtools view -bS -o 4A.hiseq_20110824_lane7_w4q20m35_N.bam 4A.hiseq_20110824_lane7_w4q20m35_N.sam
+#samtools sort 4A.hiseq_20110824_lane7_w4q20m35_N.bam 4A.hiseq_20110824_lane7_w4q20m35_N.sorted
+
+#samtools view -bS -o 4A.hiseq_20110824_lane8_w4q20m35_N.bam 4A.hiseq_20110824_lane8_w4q20m35_N.sam
+#samtools sort 4A.hiseq_20110824_lane8_w4q20m35_N.bam 4A.hiseq_20110824_lane8_w4q20m35_N.sorted
+
+#samtools merge 4A.bam  4A.hiseq_20110602_lane8_w4q20m35_N.sorted.bam 4A.hiseq_20110824_lane7_w4q20m35_N.sorted.bam 4A.hiseq_20110824_lane8_w4q20m35_N.sorted.bam
+
+cd /export/home/sunhan/Sequencing/mapping/5A
+samtools view -bS -o 5A.hiseq20110714_lane5_read12_w4q10m35_N.bam 5A.hiseq20110714_lane5_read12_w4q10m35_N.sam
+samtools  sort 5A.hiseq20110714_lane5_read12_w4q10m35_N.bam 5A.hiseq20110714_lane5_read12_w4q10m35_N.sorted
+
+#samtools view -bS -o 5A.hiseq_20110908_lane1_w4q20m35_N.bam 5A.hiseq_20110908_lane1_w4q20m35_N.sam
+#samtools sort 5A.hiseq_20110908_lane1_w4q20m35_N.bam 5A.hiseq_20110908_lane1_w4q20m35_N.sorted
+
+
+samtools merge 5A.bam 5A.hiseq20110714_lane5_read12_w4q10m35_N.sorted.bam 5A.hiseq_20110908_lane1_w4q20m35_N.sorted.bam
+
+#
+#cd /export/home/sunhan/Sequencing/mapping/6A
+#samtools view -bS -o 6A.hiseq20110714_lane6_read12_w4q10m35_N.bam 6A.hiseq20110714_lane6_read12_w4q10m35_N.sam
+#samtools  sort 6A.hiseq20110714_lane6_read12_w4q10m35_N.bam 6A.hiseq20110714_lane6_read12_w4q10m35_N.sorted
+
+#samtools view -bS -o 6A.hiseq_20110908_lane2_w4q20m35_N.bam 6A.hiseq_20110908_lane2_w4q20m35_N.sam
+#samtools sort 6A.hiseq_20110908_lane2_w4q20m35_N.bam 6A.hiseq_20110908_lane2_w4q20m35_N.sorted
+#
+#
+#samtools merge 6A.bam 6A.hiseq20110714_lane6_read12_w4q10m35_N.sorted.bam 6A.hiseq_20110908_lane2_w4q20m35_N.sorted.bam
+#
+cd /export/home/sunhan/Sequencing/mapping/7A
+samtools view -bS -o  7A.hiseq20110714_lane7_read12_w4q10m35_N.bam 7A.hiseq20110714_lane7_read12_w4q10m35_N.sam
+samtools  sort  7A.hiseq20110714_lane7_read12_w4q10m35_N.bam  7A.hiseq20110714_lane7_read12_w4q10m35_N.sorted
+
+samtools view -bS -o 7A.hiseq_20110908_lane3_w4q20m35_N.bam 7A.hiseq_20110908_lane3_w4q20m35_N.sam
+samtools sort  7A.hiseq_20110908_lane3_w4q20m35_N.bam 7A.hiseq_20110908_lane3_w4q20m35_N.sorted
+
+
+samtools merge 7A.bam 7A.hiseq20110714_lane7_read12_w4q10m35_N.sorted.bam 7A.hiseq_20110908_lane3_w4q20m35_N.sorted.bam
+
+
+cd /export/home/sunhan/Sequencing/mapping/8A
+samtools view -bS -o 8A.hiseq20110714_lane8_read12_w4q10m35_N.bam 8A.hiseq20110714_lane8_read12_w4q10m35_N.sam
+samtools  sort 8A.hiseq20110714_lane8_read12_w4q10m35_N.bam 8A.hiseq20110714_lane8_read12_w4q10m35_N.sorted
+
+samtools view -bS -o 8A.hiseq_20110908_lane4_w4q20m35_N.bam 8A.hiseq_20110908_lane4_w4q20m35_N.sam
+samtools sort 8A.hiseq_20110908_lane4_w4q20m35_N.bam 8A.hiseq_20110908_lane4_w4q20m35_N.sorted
+
+
+samtools merge 8A.bam hiseq20110714_lane8_read12_w4q10m35_N.sorted.bam hiseq_20110908_lane4_w4q20m35_N.sorted.sorted
+

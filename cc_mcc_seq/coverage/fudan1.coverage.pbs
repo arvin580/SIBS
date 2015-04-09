@@ -1,0 +1,18 @@
+#!/bin/bash
+
+cd /netshare1/home1/szzhongxin/proj1/hansun/coverage
+
+java -Xmx4g -jar /netshare1/home1/people/hansun/GATK/GenomeAnalysisTK.jar \
+-R /netshare1/home1/people/hansun/GATK/bundle/ucsc.hg19.fasta \
+-T DepthOfCoverage \
+-o fudan1.coverage \
+-I /netshare1/home1/szzhongxin/proj1/hansun/aftmapping/1A/1A.realigned.bam \
+-I /netshare1/home1/szzhongxin/proj1/hansun/aftmapping/2A/2A.realigned.bam \
+-I /netshare1/home1/szzhongxin/proj1/hansun/aftmapping/3A/3A.realigned.bam \
+-I /netshare1/home1/szzhongxin/proj1/hansun/aftmapping/4A/4A.realigned.bam \
+-I /netshare1/home1/szzhongxin/proj1/hansun/aftmapping/5A/5A.realigned.bam \
+-I /netshare1/home1/szzhongxin/proj1/hansun/aftmapping/6A/6A.realigned.bam \
+-I /netshare1/home1/szzhongxin/proj1/hansun/aftmapping/7A/7A.realigned.bam \
+-I /netshare1/home1/szzhongxin/proj1/hansun/aftmapping/8A/8A.realigned.bam \
+-I /netshare1/home1/szzhongxin/proj1/hansun/aftmapping/9A/9A.realigned.bam \
+-I /netshare1/home1/szzhongxin/proj1/hansun/aftmapping/10A/10A.realigned.bam 

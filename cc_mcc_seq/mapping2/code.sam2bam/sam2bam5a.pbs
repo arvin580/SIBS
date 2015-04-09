@@ -1,0 +1,11 @@
+#!/bin/bash
+
+cd /netshare1/home1/szzhongxin/proj1/hansun/mapping2/5A
+samtools view -bS -o 5A.hiseq_20111018_lane4_w4q20m35_N.bam 5A.hiseq_20111018_lane4_w4q20m35_N.sam
+rm 5A.hiseq_20111018_lane4_w4q20m35_N.sam
+samtools  sort 5A.hiseq_20111018_lane4_w4q20m35_N.bam 5A.hiseq_20111018_lane4_w4q20m35_N.sorted
+samtools  flagstat 5A.hiseq_20111018_lane4_w4q20m35_N.sorted.bam >5A.stat
+mv 5A.hiseq_20111018_lane4_w4q20m35_N.sorted.bam 5A.bam
+
+
+samtools index 5A.bam

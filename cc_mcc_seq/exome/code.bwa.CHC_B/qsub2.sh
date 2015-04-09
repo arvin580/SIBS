@@ -1,0 +1,6 @@
+cd /netshare1/home1/szzhongxin/proj1/hansun/Viruses/code.bwa.CHC_B
+
+qsub bwa10b.pbs -l nodes=n22 -q high
+qsub bwa6b.pbs -l nodes=n23 -q high
+qsub bwa5b.pbs -l nodes=n24 -q high
+qsub bwa7b.pbs -l nodes=n25 -q high

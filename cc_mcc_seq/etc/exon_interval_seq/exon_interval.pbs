@@ -1,0 +1,3 @@
+cd /netshare1/home1/szzhongxin/proj1/hansun/annotation/exon_interval_seq
+
+python exon_interval.py  ../snpindel_snp3030_raw.snp.recalibrated.annovar.exonic_variant_function ../snpindel_indel3030_raw.indel.recalibrated.annovar.exonic_variant_function ../snpindel2_snp3030_raw.snp.recalibrated.annovar.exonic_variant_function ../snpindel2_indel3030_raw.indel.recalibrated.annovar.exonic_variant_function   15

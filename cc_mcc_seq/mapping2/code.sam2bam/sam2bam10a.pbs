@@ -1,0 +1,16 @@
+#!/bin/bash
+
+#cd /netshare1/home1/szzhongxin/proj1/hansun/mapping2/10A
+#samtools view -bS -o 10A.D-M10A_w4q20m35_N.bam 10A.D-M10A_w4q20m35_N.sam
+#rm 10A.D-M10A_w4q20m35_N.sam
+#samtools  sort 10A.D-M10A_w4q20m35_N.bam 10A.D-M10A_w4q20m35_N.sorted
+#samtools  flagstat 10A.D-M10A_w4q20m35_N.sorted.bam >10A.stat
+#mv 10A.D-M10A_w4q20m35_N.sorted.bam 10A.bam
+#samtools index 10A.bam
+
+
+cd /netshare1/home1/szzhongxin/proj1/hansun/mapping2/10Ax
+samtools  sort 10A.D-M10A_w4q20m35_N.bam 10A.D-M10A_w4q20m35_N.sorted
+samtools  flagstat 10A.D-M10A_w4q20m35_N.sorted.bam >10A.stat
+mv 10A.D-M10A_w4q20m35_N.sorted.bam 10A.bam
+samtools index 10A.bam

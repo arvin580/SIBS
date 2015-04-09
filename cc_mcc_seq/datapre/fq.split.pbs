@@ -1,0 +1,10 @@
+#!/bin/bash
+cd /netshare1/home1/szzhongxin/proj1/hansun/datapre
+#perl fq.split.pl /netshare1/home1/szzhongxin/proj1/fudan2/1A/hiseq_20110926_lane5_w4q20m35_N.fq
+#perl fq.split.pl /netshare1/home1/szzhongxin/proj1/fudan2/2A/hiseq_20110926_lane6_w4q20m35_N.fq
+#perl fq.split.pl /netshare1/home1/szzhongxin/proj1/fudan2/3A/hiseq_20110926_lane7_w4q20m35_N.fq
+#perl fq.split.pl /netshare1/home1/szzhongxin/proj1/fudan2/4A/hiseq_20110926_lane8_w4q20m35_N.fq
+#perl fq.split.pl /netshare1/home1/szzhongxin/proj1/fudan2/5A/hiseq_20111018_lane4_w4q20m35_N.fq
+#perl fq.split.pl /netshare1/home1/szzhongxin/proj1/fudan2/6A/hiseq_20111018_lane5_w4q20m35_N.fq
+perl fq.split.pl /netshare1/home1/szzhongxin/proj1/fudan2/7A/hiseq_20111018_lane6_w4q20m35_N.fq
+perl fq.split.pl /netshare1/home1/szzhongxin/proj1/fudan2/8A/hiseq_20111018_lane7_w4q20m35_N.fq

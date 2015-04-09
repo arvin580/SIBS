@@ -1,0 +1,14 @@
+cd /netshare1/home1/szzhongxin/proj1/hansun/SV/BreakDancer2
+
+perl /netshare1/home1/people/hansun/MySoft/BreakDancer/breakdancer-1.1_2011_02_21/perl/bam2cfg.pl  -g -h \
+/netshare1/home1/szzhongxin/proj1/hansun/mapping2/1A/1A.bam \
+/netshare1/home1/szzhongxin/proj1/hansun/mapping2/2A/2A.bam \
+/netshare1/home1/szzhongxin/proj1/hansun/mapping2/3A/3A.bam \
+/netshare1/home1/szzhongxin/proj1/hansun/mapping2/4A/4A.bam \
+/netshare1/home1/szzhongxin/proj1/hansun/mapping2/5A/5A.bam \
+/netshare1/home1/szzhongxin/proj1/hansun/mapping2/6A/6A.bam \
+/netshare1/home1/szzhongxin/proj1/hansun/mapping2/7A/7A.bam \
+/netshare1/home1/szzhongxin/proj1/hansun/mapping2/8A/8A.bam \
+>fudan2.cfg 
+
+breakdancer_max -t -q 10 -d fudan2.ctx fudan2.cfg >fudan2.ctx 

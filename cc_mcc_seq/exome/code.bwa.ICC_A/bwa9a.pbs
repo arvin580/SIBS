@@ -1,0 +1,28 @@
+#!/bin/bash
+
+cd  /netshare1/home1/szzhongxin/proj1/hansun/Viruses/mapping/9A
+
+#bwa aln -I -t 6 \
+#/netshare1/home1/szzhongxin/proj1/hansun/Viruses/bwa/hg19viruses \
+#/netshare1/home1/szzhongxin/proj1/fudan/9A/9A_0107_w2q20m35_N_1.fq \
+#>9A.9A_0107_w2q20m35_N_1.sai
+#
+#bwa aln -I -t 6 \
+#/netshare1/home1/szzhongxin/proj1/hansun/Viruses/bwa/hg19viruses \
+#/netshare1/home1/szzhongxin/proj1/fudan/9A/9A_0107_w2q20m35_N_2.fq \
+#>9A.9A_0107_w2q20m35_N_2.sai
+#
+#
+#bwa sampe  \
+#/netshare1/home1/szzhongxin/proj1/hansun/Viruses/bwa/hg19viruses \
+#9A.9A_0107_w2q20m35_N_1.sai \
+#9A.9A_0107_w2q20m35_N_2.sai \
+#/netshare1/home1/szzhongxin/proj1/fudan/9A/9A_0107_w2q20m35_N_1.fq \
+#/netshare1/home1/szzhongxin/proj1/fudan/9A/9A_0107_w2q20m35_N_2.fq \
+#-r "@RG\tID:9a\tSM:9a\tLB:9a\tPL:illumina\tPU:barcode" | \
+#samtools view -bS -o 9A.9A_0107_w2q20m35_N.bam -
+#
+#samtools  sort 9A.9A_0107_w2q20m35_N.bam 9A.9A_0107_w2q20m35_N.sorted
+
+mv 9A.9A_0107_w2q20m35_N.sorted.bam 9A.bam
+samtools index 9A.bam

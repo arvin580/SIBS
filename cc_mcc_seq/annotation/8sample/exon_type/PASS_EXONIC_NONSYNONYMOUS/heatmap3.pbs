@@ -1,0 +1,2 @@
+cd /netshare1/home1/szzhongxin/proj1/hansun/annotation/exon_type/PASS_EXONIC_NONSYNONYMOUS
+Rscript heatmap3.R

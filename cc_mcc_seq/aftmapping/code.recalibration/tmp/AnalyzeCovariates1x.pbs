@@ -1,0 +1,13 @@
+#!/bin/bash
+#$ -S /bin/bash
+
+cd /export/home/sunhan/Sequencing/aftmapping/1Ax
+
+
+/export3/home/sunhan/MySoft/java/jre1.6.0_27/bin/java -Xmx4g -jar \
+/export/home/sunhan/Sequencing/GATK/AnalyzeCovariates.jar \
+-recalFile 1A.realigned.marked.readgroup.covariate.csv  \
+-outputDir AnalyzeCovariates  \
+-resources  /export/home/sunhan/Sequencing/GATK/resources \
+-Rscript /export3/home/sunhan/MySoft/R/R-2.13.2/bin \
+-ignoreQ 5

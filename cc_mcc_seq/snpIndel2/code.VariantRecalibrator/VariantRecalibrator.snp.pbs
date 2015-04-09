@@ -1,0 +1,34 @@
+#!/bin/bash
+
+cd /netshare1/home1/szzhongxin/proj1/hansun/snpIndel2/snp/snp3030
+
+java -Xmx4g -jar /netshare1/home1/people/hansun/GATK/GenomeAnalysisTK.jar \
+   -T VariantRecalibrator \
+   -R /netshare1/home1/people/hansun/GATK/bundle/ucsc.hg19.fasta \
+   -input  raw.snp.vcf \
+   -resource:hapmap,known=false,training=true,truth=true,prior=15.0 /netshare1/home1/people/hansun/GATK/bundle/hapmap_3.3.hg19.sites.vcf \
+   -resource:omni,known=false,training=true,truth=false,prior=12.0 /netshare1/home1/people/hansun/GATK/bundle/1000G_omni2.5.hg19.sites.vcf \
+   -resource:dbsnp,known=true,training=false,truth=false,prior=8.0 /netshare1/home1/people/hansun/GATK/bundle/dbsnp_132.hg19.vcf \
+   -an QD -an HaplotypeScore -an MQRankSum -an ReadPosRankSum -an FS  -an DP -an MQ \
+   -mode SNP \
+   -recalFile  raw.snp.recal \
+   -tranchesFile raw.snp.tranche \
+   -rscriptFile raw.snp.plots.R 
+##   --maxGaussians 6
+   
+#cd /netshare1/home1/szzhongxin/proj1/hansun/snpIndel2/snp/snp5050
+#
+#java -Xmx4g -jar /netshare1/home1/people/hansun/GATK/GenomeAnalysisTK.jar \
+#   -T VariantRecalibrator \
+#   -R /netshare1/home1/people/hansun/GATK/bundle/ucsc.hg19.fasta \
+#   -input  raw.snp.vcf \
+#   -resource:hapmap,known=false,training=true,truth=true,prior=15.0 /netshare1/home1/people/hansun/GATK/bundle/hapmap_3.3.hg19.sites.vcf \
+#   -resource:omni,known=false,training=true,truth=false,prior=12.0 /netshare1/home1/people/hansun/GATK/bundle/1000G_omni2.5.hg19.sites.vcf \
+#   -resource:dbsnp,known=true,training=false,truth=false,prior=8.0 /netshare1/home1/people/hansun/GATK/bundle/dbsnp_132.hg19.vcf \
+#   -an QD -an HaplotypeScore -an MQRankSum -an ReadPosRankSum -an FS  -an DP -an MQ \
+#   -mode SNP \
+#   -recalFile  raw.snp.recal \
+#   -tranchesFile raw.snp.tranche \
+#   -rscriptFile raw.snp.plots.R 
+####   --maxGaussians 6
+ 

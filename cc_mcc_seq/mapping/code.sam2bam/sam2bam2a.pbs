@@ -1,0 +1,18 @@
+#!/bin/bash
+
+cd /netshare1/home1/szzhongxin/proj1/hansun/mapping/2A
+samtools view -bS -o 2A.hiseq20110602_lane6_w4q20m35_N.bam 2A.hiseq20110602_lane6_w4q20m35_N.sam
+samtools  sort 2A.hiseq20110602_lane6_w4q20m35_N.bam 2A.hiseq20110602_lane6_w4q20m35_N.sorted
+samtools  flagstat  2A.hiseq20110602_lane6_w4q20m35_N.sorted.bam >2A.stat
+
+samtools view -bS -o 2A.hiseq_20110824_lane3_w4q20m35_N.bam 2A.hiseq_20110824_lane3_w4q20m35_N.sam
+samtools sort 2A.hiseq_20110824_lane3_w4q20m35_N.bam 2A.hiseq_20110824_lane3_w4q20m35_N.sorted
+samtools flagstat 2A.hiseq_20110824_lane3_w4q20m35_N.sorted.bam >>2A.stat
+
+samtools view -bS -o 2A.hiseq_20110824_lane4_w4q20m35_N.bam 2A.hiseq_20110824_lane4_w4q20m35_N.sam
+samtools sort 2A.hiseq_20110824_lane4_w4q20m35_N.bam 2A.hiseq_20110824_lane4_w4q20m35_N.sorted
+samtools flagstat 2A.hiseq_20110824_lane4_w4q20m35_N.sorted.bam >>2A.stat
+
+samtools merge 2A.bam 2A.hiseq20110602_lane6_w4q20m35_N.sorted.bam 2A.hiseq_20110824_lane3_w4q20m35_N.sorted.bam 2A.hiseq_20110824_lane4_w4q20m35_N.sorted.bam 
+
+samtools index 2A.bam
